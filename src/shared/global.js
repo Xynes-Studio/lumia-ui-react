@@ -6,7 +6,7 @@ export const fontUrl = 'https://fonts.googleapis.com/css2?family=DM+Serif+Displa
 export const bodyStyles = css`
   font-family: ${typography.type.primary};
   font-size: ${typography.size.s3};
-  color: ${color.darkest};
+  color: ${color.foreground};
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -85,7 +85,7 @@ export const bodyStyles = css`
     white-space: pre-wrap;
 
     background: rgba(0, 0, 0, 0.05);
-    color: ${color.darkest};
+    color: ${color.foreground};
     border-radius: 3px;
     margin: 1rem 0;
   }
