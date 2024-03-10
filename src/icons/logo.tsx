@@ -1,40 +1,21 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
+import useIconSize from "./hooks/useIconSize.ts";
 
 export const LumiaLogo: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props
 }) => {
-  interface IconSizes {
-    width: number;
-    height: number;
-  }
-
-  const icon: IconSizes = {
-    width: 125,
-    height: 125,
-  };
-
-  const [width, setWidth] = useState<number>(icon?.width * size);
-  const [height, setHeight] = useState<number>(icon?.width * size);
-
-  useEffect(() => {
-    let widthNow: number = icon?.width ?? 0;
-    let heightNow: number = icon?.height ?? 0;
-    widthNow *= size;
-    heightNow *= size;
-    setWidth(widthNow);
-    setHeight(heightNow);
-  }, [size]);
+  const [width, height] = useIconSize(125, 125, size);
 
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${icon?.width} ${icon?.height}`}
+      viewBox={`0 0 125 125`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
