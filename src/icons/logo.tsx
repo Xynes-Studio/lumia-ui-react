@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 
-const LumiaLogo: React.FC<AssetProps> = ({
+export const LumiaLogo: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props
@@ -23,7 +23,7 @@ const LumiaLogo: React.FC<AssetProps> = ({
 
   useEffect(() => {
     let widthNow: number = icon?.width ?? 0;
-    let heightNow: number = icon?.width ?? 0;
+    let heightNow: number = icon?.height ?? 0;
     widthNow *= size;
     heightNow *= size;
     setWidth(widthNow);
@@ -34,7 +34,7 @@ const LumiaLogo: React.FC<AssetProps> = ({
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${icon?.width} ${icon?.height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -49,4 +49,3 @@ const LumiaLogo: React.FC<AssetProps> = ({
   );
 };
 
-export default LumiaLogo;
