@@ -2,3 +2,8 @@ export * from './logo';
 export * from './lmBubble';
 export * from './lmAdd';
 export * from './lmArrowBack';
+export * from './lmArrowUp';
+export * from './lmArrowDown';
+export * from './lmArrowForward';
+export * from './lmDoubleArrowLeft';
+export * from './lmDoubleArrowRight';
