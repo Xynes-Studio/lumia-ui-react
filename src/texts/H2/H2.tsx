@@ -3,7 +3,7 @@ import { cx } from "../../utils";
 import { typography } from "../../shared/styles";
 import styled from "styled-components";
 
-export interface H1Props
+export interface H2Props
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
@@ -11,26 +11,26 @@ export interface H1Props
   type?: "sans" | "serif";
 }
 
-const H1Component: React.ForwardRefRenderFunction<
+const H2Component: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
-  H1Props
+  H2Props
 > = ({ children, type = 'serif', ...props }, ref) => {
-  const StyleH1 = styled.h1`
+  const StyleH2 = styled.h2`
     font-family: ${type === "serif"
       ? typography.type.title
       : typography.type.primary};
     font-weight: ${typography.weight.bold};
-    font-size: ${typography.size.l2};
+    font-size: ${typography.size.l1};
   `;
   return (
-    <StyleH1
+    <StyleH2
       ref={ref}
       className={cx(props.className)}
       {...props}
     >
       {children}
-    </StyleH1>
+    </StyleH2>
   );
 };
 
-export const H1 = forwardRef(H1Component);
+export const H2 = forwardRef(H2Component);
