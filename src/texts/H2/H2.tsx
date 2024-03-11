@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import { cx } from "../../utils";
 import { typography } from "../../shared/styles";
 import styled from "styled-components";
+import '../texts.styles.css';
 
 export interface H2Props
   extends React.DetailedHTMLProps<
@@ -25,7 +26,7 @@ const H2Component: React.ForwardRefRenderFunction<
   return (
     <StyleH2
       ref={ref}
-      className={cx(props.className)}
+      className={cx("lmTextComponent", props.className)}
       {...props}
     >
       {children}

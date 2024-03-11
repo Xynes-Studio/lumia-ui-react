@@ -4,7 +4,7 @@ import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 import useIconSize from "./hooks/useIconSize.ts";
 
-export const lmArrowForward: React.FC<AssetProps> = ({
+export const LmArrowForward: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props

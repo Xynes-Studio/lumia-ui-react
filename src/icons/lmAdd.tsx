@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import React, { forwardRef } from "react";
 import { color as globalColors } from "../shared/styles.ts";
@@ -25,4 +26,4 @@ const lmAddComponent: React.ForwardRefRenderFunction<
   );
 };
 
-export const lmAdd = forwardRef(lmAddComponent);
+export const LmAdd = forwardRef(lmAddComponent);
