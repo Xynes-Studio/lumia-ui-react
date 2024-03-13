@@ -1,10 +1,10 @@
 # Lumia-UI
-A un-styled design system which is very  lightweight and easy to use.
+Lumia-UI is a design system that is intentionally unstyled, offering a lightweight and straightforward experience.
 
-## Done So Far
+## Progress Update
 
-### Lumia Asset Manager [x]
+### Lumia Asset Manager - Completed ✔️
 
-### Lumia UI Texts [x]
+### Lumia UI Texts - Completed ✔️
 
-### Lumia UI Alert [] 
+### Lumia UI Alert - In Progress 🚧
