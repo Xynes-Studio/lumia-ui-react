@@ -13,8 +13,8 @@ export const background: backgroundType = {
 
 export const color: colorTypes = {
   // Palette
-  primary: "#FF4785", // coral
-  secondary: "#1EA7FD", // ocean
+  primary: "#FF4785", 
+  secondary: "#1EA7FD", 
   tertiary: "#DDDDDD",
 
   orange: "#FC521F",
