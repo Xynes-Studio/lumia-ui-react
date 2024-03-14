@@ -3,7 +3,7 @@ import { H1 } from "./H1";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Example/H1",
+  title: "Texts/H1",
   component: H1,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],

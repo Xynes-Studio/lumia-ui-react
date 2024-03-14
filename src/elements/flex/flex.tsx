@@ -1,15 +1,12 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { FlexProps } from "./flex.types";
 import styled from "styled-components";
 import "./flex.styles.css";
 import { cx } from "../../utils";
-export const Flex: React.FC<FlexProps> = ({
-  direction = "row",
-  weight,
-  children,
-  className,
-  ...props
-}) => {
+const FlexComponent: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  FlexProps
+> = ({ direction = "row", weight, children, className, ...props }, ref) => {
   if (weight != undefined) {
     // Validate if children and weight lengths match
     const validLength = React.Children.count(children) === weight?.length;
@@ -44,8 +41,10 @@ export const Flex: React.FC<FlexProps> = ({
   `;
 
   return (
-    <FlexContainer className={cx("lmFlexBox", className)} {...props}>
+    <FlexContainer ref={ref} className={cx("lmFlexBox", className)} {...props}>
       {children}
     </FlexContainer>
   );
 };
+
+export const Flex = forwardRef(FlexComponent);

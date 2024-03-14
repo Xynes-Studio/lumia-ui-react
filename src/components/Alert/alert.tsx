@@ -33,7 +33,7 @@ const AlertComponent: React.ForwardRefRenderFunction<
     }
   }, [type, props.status, setType, setStatus]);
 
-  const AlertContainer = styled.div`
+  const AlertContainer = styled(Flex)`
     background-color: ${bgColor};
     border-width: ${type == "outlined" ? strokes.s1 : 0};
     box-shadow: ${type == "default" ? shadow : "none"};
@@ -56,4 +56,4 @@ const AlertComponent: React.ForwardRefRenderFunction<
   );
 };
 
-export const H1 = forwardRef(AlertComponent);
+export const Alert = forwardRef(AlertComponent);
