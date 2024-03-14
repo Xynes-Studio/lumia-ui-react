@@ -13,8 +13,8 @@ export const background: backgroundType = {
 
 export const color: colorTypes = {
   // Palette
-  primary: "#FF4785", 
-  secondary: "#1EA7FD", 
+  primary: "#FF4785",
+  secondary: "#1EA7FD",
   tertiary: "#DDDDDD",
 
   orange: "#FC521F",
@@ -85,6 +85,14 @@ export const typography = {
 };
 
 export const breakpoint = 600;
+export const strokes = {
+  s1: "0.5vw",
+  s2: "1vw",
+  s3: "2vw",
+};
+
+export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+
 export const pageMargin: number = 5.55555;
 
 export const pageMargins = css`

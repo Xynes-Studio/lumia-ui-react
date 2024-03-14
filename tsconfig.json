@@ -18,7 +18,19 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /*Import Allies SetUp*/
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@shared/*": ["shared/*"],
+      "@elements/*": ["elements/*"],
+      "@icons/*": ["icons/*"],
+      "@texts/*": ["texts/*"],
+      "@utils/*": ["utils/*"],
+      "@app/*": ["*"],
+    },
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

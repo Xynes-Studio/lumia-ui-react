@@ -1,11 +1,13 @@
 "use client";
-import { forwardRef, useEffect, useState } from "react";
-import { AlertProps } from "./types/alert.type";
-import { LmAdd } from "../../icons";
+import { forwardRef, useEffect } from "react";
+import { AlertProps } from "./alert.type";
+import { LmAdd } from "@icons/lmAdd";
 import styled from "styled-components";
-import { cx } from "../../utils";
-import { background, color } from "../../shared/styles";
+import { LMAsset, cx } from "../../utils";
 import useBackgroundColorAlert from "./hooks/useBackgroundColorAlert";
+import { color, strokes, shadow } from "@app/shared/styles";
+import { Flex } from "@app/elements";
+import { H4 } from "@texts/index";
 
 const AlertComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -17,6 +19,7 @@ const AlertComponent: React.ForwardRefRenderFunction<
     showIcon = false,
     icon = LmAdd,
     title = "Alert Message Title",
+    description,
     ...props
   },
   ref
@@ -32,13 +35,24 @@ const AlertComponent: React.ForwardRefRenderFunction<
 
   const AlertContainer = styled.div`
     background-color: ${bgColor};
+    border-width: ${type == "outlined" ? strokes.s1 : 0};
+    box-shadow: ${type == "default" ? shadow : "none"};
   `;
+
   return (
-    <AlertContainer
-      className={cx(".lmAlertContainer")}
-      ref={ref}
-      {...props}
-    ></AlertContainer>
+    <AlertContainer className={cx("lmAlertContainer")} ref={ref} {...props}>
+      <LMAsset
+        visible={showIcon}
+        Asset={icon}
+        color={color.foreground}
+        size={1}
+      />
+      <Flex direction="column">
+        <H4>{title}</H4>
+        {description != undefined && <p>{description}</p>}
+        {children}
+      </Flex>
+    </AlertContainer>
   );
 };
 

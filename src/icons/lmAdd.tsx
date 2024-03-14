@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import React, { forwardRef } from "react";
+import React from "react";
 import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 import useIconSize from "./hooks/useIconSize.ts";
 
-const lmAddComponent: React.ForwardRefRenderFunction<
-  SVGSVGElement,
-  AssetProps
-> = ({ size = 1, color = globalColors.foreground, ...props }, ref) => {
+export const LmAdd: React.FC<AssetProps> = ({
+  size = 1,
+  color = globalColors.foreground,
+  ...props
+}) => {
   const [width, height] = useIconSize(24, 24, size);
 
   return (
     <svg
-      ref={ref}
       width={width}
       height={height}
       viewBox={`0 0 24 24`}
@@ -25,5 +25,3 @@ const lmAddComponent: React.ForwardRefRenderFunction<
     </svg>
   );
 };
-
-export const LmAdd = forwardRef(lmAddComponent);
