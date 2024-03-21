@@ -6,4 +6,5 @@ export interface HeaderProps
   type?: "sans" | "serif";
   numberOfLines?: number;
   editable?: boolean;
+  inputRef?: React.RefObject<HTMLInputElement> | ((instance: HTMLInputElement | null) => void) | null;
 }

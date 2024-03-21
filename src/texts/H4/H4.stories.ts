@@ -27,3 +27,10 @@ export const Serif: Story = {
     children: 'This is header four.'
   },
 };
+export const Editable: Story = {
+  args: {
+    type: 'serif',
+    children: 'This is header four which is editable.',
+    editable: true
+  },
+};

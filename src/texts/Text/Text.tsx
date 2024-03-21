@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { cx } from "../../utils";
-import { typography } from "../../shared/styles";
+import { color, typography } from "../../shared/styles";
 import styled from "styled-components";
 import "../texts.styles.css";
 import { TextProps } from "./text.types";
@@ -25,6 +25,13 @@ const TextComponent: React.ForwardRefRenderFunction<
       : type === "caption"
       ? typography.size.s2
       : typography.size.s2};
+    color: ${type === "body"
+      ? color.foreground
+      : type === "error"
+      ? color.foreground
+      : type === "caption"
+      ? color.foreground
+      : color.foreground};;
     line-height: 150%;
     text-transform: ${textCase};
   `;
