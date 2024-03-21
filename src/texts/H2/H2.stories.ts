@@ -17,7 +17,8 @@ type Story = StoryObj<typeof meta>;
 export const Sans: Story = {
   args: {
     type: 'sans',
-    children: 'This is header two.'
+    children: 'This is header two.',
+    numberOfLines: 2
   },
 };
 
