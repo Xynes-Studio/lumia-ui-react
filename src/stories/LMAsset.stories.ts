@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { LMAsset } from "../utils";
-import { lmBubble, LumiaLogo } from "../icons";
-
+import { LmBubble } from "@icons/lmBubble";
+import { LumiaLogo } from "@icons/logo";
+import { LmSun } from "@icons/lmSun";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: "Example/LMAsset",
@@ -21,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const OneSize: Story = {
   args: {
-    Asset: lmBubble,
+    Asset: LmBubble,
   },
 };
 
@@ -43,6 +44,13 @@ export const GreenLarge: Story = {
   args: {
     Asset: LumiaLogo,
     color: "green",
+    size: 3,
+  },
+};
+export const Sun: Story = {
+  args: {
+    Asset: LmSun,
+    color: "yellow",
     size: 3,
   },
 };

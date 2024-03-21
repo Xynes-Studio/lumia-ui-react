@@ -1,3 +1,5 @@
 .lmTextComponent {
     width: fit-content;
+    overflow: hidden;
+    display: -webkit-box;
 }

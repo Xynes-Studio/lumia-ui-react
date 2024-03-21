@@ -3,25 +3,23 @@ import { cx } from "../../utils";
 import { typography } from "../../shared/styles";
 import styled from "styled-components";
 import '../texts.styles.css';
-
-export interface H2Props
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  > {
-  type?: "sans" | "serif";
-}
+import { HeaderProps } from "@texts/text.typoes";
 
 const H2Component: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
-  H2Props
-> = ({ children, type = 'serif', ...props }, ref) => {
+  HeaderProps
+> = ({ children, type = 'serif', numberOfLines = 0, ...props }, ref) => {
   const StyleH2 = styled.h2`
     font-family: ${type === "serif"
       ? typography.type.title
       : typography.type.primary};
     font-weight: ${typography.weight.bold};
     font-size: ${typography.size.l1};
+    ${numberOfLines !== 0 &&
+    `
+      -webkit-line-clamp: ${numberOfLines};
+      line-clamp: ${numberOfLines};
+    `}
   `;
   return (
     <StyleH2

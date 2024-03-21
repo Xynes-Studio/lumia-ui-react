@@ -7,3 +7,4 @@ export * from './lmArrowDown';
 export * from './lmArrowForward';
 export * from './lmDoubleArrowLeft';
 export * from './lmDoubleArrowRight';
+export * from './lmSun';
