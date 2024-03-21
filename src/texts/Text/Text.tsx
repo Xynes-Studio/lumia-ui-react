@@ -19,9 +19,9 @@ const TextComponent: React.ForwardRefRenderFunction<
       ? typography.type.primary
       : typography.type.primary}; /* Default font family */
     font-size: ${type === "body"
-      ? typography.size.s2
-      : type === "error"
       ? typography.size.s3
+      : type === "error"
+      ? typography.size.s2
       : type === "caption"
       ? typography.size.s2
       : typography.size.s2};
