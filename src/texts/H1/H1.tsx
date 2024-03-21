@@ -8,7 +8,10 @@ import { HeaderProps } from "@texts/text.typoes";
 const H1Component: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
   HeaderProps
-> = ({ children, type = "serif", numberOfLines = 0, ...props }, ref) => {
+> = (
+  { children, type = "serif", numberOfLines = 0, editable = false, ...props },
+  ref
+) => {
   const StyleH1 = styled.h1`
     font-family: ${type === "serif"
       ? typography.type.title
@@ -21,10 +24,20 @@ const H1Component: React.ForwardRefRenderFunction<
       line-clamp: ${numberOfLines};
     `}
   `;
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
+    // Prevent line breaks on Enter key
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+    const value = (event.target as HTMLHeadingElement).textContent;
+    console.log("Value:", value);
+  };
   return (
     <StyleH1
       ref={ref}
       className={cx("lmTextComponent", props.className)}
+      contentEditable={editable}
+      onKeyDown={handleKeyDown}
       {...props}
     >
       {children}

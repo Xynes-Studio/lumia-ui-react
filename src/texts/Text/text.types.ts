@@ -14,4 +14,5 @@ export interface TextProps
     | "initial"
     | "inherit";
   language?: 'html'|'css'|'JS'|'rust'|'sql'|'php'|'python';
+  editable?: boolean;
 }
