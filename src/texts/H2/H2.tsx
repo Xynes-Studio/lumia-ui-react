@@ -3,7 +3,7 @@ import { cx } from "../../utils";
 import { typography } from "../../shared/styles";
 import styled from "styled-components";
 import "../texts.styles.css";
-import { HeaderProps } from "@texts/text.typoes";
+import { HeaderProps } from "@texts/text.types";
 
 const H2Component: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
