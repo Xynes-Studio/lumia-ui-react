@@ -3,7 +3,7 @@ import React from "react";
 export interface TextProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLParagraphElement>,
-    HTMLHeadingElement
+    HTMLParagraphElement
   > {
   type?: "error" | "body" | "caption" | "code";
   textCase?:
