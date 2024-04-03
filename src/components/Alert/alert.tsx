@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { LMAsset, cx } from "../../utils";
 import useBackgroundColorAlert from "./hooks/useBackgroundColorAlert";
 import { color, strokes, shadow } from "@app/shared/styles";
-import { Flex } from "@app/elements";
+import { Flex } from "@app/View";
 import { H4 } from "@texts/index";
 
 const AlertComponent: React.ForwardRefRenderFunction<
