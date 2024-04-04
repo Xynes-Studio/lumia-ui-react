@@ -20,10 +20,8 @@ export const LmArrowDown: React.FC<AssetProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        d="M20 12L18.59 10.59L13 16.17V4H11V16.17L5.42 10.58L4 12L12 20L20 12Z"
-        fill={color}
-      />
+    <path d="M6 1L6 15M6 15L11 9.75M6 15L1 9.75" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
     </svg>
   );
 };
