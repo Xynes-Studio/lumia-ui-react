@@ -4,7 +4,7 @@ import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 import useIconSize from "./hooks/useIconSize.ts";
 
-export const LmArrowUp: React.FC<AssetProps> = ({
+export const LmCreditCard: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props
@@ -20,7 +20,7 @@ export const LmArrowUp: React.FC<AssetProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-    <path d="M6 15L6 1M6 1L1 6.25M6 1L11 6.25" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M2 2H16V4H2V2ZM2 6L2 12H16V6H2ZM0 2C0 0.89543 0.895431 0 2 0H16C17.1046 0 18 0.895431 18 2V12C18 13.1046 17.1046 14 16 14H2C0.89543 14 0 13.1046 0 12V2Z" fill={color}/>
 
     </svg>
   );

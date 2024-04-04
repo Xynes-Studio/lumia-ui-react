@@ -4,7 +4,7 @@ import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 import useIconSize from "./hooks/useIconSize.ts";
 
-export const LmArrowUp: React.FC<AssetProps> = ({
+export const LmBriefcaseSuitcaseLuggage: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props
@@ -20,7 +20,7 @@ export const LmArrowUp: React.FC<AssetProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-    <path d="M6 15L6 1M6 1L1 6.25M6 1L11 6.25" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5C6 3.34315 7.34315 2 9 2C10.6569 2 12 3.34315 12 5H6ZM4 5C4 2.23858 6.23858 0 9 0C11.7614 0 14 2.23858 14 5H16C17.1046 5 18 5.89543 18 7V16C18 17.1046 17.1046 18 16 18H2C0.89543 18 0 17.1046 0 16V7C0 5.89543 0.895431 5 2 5H4ZM2 16L2 7H16V16H2Z" fill={color}/>
 
     </svg>
   );

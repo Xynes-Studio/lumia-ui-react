@@ -4,7 +4,7 @@ import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 import useIconSize from "./hooks/useIconSize.ts";
 
-export const LmArrowUp: React.FC<AssetProps> = ({
+export const LmFavoriteFlagSaved: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props
@@ -20,7 +20,7 @@ export const LmArrowUp: React.FC<AssetProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-    <path d="M6 15L6 1M6 1L1 6.25M6 1L11 6.25" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1 1L15 1L15 17L9.2 12.65C8.48889 12.1167 7.51111 12.1167 6.8 12.65L1 17L1 1Z" stroke={color} stroke-width="2"/>
 
     </svg>
   );

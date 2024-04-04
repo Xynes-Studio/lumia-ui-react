@@ -4,7 +4,7 @@ import { color as globalColors } from "../shared/styles.ts";
 import { AssetProps } from "./types/asset.types.ts";
 import useIconSize from "./hooks/useIconSize.ts";
 
-export const LmArrowUp: React.FC<AssetProps> = ({
+export const LmFileFolderOrganize: React.FC<AssetProps> = ({
   size = 1,
   color = globalColors.foreground,
   ...props
@@ -20,7 +20,7 @@ export const LmArrowUp: React.FC<AssetProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-    <path d="M6 15L6 1M6 1L1 6.25M6 1L11 6.25" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.29289 2.70711L8.58579 3H9H17V15H1L1 1H6.58579L8.29289 2.70711Z" stroke={color} stroke-width="2"/>
 
     </svg>
   );
