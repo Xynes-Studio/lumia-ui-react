@@ -5,7 +5,7 @@ export interface TextProps
     React.HTMLAttributes<HTMLParagraphElement>,
     HTMLParagraphElement
   > {
-  type?: "error" | "body" | "caption" | "code";
+  type?: "error" | "body" | "caption";
   textCase?:
     | "none"
     | "capitalize"
@@ -13,6 +13,6 @@ export interface TextProps
     | "lowercase"
     | "initial"
     | "inherit";
-  language?: 'html'|'css'|'JS'|'rust'|'sql'|'php'|'python';
   editable?: boolean;
+  codeClassName?: string;
 }

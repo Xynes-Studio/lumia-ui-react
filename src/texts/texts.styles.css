@@ -1,5 +1,5 @@
 .lmTextComponent {
-    width: fit-content;
-    overflow: hidden;
-    display: -webkit-box;
+  overflow: hidden; /* Ensure text is clipped */
+  display: -webkit-box; /* Set the display type */
+  -webkit-box-orient: vertical; /* Set text direction to vertical */
 }

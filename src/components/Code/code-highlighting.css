@@ -1,0 +1,203 @@
+/* Base styles for code blocks */
+pre {
+  background-color: #f8f8f8;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+}
+
+.language-JS {
+  /* Keywords */
+  .keyword {
+    color: #007bff !important; /* Blue */
+  }
+
+  /* String literals */
+  .string {
+    color: #28a745 !important; /* Green */
+  }
+
+  /* Numeric literals */
+  .number {
+    color: #17a2b8 !important; /* Cyan */
+  }
+
+  /* Comments */
+  .comment {
+    color: #6c757d !important; /* Gray */
+    font-style: italic !important;
+  }
+
+  /* Function names */
+  .function {
+    color: #6610f2 !important; /* Purple */
+  }
+
+  /* Operators */
+  .operator {
+    color: #fd7e14 !important; /* Orange */
+  }
+
+  /* Punctuation */
+  .punctuation {
+    color: #dc3545 !important; /* Red */
+  }
+}
+
+.language-html {
+  /* Tag names */
+  .tag,
+  .tag-closing {
+    color: #007bff; /* Blue */
+  }
+
+  /* Attribute values */
+  .tagName {
+    color: #28a745; /* Green */
+  }
+}
+
+.language-css {
+  /* Selectors */
+  .selector {
+    color: #007bff; /* Blue */
+  }
+
+  /* Property names */
+  .property {
+    color: #6610f2; /* Purple */
+  }
+
+  /* Property values */
+  .value{
+    color: #28a745; /* Green */
+  }
+
+  /* Units */
+  .unit {
+    color: #17a2b8; /* Cyan */
+  }
+
+  /* Numbers */
+  .class {
+    color: #6f42c1; /* Violet */
+  }
+
+  /* Strings */
+  .id {
+    color: #dc3545; /* Red */
+  }
+
+  /* Comments */
+  .comment {
+    color: #6c757d; /* Gray */
+    font-style: italic;
+  }
+}
+
+.language-rust {
+  /* Keywords */
+  .keyword {
+    color: #007bff; /* Blue */
+  }
+
+  /* Function names */
+  .function {
+    color: #6610f2; /* Purple */
+  }
+
+  /* String literals */
+  .string {
+    color: #28a745; /* Green */
+  }
+
+  /* Numeric literals */
+  .number {
+    color: #17a2b8; /* Cyan */
+  }
+
+  /* Comments */
+  .comment {
+    color: #6c757d; /* Gray */
+    font-style: italic;
+  }
+}
+
+.language-sql {
+  /* Keywords */
+  .keyword {
+    color: #007bff; /* Blue */
+  }
+
+  /* String literals */
+  .string {
+    color: #28a745; /* Green */
+  }
+
+  /* Numeric literals */
+  .number {
+    color: #17a2b8; /* Cyan */
+  }
+
+  /* Comments */
+  .comment {
+    color: #6c757d; /* Gray */
+    font-style: italic;
+  }
+}
+
+.language-php {
+  /* Keywords */
+  .keyword {
+    color: #007bff; /* Blue */
+  }
+
+  /* Variables */
+  .variable {
+    color: #6610f2; /* Purple */
+  }
+
+  /* String literals */
+  .string {
+    color: #28a745; /* Green */
+  }
+
+  /* Numeric literals */
+  .number {
+    color: #17a2b8; /* Cyan */
+  }
+
+  /* Comments */
+  .comment {
+    color: #6c757d; /* Gray */
+    font-style: italic;
+  }
+}
+
+.language-python {
+  /* Keywords */
+  .keyword {
+    color: #007bff; /* Blue */
+  }
+
+  /* Built-in functions */
+  .function {
+    color: #6610f2; /* Purple */
+  }
+
+  /* String literals */
+  .string {
+    color: #28a745; /* Green */
+  }
+
+  /* Numeric literals */
+  .number {
+    color: #17a2b8; /* Cyan */
+  }
+
+  /* Comments */
+  .comment {
+    color: #6c757d; /* Gray */
+    font-style: italic;
+  }
+}

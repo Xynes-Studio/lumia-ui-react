@@ -15,6 +15,8 @@
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
     "@storybook/addon-a11y": "^7.6.17",
+    "i": "^0.3.7",
+    "npm": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8"
@@ -37,8 +39,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-storybook": "^0.8.0",
+    "highlight.js": "^11.9.0",
     "storybook": "^7.6.17",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "vite": "^5.1.6"
   }
 }
