@@ -3,6 +3,8 @@ import React from "react";
 export interface FlexProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   weight?: number[];
+  maxRow?: number;
+  wrap?: boolean;
 }
 
 type ValidateChildrenLength<T> = T extends { children: React.ReactNode[] }

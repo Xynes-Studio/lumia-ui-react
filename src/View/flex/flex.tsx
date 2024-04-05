@@ -6,7 +6,7 @@ import { cx } from "../../utils";
 const FlexComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   FlexProps
-> = ({ direction = "row", weight, children, className, ...props }, ref) => {
+> = ({ direction = "row", weight, children, className, wrap = false, ...props }, ref) => {
   if (weight != undefined) {
     // Validate if children and weight lengths match
     const validLength = React.Children.count(children) === weight?.length;
@@ -22,6 +22,7 @@ const FlexComponent: React.ForwardRefRenderFunction<
   const FlexContainer = styled.div`
     display: flex;
     flex-direction: ${direction};
+    flex-wrap: ${wrap ? "wrap" : "nowrap"};
 
     /* If weight is undefined, set flex-grow to 1 for all children */
     ${() =>
