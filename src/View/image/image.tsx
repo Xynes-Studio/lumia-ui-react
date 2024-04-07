@@ -21,7 +21,7 @@ const ImageComponent: React.ForwardRefRenderFunction<
   `;
 
   return (
-    <ImageContainer className={cx("lmImageContainer")}>
+    <ImageContainer className={cx("lmImageContainer")} {...props}>
       <Image
         title={props.title || "Image Component"}
         className={cx("lmImageComponent")}

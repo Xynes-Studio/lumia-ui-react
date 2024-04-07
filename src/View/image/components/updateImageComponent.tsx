@@ -18,8 +18,8 @@ const UpdateImageComponent: React.FC<ImageProps> = ({...props}) => {
   if(updateUI == 'overlay') {
     return (
       <UpdateImageContainer direction="column" className={cx('lmImageUpdateContainer')}>
-          <LMAsset Asset={LmCameraPhoto} size={2} color={color.foreground} />
-          <Text type="body" >Update Photo</Text>
+          <LMAsset Asset={LmCameraPhoto} size={2} color={color.foregroundInverse200} />
+          <Text color={color.foregroundInverse200} type="body" >Update Photo</Text>
       </UpdateImageContainer>
     );
   } else {
