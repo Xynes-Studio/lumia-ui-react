@@ -1,203 +1,60 @@
-/* Base styles for code blocks */
-pre {
-  background-color: #f8f8f8;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  overflow-x: auto;
-}
+/* General purpose */
+.hljs-keyword { color: #007bff; } /* Keyword */
+.hljs-built_in { color: #6610f2; } /* Built-in */
+.hljs-type { color: #17a2b8; } /* Type */
+.hljs-literal { color: #28a745; } /* Literal */
+.hljs-number { color: #17a2b8; } /* Number */
+.hljs-operator { color: #fd7e14; } /* Operator */
+.hljs-punctuation { color: #dc3545; } /* Punctuation */
+.hljs-property { color: #6610f2; } /* Property */
+.hljs-regexp { color: #6c757d; } /* Regexp */
+.hljs-string { color: #28a745; } /* String */
+.hljs-char.escape { color: #28a745; } /* Char escape */
+.hljs-subst { color: #28a745; } /* Subst */
+.hljs-symbol { color: #6f42c1; } /* Symbol */
+.hljs-class { color: #6610f2; } /* Class */
+.hljs-function { color: #6610f2; } /* Function */
+.hljs-variable { color: #6610f2; } /* Variable */
+.hljs-variable.language { color: #6610f2; } /* Variable language */
+.hljs-variable.constant { color: #6610f2; } /* Variable constant */
+.hljs-title { color: #6610f2; } /* Title */
+.hljs-title.class { color: #6610f2; } /* Title class */
+.hljs-title.function { color: #6610f2; } /* Title function */
+.hljs-params { color: #6610f2; } /* Params */
+.hljs-comment { color: #6c757d; font-style: italic; } /* Comment */
+.hljs-doctag { color: #6c757d; } /* Doctag */
+.hljs-meta { color: #6c757d; } /* Meta */
+.hljs-meta.prompt { color: #6c757d; } /* Meta prompt */
+.hljs-meta.keyword { color: #6c757d; } /* Meta keyword */
+.hljs-meta-string { color: #6c757d; } /* Meta string */
 
-.language-JS {
-  /* Keywords */
-  .keyword {
-    color: #007bff !important; /* Blue */
-  }
+/* Tags, attributes, configs */
+.hljs-section { color: #6610f2; } /* Section */
+.hljs-tag { color: #007bff; } /* Tag */
+.hljs-name { color: #007bff; } /* Name */
+.hljs-attr { color: #6610f2; } /* Attr */
+.hljs-attribute { color: #6610f2; } /* Attribute */
 
-  /* String literals */
-  .string {
-    color: #28a745 !important; /* Green */
-  }
+/* Text Markup */
+.hljs-bullet { color: #6610f2; } /* Bullet */
+.hljs-code { color: #dc3545; } /* Code */
+.hljs-emphasis { font-style: italic; } /* Emphasis */
+.hljs-strong { font-weight: bold; } /* Strong */
+.hljs-formula { color: #6610f2; } /* Formula */
+.hljs-link { color: #6610f2; } /* Link */
+.hljs-quote { color: #6610f2; } /* Quote */
 
-  /* Numeric literals */
-  .number {
-    color: #17a2b8 !important; /* Cyan */
-  }
+/* CSS */
+.hljs-selector-tag { color: #007bff; } /* Selector tag */
+.hljs-selector-id { color: #6610f2; } /* Selector id */
+.hljs-selector-class { color: #28a745; } /* Selector class */
+.hljs-selector-attr { color: #6610f2; } /* Selector attr */
+.hljs-selector-pseudo { color: #6610f2; } /* Selector pseudo */
 
-  /* Comments */
-  .comment {
-    color: #6c757d !important; /* Gray */
-    font-style: italic !important;
-  }
+/* Templates */
+.hljs-template-tag { color: #007bff; } /* Template tag */
+.hljs-template-variable { color: #6610f2; } /* Template variable */
 
-  /* Function names */
-  .function {
-    color: #6610f2 !important; /* Purple */
-  }
-
-  /* Operators */
-  .operator {
-    color: #fd7e14 !important; /* Orange */
-  }
-
-  /* Punctuation */
-  .punctuation {
-    color: #dc3545 !important; /* Red */
-  }
-}
-
-.language-html {
-  /* Tag names */
-  .tag,
-  .tag-closing {
-    color: #007bff; /* Blue */
-  }
-
-  /* Attribute values */
-  .tagName {
-    color: #28a745; /* Green */
-  }
-}
-
-.language-css {
-  /* Selectors */
-  .selector {
-    color: #007bff; /* Blue */
-  }
-
-  /* Property names */
-  .property {
-    color: #6610f2; /* Purple */
-  }
-
-  /* Property values */
-  .value{
-    color: #28a745; /* Green */
-  }
-
-  /* Units */
-  .unit {
-    color: #17a2b8; /* Cyan */
-  }
-
-  /* Numbers */
-  .class {
-    color: #6f42c1; /* Violet */
-  }
-
-  /* Strings */
-  .id {
-    color: #dc3545; /* Red */
-  }
-
-  /* Comments */
-  .comment {
-    color: #6c757d; /* Gray */
-    font-style: italic;
-  }
-}
-
-.language-rust {
-  /* Keywords */
-  .keyword {
-    color: #007bff; /* Blue */
-  }
-
-  /* Function names */
-  .function {
-    color: #6610f2; /* Purple */
-  }
-
-  /* String literals */
-  .string {
-    color: #28a745; /* Green */
-  }
-
-  /* Numeric literals */
-  .number {
-    color: #17a2b8; /* Cyan */
-  }
-
-  /* Comments */
-  .comment {
-    color: #6c757d; /* Gray */
-    font-style: italic;
-  }
-}
-
-.language-sql {
-  /* Keywords */
-  .keyword {
-    color: #007bff; /* Blue */
-  }
-
-  /* String literals */
-  .string {
-    color: #28a745; /* Green */
-  }
-
-  /* Numeric literals */
-  .number {
-    color: #17a2b8; /* Cyan */
-  }
-
-  /* Comments */
-  .comment {
-    color: #6c757d; /* Gray */
-    font-style: italic;
-  }
-}
-
-.language-php {
-  /* Keywords */
-  .keyword {
-    color: #007bff; /* Blue */
-  }
-
-  /* Variables */
-  .variable {
-    color: #6610f2; /* Purple */
-  }
-
-  /* String literals */
-  .string {
-    color: #28a745; /* Green */
-  }
-
-  /* Numeric literals */
-  .number {
-    color: #17a2b8; /* Cyan */
-  }
-
-  /* Comments */
-  .comment {
-    color: #6c757d; /* Gray */
-    font-style: italic;
-  }
-}
-
-.language-python {
-  /* Keywords */
-  .keyword {
-    color: #007bff; /* Blue */
-  }
-
-  /* Built-in functions */
-  .function {
-    color: #6610f2; /* Purple */
-  }
-
-  /* String literals */
-  .string {
-    color: #28a745; /* Green */
-  }
-
-  /* Numeric literals */
-  .number {
-    color: #17a2b8; /* Cyan */
-  }
-
-  /* Comments */
-  .comment {
-    color: #6c757d; /* Gray */
-    font-style: italic;
-  }
-}
+/* Diff */
+.hljs-addition { color: #28a745; } /* Addition */
+.hljs-deletion { color: #dc3545; } /* Deletion */

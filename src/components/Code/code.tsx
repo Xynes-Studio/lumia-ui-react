@@ -4,20 +4,21 @@ import { CodeProps } from "./code.types";
 import { cx } from "@utils/cx";
 import "./code-highlighting.css";
 import {
-  formatCodeJs,
+  formatCodeJS,
   formatHTML,
   formatCSS,
   formatRust,
   formatSQL,
   formatPHP,
   formatPython,
+  formatCode
 } from "./codeSyntax";
 
 const CodeComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   CodeProps
 > = ({ code, editable = false, ...props }, ref) => {
-  const [formattedCode, setFormattedCode] = useState<JSX.Element | null>(null);
+  const [formattedCode, setFormattedCode] = useState<JSX.Element | string | null>(null);
 
   useEffect(() => {
     switch (props.language) {
@@ -40,8 +41,10 @@ const CodeComponent: React.ForwardRefRenderFunction<
         setFormattedCode(formatPython(code));
         break;
       case "JS":
+        setFormattedCode(formatCodeJS(code));
+        break;
       default:
-        setFormattedCode(formatCodeJs(code));
+        setFormattedCode(formatCode(code));
         break;
     }
   }, [code, props.language]);
