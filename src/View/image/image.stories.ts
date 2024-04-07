@@ -18,8 +18,8 @@ export const ImageOnly: Story = {
   args: {
     source: "https://images.pexels.com/photos/16039120/pexels-photo-16039120/free-photo-of-sunlit-rocks-on-sea-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     style: {
-        width: '1000px',
-        height: '1000px'
+        width: '500px',
+        height: '400px'
     },
     fit: 'cover'
   },
