@@ -36,7 +36,7 @@ const TextComponent: React.ForwardRefRenderFunction<
       ? color.foreground
       : color.foreground};
     color: ${props?.color};
-    line-height: 150%;
+    line-height: 130%;
     text-transform: ${textCase};
     ${numberOfLines !== 0 &&
     `

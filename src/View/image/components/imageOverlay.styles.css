@@ -10,4 +10,16 @@
 .lmImageDescriptionSection{
      width: 100%;
      justify-content: space-between;
+     align-items: flex-end;
+}
+
+.lmImageOverlayDes{
+    max-width: 80%;
+}
+
+.lmImageUpdateContainer{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
 }

@@ -6,6 +6,7 @@ import { color } from "@shared/styles";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { LmCameraPhoto } from "@icons/lmCameraPhoto";
 import { Text } from "@texts/Text/Text";
+import './imageOverlay.styles.css';
 
 const UpdateImageComponent: React.FC<ImageProps> = ({...props}) => {
   const { updateUI = 'overlay', canUpdate = false } = props;

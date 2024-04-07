@@ -9,7 +9,7 @@ import { Text } from "@texts/Text/Text";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { LmInfo } from "@icons/lmInfo";
 import { hexToRGBA } from "@utils/hexToRgba";
-import { H5 } from "@texts/H5/H5";
+import { H4 } from "@texts/index";
 
 const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
   const {
@@ -39,12 +39,12 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
     <ImageOverlayContainer direction='column' className={cx("lmImageOverlayContainer")}>
       <UpdateImageComponent {...props} />
       {props?.title != undefined && (
-        <H5
+        <H4
           color={color.foregroundInverse}
           numberOfLines={props?.numberOfLinesForTitle || 2}
         >
           {props?.title}
-        </H5>
+        </H4>
       )}
       <Flex className={cx("lmImageDescriptionSection")}>
         {props?.description != undefined && (
@@ -52,11 +52,14 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
             color={color.foregroundInverse}
             type="body"
             numberOfLines={props?.numberOfLinesForDescription || 3}
+            style={{
+                maxWidth: '80%'
+            }}
           >
             {props?.description}
           </Text>
         )}
-        <LMAsset Asset={LmInfo} size={1.25} color={color?.foregroundInverse} />
+        <LMAsset style={{margin: spacing.padding.medium}} Asset={LmInfo} size={1.25} color={color?.foregroundInverse} />
       </Flex>
     </ImageOverlayContainer>
   );
