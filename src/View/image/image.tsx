@@ -6,14 +6,16 @@ import { cx } from "../../utils";
 import { spacing } from "@shared/styles";
 import ImageOverlayComponent from "./components/imageOverlay";
 
-const FlexComponent: React.ForwardRefRenderFunction<
+const ImageComponent: React.ForwardRefRenderFunction<
   HTMLImageElement,
   ImageProps
 > = ({ ...props }, ref) => {
   const ImageContainer = styled.div`
     padding: ${spacing.padding.medium};
   `;
-  const Image = styled.img``;
+  const Image = styled.img`
+    object-fit: ${props?.fit};
+  `;
 
   return (
     <ImageContainer className={cx("lmImageContainer")}>
@@ -28,4 +30,4 @@ const FlexComponent: React.ForwardRefRenderFunction<
   );
 };
 
-export const Flex = forwardRef(FlexComponent);
+export const Image = forwardRef(ImageComponent);

@@ -6,12 +6,12 @@ export interface ImageProps extends React.HtmlHTMLAttributes<HTMLImageElement> {
   numberOfLinesForTitle?: number;
   description?: string;
   numberOfLinesForDescription?: number;
-  overlay: false;
-  overlayOpacity: number;
+  overlay?: boolean;
+  overlayOpacity?: number;
   source: string;
   icon?: AssetProps;
   aspectRatio?:  number;
-  canUpdate: boolean;
+  canUpdate?: boolean;
   updateUI?: 'overlay' | 'pen';
   onUpdate?: (src:string) => void;
   accepted?: string;
