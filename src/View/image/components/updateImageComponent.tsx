@@ -19,7 +19,9 @@ const UpdateImageComponent: React.FC<ImageProps> = ({...props}) => {
     return (
       <UpdateImageContainer direction="column" className={cx('lmImageUpdateContainer')}>
           <LMAsset Asset={LmCameraPhoto} size={2} color={color.foregroundInverse200} />
-          <Text color={color.foregroundInverse200} type="body" >Update Photo</Text>
+          <Text color={color.foregroundInverse200} style={{
+            marginTop: '-1vh'
+          }} type="body" >Update Photo</Text>
       </UpdateImageContainer>
     );
   } else {
