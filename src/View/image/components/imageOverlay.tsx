@@ -9,9 +9,15 @@ import { H4 } from "@texts/index";
 import { Text } from "@texts/Text/Text";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { LmInfo } from "@icons/lmInfo";
+import { hexToRGBA } from "@utils/hexToRgba";
 
 const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
-  const { overlayOpacity = 1, overlay = true, canUpdate = false } = props;
+  const {
+    overlayOpacity = 0.35,
+    overlay = true,
+    canUpdate = false,
+    borderRadius = 1,
+  } = props;
 
   // Ensure overlayOpacity is within the valid range of 0 to 1
   const validOverlayOpacity = Math.max(0, Math.min(1, overlayOpacity));
@@ -26,22 +32,32 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
         return `display: flex`;
       }
     }};
-    background-color: ${color.foreground};
+    background-color: ${hexToRGBA(color.foreground, validOverlayOpacity)};
+    border-radius: ${borderRadius}vh;
   `;
 
   return (
     <ImageOverlayContainer className={cx("lmImageOverlayContainer")}>
       <UpdateImageComponent {...props} />
       {props?.title != undefined && (
-        <H4 numberOfLines={props?.numberOfLinesForTitle || 2}>
+        <H4
+          color={color.foregroundInverse}
+          numberOfLines={props?.numberOfLinesForTitle || 2}
+        >
           {props?.title}
         </H4>
       )}
-      <Flex>
+      <Flex className={cx()}>
         {props?.description != undefined && (
-            <Text type="body" numberOfLines={props?.numberOfLinesForDescription || 3}>{props?.description}</Text>
+          <Text
+            color={color.foregroundInverse}
+            type="body"
+            numberOfLines={props?.numberOfLinesForDescription || 3}
+          >
+            {props?.description}
+          </Text>
         )}
-        <LMAsset Asset={LmInfo} size={2} color={color?.} />
+        <LMAsset Asset={LmInfo} size={2} color={color?.foregroundInverse} />
       </Flex>
     </ImageOverlayContainer>
   );
