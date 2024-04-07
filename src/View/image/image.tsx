@@ -10,11 +10,14 @@ const ImageComponent: React.ForwardRefRenderFunction<
   HTMLImageElement,
   ImageProps
 > = ({ ...props }, ref) => {
+  const { borderRadius = spacing.borderRadius.small } = props;
   const ImageContainer = styled.div`
-    padding: ${spacing.padding.medium};
+    margin: ${spacing.padding.medium};
+    border-radius: ${borderRadius};
   `;
   const Image = styled.img`
     object-fit: ${props?.fit};
+    border-radius: ${borderRadius};
   `;
 
   return (
@@ -22,6 +25,7 @@ const ImageComponent: React.ForwardRefRenderFunction<
       <Image
         title={props.title || "Image Component"}
         className={cx("lmImageComponent")}
+        src={props.source}
         ref={ref}
         {...props}
       />

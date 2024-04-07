@@ -15,8 +15,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
   const {
     overlayOpacity = 0.35,
     overlay = true,
-    canUpdate = false,
-    borderRadius = spacing.borderRadius.small,
+    canUpdate = false
   } = props;
 
   // Ensure overlayOpacity is within the valid range of 0 to 1
@@ -33,8 +32,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
       }
     }};
     background-color: ${hexToRGBA(color.foreground, validOverlayOpacity)};
-    border-radius: ${borderRadius}vh;
-    margin: ${spacing.padding.medium};
+    padding: ${spacing.padding.medium};
   `;
 
   return (
