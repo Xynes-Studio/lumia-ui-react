@@ -9,7 +9,14 @@ const TextComponent: React.ForwardRefRenderFunction<
   HTMLParagraphElement,
   TextProps
 > = (
-  { children, type = "body", textCase = "none", editable = false, ...props },
+  {
+    children,
+    type = "body",
+    textCase = "none",
+    numberOfLines = 0,
+    editable = false,
+    ...props
+  },
   ref
 ) => {
   const StyleText = styled.p`
@@ -30,6 +37,11 @@ const TextComponent: React.ForwardRefRenderFunction<
       : color.foreground};
     line-height: 150%;
     text-transform: ${textCase};
+    ${numberOfLines !== 0 &&
+    `
+      -webkit-line-clamp: ${numberOfLines};
+      line-clamp: ${numberOfLines};
+    `}
   `;
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {

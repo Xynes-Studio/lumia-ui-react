@@ -4,20 +4,22 @@ import styled from "styled-components";
 import "./image.styles.css";
 import { cx } from "../../utils";
 import { spacing } from "@shared/styles";
+import ImageOverlayComponent from "./components/imageOverlay";
+
 const FlexComponent: React.ForwardRefRenderFunction<
   HTMLImageElement,
   ImageProps
-> = ({canUpdate, ...props }, ref) => {
+> = ({ ...props }, ref) => {
+
   const ImageContainer = styled.div`
     padding: ${spacing.padding.medium};
   `;
-  const Image = styled.img`
-    
-  `;
+  const Image = styled.img``;
 
   return (
     <ImageContainer className={cx("lmImageContainer")}>
       <Image className={cx("lmImageComponent")} ref={ref} {...props} />
+      <ImageOverlayComponent {...props} />
     </ImageContainer>
   );
 };
