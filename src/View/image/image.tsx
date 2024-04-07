@@ -10,7 +10,6 @@ const FlexComponent: React.ForwardRefRenderFunction<
   HTMLImageElement,
   ImageProps
 > = ({ ...props }, ref) => {
-
   const ImageContainer = styled.div`
     padding: ${spacing.padding.medium};
   `;
@@ -18,7 +17,12 @@ const FlexComponent: React.ForwardRefRenderFunction<
 
   return (
     <ImageContainer className={cx("lmImageContainer")}>
-      <Image className={cx("lmImageComponent")} ref={ref} {...props} />
+      <Image
+        title={props.title || "Image Component"}
+        className={cx("lmImageComponent")}
+        ref={ref}
+        {...props}
+      />
       <ImageOverlayComponent {...props} />
     </ImageContainer>
   );

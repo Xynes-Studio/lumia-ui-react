@@ -3,7 +3,7 @@ import { ImageProps } from "../image.types";
 import { Flex } from "@app/View";
 import "./imageOverlay.styles.css";
 import { cx } from "@utils/cx";
-import { color } from "@shared/styles";
+import { color, spacing } from "@shared/styles";
 import UpdateImageComponent from "./updateImageComponent";
 import { H4 } from "@texts/index";
 import { Text } from "@texts/Text/Text";
@@ -16,7 +16,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
     overlayOpacity = 0.35,
     overlay = true,
     canUpdate = false,
-    borderRadius = 1,
+    borderRadius = spacing.borderRadius.small,
   } = props;
 
   // Ensure overlayOpacity is within the valid range of 0 to 1
@@ -34,6 +34,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
     }};
     background-color: ${hexToRGBA(color.foreground, validOverlayOpacity)};
     border-radius: ${borderRadius}vh;
+    margin: ${spacing.padding.medium};
   `;
 
   return (
@@ -47,7 +48,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
           {props?.title}
         </H4>
       )}
-      <Flex className={cx()}>
+      <Flex className={cx("lmImageDescriptionSection")}>
         {props?.description != undefined && (
           <Text
             color={color.foregroundInverse}
