@@ -1,0 +1,9 @@
+.lmImageContainer {
+    width: fit-content;
+    height: fit-content;
+}
+
+.lmImageComponent {
+    min-width: 100px;
+    min-height: 100px;
+}
