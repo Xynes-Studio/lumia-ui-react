@@ -202,23 +202,3 @@ The `Button` component provides a versatile user interface element with options 
 | icon        | function | Icon component for the button                         |
 | onClick     | function | Callback function for button click                    |
 
-
-
-Example usage:
-```jsx
-<Button type="fill" icon={<LMAsset name="icon-name" size={24} />} onClick={handleClick} />
-```
-
-## Roadmap
-
-- [x] Implement base components
-- [x] Add documentation for components
-- [ ] Enhance accessibility features
-- [ ] Expand component library with new features
-- [ ] Improve performance optimizations
-
-Feel free to contribute by submitting bug fixes, feature enhancements, or new components!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
