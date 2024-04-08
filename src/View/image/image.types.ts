@@ -9,12 +9,12 @@ export interface ImageProps extends React.HtmlHTMLAttributes<HTMLImageElement> {
   overlay?: boolean;
   overlayOpacity?: number;
   source: string;
-  icon?: AssetProps;
-  aspectRatio?:  number;
+  icon?: React.FC<AssetProps>;
+  aspectRatio?: number;
   canUpdate?: boolean;
-  updateUI?: 'overlay' | 'pen';
-  onUpdate?: (src:string) => void;
+  updateUI?: "overlay" | "pen";
+  onUpdate?: (src: string) => void;
   accepted?: string;
-  fit?: 'contain' | 'cover' | 'fill' | 'scale-down' | 'none';
+  fit?: "contain" | "cover" | "fill" | "scale-down" | "none";
   borderRadius?: number;
 }

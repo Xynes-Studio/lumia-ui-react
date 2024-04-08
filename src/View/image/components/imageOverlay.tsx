@@ -7,16 +7,11 @@ import { color, spacing } from "@shared/styles";
 import UpdateImageComponent from "./updateImageComponent";
 import { Text } from "@texts/Text/Text";
 import { LMAsset } from "@utils/LumiaAssetManager";
-import { LmInfo } from "@icons/lmInfo";
 import { hexToRGBA } from "@utils/hexToRgba";
 import { H4 } from "@texts/index";
 
 const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
-  const {
-    overlayOpacity = 0.35,
-    overlay = true,
-    canUpdate = false
-  } = props;
+  const { overlayOpacity = 0.35, overlay = true, canUpdate = false } = props;
 
   // Ensure overlayOpacity is within the valid range of 0 to 1
   const validOverlayOpacity = Math.max(0, Math.min(1, overlayOpacity));
@@ -36,7 +31,10 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
   `;
 
   return (
-    <ImageOverlayContainer direction='column' className={cx("lmImageOverlayContainer")}>
+    <ImageOverlayContainer
+      direction="column"
+      className={cx("lmImageOverlayContainer")}
+    >
       <UpdateImageComponent {...props} />
       {props?.title != undefined && (
         <H4
@@ -53,13 +51,20 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
             type="body"
             numberOfLines={props?.numberOfLinesForDescription || 3}
             style={{
-                maxWidth: '80%'
+              maxWidth: "80%",
             }}
           >
             {props?.description}
           </Text>
         )}
-        <LMAsset style={{margin: spacing.padding.medium}} Asset={LmInfo} size={1.25} color={color?.foregroundInverse} />
+        {props?.icon != undefined && (
+          <LMAsset
+            style={{ margin: spacing.padding.medium }}
+            Asset={props?.icon}
+            size={1.25}
+            color={color?.foregroundInverse}
+          />
+        )}
       </Flex>
     </ImageOverlayContainer>
   );
