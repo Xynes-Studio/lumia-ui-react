@@ -1,7 +1,8 @@
 import React from "react";
 import { AssetProps } from "@icons/types/asset.types";
 
-export interface ButtonProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+export interface ButtonProps
+  extends React.HtmlHTMLAttributes<HTMLButtonElement> {
   type?: "fill" | "outlined" | "label";
   icon?: React.FC<AssetProps>;
   iconAtEnd?: boolean;

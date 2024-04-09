@@ -11,7 +11,7 @@ import { spacing, strokes } from "@shared/styles";
 import "./button.styles.css";
 
 const ButtonComponent: React.ForwardRefRenderFunction<
-  HTMLDivElement,
+  HTMLButtonElement,
   ButtonProps
 > = (
   {
@@ -25,32 +25,19 @@ const ButtonComponent: React.ForwardRefRenderFunction<
   },
   ref
 ) => {
-  const ButtonContainer = styled(Flex)`
-    background-color: ${type === "fill"
-      ? bgColor
-      : type === "outlined"
-      ? bgColor
-      : "none"};
-    flex-direction: ${iconAtEnd ? "row-reverse" : "none"};
-    border: ${type === "outlined" ? `${strokes?.s1} solid black` : "none"};
-    border-radius: ${spacing?.borderRadius?.small};
-    padding: calc(${spacing?.padding?.small} / 2) ${spacing?.padding?.medium};
+  const ButtonContainer = styled.button`
+    background-color: ;
   `;
 
   return (
-    <ButtonContainer
-      direction={iconAtEnd ? "row-reverse" : "row"}
-      className={cx("lmButtonContainer")}
-      ref={ref}
-      {...props}
-    >
+    <ButtonContainer className="lmButtonContainer" ref={ref} {...props}>
       <LMAsset
         visible={icon !== undefined}
-        Asset={icon !== undefined && icon}
+        Asset={icon}
         color={color}
-        size={2}
+        size={1}
       />
-      <Text textCase="uppercase">{label}</Text>
+      <Text>{label}</Text>
     </ButtonContainer>
   );
 };
