@@ -6,7 +6,7 @@ export interface CodeProps
     HTMLDivElement
   > {
   code: string,
-  language?: 'html'|'css'|'JS'|'rust'|'sql'|'php'|'python';
+  language?: 'html'|'css'|'JS'|'rust'|'sql'|'php'|'python'|'auto';
   editable?: boolean;
   codeClassName?: string;
 }

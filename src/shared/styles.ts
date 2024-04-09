@@ -42,6 +42,9 @@ export const color: colorTypes = {
   positive: "#66BF3C",
   negative: "#FF4400",
   warning: "#E69D00",
+
+  //brand
+  brand100: "#00FFB2",
 };
 
 export const spacing: spacingTypes = {
@@ -71,16 +74,16 @@ export const typography = {
     black: "900",
   },
   size: {
-    s1: "0.5vw",
-    s2: "1vw",
-    s3: "2vw",
-    m1: "3vw",
-    m2: "4vw",
-    m3: "5vw",
-    l1: "6vw",
-    l2: "7vw",
-    l3: "8vw",
-    code: "90",
+    s1: "0.8rem",
+    s2: "1rem",
+    s3: "1.2rem",
+    m1: "1.4rem",
+    m2: "1.6rem",
+    m3: "1.8rem",
+    l1: "2rem",
+    l2: "2.2rem",
+    l3: "2.4rem",
+    code: "0.9rem",
   },
 };
 
@@ -92,6 +95,8 @@ export const strokes = {
 };
 
 export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+export const neumorphismShadow =
+  "inset 5px 5px 15px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(200, 200, 200, 0.5)";
 
 export const pageMargin: number = 5.55555;
 
