@@ -10,4 +10,6 @@ export interface ButtonProps
   label?: string;
   color?: string;
   bgColor?: string;
+  borderColor?: string;
+  borderRadius?: string;
 }

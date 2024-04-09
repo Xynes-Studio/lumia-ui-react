@@ -15,11 +15,39 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Default: Story = {
+export const Fill: Story = {
+  args: {
+    type: "fill",
+    label: "Button",
+    bgColor: "#00FFB2",
+    icon: LmArrowBack,
+    iconAtEnd: false,
+    color: "#ffffff",
+    borderRadius: "1vw",
+  },
+};
+
+export const Outlined: Story = {
   args: {
     type: "outlined",
     label: "Button",
-    bgColor: "red",
+    bgColor: "#00FFB2",
     icon: LmArrowBack,
+    iconAtEnd: false,
+    color: "#000000",
+    borderColor: "#000000",
+    borderRadius: "1vw",
+  },
+};
+
+export const Label: Story = {
+  args: {
+    type: "label",
+    label: "Button",
+    bgColor: "red",
+    // icon: LmArrowBack,
+    iconAtEnd: false,
+    // color: "#ffffff",
+    borderColor: "blue",
   },
 };
