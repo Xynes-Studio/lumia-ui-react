@@ -1,1 +1,1 @@
-export const cx = (...classNames: any[]) => classNames.filter(Boolean).join(" ")
+export const cx = (...classNames: unknown[]) => classNames.filter(Boolean).join(" ")

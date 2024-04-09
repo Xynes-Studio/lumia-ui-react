@@ -18,6 +18,7 @@ const H3Component: React.ForwardRefRenderFunction<
       : typography.type.primary};
     font-weight: ${typography.weight.bold};
     font-size: ${typography.size.m3};
+    color: ${props?.color};
     ${numberOfLines !== 0 &&
     `
       -webkit-line-clamp: ${numberOfLines};
