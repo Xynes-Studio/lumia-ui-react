@@ -1,51 +1,53 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { Button } from "./Button";
-// import { Button } from "@components/Button/button";
+import { Button } from "./button";
+import { LmArrowBack } from "@icons/lmArrowBack";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Example/Button",
+  title: "Component/Button",
   component: Button,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
-  },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Fill: Story = {
   args: {
-    primary: true,
+    type: "fill",
     label: "Button",
+    backgroundColor: "#00FFB2",
+    icon: LmArrowBack,
+    iconAtEnd: false,
+    color: "#ffffff",
+    borderRadius: "1vw",
   },
 };
 
-export const Secondary: Story = {
+export const Outlined: Story = {
   args: {
+    type: "outlined",
     label: "Button",
+    backgroundColor: "#00FFB2",
+    icon: LmArrowBack,
+    iconAtEnd: false,
+    color: "#000000",
+    borderColor: "#000000",
+    borderRadius: "1vw",
   },
 };
 
-export const Large: Story = {
+export const Label: Story = {
   args: {
-    size: "large",
+    type: "label",
     label: "Button",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: "small",
-    label: "Button",
+    backgroundColor: "red",
+    // icon: LmArrowBack,
+    iconAtEnd: false,
+    // color: "#ffffff",
+    borderColor: "blue",
   },
 };
