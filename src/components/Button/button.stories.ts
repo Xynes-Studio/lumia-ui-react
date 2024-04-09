@@ -19,7 +19,7 @@ export const Fill: Story = {
   args: {
     type: "fill",
     label: "Button",
-    bgColor: "#00FFB2",
+    backgroundColor: "#00FFB2",
     icon: LmArrowBack,
     iconAtEnd: false,
     color: "#ffffff",
@@ -31,7 +31,7 @@ export const Outlined: Story = {
   args: {
     type: "outlined",
     label: "Button",
-    bgColor: "#00FFB2",
+    backgroundColor: "#00FFB2",
     icon: LmArrowBack,
     iconAtEnd: false,
     color: "#000000",
@@ -44,7 +44,7 @@ export const Label: Story = {
   args: {
     type: "label",
     label: "Button",
-    bgColor: "red",
+    backgroundColor: "red",
     // icon: LmArrowBack,
     iconAtEnd: false,
     // color: "#ffffff",

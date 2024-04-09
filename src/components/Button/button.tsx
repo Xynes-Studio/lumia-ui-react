@@ -19,7 +19,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     label = "BUTTON",
     color = globalColor.foreground,
     iconAtEnd = false,
-    bgColor,
+    backgroundColor,
     borderColor = globalColor?.border,
     borderRadius = spacing?.borderRadius?.small,
     ...props
@@ -27,11 +27,11 @@ const ButtonComponent: React.ForwardRefRenderFunction<
   ref
 ) => {
   const ButtonContainer = styled.button`
-    background-color: ${type !== "label" ? bgColor : "none"};
+    background-color: ${type !== "label" ? backgroundColor : "none"};
     border: ${type !== "outlined" ? "none" : `0.3vw solid ${borderColor} `};
     padding: calc(${spacing?.padding?.small} / 4) ${spacing?.padding?.small};
     border-radius: ${borderRadius};
-    flex-direction: ${iconAtEnd && "row-reverse"};
+    flex-direction: ${iconAtEnd ? "row-reverse" : "row"};
   `;
 
   return (

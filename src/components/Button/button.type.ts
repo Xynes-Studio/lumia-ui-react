@@ -9,7 +9,7 @@ export interface ButtonProps
   onClick?: () => void;
   label?: string;
   color?: string;
-  bgColor?: string;
+  backgroundColor?: string;
   borderColor?: string;
   borderRadius?: string;
 }
