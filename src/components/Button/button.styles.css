@@ -2,4 +2,6 @@
   position: relative;
   width: fit-content;
   height: fit-content;
+  position: relative;
+  align-items: center;
 }

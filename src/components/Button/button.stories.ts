@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./button";
+import { LmArrowBack } from "@icons/lmArrowBack";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -19,5 +20,6 @@ export const Default: Story = {
     type: "outlined",
     label: "Button",
     bgColor: "red",
+    icon: LmArrowBack,
   },
 };

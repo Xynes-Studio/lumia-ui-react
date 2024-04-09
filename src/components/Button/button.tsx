@@ -9,7 +9,6 @@ import { Text } from "@texts/Text/Text";
 import { color as globalColor } from "@shared/styles";
 import { spacing, strokes } from "@shared/styles";
 import "./button.styles.css";
-import { LmArrowBack } from "@icons/lmArrowBack";
 
 const ButtonComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -17,7 +16,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
 > = (
   {
     type = "fill",
-    icon = LmArrowBack,
+    icon,
     label = "BUTTON",
     color = globalColor.foreground,
     iconAtEnd = false,
@@ -32,11 +31,10 @@ const ButtonComponent: React.ForwardRefRenderFunction<
       : type === "outlined"
       ? bgColor
       : "none"};
+    flex-direction: ${iconAtEnd ? "row-reverse" : "none"};
     border: ${type === "outlined" ? `${strokes?.s1} solid black` : "none"};
     border-radius: ${spacing?.borderRadius?.small};
-    align-items: center;
-    padding: ${spacing?.padding?.small};
-    position: relative;
+    padding: calc(${spacing?.padding?.small} / 2) ${spacing?.padding?.medium};
   `;
 
   return (
@@ -48,9 +46,9 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     >
       <LMAsset
         visible={icon !== undefined}
-        Asset={icon}
+        Asset={icon !== undefined && icon}
         color={color}
-        size={1}
+        size={2}
       />
       <Text textCase="uppercase">{label}</Text>
     </ButtonContainer>
