@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { LMAsset } from "../utils";
 import { LmBubble } from "@icons/lmBubble";
+import { LmInfo } from "@icons/lmInfo";
 import { LumiaLogo } from "@icons/logo";
 import { LmSun } from "@icons/lmSun";
 import { LmArrowDown } from "@icons/lmArrowDown";
@@ -1492,6 +1493,13 @@ export const WindowSwatchCard: Story = {
 export const YenRenminbiMoneyCurrencyJPYRMB: Story = {
   args: {
     Asset: LmYenRenminbiMoneyCurrencyJPYRMB,
+    color: "black",
+    size: 3,
+  },
+};
+export const Info: Story = {
+  args: {
+    Asset: LmInfo,
     color: "black",
     size: 3,
   },

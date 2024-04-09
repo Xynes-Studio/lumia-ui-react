@@ -15,4 +15,5 @@ export interface TextProps
     | "inherit";
   editable?: boolean;
   codeClassName?: string;
+  numberOfLines?: number;
 }
