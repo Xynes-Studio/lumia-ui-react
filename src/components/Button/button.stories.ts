@@ -23,7 +23,7 @@ export const Fill: Story = {
     icon: LmCkBell,
     iconAtEnd: false,
     color: "#ffffff",
-    borderRadius: "1vw",
+    borderRadius: "0.5vw",
   },
 };
 
@@ -36,7 +36,7 @@ export const Outlined: Story = {
     iconAtEnd: false,
     color: "#000000",
     borderColor: "#000000",
-    borderRadius: "1vw",
+    borderRadius: "0.5vw",
   },
 };
 

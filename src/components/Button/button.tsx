@@ -31,7 +31,8 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     border: ${type !== "outlined"
       ? "none"
       : `${strokes?.s0} solid ${globalColor?.border1}`};
-    padding: calc(${spacing?.padding?.small} / 2) ${spacing?.padding?.medium};
+    padding: calc(${spacing?.padding?.small} / 4)
+      calc(${spacing?.padding?.large} / 2);
     border-radius: ${borderRadius};
     flex-direction: ${iconAtEnd ? "row-reverse" : "row"};
   `;
@@ -43,7 +44,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
         visible={icon !== undefined}
         Asset={icon}
         color={color}
-        size={1.5}
+        size={1.2}
       />
       <Text color={color} textCase="uppercase">
         {label}
