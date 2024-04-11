@@ -7,8 +7,8 @@ import { Text } from "@texts/Text/Text";
 import { color, spacing, strokes, typography } from "@shared/styles";
 import "./textInput.styles.css";
 import { LMAsset } from "@utils/LumiaAssetManager";
-import { LmVisibleEyeOpen } from "@icons/lmVisibleEyeOpen";
-import { LmAdd } from "@icons/lmAdd";
+import { LmHide } from "@icons/lmHide";
+import { LmShow } from "@icons/lmShow";
 
 const TextInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -55,7 +55,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
           <LMAsset
             //   style={iconAtEnd ? { marginLeft: "0.5vw" } : { marginRight: "0.5vw" }}
             visible={true}
-            Asset={LmAdd}
+            Asset={visible ? LmHide : LmShow}
             color="#000000"
             size={1}
             onClick={() => {
