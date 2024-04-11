@@ -24,12 +24,14 @@ export interface colorTypes {
   foregroundInverse: string;
   foregroundInverse200: string;
   foregroundInverse300: string;
+  foregroundInverse400: string;
 
   medium: string;
   medium100: string;
   medium200: string;
 
   border: string;
+  border1: string;
 
   // Status
   positive: string;
@@ -39,6 +41,7 @@ export interface colorTypes {
 
 export interface spacingOBTTypes {
   small: string;
+  small1: string;
   medium: string;
   large: string;
 }
