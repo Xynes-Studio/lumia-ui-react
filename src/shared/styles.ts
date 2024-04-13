@@ -42,6 +42,9 @@ export const color: colorTypes = {
   positive: "#66BF3C",
   negative: "#FF4400",
   warning: "#E69D00",
+
+  //Input
+ input100: '#E9E9E9',
 };
 
 export const spacing: spacingTypes = {

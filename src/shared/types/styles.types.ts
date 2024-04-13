@@ -35,6 +35,9 @@ export interface colorTypes {
   positive: string;
   negative: string;
   warning: string;
+
+  //Input
+  input100: string;
 }
 
 export interface spacingOBTTypes {
