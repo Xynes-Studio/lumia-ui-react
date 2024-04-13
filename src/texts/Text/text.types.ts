@@ -16,4 +16,5 @@ export interface TextProps
   editable?: boolean;
   codeClassName?: string;
   numberOfLines?: number;
+  onUpdate?: (value:string) => void;
 }

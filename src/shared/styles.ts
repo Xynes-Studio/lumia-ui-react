@@ -45,6 +45,9 @@ export const color: colorTypes = {
 
   //brand
   brand100: "#00FFB2",
+
+  //error
+  error100: '#F52E2E',
 };
 
 export const spacing: spacingTypes = {

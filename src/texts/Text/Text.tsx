@@ -33,7 +33,7 @@ const TextComponent: React.ForwardRefRenderFunction<
     color: ${type === "body"
       ? color.foreground
       : type === "error"
-      ? color.foreground
+      ? color.error100
       : color.foreground};
     color: ${props?.color};
     line-height: 130%;
@@ -51,7 +51,7 @@ const TextComponent: React.ForwardRefRenderFunction<
       event.preventDefault();
     }
     const value = (event.target as HTMLHeadingElement).textContent;
-    console.log("Value:", value);
+    value && props.onUpdate && props.onUpdate(value);
   };
 
   return (
