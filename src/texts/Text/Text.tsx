@@ -28,7 +28,7 @@ const TextComponent: React.ForwardRefRenderFunction<
     font-size: ${type === "body"
       ? typography.size.s3
       : type === "error"
-      ? typography.size.s2
+      ? typography.size.s1
       : typography.size.s2};
     color: ${type === "body"
       ? color.foreground
