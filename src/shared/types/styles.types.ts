@@ -38,6 +38,8 @@ export interface colorTypes {
 
   //Input
   input100: string;
+  //brand
+  brand100: string;
 }
 
 export interface spacingOBTTypes {
