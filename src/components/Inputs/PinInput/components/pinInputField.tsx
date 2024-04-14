@@ -1,6 +1,8 @@
-import { color, typography } from "@shared/styles";
+import { color, spacing, typography } from "@shared/styles";
+import { cx } from "@utils/cx";
 import React, { ForwardRefRenderFunction } from "react";
 import styled from "styled-components";
+import "./pinInput.styles.css";
 
 interface PinInputFieldsProps {
   index: number;
@@ -15,15 +17,10 @@ const PinInputFieldComponent: ForwardRefRenderFunction<
   PinInputFieldsProps
 > = ({ index, value, onChange, onKeyDown, fillType = "fill" }, ref) => {
   const PinInputField = styled.input`
-    width: 40px; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
-    margin-right: 10px; /* Adjust margin as needed */
+    margin-left: ${index != 0 &&
+    spacing.padding.small}; /* Adjust margin as needed */
     background-color: ${color.input100};
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 1vh;
     font-size: ${typography.size.s2};
-
     ${fillType === "fill" &&
     `
       background-color: ${color.input100};
@@ -52,6 +49,7 @@ const PinInputFieldComponent: ForwardRefRenderFunction<
       ref={ref}
       type="text"
       maxLength={1}
+      className={cx("lmPinInputField")}
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
