@@ -32,10 +32,9 @@ const CheckboxComponent: React.ForwardRefRenderFunction<
 
   const StyledCheckbox = styled.div<{ checked: boolean }>`
     position: relative;
-    /* display: inline-block; */
     width: 1.2vw;
     height: 1.2vw;
-    border: ${strokes?.s0} solid ${color?.border1};
+    border: ${strokes?.s0} solid ${color?.brand100};
     background-color: ${color?.skyblue1};
     border-radius: ${spacing?.borderRadius?.s0};
   `;
