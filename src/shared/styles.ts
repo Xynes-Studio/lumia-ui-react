@@ -44,6 +44,14 @@ export const color: colorTypes = {
   positive: "#66BF3C",
   negative: "#FF4400",
   warning: "#E69D00",
+
+  //Input
+  input100: '#E9E9E9',
+  //brand
+  brand100: "#00FFB2",
+
+  //error
+  error100: '#F52E2E',
 };
 
 export const spacing: spacingTypes = {
@@ -97,6 +105,8 @@ export const strokes = {
 };
 
 export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+export const neumorphismShadow =
+  "inset 5px 5px 15px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(200, 200, 200, 0.5)";
 
 export const pageMargin: number = 5.55555;
 

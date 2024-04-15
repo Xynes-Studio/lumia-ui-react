@@ -11,14 +11,18 @@ import { hexToRGBA } from "@utils/hexToRgba";
 import { H4 } from "@texts/index";
 
 const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
-  const { overlayOpacity = 0.35, overlay = true, canUpdate = false } = props;
+  const {
+    overlayOpacity = 0.35,
+    overlay = false,
+    canUpdate = false,
+    borderRadius = spacing.borderRadius.small,
+  } = props;
 
   // Ensure overlayOpacity is within the valid range of 0 to 1
   const validOverlayOpacity = Math.max(0, Math.min(1, overlayOpacity));
   if (overlayOpacity < 0 || overlayOpacity > 1) {
     throw new Error("overlayOpacity must be a number between 0 and 1.");
   }
-
   const ImageOverlayContainer = styled(Flex)`
     display: none;
     ${() => {
@@ -26,8 +30,10 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
         return `display: flex`;
       }
     }};
-    background-color: ${hexToRGBA(color.foreground, validOverlayOpacity)};
-    padding: ${spacing.padding.medium};
+    background-color: ${overlay &&
+    hexToRGBA(color.foreground, validOverlayOpacity)};
+    padding: ${overlay && spacing.padding.medium};
+    border-radius: ${borderRadius};
   `;
 
   return (
