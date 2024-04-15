@@ -30,7 +30,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     background-color: ${type !== "label" ? backgroundColor : "none"};
     border: ${type !== "outlined"
       ? "none"
-      : `${strokes?.s0} solid ${globalColor?.border1}`};
+      : `${strokes?.s0} solid  ${borderColor}`};
     padding: calc(${spacing?.padding?.small} / 4)
       calc(${spacing?.padding?.large} / 2);
     border-radius: ${borderRadius};
