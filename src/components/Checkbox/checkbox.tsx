@@ -14,15 +14,10 @@ import { spacing, strokes } from "@shared/styles";
 const CheckboxComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
   CheckboxProps
-> = ({ label, showIndeterminate = false, ...props }, ref) => {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target;
-    setIsChecked(checked);
-    // onChange(checked);
-  };
-
+> = (
+  { label, showIndeterminate = false, onChange, value = false, ...props },
+  ref
+) => {
   const CheckboxContainer = styled(Flex)``;
   const CheckboxElement = styled.input``;
 
@@ -42,11 +37,11 @@ const CheckboxComponent: React.ForwardRefRenderFunction<
   return (
     <CheckboxContainer className={cx("lmCheckboxContainer")}>
       <div>
-        <StyledCheckbox checked={isChecked} className={cx("lmStyledCheckbox")}>
-          {isChecked ? (
+        <StyledCheckbox checked={value} className={cx("lmStyledCheckbox")}>
+          {value ? (
             <CheckIconBox className={cx("lmCheckIconBox")}>
               <LMAsset
-                visible={isChecked}
+                visible={value}
                 Asset={LmCkCheck}
                 color="black"
                 size={1.2}
@@ -57,8 +52,8 @@ const CheckboxComponent: React.ForwardRefRenderFunction<
             type="checkbox"
             ref={ref}
             className={cx("lmCheckboxElement")}
-            checked={isChecked}
-            onChange={handleChange}
+            checked={value}
+            onChange={onChange}
             {...props}
           />
         </StyledCheckbox>

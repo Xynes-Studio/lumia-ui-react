@@ -5,4 +5,6 @@ export interface CheckboxProps
   label?: string;
   showIndeterminate?: boolean;
   isChecked?: boolean;
+  onUpdate?: () => void;
+  value?: boolean;
 }
