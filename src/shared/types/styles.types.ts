@@ -38,6 +38,9 @@ export interface colorTypes {
 
   //brand
   brand100: string;
+
+  //error
+  error100: string,
 }
 
 export interface spacingOBTTypes {

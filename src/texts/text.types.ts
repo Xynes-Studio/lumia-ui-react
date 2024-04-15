@@ -6,5 +6,5 @@ export interface HeaderProps
   type?: "sans" | "serif";
   numberOfLines?: number;
   editable?: boolean;
-  onTextChange?: () => void;
+  onUpdate?: (value:string) => void;
 }
