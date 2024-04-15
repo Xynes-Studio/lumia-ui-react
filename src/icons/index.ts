@@ -61,3 +61,4 @@ export * from "./lmCkWarningTwo";
 export * from "./lmLogOut";
 export * from "./lmHide";
 export * from "./lmShow";
+export * from "./lmCkCamera";

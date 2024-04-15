@@ -64,6 +64,7 @@ import { LmCkWarningTwo } from "@icons/lmCkWarningTwo";
 import { LmLogOut } from "@icons/lmLogOut";
 import { LmHide } from "@icons/lmHide";
 import { LmShow } from "@icons/lmShow";
+import { LmCkCamera } from "@icons/lmCkCamera";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -534,6 +535,13 @@ export const Hide: Story = {
 export const Show: Story = {
   args: {
     Asset: LmShow,
+    color: "black",
+    size: 3,
+  },
+};
+export const CkCamera: Story = {
+  args: {
+    Asset: LmCkCamera,
     color: "black",
     size: 3,
   },
