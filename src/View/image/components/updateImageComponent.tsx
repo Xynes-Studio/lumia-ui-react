@@ -4,7 +4,7 @@ import { ImageProps } from "../image.types";
 import { cx } from "@utils/cx";
 import { color, spacing } from "@shared/styles";
 import { LMAsset } from "@utils/LumiaAssetManager";
-import { LmCameraPhoto } from "@icons/lmCameraPhoto";
+import { LmCkCamera } from "@icons/lmCkCamera";
 import { Text } from "@texts/Text/Text";
 import { hexToRGBA } from "@utils/hexToRgba";
 
@@ -70,7 +70,7 @@ const UpdateImageComponent: React.FC<ImageProps> = ({
           className={cx("lmImageUpdateContainer")}
         >
           <LMAsset
-            Asset={LmCameraPhoto}
+            Asset={LmCkCamera}
             size={2}
             color={color.foregroundInverse200}
           />

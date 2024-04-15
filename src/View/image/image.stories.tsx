@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
 import { Image } from "./image";
-import { LmAdd } from "@icons/lmAdd";
+import { LmCkAdd } from "@icons/lmCkAdd";
 
 const meta: Meta<typeof Image> = {
   component: Image,
@@ -66,7 +66,7 @@ const ImageWithHooksSecond = () => {
       overlay={true}
       title="This is an image."
       description="Eu qui Lorem eiusmod ex in pariatur cillum pariatur eiusmod mollit eu. Anim nisi ipsum tempor incididunt est reprehenderit enim amet qui incididunt labore sit. Dolor Lorem nisi proident aute dolore fugiat consequat id duis pariatur non aliquip et adipisicing. Velit esse adipisicing ipsum excepteur ipsum sint excepteur officia."
-      icon={LmAdd}
+      icon={LmCkAdd}
     />
   );
 };
@@ -90,7 +90,7 @@ const ImageWithHooksThird = () => {
       overlay={true}
       title="This is an image."
       description="Eu qui Lorem eiusmod ex in pariatur cillum pariatur eiusmod mollit eu. Anim nisi ipsum tempor incididunt est reprehenderit enim amet qui incididunt labore sit. Dolor Lorem nisi proident aute dolore fugiat consequat id duis pariatur non aliquip et adipisicing. Velit esse adipisicing ipsum excepteur ipsum sint excepteur officia."
-      icon={LmAdd}
+      icon={LmCkAdd}
     />
   );
 };

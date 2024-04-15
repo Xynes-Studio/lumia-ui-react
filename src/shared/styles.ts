@@ -31,12 +31,14 @@ export const color: colorTypes = {
   foregroundInverse: "#FFFFFF",
   foregroundInverse200: "#F8F8F8",
   foregroundInverse300: "#F3F3F3",
+  foregroundInverse400: "#E3E3E3",
 
   medium: "#DDDDDD",
   medium100: "#EEEEEE",
   medium200: "#999999",
 
   border: "rgba(0,0,0,.1)",
+  border1: "#2D3230",
 
   // Status
   positive: "#66BF3C",
@@ -55,11 +57,13 @@ export const color: colorTypes = {
 export const spacing: spacingTypes = {
   padding: {
     small: "1vw",
+    small1: "1.5",
     medium: "2vw",
     large: "3vw",
   },
   borderRadius: {
-    small: "2.5vw",
+    small: "0.5vw",
+    small1: "2.5vw",
     medium: "5vw",
     large: "10vw",
   },
@@ -94,6 +98,7 @@ export const typography = {
 
 export const breakpoint = 600;
 export const strokes = {
+  s0: "0.1vw",
   s1: "0.5vw",
   s2: "1vw",
   s3: "2vw",

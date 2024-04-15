@@ -6,7 +6,6 @@ export interface ButtonProps
   type?: "fill" | "outlined" | "label";
   icon?: React.FC<AssetProps>;
   iconAtEnd?: boolean;
-  onClick?: () => void;
   label?: string;
   color?: string;
   backgroundColor?: string;

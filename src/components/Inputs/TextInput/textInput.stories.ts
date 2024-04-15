@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./button";
-import { LmCkBell } from "@icons/lmCkBell";
+import { TextInput } from "./textInput";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Component/Button",
-  component: Button,
+  title: "Inputs/TextInput",
+  component: TextInput,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof TextInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -18,36 +17,29 @@ type Story = StoryObj<typeof meta>;
 export const Fill: Story = {
   args: {
     type: "fill",
-    label: "Button",
-    backgroundColor: "#00FFB2",
-    icon: LmCkBell,
-    iconAtEnd: false,
-    color: "#ffffff",
-    borderRadius: "0.5vw",
+    inputType: "text",
+    label: "Label",
+    errorMessage: "Error Message",
+    placeholder: "Placeholder",
   },
 };
 
 export const Outlined: Story = {
   args: {
     type: "outlined",
-    label: "Button",
-    backgroundColor: "#00FFB2",
-    icon: LmCkBell,
-    iconAtEnd: false,
-    color: "#000000",
-    borderColor: "#000000",
-    borderRadius: "0.5vw",
+    inputType: "email",
+    label: "Label",
+    errorMessage: "Error Message",
+    placeholder: "Placeholder",
   },
 };
 
-export const Label: Story = {
+export const OutlineOnly: Story = {
   args: {
-    type: "label",
-    label: "Button",
-    backgroundColor: "red",
-    // icon: LmArrowBack,
-    iconAtEnd: false,
-    // color: "#ffffff",
-    borderColor: "blue",
+    type: "outline-only",
+    inputType: "password",
+    label: "Label",
+    // errorMessage: "Error Message",
+    placeholder: "Placeholder",
   },
 };

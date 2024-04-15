@@ -1,7 +1,7 @@
 "use client";
 import { forwardRef, useEffect } from "react";
 import { AlertProps } from "./alert.type";
-import { LmAdd } from "@icons/lmAdd";
+import { LmCkAdd } from "@icons/lmCkAdd";
 import styled from "styled-components";
 import { LMAsset, cx } from "../../utils";
 import useBackgroundColorAlert from "./hooks/useBackgroundColorAlert";
@@ -17,7 +17,7 @@ const AlertComponent: React.ForwardRefRenderFunction<
     children,
     type = "default",
     showIcon = false,
-    icon = LmAdd,
+    icon = LmCkAdd,
     title = "Alert Message Title",
     description,
     ...props
