@@ -16,6 +16,8 @@ export interface colorTypes {
   seaFoam: string;
   purple: string;
   ultraviolet: string;
+  skyblue1: string;
+  seagreen: string;
 
   // Monochrome
   foreground: string;
@@ -48,6 +50,7 @@ export interface colorTypes {
 }
 
 export interface spacingOBTTypes {
+  s0: string;
   small: string;
   small1: string;
   medium: string;

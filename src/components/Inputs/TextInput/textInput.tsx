@@ -53,7 +53,6 @@ const TextInputComponent: React.ForwardRefRenderFunction<
         />
         {inputType === "password" ? (
           <LMAsset
-            //   style={iconAtEnd ? { marginLeft: "0.5vw" } : { marginRight: "0.5vw" }}
             visible={true}
             Asset={visible ? LmHide : LmShow}
             color="#000000"

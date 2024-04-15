@@ -23,6 +23,8 @@ export const color: colorTypes = {
   seaFoam: "#37D5D3",
   purple: "#6F2CAC",
   ultraviolet: "#2A0481",
+  skyblue1: "#eafffa",
+  seagreen: "#00ffb2",
 
   // Monochrome
   foreground: "#333333",
@@ -56,12 +58,14 @@ export const color: colorTypes = {
 
 export const spacing: spacingTypes = {
   padding: {
+    s0: "0.2vw",
     small: "1vw",
     small1: "1.5",
     medium: "2vw",
     large: "3vw",
   },
   borderRadius: {
+    s0: "0.2vw",
     small: "0.5vw",
     small1: "2.5vw",
     medium: "5vw",
