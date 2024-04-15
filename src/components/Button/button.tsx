@@ -30,7 +30,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     background-color: ${type !== "label" ? backgroundColor : "none"};
     border: ${type !== "outlined"
       ? "none"
-      : `${strokes?.s0} solid ${globalColor?.border1}`};
+      : `${strokes?.s0} solid  ${borderColor}`};
     padding: calc(${spacing?.padding?.small} / 4)
       calc(${spacing?.padding?.large} / 2);
     border-radius: ${borderRadius};
@@ -39,13 +39,16 @@ const ButtonComponent: React.ForwardRefRenderFunction<
 
   return (
     <ButtonContainer className={cx("lmButtonContainer")} ref={ref} {...props}>
-      <LMAsset
-        style={iconAtEnd ? { marginLeft: "0.8vw" } : { marginRight: "0.8vw" }}
-        visible={icon !== undefined}
-        Asset={icon}
-        color={color}
-        size={1.2}
-      />
+      {icon !== undefined ? (
+        <LMAsset
+          style={iconAtEnd ? { marginLeft: "0.8vw" } : { marginRight: "0.8vw" }}
+          visible={icon !== undefined}
+          Asset={icon}
+          color={color}
+          size={1.2}
+        />
+      ) : null}
+
       <Text color={color} textCase="uppercase">
         {label}
       </Text>

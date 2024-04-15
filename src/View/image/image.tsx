@@ -13,7 +13,7 @@ const ImageComponent: React.ForwardRefRenderFunction<
   const { borderRadius = spacing.borderRadius.small } = props;
   const ImageContainer = styled.div`
     margin: ${spacing.padding.medium};
-    border-radius: ${borderRadius};
+    border-radius: ${borderRadius}vh;
   `;
   const Image = styled.img`
     object-fit: ${props?.fit};

@@ -13,7 +13,7 @@ export interface ImageProps extends React.HtmlHTMLAttributes<HTMLImageElement> {
   aspectRatio?: number;
   canUpdate?: boolean;
   updateUI?: "overlay" | "pen";
-  onUpdate?: (src: string) => void;
+  onUpdate?: (url: string, file: Blob) => void;
   accepted?: string;
   fit?: "contain" | "cover" | "fill" | "scale-down" | "none";
   borderRadius?: number;

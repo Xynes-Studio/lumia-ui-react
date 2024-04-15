@@ -31,7 +31,7 @@ const H1Component: React.ForwardRefRenderFunction<
       event.preventDefault();
     }
     const value = (event.target as HTMLHeadingElement).textContent;
-    console.log("Value:", value);
+    value && props.onUpdate && props.onUpdate(value);
   };
   return (
     <StyleH1
