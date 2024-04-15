@@ -36,6 +36,8 @@ export interface colorTypes {
   negative: string;
   warning: string;
 
+  //Input
+  input100: string;
   //brand
   brand100: string;
 

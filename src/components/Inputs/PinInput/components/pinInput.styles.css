@@ -1,0 +1,7 @@
+.lmPinInputField{
+    width: 10vh; /* Adjust width as needed */
+    height: 10vh; /* Adjust height as needed */
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 1vh;
+}

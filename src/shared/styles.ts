@@ -43,6 +43,8 @@ export const color: colorTypes = {
   negative: "#FF4400",
   warning: "#E69D00",
 
+  //Input
+  input100: '#E9E9E9',
   //brand
   brand100: "#00FFB2",
 
