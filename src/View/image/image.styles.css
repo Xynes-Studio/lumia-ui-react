@@ -12,4 +12,5 @@
 .lmImageContainer:hover .lmImageUpdateContainer {
   opacity: 1;
   z-index: 9;
+  margin: 0;
 }
