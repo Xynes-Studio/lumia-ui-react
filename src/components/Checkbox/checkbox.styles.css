@@ -1,7 +1,6 @@
 .lmCheckboxContainer {
   width: fit-content;
   height: fit-content;
-  flex-direction: row;
   align-items: center;
 }
 
@@ -16,8 +15,8 @@
 .lmStyledCheckbox {
   transition: background-color 0.3s;
   overflow: hidden;
-  margin-right: 1vw;
-  margin-bottom: 0.5vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .lmCheckIconBox {

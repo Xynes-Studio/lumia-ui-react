@@ -10,15 +10,6 @@ export interface colorTypes {
   secondary: string; // ocean
   tertiary: string;
 
-  orange: string;
-  gold: string;
-  green: string;
-  seaFoam: string;
-  purple: string;
-  ultraviolet: string;
-  skyblue1: string;
-  seagreen: string;
-
   // Monochrome
   foreground: string;
   foreground200: string;
@@ -35,28 +26,36 @@ export interface colorTypes {
   border: string;
   border1: string;
 
-  // Status
-  positive: string;
-  negative: string;
-  warning: string;
-
   //Input
   input100: string;
   //brand
-  brand100: string;
+  accent100: string;
+  accent200: string;
+  accent300: string;
 
-  //error
-  error100: string,
+  //status
+  error: string;
+  warning: string;
+  positive: string;
 }
 
-export interface spacingOBTTypes {
-  s0: string;
-  small: string;
-  small1: string;
-  medium: string;
-  large: string;
+export interface paddingTypes {
+  p0: string;
+  p1: string;
+  p2: string;
+  p3: string;
+  p4: string;
+  p5: string;
+}
+export interface borderRadiusTypes {
+  r0: string;
+  r1: string;
+  r2: string;
+  r3: string;
+  r4: string;
+  r5: string;
 }
 export interface spacingTypes {
-  padding: spacingOBTTypes;
-  borderRadius: spacingOBTTypes;
+  padding: paddingTypes;
+  borderRadius: borderRadiusTypes;
 }

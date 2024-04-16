@@ -13,6 +13,8 @@ import {
   formatPython,
   formatCode
 } from "./codeSyntax";
+import styled from "styled-components";
+import { typography } from "@shared/styles";
 
 const CodeComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -49,6 +51,11 @@ const CodeComponent: React.ForwardRefRenderFunction<
     }
   }, [code, props.language]);
 
+  const StyledCode = styled.code`
+    font-family: ${typography.type.code};
+    font-size: ${typography.size.code};
+  `
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
     // Prevent line breaks on Enter key
     if (event.key === "Enter") {
@@ -66,9 +73,9 @@ const CodeComponent: React.ForwardRefRenderFunction<
       {...props}
     >
       <pre>
-        <code className={cx(`language-${props.language}`)}>
+        <StyledCode className={cx(`language-${props.language}`)}>
          {formattedCode}
-        </code>
+        </StyledCode>
       </pre>
       
     </div>

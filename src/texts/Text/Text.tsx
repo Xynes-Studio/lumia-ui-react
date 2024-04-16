@@ -26,14 +26,14 @@ const TextComponent: React.ForwardRefRenderFunction<
       ? typography.type.primary
       : typography.type.primary}; /* Default font family */
     font-size: ${type === "body"
-      ? typography.size.s3
+      ? typography.size.text
       : type === "error"
-      ? typography.size.s1
-      : typography.size.s2};
+      ? typography.size.code
+      : typography.size.text};
     color: ${type === "body"
       ? color.foreground
       : type === "error"
-      ? color.error100
+      ? color.error
       : color.foreground};
     color: ${props?.color};
     line-height: 130%;

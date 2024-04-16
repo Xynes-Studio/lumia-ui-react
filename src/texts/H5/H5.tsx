@@ -17,7 +17,7 @@ const H5Component: React.ForwardRefRenderFunction<
       ? typography.type.title
       : typography.type.primary};
     font-weight: ${typography.weight.bold};
-    font-size: ${typography.size.m1};
+    font-size: ${typography.size.h5};
     color: ${props?.color};
     ${numberOfLines !== 0 &&
     `

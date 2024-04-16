@@ -17,7 +17,7 @@ const H2Component: React.ForwardRefRenderFunction<
       ? typography.type.title
       : typography.type.primary};
     font-weight: ${typography.weight.bold};
-    font-size: ${typography.size.l1};
+    font-size: ${typography.size.h2};
     color: ${props?.color};
     ${numberOfLines !== 0 &&
     `
