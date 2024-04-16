@@ -8,6 +8,7 @@ import { Text } from "@texts/Text/Text";
 import { color as globalColor } from "@shared/styles";
 import { spacing, strokes } from "@shared/styles";
 import "./button.styles.css";
+import { Flex } from "@app/View";
 
 const ButtonComponent: React.ForwardRefRenderFunction<
   HTMLButtonElement,
@@ -16,12 +17,12 @@ const ButtonComponent: React.ForwardRefRenderFunction<
   {
     type = "fill",
     icon,
-    label = "BUTTON",
+    label,
     color = globalColor.foreground,
     iconAtEnd = false,
     backgroundColor,
     borderColor = globalColor?.border1,
-    borderRadius = spacing?.borderRadius?.small,
+    borderRadius = spacing?.borderRadius?.r0,
     ...props
   },
   ref
@@ -31,27 +32,27 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     border: ${type !== "outlined"
       ? "none"
       : `${strokes?.s0} solid  ${borderColor}`};
-    padding: calc(${spacing?.padding?.small} / 4)
-      calc(${spacing?.padding?.large} / 2);
+    padding: ${spacing?.padding?.p0} ${spacing?.padding?.p2};
     border-radius: ${borderRadius};
-    flex-direction: ${iconAtEnd ? "row-reverse" : "row"};
   `;
 
   return (
-    <ButtonContainer className={cx("lmButtonContainer")} ref={ref} {...props}>
-      {icon !== undefined ? (
-        <LMAsset
-          style={iconAtEnd ? { marginLeft: "0.8vw" } : { marginRight: "0.8vw" }}
-          visible={icon !== undefined}
-          Asset={icon}
-          color={color}
-          size={1.2}
-        />
-      ) : null}
-
-      <Text color={color} textCase="uppercase">
-        {label}
-      </Text>
+    <ButtonContainer className={cx("lmButtonContainer", props.className)} ref={ref} {...props}>
+      <Flex className={cx("lmButtonElementContainer")} direction={iconAtEnd ? "row-reverse" : "row"}>
+        {icon !== undefined ? (
+          <LMAsset
+            visible={icon !== undefined}
+            Asset={icon}
+            color={color}
+            size={1}
+          />
+        ) : null}
+        {label != undefined && (
+          <Text color={color} type="caption" textCase="uppercase">
+            {label}
+          </Text>
+        )}
+      </Flex>
     </ButtonContainer>
   );
 };

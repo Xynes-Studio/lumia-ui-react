@@ -77,7 +77,7 @@ const PinInputComponent: React.ForwardRefRenderFunction<
           alignItems: labelPosition,
         }}
       >
-        {label != "" && <Text type="caption">{label}</Text>}
+        {label != "" && <Text textCase="capitalize" type="caption" >{label}</Text>}
         <PinInputContainer>
           {Array.from({ length: numberOfFields }, (_, index) => (
             <PinInputFields

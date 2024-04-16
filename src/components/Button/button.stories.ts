@@ -22,7 +22,6 @@ export const Fill: Story = {
     backgroundColor: "#00FFB2",
     icon: LmCkBell,
     iconAtEnd: false,
-    color: "#ffffff",
     borderRadius: "0.5vw",
   },
 };

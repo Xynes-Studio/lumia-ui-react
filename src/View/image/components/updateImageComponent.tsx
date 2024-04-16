@@ -14,7 +14,7 @@ const UpdateImageComponent: React.FC<ImageProps> = ({
   updateUI = "overlay",
   canUpdate = false,
   overlay,
-  borderRadius = spacing.borderRadius.small,
+  borderRadius = spacing.borderRadius.r2,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -76,9 +76,6 @@ const UpdateImageComponent: React.FC<ImageProps> = ({
           />
           <Text
             color={color.foregroundInverse200}
-            style={{
-              marginTop: "-1vh",
-            }}
             type="body"
           >
             Update Photo

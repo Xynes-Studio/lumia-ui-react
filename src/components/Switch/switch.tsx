@@ -13,7 +13,7 @@ const SwitchComponent: React.ForwardRefRenderFunction<
 > = (
   {
     value = false,
-    activeColor = color.brand100,
+    activeColor = color.accent100,
     inactiveColor = color.foregroundInverse300,
     label,
     ...props
@@ -22,7 +22,7 @@ const SwitchComponent: React.ForwardRefRenderFunction<
 ) => {
   const [switchVal, setSwitchVal] = useState(value);
   const SwitchContainer = styled.button`
-    margin: ${spacing.padding.medium};
+    margin: ${spacing.padding.p1};
   `;
   const Switch = styled.button`
     box-shadow: ${neumorphismShadow};
@@ -45,7 +45,7 @@ const SwitchComponent: React.ForwardRefRenderFunction<
       {label != undefined && (
         <Text
           style={{
-            marginRight: spacing.padding.small,
+            marginRight: 0,
           }}
         >
           {label}

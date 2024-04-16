@@ -6,7 +6,8 @@ import { cx } from "@utils/cx";
 import { Text } from "@texts/Text/Text";
 import { color, spacing, strokes, typography } from "@shared/styles";
 import "./textInput.styles.css";
-import { LMAsset } from "@utils/LumiaAssetManager";
+import { Flex } from "@app/View";
+import { Button } from "@components/Button/button";
 import { LmHide } from "@icons/lmHide";
 import { LmShow } from "@icons/lmShow";
 
@@ -19,54 +20,57 @@ const TextInputComponent: React.ForwardRefRenderFunction<
     inputType = "text",
     label,
     errorMessage,
-    placeholder = "Placeholder",
+    placeholder = "Enter your text",
     ...props
   },
   ref
 ) => {
   const [visible, setVisible] = useState(false);
 
-  const InputWrapper = styled.div`
-    padding: ${spacing?.padding?.small} ${spacing?.padding?.medium};
-    border-radius: ${spacing?.borderRadius?.small};
+  const InputWrapper = styled(Flex)`
+    padding: ${spacing?.padding?.p0} ${spacing?.padding?.p1};
+    border-radius: ${spacing?.borderRadius?.r0};
     background-color: ${type !== "outline-only"
       ? color?.foregroundInverse400
       : "none"};
     border: ${type !== "fill"
       ? `${strokes?.s0} solid ${color?.border1}`
       : "null"};
+    align-items: center;
   `;
   const TextInputContainer = styled.input`
-    font-size: ${typography?.size?.s1};
+    font-size: ${typography?.size?.input};
   `;
 
   return (
-    <div className={cx("lmTextInputWrapper")}>
-      {label !== undefined ? <Text textCase="capitalize">{label}</Text> : null}
-      <InputWrapper className={cx("lmInputWrapper")}>
+    <Flex direction="column">
+      {label !== undefined ? (
+        <Text textCase="capitalize" type="caption">
+          {label}
+        </Text>
+      ) : null}
+      <InputWrapper weight={[15, 1]} direction="row">
         <TextInputContainer
           type={!visible ? inputType : "text"}
-          className={cx("lmTextInputContainer")}
           placeholder={placeholder}
+          className={cx(props.className)}
           ref={ref}
           {...props}
         />
         {inputType === "password" ? (
-          <LMAsset
-            visible={true}
-            Asset={visible ? LmHide : LmShow}
-            color="#000000"
-            size={1}
-            onClick={() => {
-              setVisible(!visible);
-            }}
+          <Button
+            type="label"
+            icon={visible ? LmHide : LmShow}
+            color={color.foreground}
+            onClick={() => setVisible(!visible)}
+            style={{padding: 0}}
           />
         ) : null}
       </InputWrapper>
       {errorMessage !== undefined ? (
         <Text type="error">{errorMessage}</Text>
       ) : null}
-    </div>
+    </Flex>
   );
 };
 

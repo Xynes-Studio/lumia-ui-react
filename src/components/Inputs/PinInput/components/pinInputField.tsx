@@ -18,9 +18,9 @@ const PinInputFieldComponent: ForwardRefRenderFunction<
 > = ({ index, value, onChange, onKeyDown, fillType = "fill" }, ref) => {
   const PinInputField = styled.input`
     margin-left: ${index != 0 &&
-    spacing.padding.small}; /* Adjust margin as needed */
+    spacing.padding.p0}; /* Adjust margin as needed */
     background-color: ${color.input100};
-    font-size: ${typography.size.s2};
+    font-size: ${typography.size.input};
     ${fillType === "fill" &&
     `
       background-color: ${color.input100};

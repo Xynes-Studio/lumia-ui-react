@@ -15,7 +15,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
     overlayOpacity = 0.35,
     overlay = false,
     canUpdate = false,
-    borderRadius = spacing.borderRadius.small,
+    borderRadius = spacing.borderRadius.r2,
   } = props;
 
   // Ensure overlayOpacity is within the valid range of 0 to 1
@@ -32,7 +32,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
     }};
     background-color: ${overlay &&
     hexToRGBA(color.foreground, validOverlayOpacity)};
-    padding: ${overlay && spacing.padding.medium};
+    padding: ${overlay && `${spacing.padding.p1} ${spacing.padding.p2}`};
     border-radius: ${borderRadius};
   `;
 
@@ -65,7 +65,7 @@ const ImageOverlayComponent: React.FC<ImageProps> = ({ ...props }) => {
         )}
         {props?.icon != undefined && (
           <LMAsset
-            style={{ margin: spacing.padding.medium }}
+            style={{ margin: spacing.padding.p1 }}
             Asset={props?.icon}
             size={1.25}
             color={color?.foregroundInverse}

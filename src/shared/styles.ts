@@ -13,18 +13,9 @@ export const background: backgroundType = {
 
 export const color: colorTypes = {
   // Palette
-  primary: "#FF4785",
-  secondary: "#1EA7FD",
-  tertiary: "#DDDDDD",
-
-  orange: "#FC521F",
-  gold: "#FFAE00",
-  green: "#66BF3C",
-  seaFoam: "#37D5D3",
-  purple: "#6F2CAC",
-  ultraviolet: "#2A0481",
-  skyblue1: "#eafffa",
-  seagreen: "#00ffb2",
+  primary: "#00FFB2",
+  secondary: "#533CDE",
+  tertiary: "#FF9393",
 
   // Monochrome
   foreground: "#333333",
@@ -42,34 +33,35 @@ export const color: colorTypes = {
   border: "rgba(0,0,0,.1)",
   border1: "#2D3230",
 
-  // Status
-  positive: "#66BF3C",
-  negative: "#FF4400",
-  warning: "#E69D00",
-
   //Input
-  input100: '#E9E9E9',
+  input100: "#E9E9E9",
   //brand
-  brand100: "#00FFB2",
+  accent100: "#00FFB2",
+  accent200: "#533CDE",
+  accent300: "#FF9393",
 
-  //error
-  error100: '#F52E2E',
+  //status
+  error: "#F52E2E",
+  warning: "#FF9E44",
+  positive: "#17AF81",
 };
 
 export const spacing: spacingTypes = {
   padding: {
-    s0: "0.2vw",
-    small: "1vw",
-    small1: "1.5",
-    medium: "2vw",
-    large: "3vw",
+    p0: "1.5vh",
+    p1: "2.4vh",
+    p2: "3.84vh",
+    p3: "6.1vh",
+    p4: "9.76v",
+    p5: "15.6v",
   },
   borderRadius: {
-    s0: "0.2vw",
-    small: "0.5vw",
-    small1: "2.5vw",
-    medium: "5vw",
-    large: "10vw",
+    r0: "1.5vh",
+    r1: "2.4vh",
+    r2: "3.84vh",
+    r3: "6.1vh",
+    r4: "9.76v",
+    r5: "15.6v",
   },
 };
 
@@ -87,25 +79,25 @@ export const typography = {
     black: "900",
   },
   size: {
-    s1: "0.8rem",
-    s2: "1rem",
-    s3: "1.2rem",
-    m1: "1.4rem",
-    m2: "1.6rem",
-    m3: "1.8rem",
-    l1: "2rem",
-    l2: "2.2rem",
-    l3: "2.4rem",
-    code: "0.9rem",
+    h1: '6vh',
+    h2: '5vh',
+    h3: '4.5vh',
+    h4: '4vh',
+    h5: '3.5vh',
+    h6: '3vh',
+    text: '2.5vh',
+    input: '2.25vh',
+    caption: '2vh',
+    code: "1.8vh",
   },
 };
 
 export const breakpoint = 600;
 export const strokes = {
-  s0: "0.1vw",
-  s1: "0.5vw",
-  s2: "1vw",
-  s3: "2vw",
+  s0: "0.2vh",
+  s1: "0.5vh",
+  s2: "1vh",
+  s3: "2vh",
 };
 
 export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
@@ -115,7 +107,7 @@ export const neumorphismShadow =
 export const pageMargin: number = 5.55555;
 
 export const pageMargins = css`
-  padding: 0 ${spacing.padding.medium}px;
+  padding: 0 ${spacing.padding.p3}px;
   @media (min-width: ${breakpoint * 1}px) {
     margin: 0 ${pageMargin * 1}%;
   }
