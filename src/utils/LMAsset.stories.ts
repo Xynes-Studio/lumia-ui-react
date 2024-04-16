@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { LMAsset } from "../utils";
+import { LMAsset } from ".";
 import { LumiaLogo } from "@icons/logo";
 import { LmBuble } from "@icons/lmBuble";
 import { LmCkAdd } from "@icons/lmCkAdd";
@@ -68,7 +68,7 @@ import { LmCkCamera } from "@icons/lmCkCamera";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Example/LMAsset",
+  title: "Assets/LMAsset",
   component: LMAsset,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
