@@ -20,7 +20,7 @@ const StyledRow = styled(Flex)<RowProps>`
   }}
 `;
 
-const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
+export const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const { children } = props;
 
   return (
@@ -29,5 +29,3 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     </StyledRow>
   );
 });
-
-export default Row;
