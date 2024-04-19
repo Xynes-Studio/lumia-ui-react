@@ -5,6 +5,13 @@ import { Alert } from "..";
 const meta = {
   title: "Component/Alert",
   component: Alert,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Another description, overriding the comments'
+      },
+    },
+  },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
