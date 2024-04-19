@@ -74,7 +74,9 @@ const CodeComponent: React.ForwardRefRenderFunction<
     >
       <pre>
         <StyledCode className={cx(`language-${props.language}`)}>
+          <pre>
          {formattedCode}
+         </pre>
         </StyledCode>
       </pre>
       

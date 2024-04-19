@@ -1,37 +1,34 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { forwardRef } from "react";
 import { cx } from "@utils/cx";
 import StringToReactComponent from 'string-to-react-component';
 import { MDXParseProps } from "./msxp.types";
-import { rules } from "@utils/MDXParseRule";
+import { Marked } from "@utils/MDXUtils";
+import { Bold, H1, H2, H3, H4, H5, H6, I } from "@texts/index";
+import { Code } from "..";
+import { Image } from "@app/View";
+
 
 const MDXPComponent: React.ForwardRefRenderFunction<
     HTMLDivElement,
     MDXParseProps
 > = ({ markdown, ...props }, ref) => {
-    
-    let content=markdown;
-    rules.forEach(([rule, template]) => {
-        if (typeof template === 'string'){
-            content= content.replace(rule, template)
-        }
-        
-    })
+    const copyMarkdown = markdown;
+    const content = Marked.parse(copyMarkdown);
+
     return (
         <div className={cx("MD2Lumia")} ref={ref} {...props}>
-            <StringToReactComponent>
-      {`(props)=>{
-         const {useState}=React;
-         const [counter,setCounter]=useState(0);
-         const increase=()=>{
-           setCounter(counter+1);
-         };
+            <StringToReactComponent data={{ H1, H2, H3, H4, H5, H6, Bold, I, Code, Image }}>
+                {`(props)=>{
+         const { H1, H2, H3, H4, H5, H6, Bold, I, Code, Image }=props;
          return (<>
            ${content}
            </>);
        }`}
-    </StringToReactComponent>
-    {/* {content} */}
+            </StringToReactComponent>
+
+            {/* {content} */}
         </div>
     );
 };

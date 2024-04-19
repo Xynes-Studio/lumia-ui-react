@@ -16,17 +16,32 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    markdown: `
-    # react-scroll-to-fetch
- 
-    
-> Fetch Data from server as you scroll down with a simple lightweight React Component. Saves you all the troubles from designing a pagination system. This lightweight library works both with \`window\` scroll event and scrollable div elements.
+    markdown: `# @ts-stack/markdown
 
-[![NPM](https://img.shields.io/npm/v/react-scroll-to-fetch.svg)](https://www.npmjs.com/package/react-scroll-to-fetch) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-## [Demo](https://xynes-hub.github.io/react-scroll-to-fetch/)
+> A full-featured markdown parser and compiler, written in TypeScript.
+
+This is fork of popular library marked from [this commit](https://github.com/markedjs/marked/tree/39fbc8aed)
+(Merge pull request #961 from chjj/release-0.3.7, Dec 1, 2017).
+
+## lang
+- [Chinese](./lang/zh/README.md)
+
+## Table of contents
+
+- [Install](#install)
+- [Usage](#usage)
+  - [Minimal usage](#minimal-usage)
+  - [Example usage with highlight.js](#example-usage-with-highlightjs)
+  - [Overriding renderer methods](#overriding-renderer-methods)
+  - [Example of setting a simple block rule](#example-of-setting-a-simple-block-rule)
+- [Benchmarks](#benchmarks)
+  - [Options for benchmarks](#options-for-benchmarks)
+    - [Example of usage bench options](#example-of-usage-bench-options)
+- [Contribution and License Agreement](#contribution-and-license-agreement)
+- [License](#license)
+
 ## Install
-    
-    `
+`
   },
 };
 
