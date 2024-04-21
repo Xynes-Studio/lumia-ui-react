@@ -1,7 +1,8 @@
 .lmTabsContainer {
+  cursor: pointer;
+}
+.lmTabsWrapper {
   width: fit-content;
   height: fit-content;
-  display: flex;
   align-items: center;
-  cursor: pointer;
 }
