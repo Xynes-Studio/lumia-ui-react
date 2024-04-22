@@ -4,10 +4,10 @@ import { spacing } from "@shared/styles";
 
 export const ListViewContainer = styled(Flex)``;
 
-export const ListHeader = styled.div`
+export const ListHeader = styled(Flex)`
   padding: ${spacing.padding.p0};
 `;
 
-export const ListFooter = styled.div`
+export const ListFooter = styled(Flex)`
   padding: ${spacing.padding.p0};
 `;
