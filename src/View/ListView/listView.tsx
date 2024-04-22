@@ -12,7 +12,7 @@ const ListView = forwardRef<HTMLDivElement, ListViewProps>(({
   ...props
 }, ref) => {
   return (
-    <ListViewContainer ref={ref} horizontal={horizontal} {...props}>
+    <ListViewContainer ref={ref} direction={horizontal ? 'row' : 'column'} {...props}>
       {header && <ListHeader>{header}</ListHeader>}
       {renderItem && dataset.map((item, index) => renderItem(item, index))}
       {footer && <ListFooter>{footer}</ListFooter>}
