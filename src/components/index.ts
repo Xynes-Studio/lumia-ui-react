@@ -11,3 +11,4 @@ export * from "./Radio/radio";
 export * from "./Badge/badge";
 export * from "./link/link";
 export * from "./Radio/radio";
+export * from "./Badge/badge";
