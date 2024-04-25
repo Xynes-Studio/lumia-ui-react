@@ -8,3 +8,4 @@ export * from "./Inputs/SearchInput/searchInput";
 export * from "./Button/button";
 export * from "./Disclosuers/Tabs/tabs";
 export * from "./Radio/radio";
+export * from "./Badge/badge";
