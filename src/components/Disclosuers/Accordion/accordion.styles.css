@@ -14,7 +14,3 @@
 .rotated {
   transform: rotate(90deg);
 }
-
-.lmAccordionBody {
-  margin-top: 1vh;
-}

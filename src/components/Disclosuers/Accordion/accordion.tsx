@@ -23,6 +23,7 @@ const AccordionComponent: React.ForwardRefRenderFunction<
   `;
   const AccordionBody = styled(Flex)`
     min-height: ${show ? "10vh" : "0"};
+    margin-top: ${spacing?.padding?.p0};
   `;
   return (
     <AccordionContainer
