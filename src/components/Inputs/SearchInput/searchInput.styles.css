@@ -3,6 +3,14 @@
   justify-content: space-between;
   height: fit-content;
 }
+.lmSearchResultContainer {
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  position: absolute;
+  z-index:  10;
+  left: 0;
+}
 
 .lmSearchInput {
   flex: 1;
