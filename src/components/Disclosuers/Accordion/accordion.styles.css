@@ -1,0 +1,16 @@
+.accordionHeader {
+  height: fit-content;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lmAccordionShowIcon {
+  transform: rotate(0deg);
+  transition: all 1s ease;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
