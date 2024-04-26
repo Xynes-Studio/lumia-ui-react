@@ -1,5 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SearchInput } from "./searchInput";
+import React from "react";
+import { Text } from "@texts/index";
+import { Row } from "@app/View";
+
+interface ListItem {
+  id: number;
+  content: string;
+}
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -20,5 +28,27 @@ export const DefaultSearch: Story = {
     inputType: "search",
     label: "Search Here:",
     placeholder: "Search",
+  },
+};
+
+const sampleData: ListItem[] = [
+  { id: 1, content: "First item" },
+  { id: 2, content: "Second item" },
+  { id: 3, content: "Third item" },
+];
+
+export const SearchWithResults: Story = {
+  args: {
+    type: "default",
+    inputType: "search",
+    label: "Search Here:",
+    placeholder: "Search",
+    dataset: sampleData,
+    suggestions: true,
+    renderItem: (item: ListItem) => (
+      <Row>
+        <Text>{item.id}</Text> <Text>{item.content}</Text>
+      </Row>
+    )
   },
 };
