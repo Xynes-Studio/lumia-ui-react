@@ -22,7 +22,13 @@ const SearchResultsComponent: React.FC<SearchResultProps> = ({
         </Row>
       );
     } else {
-      return <></>;
+      return (
+        <Row
+          styleType={
+            resultsStyleType === "default" ? "transparent" : resultsStyleType
+          }
+        ></Row>
+      );
     }
   };
   return (

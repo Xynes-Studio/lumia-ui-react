@@ -55,7 +55,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   `;
 
   const SearchResultsWrapper = styled(SearchInputWrapper)`
-    top: ${spacing.padding.p3};
+    top: 18vh;
   `;
 
   return (
