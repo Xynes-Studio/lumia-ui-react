@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "@babel/standalone": "^7.24.4",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
     "@storybook/addon-a11y": "^7.6.17",
@@ -40,6 +41,7 @@
     "@storybook/react": "^7.6.17",
     "@storybook/react-vite": "^7.6.17",
     "@storybook/test": "^7.6.17",
+    "@types/babel__standalone": "^7.1.7",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
