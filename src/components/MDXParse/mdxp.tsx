@@ -2,7 +2,7 @@
 "use client";
 import React, { forwardRef } from "react";
 import { cx } from "@utils/cx";
-import StringToReactComponent from 'string-to-react-component';
+import StringToReactComponent from "@utils/StringToJsx";
 import { MDXParseProps } from "./msxp.types";
 import { Marked } from "@utils/MDXUtils";
 import { Bold, H1, H2, H3, H4, H5, H6, I } from "@texts/index";

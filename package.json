@@ -30,7 +30,6 @@
     "npm": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "string-to-react-component": "^3.1.0",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
@@ -42,6 +41,7 @@
     "@storybook/react": "^7.6.17",
     "@storybook/react-vite": "^7.6.17",
     "@storybook/test": "^7.6.17",
+    "@types/babel__standalone": "^7.1.7",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
