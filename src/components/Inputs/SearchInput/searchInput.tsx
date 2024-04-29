@@ -11,6 +11,7 @@ import { LmCkChevronDown } from "@icons/lmCkChevronDown";
 import useDebounce from "./hooks/useDebounce";
 import { Button } from "@components/Button/button";
 import "./searchInput.styles.css";
+import SearchResultsComponent from "./components/searchResults/searchResults";
 
 const SearchInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -24,6 +25,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     handleSearch,
     searchString = "",
     placeholder = "",
+    suggestions = true,
     ...props
   },
   ref
@@ -34,7 +36,10 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     if (autoSearch && handleSearch) handleSearch({ value: debouncedText });
   }, [debouncedText, handleSearch, autoSearch]);
 
-  const SearchInputContainer = styled(Flex)``;
+
+  const SearchInputContainer = styled(Flex)`
+    position: relative;
+  `;
   const SearchInputWrapper = styled(Flex)`
     background-color: ${type === "default"
       ? color?.foregroundInverse400
@@ -49,7 +54,9 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   const SearchInput = styled.input`
     font-size: ${typography?.size?.input};
   `;
-
+  const SearchResultsWrapper = styled(SearchInputWrapper)`
+    top: 18vh;
+  `;
   return (
     <SearchInputContainer
       direction="column"
@@ -81,6 +88,13 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
           <Button type="label" icon={LmCkChevronDown} />
         )}
       </SearchInputWrapper>
+      {props.dataset && suggestions && (
+        <SearchResultsWrapper
+          className={cx("lmSearchResultContainer", props.className)}
+        >
+          <SearchResultsComponent {...props} />
+        </SearchResultsWrapper>
+      )}
     </SearchInputContainer>
   );
 };

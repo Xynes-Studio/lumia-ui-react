@@ -8,10 +8,12 @@ interface SearchValueType {
 export interface SearchInputProps<T = any>
   extends React.HtmlHTMLAttributes<HTMLInputElement> {
   type?: "default" | "outline" | "shadow";
+  resultsStyleType?: "default" | "outline" | "alternative-fill";
   inputType?: "search" | "dropdown";
   searchString?: string;
   label?: string;
   autoSearch?: boolean;
+  suggestions?: boolean;
   handleSearch?: ({ value }: SearchValueType) => void;
   dataset?: T[];
   renderItem?: (item: T, index: number) => React.JSX.Element;
