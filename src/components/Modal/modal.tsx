@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// Link.tsx
 import { LmCkCheckCircle } from "@icons/lmCkCheckCircle";
 import { LmCkClose } from "@icons/lmCkClose";
 import { color } from "@shared/styles";
@@ -9,16 +8,15 @@ import { forwardRef } from "react";
 import styled from "styled-components";
 import { Button } from "..";
 import {
-  BasicStyledModal,
-  StyledCloseBtn,
-  StyledModalContent,
-  StyledBasicModalFooter,
-  ScrollDiv,
-  StyledModalChildrenContainer,
-  StyledHeader,
+    BasicStyledModal,
+    ScrollDiv,
+    StyledBasicModalFooter,
+    StyledCloseBtn,
+    StyledHeader,
+    StyledModalChildrenContainer,
+    StyledModalContent,
 } from "./modal.styles";
 import { ModalProps } from "./modal.type";
-import { Flex } from "@app/View";
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(
   (
     {
