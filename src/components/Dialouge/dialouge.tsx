@@ -12,9 +12,9 @@ import {
   ScrollDiv,
   StyledBasicDialougeFooter,
   StyledCloseBtn,
-  StyledHeader,
   StyledDialougeChildrenContainer,
   StyledDialougeContent,
+  StyledHeader,
 } from "./dialouge.styles";
 import { DialougeProps } from "./dialouge.type";
 export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
@@ -42,13 +42,20 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
       display: ${visible ? "block" : "none"};
     `;
     const StyledDialougeFooter = styled(StyledBasicDialougeFooter)`
-      justify-content: 'center';
+      justify-content: "center";
     `;
+    const AlignDiv = styled.div`
+      text-align: ${contentAlign};
+    `;
+
     return (
       <StyledDialouge ref={ref} {...rest}>
         <StyledDialougeContent direction="column">
-          <StyledHeader>
-            {title ? <H4>{title}</H4>:<div></div>}
+          <StyledHeader
+            weight={[20, 1]}
+            direction={contentAlign == "right" ? "row-reverse" : "row"}
+          >
+            <AlignDiv>{title ? <H4>{title}</H4> : <div></div>}</AlignDiv>
             {closeIcon && (
               <StyledCloseBtn>
                 <LMAsset
@@ -68,8 +75,8 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
 
           <ScrollDiv>
             <StyledDialougeChildrenContainer direction="column">
-              {description && <Text>{description}</Text>}
-              {children}
+              <AlignDiv>{description && <Text>{description}</Text>}</AlignDiv>
+              <AlignDiv>{children}</AlignDiv>
             </StyledDialougeChildrenContainer>
           </ScrollDiv>
 
