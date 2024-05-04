@@ -5,16 +5,15 @@ import { color } from "@shared/styles";
 import { H4, Text } from "@texts/index";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { forwardRef } from "react";
-import styled from "styled-components";
 import { Button } from "..";
 import {
-    BasicStyledModal,
-    ScrollDiv,
-    StyledBasicModalFooter,
-    StyledCloseBtn,
-    StyledHeader,
-    StyledModalChildrenContainer,
-    StyledModalContent,
+  ScrollDiv,
+  StyledCloseBtn,
+  StyledHeader,
+  StyledModal,
+  StyledModalChildrenContainer,
+  StyledModalContent,
+  StyledModalFooter
 } from "./modal.styles";
 import { ModalProps } from "./modal.type";
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(
@@ -38,14 +37,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     },
     ref
   ) => {
-    const StyledModal = styled(BasicStyledModal)`
-      display: ${visible ? "block" : "none"};
-    `;
-    const StyledModalFooter = styled(StyledBasicModalFooter)`
-      justify-content: ${actionBtnAlign};
-    `;
+    
     return (
-      <StyledModal ref={ref} {...rest}>
+      <StyledModal visible={visible} ref={ref} {...rest}>
         <StyledModalContent direction="column">
           <StyledHeader>
             {title ? <H4>{title}</H4>:<div></div>}
@@ -74,7 +68,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           </ScrollDiv>
 
           {actionBtnType != "none" && (
-            <StyledModalFooter direction="row">
+            <StyledModalFooter actionBtnAlign={actionBtnAlign} direction="row">
               {(actionBtnType == "both" || actionBtnType == "primary") && (
                 <Button
                   type="fill"

@@ -5,7 +5,8 @@ import { hexToRGBA } from "@utils/hexToRgba";
 // import { color } from '@shared/styles';
 import styled from "styled-components";
 
-export const BasicStyledDialouge = styled(Flex)`
+export const StyledDialouge = styled(Flex)<{ visible: boolean }>`
+  display: ${(props) => (props.visible ? "block" : "none")};
   position: fixed;
   top: 0;
   left: 0;
@@ -38,12 +39,17 @@ export const StyledHeader = styled(Flex)`
   width: 100%;
   justify-content: space-between;
 `;
-export const StyledBasicDialougeFooter = styled(Flex)`
-  gap: 10px;
-  margin: 10px;
+export const StyledDialougeFooter = styled(Flex)`
+  gap: ${spacing.padding.p0};
+  margin: ${spacing.padding.p0};
+  justify-content: "center";
 `;
 export const ScrollDiv = styled.div`
   max-height: 70dvh;
   overflow-y: auto;
 `;
 export const StyledDialougeChildrenContainer = styled(Flex)``;
+
+export const AlignDiv = styled.div<{contentAlign:string}>`
+      text-align: ${props=>props.contentAlign};
+    `;

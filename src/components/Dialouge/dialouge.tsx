@@ -5,16 +5,16 @@ import { color } from "@shared/styles";
 import { H4, Text } from "@texts/index";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { forwardRef } from "react";
-import styled from "styled-components";
 import { Button } from "..";
 import {
-  BasicStyledDialouge,
+  AlignDiv,
   ScrollDiv,
-  StyledBasicDialougeFooter,
   StyledCloseBtn,
+  StyledDialouge,
   StyledDialougeChildrenContainer,
   StyledDialougeContent,
-  StyledHeader,
+  StyledDialougeFooter,
+  StyledHeader
 } from "./dialouge.styles";
 import { DialougeProps } from "./dialouge.type";
 export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
@@ -38,24 +38,15 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
     },
     ref
   ) => {
-    const StyledDialouge = styled(BasicStyledDialouge)`
-      display: ${visible ? "block" : "none"};
-    `;
-    const StyledDialougeFooter = styled(StyledBasicDialougeFooter)`
-      justify-content: "center";
-    `;
-    const AlignDiv = styled.div`
-      text-align: ${contentAlign};
-    `;
-
+    
     return (
-      <StyledDialouge ref={ref} {...rest}>
+      <StyledDialouge visible={visible} ref={ref} {...rest}>
         <StyledDialougeContent direction="column">
           <StyledHeader
             weight={[20, 1]}
             direction={contentAlign == "right" ? "row-reverse" : "row"}
           >
-            <AlignDiv>{title ? <H4>{title}</H4> : <div></div>}</AlignDiv>
+            <AlignDiv contentAlign={contentAlign}>{title ? <H4>{title}</H4> : <div></div>}</AlignDiv>
             {closeIcon && (
               <StyledCloseBtn>
                 <LMAsset
@@ -75,8 +66,8 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
 
           <ScrollDiv>
             <StyledDialougeChildrenContainer direction="column">
-              <AlignDiv>{description && <Text>{description}</Text>}</AlignDiv>
-              <AlignDiv>{children}</AlignDiv>
+              <AlignDiv contentAlign={contentAlign}>{description && <Text>{description}</Text>}</AlignDiv>
+              <AlignDiv contentAlign={contentAlign}>{children}</AlignDiv>
             </StyledDialougeChildrenContainer>
           </ScrollDiv>
 

@@ -2,7 +2,7 @@ import { AssetProps } from "@icons/types/asset.types";
 import React from "react";
 
 export interface DialougeProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
-    visible: boolean;
+    visible?: boolean;
     actionBtnType?: 'primary' | 'secondary' | 'both' | 'none';
     contentAlign?: 'left' | 'center' | 'right';
     primaryBtnOnPress?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;

@@ -2,7 +2,7 @@ import { AssetProps } from "@icons/types/asset.types";
 import React from "react";
 
 export interface ModalProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
-    visible: boolean;
+    visible?: boolean;
     actionBtnType?: 'primary' | 'secondary' | 'both' | 'none';
     actionBtnAlign?: 'left' | 'center' | 'right';
     primaryBtnOnPress?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
