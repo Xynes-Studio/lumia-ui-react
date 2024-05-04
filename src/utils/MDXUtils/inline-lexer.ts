@@ -12,7 +12,7 @@
 // @ts-nocheck 
 import { ExtendRegexp } from './extend-regexp';
 import {
-  Link,
+  Link, 
   Links,
   MarkedOptions,
   RulesInlineBase,
