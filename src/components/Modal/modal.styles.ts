@@ -6,7 +6,7 @@ import { hexToRGBA } from "@utils/hexToRgba";
 import styled from "styled-components";
 
 export const StyledModal = styled(Flex)<{ visible: boolean }>`
-  display: ${(props) => (props.visible ? "block" : "none")};
+  display: ${(props) => (props.visible ? "flex !important" : "none !important")};
   position: fixed;
   top: 0;
   left: 0;
