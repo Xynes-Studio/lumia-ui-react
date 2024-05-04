@@ -7,4 +7,6 @@ export interface TextInputProps
   label?: string;
   errorMessage?: string;
   placeholder?: string;
+  onValueChange: (value: string) => void;
+  value: string;
 }
