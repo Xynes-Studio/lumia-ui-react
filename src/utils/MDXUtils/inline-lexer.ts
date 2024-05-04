@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 /**
  * @license
  *
@@ -12,7 +11,7 @@
 // @ts-nocheck 
 import { ExtendRegexp } from './extend-regexp';
 import {
-  Link, 
+  Link,
   Links,
   MarkedOptions,
   RulesInlineBase,
@@ -28,24 +27,24 @@ import { Renderer } from './renderer';
  * Inline Lexer & Compiler.
  */
 export class InlineLexer {
-  protected static rulesBase: RulesInlineBase;
+  protected static rulesBase: RulesInlineBase = null;
   /**
    * Pedantic Inline Grammar.
    */
-  protected static rulesPedantic: RulesInlinePedantic;
+  protected static rulesPedantic: RulesInlinePedantic = null;
   /**
    * GFM Inline Grammar
    */
-  protected static rulesGfm: RulesInlineGfm;
+  protected static rulesGfm: RulesInlineGfm = null;
   /**
    * GFM + Line Breaks Inline Grammar.
    */
-  protected static rulesBreaks: RulesInlineBreaks;
-  protected rules: RulesInlineBase | RulesInlinePedantic | RulesInlineGfm | RulesInlineBreaks | undefined;
+  protected static rulesBreaks: RulesInlineBreaks = null;
+  protected rules: RulesInlineBase | RulesInlinePedantic | RulesInlineGfm | RulesInlineBreaks;
   protected renderer: Renderer;
-  protected inLink: boolean = false;
-  protected hasRulesGfm: boolean = false;
-  protected ruleCallbacks: RulesInlineCallback[] = [];
+  protected inLink: boolean;
+  protected hasRulesGfm: boolean;
+  protected ruleCallbacks: RulesInlineCallback[];
 
   constructor(
     protected staticThis: typeof InlineLexer,
@@ -174,34 +173,34 @@ export class InlineLexer {
    * Lexing/Compiling.
    */
   output(nextPart: string): string {
-    let execArr: RegExpExecArray | null | undefined;
+    let execArr: RegExpExecArray;
     let out = '';
 
     while (nextPart) {
       // escape
-      if ((execArr = this.rules?.escape.exec(nextPart))) {
+      if ((execArr = this.rules.escape.exec(nextPart))) {
         nextPart = nextPart.substring(execArr[0].length);
         out += execArr[1];
         continue;
       }
 
       // autolink
-      if ((execArr = this.rules?.autolink.exec(nextPart))) {
-        let text: string | undefined;
-        let href: string | undefined;
+      if ((execArr = this.rules.autolink.exec(nextPart))) {
+        let text: string;
+        let href: string;
         nextPart = nextPart.substring(execArr[0].length);
 
         if (execArr[2] === '@') {
-          text = this.options?.escape && this.options?.escape(
+          text = this.options.escape(
             execArr[1].charAt(6) === ':' ? this.mangle(execArr[1].substring(7)) : this.mangle(execArr[1]),
           );
           href = this.mangle('mailto:') + text;
         } else {
-          text =  this.options?.escape && this.options.escape(execArr[1]);
+          text = this.options.escape(execArr[1]);
           href = text;
         }
-        if(href)
-          out += this.renderer.link(href, null, text);
+
+        out += this.renderer.link(href, null, text);
         continue;
       }
 
