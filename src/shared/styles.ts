@@ -12,12 +12,9 @@ export const background: backgroundType = {
 };
 
 export const color: colorTypes = {
-  // Palette
   primary: "#00FFB2",
   secondary: "#533CDE",
   tertiary: "#FF9393",
-
-  // Monochrome
   foreground: "#333333",
   foreground200: "#444444",
   foreground300: "#666666",
@@ -25,22 +22,15 @@ export const color: colorTypes = {
   foregroundInverse200: "#F8F8F8",
   foregroundInverse300: "#F3F3F3",
   foregroundInverse400: "#E3E3E3",
-
   medium: "#DDDDDD",
   medium100: "#EEEEEE",
   medium200: "#999999",
-
-  border: "rgba(0,0,0,.1)",
-  border1: "#2D3230",
-
-  //Input
+  border: "rgba(0,0,0,0.1)",
+  border100: "#2D3230",
   input100: "#E9E9E9",
-  //brand
   accent100: "#00FFB2",
   accent200: "#533CDE",
   accent300: "#FF9393",
-
-  //status
   error: "#F52E2E",
   warning: "#FF9E44",
   positive: "#17AF81",
@@ -48,20 +38,20 @@ export const color: colorTypes = {
 
 export const spacing: spacingTypes = {
   padding: {
-    p0: "1.5vh",
-    p1: "2.4vh",
-    p2: "3.84vh",
-    p3: "6.1vh",
-    p4: "9.76v",
-    p5: "15.6v",
+    p0: "0.375rem", // 6px, minimal padding for very tight spaces
+    p1: "0.5rem",   // 8px, small padding for close elements
+    p2: "0.75rem",  // 12px, standard padding, ideal for grouped items
+    p3: "1rem",     // 16px, medium padding, commonly used in containers
+    p4: "1.25rem",  // 20px, moderate padding, good for larger sections
+    p5: "1.5rem",   // 24px, spacious padding, used in major sections or large containers
   },
   borderRadius: {
-    r0: "1.5vh",
-    r1: "2.4vh",
-    r2: "3.84vh",
-    r3: "6.1vh",
-    r4: "9.76v",
-    r5: "15.6v",
+    r0: "0.25rem", // 4px
+    r1: "0.5rem",  // 8px
+    r2: "0.75rem", // 12px
+    r3: "1rem",    // 16px
+    r4: "1.5rem",  // 24px
+    r5: "2rem",    // 32px
   },
 };
 
@@ -79,45 +69,47 @@ export const typography = {
     black: "900",
   },
   size: {
-    h1: '6vh',
-    h2: '5vh',
-    h3: '4.5vh',
-    h4: '4vh',
-    h5: '3.5vh',
-    h6: '3vh',
-    text: '2.5vh',
-    input: '2.25vh',
-    caption: '2vh',
-    code: "1.8vh",
+    h1: '2.25rem', // 36px
+    h2: '2rem',    // 32px
+    h3: '1.75rem', // 28px
+    h4: '1.5rem',  // 24px
+    h5: '1.25rem', // 20px
+    h6: '1rem',    // 16px
+    text: '1rem',  // 16px, ideal for body text
+    input: '0.875rem', // 14px, typical for form input text
+    caption: '0.75rem', // 12px, for smaller text
+    code: '0.875rem',  // 14px, suitable for code snippets
   },
 };
 
-export const breakpoint = 600;
 export const strokes = {
-  s0: "0.2vh",
-  s1: "0.5vh",
-  s2: "1vh",
-  s3: "2vh",
+  s0: "0.1rem",  // 1.6px, very fine details and subtle divisions
+  s1: "0.2rem",  // 3.2px, fine lines for subtle differentiation
+  s2: "0.4rem",  // 6.4px, medium weight strokes for more visible separation
+  s3: "0.8rem",  // 12.8px, thick strokes for bold statements or accent features
 };
 
 export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
 export const neumorphismShadow =
   "inset 5px 5px 15px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(200, 200, 200, 0.5)";
 
+export const breakpoint = 600;
 export const pageMargin: number = 5.55555;
 
 export const pageMargins = css`
-  padding: 0 ${spacing.padding.p3}px;
-  @media (min-width: ${breakpoint * 1}px) {
-    margin: 0 ${pageMargin * 1}%;
+  padding: 0 ${spacing.padding.p3};
+  @media (min-width: ${breakpoint}px) {
+    margin: 0 ${pageMargin}%;
   }
-  @media (min-width: ${breakpoint * 2}px) {
-    margin: 0 ${pageMargin * 2}%;
-  }
-  @media (min-width: ${breakpoint * 3}px) {
-    margin: 0 ${pageMargin * 3}%;
-  }
-  @media (min-width: ${breakpoint * 4}px) {
-    margin: 0 ${pageMargin * 4}%;
+`;
+
+export const GlobalStyle = css`
+  body {
+    font-family: ${typography.type.primary};
+    font-size: ${typography.size.text}; /* Example font size */
+    color: ${color.foreground};
+    background: ${background.app};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `;
