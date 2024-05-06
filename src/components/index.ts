@@ -11,3 +11,5 @@ export * from "./Disclosuers/Accordion/accordion";
 export * from "./Radio/radio";
 export * from "./Badge/badge";
 export * from "./link/link";
+export * from "./Modal/modal";
+export * from './MDXParse/mdxp';
