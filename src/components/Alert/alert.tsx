@@ -2,12 +2,14 @@
 import { forwardRef, useEffect } from "react";
 import { AlertProps } from "./alert.type";
 import { LmCkAdd } from "@icons/lmCkAdd";
-import styled from "styled-components";
-import { LMAsset, cx } from "../../utils";
+import { LMAsset } from "../../utils";
 import useBackgroundColorAlert from "./hooks/useBackgroundColorAlert";
-import { color, strokes, shadow } from "@app/shared/styles";
+import { color, spacing } from "@app/shared/styles";
 import { Flex } from "@app/View";
 import { H4 } from "@texts/index";
+import { AlertContainer } from "./alert.styles";
+import { Button } from "..";
+import { LmCkClose } from "@icons/lmCkClose";
 
 const AlertComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -33,24 +35,24 @@ const AlertComponent: React.ForwardRefRenderFunction<
     }
   }, [type, props.status, setType, setStatus]);
 
-  const AlertContainer = styled(Flex)`
-    background-color: ${bgColor};
-    border-width: ${type == "outlined" ? strokes.s1 : 0};
-    box-shadow: ${type == "default" ? shadow : "none"};
-  `;
-
   return (
-    <AlertContainer className={cx("lmAlertContainer")} ref={ref} {...props}>
+    <AlertContainer type={type} bgColor={bgColor} ref={ref} {...props}>
       <LMAsset
         visible={showIcon}
         Asset={icon}
         color={color.foreground}
         size={1}
+        style={{
+          marginTop: spacing.padding.p0
+        }}
       />
-      <Flex direction="column">
+      <Flex style={{flex:1}} direction="column">
         <H4>{title}</H4>
         {description != undefined && <p>{description}</p>}
         {children}
+      </Flex>
+      <Flex direction="column">
+          <Button type="label" style={{paddingRight: "0px"}} onClick={props.onClose} icon={LmCkClose} />
       </Flex>
     </AlertContainer>
   );
