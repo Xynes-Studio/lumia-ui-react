@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { AlertProps } from "./alert.type";
 import { LmCkAdd } from "@icons/lmCkAdd";
 import { LMAsset } from "../../utils";
@@ -22,37 +22,57 @@ const AlertComponent: React.ForwardRefRenderFunction<
     icon = LmCkAdd,
     title = "Alert Message Title",
     description,
+    onClose,
     ...props
   },
   ref
 ) => {
   const [bgColor, setType, setStatus] = useBackgroundColorAlert();
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     setType(type);
-    if (props.status != undefined) {
+    if (props.status !== undefined) {
       setStatus(props.status);
     }
   }, [type, props.status, setType, setStatus]);
 
+  const handleClose = () => {
+    setVisible(false);
+    setTimeout(() => {
+      onClose && onClose();
+    }, 300); // Match the animation duration
+  };
+
   return (
-    <AlertContainer type={type} bgColor={bgColor} ref={ref} {...props}>
+    <AlertContainer
+      type={type}
+      bgColor={bgColor}
+      visible={visible}
+      ref={ref}
+      {...props}
+    >
       <LMAsset
         visible={showIcon}
         Asset={icon}
         color={color.foreground}
         size={1}
         style={{
-          marginTop: spacing.padding.p0
+          marginTop: spacing.padding.p0,
         }}
       />
-      <Flex style={{flex:1}} direction="column">
+      <Flex style={{ flex: 1 }} direction="column">
         <H4>{title}</H4>
-        {description != undefined && <p>{description}</p>}
+        {description !== undefined && <p>{description}</p>}
         {children}
       </Flex>
       <Flex direction="column">
-          <Button type="label" style={{paddingRight: "0px"}} onClick={props.onClose} icon={LmCkClose} />
+        <Button
+          type="label"
+          style={{ paddingRight: "0px" }}
+          onClick={handleClose}
+          icon={LmCkClose}
+        />
       </Flex>
     </AlertContainer>
   );
