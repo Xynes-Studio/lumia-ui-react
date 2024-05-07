@@ -14,3 +14,4 @@ export * from "./link/link";
 export * from "./Modal/modal";
 export * from './MDXParse/mdxp';
 export * from './Dialouge/dialouge';
+export * from './pagination/pagination';

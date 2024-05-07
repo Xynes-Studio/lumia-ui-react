@@ -21,7 +21,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     color = globalColor.foreground,
     iconAtEnd = false,
     backgroundColor,
-    borderColor = globalColor?.border1,
+    borderColor = globalColor?.border100,
     borderRadius = spacing?.borderRadius?.r0,
     ...props
   },
@@ -44,7 +44,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
             visible={icon !== undefined}
             Asset={icon}
             color={color}
-            size={1}
+            size={0.8}
           />
         ) : null}
         {label != undefined && (

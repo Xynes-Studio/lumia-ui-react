@@ -34,7 +34,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
       ? color?.foregroundInverse400
       : "none"};
     border: ${type !== "fill"
-      ? `${strokes?.s0} solid ${color?.border1}`
+      ? `${strokes?.s0} solid ${color?.border100}`
       : "null"};
     align-items: center;
   `;
