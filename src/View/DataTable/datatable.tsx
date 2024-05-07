@@ -9,7 +9,7 @@ import {
   TableWithoutSearchContainer,
 } from "./datatable.styles";
 import { DataTableProps, DataTableItemType } from "./datatable.types";
-import { Button, SearchInput } from "@components/index";
+import { Button, Pagination, SearchInput } from "@components/index";
 import ListView from "../ListView/listView";
 import { Row } from "../row/row";
 
@@ -37,7 +37,8 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
       paginationType = "default",
       onClickRow,
       rowStyleTypes = "transparent",
-      searchBarPosition = 'end',
+      searchBarPosition = "end",
+      numberOfRows = 10,
       ...props
     },
     ref
@@ -45,6 +46,26 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
     const [filteredDataset, setFilteredDataset] =
       useState<DataTableItemType[]>(dataset);
     const [searchString, setSearchString] = useState<string>("");
+    const [pageNumber, setPageNumber] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(
+      Math.ceil(filteredDataset.length / numberOfRows)
+    );
+    const [currentPageData, setCurrentPageData] = useState<DataTableItemType[]>(
+      filteredDataset.slice(
+        (pageNumber - 1) * numberOfRows,
+        pageNumber * numberOfRows
+      )
+    );
+
+    useEffect(() => {
+      setTotalPages(Math.ceil(filteredDataset.length / numberOfRows));
+      setCurrentPageData(
+        filteredDataset.slice(
+          (pageNumber - 1) * numberOfRows,
+          pageNumber * numberOfRows
+        )
+      );
+    }, [filteredDataset, numberOfRows, pageNumber]);
 
     useEffect(() => {
       setFilteredDataset(filterDataset(dataset, searchString));
@@ -86,7 +107,7 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
               style={{
                 width: "100%",
               }}
-              dataset={filteredDataset}
+              dataset={currentPageData}
               renderItem={(item, index) => (
                 <Row
                   weight={new Array(Object.keys(item).length).fill(1)}
@@ -101,9 +122,19 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
             />
           </RowContainer>
 
-          {pagination && paginationType === "default" && (
+          {pagination && paginationType === "default" && totalPages > 1 && (
             <FooterContainer>
-              {/* Implement your default pagination logic here */}
+              <Pagination
+                pageNumber={pageNumber}
+                totalPages={totalPages}
+                onPressNext={() =>
+                  setPageNumber((prev) => Math.min(prev + 1, totalPages))
+                }
+                onPressPrevious={() =>
+                  setPageNumber((prev) => Math.max(prev - 1, 1))
+                }
+                onPressPageNumber={(page) => setPageNumber(page)}
+              />
             </FooterContainer>
           )}
 
