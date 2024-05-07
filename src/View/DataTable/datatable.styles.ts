@@ -33,9 +33,17 @@ export const FooterContainer = styled(Flex)`
   margin-top: ${spacing.padding.p2};
 `;
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.div<{
+  searchBarPosition: "start" | "center" | "end";
+}>`
   width: 30%;
   margin-bottom: ${spacing.padding.p3};
+  align-self: ${({ searchBarPosition }) =>
+    searchBarPosition === "center"
+      ? "center"
+      : searchBarPosition === "start"
+      ? "flex-start"
+      : "flex-end"};
 `;
 
 export const RowLabels = styled(Text)`

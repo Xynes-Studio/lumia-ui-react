@@ -10,5 +10,6 @@ export interface DataTableProps<T = DataTableItemType> {
   onClickRow?: (label: string, index: number) => void;
   numberOfRows?: number;
   rowStyleTypes?: "transparent" | "outline" | "alternative-fill";
+  searchBarPosition?: 'start' | 'center' | 'end';
 }
 

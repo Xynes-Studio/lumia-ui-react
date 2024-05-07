@@ -37,13 +37,13 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
       paginationType = "default",
       onClickRow,
       rowStyleTypes = "transparent",
+      searchBarPosition = 'end',
       ...props
     },
     ref
   ) => {
-    const [filteredDataset, setFilteredDataset] = useState<DataTableItemType[]>(
-      dataset
-    );
+    const [filteredDataset, setFilteredDataset] =
+      useState<DataTableItemType[]>(dataset);
     const [searchString, setSearchString] = useState<string>("");
 
     useEffect(() => {
@@ -56,7 +56,7 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
 
     return (
       <DataTableContainer direction="column" ref={ref} {...props}>
-        <SearchContainer>
+        <SearchContainer searchBarPosition={searchBarPosition}>
           <SearchInput
             type="default"
             inputType="search"
@@ -66,52 +66,52 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
             placeholder="Search"
           />
         </SearchContainer>
-        <TableWithoutSearchContainer direction='column'>
-        <HeaderContainer
-          weight={headerLabels ? new Array(headerLabels.length).fill(1) : []}
-        >
-          {headerLabels?.map((label, index) => (
-            <Button
-              key={index}
-              textCase='capitalize'
-              type="label"
-              label={label}
-              onClick={() => onClickRow && onClickRow(label, index)}
+        <TableWithoutSearchContainer direction="column">
+          <HeaderContainer
+            weight={headerLabels ? new Array(headerLabels.length).fill(1) : []}
+          >
+            {headerLabels?.map((label, index) => (
+              <Button
+                key={index}
+                textCase="capitalize"
+                type="label"
+                label={label}
+                onClick={() => onClickRow && onClickRow(label, index)}
+              />
+            ))}
+          </HeaderContainer>
+
+          <RowContainer>
+            <ListView
+              style={{
+                width: "100%",
+              }}
+              dataset={filteredDataset}
+              renderItem={(item, index) => (
+                <Row
+                  weight={new Array(Object.keys(item).length).fill(1)}
+                  styleType={rowStyleTypes}
+                  index={index}
+                >
+                  {Object.keys(item).map((key) => (
+                    <RowLabels key={key}>{item[key]}</RowLabels>
+                  ))}
+                </Row>
+              )}
             />
-          ))}
-        </HeaderContainer>
+          </RowContainer>
 
-        <RowContainer>
-          <ListView
-            style={{
-                width: '100%'
-            }}
-            dataset={filteredDataset}
-            renderItem={(item, index) => (
-              <Row
-                weight={new Array(Object.keys(item).length).fill(1)}
-                styleType={rowStyleTypes}
-                index={index}
-              >
-                {Object.keys(item).map((key) => (
-                  <RowLabels key={key}>{item[key]}</RowLabels>
-                ))}
-              </Row>
-            )}
-          />
-        </RowContainer>
+          {pagination && paginationType === "default" && (
+            <FooterContainer>
+              {/* Implement your default pagination logic here */}
+            </FooterContainer>
+          )}
 
-        {pagination && paginationType === "default" && (
-          <FooterContainer>
-            {/* Implement your default pagination logic here */}
-          </FooterContainer>
-        )}
-
-        {pagination && paginationType === "infinite-loading" && (
-          <FooterContainer>
-            {/* Implement your infinite-loading logic here */}
-          </FooterContainer>
-        )}
+          {pagination && paginationType === "infinite-loading" && (
+            <FooterContainer>
+              {/* Implement your infinite-loading logic here */}
+            </FooterContainer>
+          )}
         </TableWithoutSearchContainer>
       </DataTableContainer>
     );
