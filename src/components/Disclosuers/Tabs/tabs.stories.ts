@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Tabs } from "./tabs";
+import { Tabs } from "./Disclosures";
 import { LmCkExternalLink } from "@icons/lmCkExternalLink";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const HorizontalTab: Story = {
   args: {
-    type: "horizontal",
+    direction: "horizontal",
     selectType: "select-100",
     label: "The Horizontal Tab",
     icon: LmCkExternalLink,
@@ -29,7 +29,7 @@ export const HorizontalTab: Story = {
 
 export const VerticalTab: Story = {
   args: {
-    type: "vertical",
+    direction: "vertical",
     selectType: "select-100",
     label: "The Vertical Tab",
     icon: LmCkExternalLink,
