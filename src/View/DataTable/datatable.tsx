@@ -1,92 +1,119 @@
-import { useState, useEffect } from "react";
-import { DataTableContainer, HeaderContainer, RowContainer, FooterContainer, SearchContainer } from "./datatable.styles";
-import { ListViewProps } from "@app/View/ListView/listView.types";
-import { DataTableProps } from "./datatable.types";
+import React, { useState, useEffect, forwardRef } from "react";
+import {
+  DataTableContainer,
+  HeaderContainer,
+  RowContainer,
+  FooterContainer,
+  SearchContainer,
+  RowLabels,
+} from "./datatable.styles";
+import { DataTableProps, DataTableItemType } from "./datatable.types";
 import { Button, SearchInput } from "@components/index";
 import ListView from "../ListView/listView";
 import { Row } from "../row/row";
 
 // Utility function to filter dataset
-const filterDataset = <T extends ListViewProps>(dataset: T[], searchString: string): T[] => {
+const filterDataset = <T extends DataTableItemType>(
+  dataset: T[],
+  searchString: string
+): T[] => {
   if (!searchString) {
     return dataset;
   }
-  return dataset.filter(item =>
-    Object.values(item).some(val =>
+  return dataset.filter((item) =>
+    Object.values(item).some((val) =>
       String(val).toLowerCase().includes(searchString.toLowerCase())
     )
   );
 };
 
-const DataTable = <T extends ListViewProps>({
-  dataset,
-  renderItem,
-  headerLabels,
-  pagination = true,
-  paginationType = "default",
-  onClickRow,
-  rowStyleTypes = "transparent",
-}: DataTableProps<T>) => {
-  const [filteredDataset, setFilteredDataset] = useState<T[]>(dataset);
-  const [searchString, setSearchString] = useState("");
+const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
+  (
+    {
+      dataset,
+      headerLabels,
+      pagination = true,
+      paginationType = "default",
+      onClickRow,
+      rowStyleTypes = "transparent",
+      ...props
+    },
+    ref
+  ) => {
+    const [filteredDataset, setFilteredDataset] = useState<DataTableItemType[]>(
+      dataset
+    );
+    const [searchString, setSearchString] = useState<string>("");
 
-  useEffect(() => {
-    setFilteredDataset(filterDataset(dataset, searchString));
-  }, [dataset, searchString]);
+    useEffect(() => {
+      setFilteredDataset(filterDataset(dataset, searchString));
+    }, [dataset, searchString]);
 
-  const handleSearch = ({ value }: { value: string }) => {
-    setSearchString(value);
-  };
+    const handleSearch = ({ value }: { value: string }) => {
+      setSearchString(value);
+    };
 
-  return (
-    <DataTableContainer>
-      <SearchContainer>
-        <SearchInput
-          type="default"
-          inputType="search"
-          label="Search"
-          autoSearch={true}
-          suggestions={false}
-          handleSearch={handleSearch}
-          placeholder="Search"
-        />
-      </SearchContainer>
-
-      <HeaderContainer>
-        {headerLabels?.map((label, index) => (
-          <Button
-            key={index}
-            type="label"
-            label={label}
-            onClick={() => onClickRow && onClickRow(label, index)}
+    return (
+      <DataTableContainer direction="column" ref={ref} {...props}>
+        <SearchContainer>
+          <SearchInput
+            type="default"
+            inputType="search"
+            autoSearch={true}
+            suggestions={false}
+            handleSearch={handleSearch}
+            placeholder="Search"
           />
-        ))}
-      </HeaderContainer>
+        </SearchContainer>
 
-      <RowContainer>
-        <ListView
-          dataset={filteredDataset}
-          renderItem={(item, index) => (
-            <Row styleType={rowStyleTypes} index={index}>
-              {renderItem?.(item, index)}
-            </Row>
-          )}
-        />
-      </RowContainer>
+        <HeaderContainer
+          weight={headerLabels ? new Array(headerLabels.length).fill(1) : []}
+        >
+          {headerLabels?.map((label, index) => (
+            <Button
+              key={index}
+              textCase='capitalize'
+              type="label"
+              label={label}
+              onClick={() => onClickRow && onClickRow(label, index)}
+            />
+          ))}
+        </HeaderContainer>
 
-      {pagination && paginationType === "default" && (
-        <FooterContainer>
-          {/* Implement your default pagination logic here */}
-        </FooterContainer>
-      )}
+        <RowContainer>
+          <ListView
+            style={{
+                width: '100%'
+            }}
+            dataset={filteredDataset}
+            renderItem={(item, index) => (
+              <Row
+                weight={new Array(Object.keys(item).length).fill(1)}
+                styleType={rowStyleTypes}
+                index={index}
+              >
+                {Object.keys(item).map((key) => (
+                  <RowLabels key={key}>{item[key]}</RowLabels>
+                ))}
+              </Row>
+            )}
+          />
+        </RowContainer>
 
-      {pagination && paginationType === "infinite-loading" && (
-        <FooterContainer>
-          {/* Implement your infinite-loading logic here */}
-        </FooterContainer>
-      )}
-    </DataTableContainer>
-  );
-};
+        {pagination && paginationType === "default" && (
+          <FooterContainer>
+            {/* Implement your default pagination logic here */}
+          </FooterContainer>
+        )}
+
+        {pagination && paginationType === "infinite-loading" && (
+          <FooterContainer>
+            {/* Implement your infinite-loading logic here */}
+          </FooterContainer>
+        )}
+      </DataTableContainer>
+    );
+  }
+);
 
 export default DataTable;
