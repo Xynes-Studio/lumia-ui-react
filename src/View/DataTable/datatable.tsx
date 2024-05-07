@@ -6,6 +6,7 @@ import {
   FooterContainer,
   SearchContainer,
   RowLabels,
+  TableWithoutSearchContainer,
 } from "./datatable.styles";
 import { DataTableProps, DataTableItemType } from "./datatable.types";
 import { Button, SearchInput } from "@components/index";
@@ -65,7 +66,7 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
             placeholder="Search"
           />
         </SearchContainer>
-
+        <TableWithoutSearchContainer direction='column'>
         <HeaderContainer
           weight={headerLabels ? new Array(headerLabels.length).fill(1) : []}
         >
@@ -111,6 +112,7 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
             {/* Implement your infinite-loading logic here */}
           </FooterContainer>
         )}
+        </TableWithoutSearchContainer>
       </DataTableContainer>
     );
   }
