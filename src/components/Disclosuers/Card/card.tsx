@@ -1,0 +1,10 @@
+import React, { forwardRef } from "react";
+import "./card.styles.css";
+import styled from "styled-components";
+import { Flex } from "@app/View";
+import { Text } from "@texts/index";
+import { Switch } from "@components/Switch/switch";
+import { LMAsset } from "@utils/LumiaAssetManager";
+import { LmCkDelete } from "@icons/lmCkDelete";
+import { cx } from "@utils/cx";
+import { spacing, strokes, color } from "@shared/styles";
