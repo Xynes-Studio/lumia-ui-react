@@ -7,16 +7,17 @@ import { LMAsset } from "@utils/LumiaAssetManager";
 import { forwardRef } from "react";
 import { Button } from "..";
 import {
+  AlignDiv,
   ScrollDiv,
   StyledCloseBtn,
-  StyledHeader,
-  StyledModal,
-  StyledModalChildrenContainer,
-  StyledModalContent,
-  StyledModalFooter
-} from "./modal.styles";
-import { ModalProps } from "./modal.type";
-export const Modal = forwardRef<HTMLDivElement, ModalProps>(
+  StyledDialouge,
+  StyledDialougeChildrenContainer,
+  StyledDialougeContent,
+  StyledDialougeFooter,
+  StyledHeader
+} from "./dialouge.styles";
+import { DialougeProps } from "./dialouge.type";
+export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
   (
     {
       children,
@@ -25,7 +26,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       primaryBtnlabel,
       primaryBtnOnPress,
       actionBtnType = "none",
-      actionBtnAlign = "left",
+      contentAlign = "left",
       primaryIcon,
       onClose,
       secondaryBtnOnPress,
@@ -39,10 +40,13 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
   ) => {
     
     return (
-      <StyledModal visible={visible} ref={ref} {...rest}>
-        <StyledModalContent direction="column">
-          <StyledHeader>
-            {title ? <H4>{title}</H4>:<div></div>}
+      <StyledDialouge visible={visible} ref={ref} {...rest}>
+        <StyledDialougeContent direction="column">
+          <StyledHeader
+            weight={[20, 1]}
+            direction={contentAlign == "right" ? "row-reverse" : "row"}
+          >
+            <AlignDiv contentAlign={contentAlign}>{title ? <H4>{title}</H4> : <div></div>}</AlignDiv>
             {closeIcon && (
               <StyledCloseBtn>
                 <LMAsset
@@ -61,14 +65,14 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           </StyledHeader>
 
           <ScrollDiv>
-            <StyledModalChildrenContainer direction="column">
-              {description && <Text>{description}</Text>}
-              {children}
-            </StyledModalChildrenContainer>
+            <StyledDialougeChildrenContainer direction="column">
+              <AlignDiv contentAlign={contentAlign}>{description && <Text>{description}</Text>}</AlignDiv>
+              <AlignDiv contentAlign={contentAlign}>{children}</AlignDiv>
+            </StyledDialougeChildrenContainer>
           </ScrollDiv>
 
           {actionBtnType != "none" && (
-            <StyledModalFooter actionBtnAlign={actionBtnAlign} direction="row">
+            <StyledDialougeFooter direction="column">
               {(actionBtnType == "both" || actionBtnType == "primary") && (
                 <Button
                   type="fill"
@@ -100,10 +104,10 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
                   backgroundColor={color.medium100}
                 />
               )}
-            </StyledModalFooter>
+            </StyledDialougeFooter>
           )}
-        </StyledModalContent>
-      </StyledModal>
+        </StyledDialougeContent>
+      </StyledDialouge>
     );
   }
 );
