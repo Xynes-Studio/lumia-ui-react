@@ -17,6 +17,8 @@ const TextareaComponent: React.ForwardRefRenderFunction<
     label,
     errorMessage,
     placeholder = "Enter your text",
+    onChange,
+    value,
     ...props
   },
   ref
@@ -50,6 +52,8 @@ const TextareaComponent: React.ForwardRefRenderFunction<
           aria-describedby={errorMessage}
           placeholder={placeholder}
           className={cx(props.className)}
+          onChange={onChange}
+          value={value}
           ref={ref}
           rows={4}
           cols={40}
