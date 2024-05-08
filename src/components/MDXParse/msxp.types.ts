@@ -6,5 +6,4 @@ export interface MDXParseProps
     HTMLDivElement
   > {
   markdown: string,
-  codeClassName?: string;
 }

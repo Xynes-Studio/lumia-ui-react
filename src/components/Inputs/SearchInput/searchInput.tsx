@@ -36,6 +36,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     if (autoSearch && handleSearch) handleSearch({ value: debouncedText });
   }, [debouncedText, handleSearch, autoSearch]);
 
+
   const SearchInputContainer = styled(Flex)`
     position: relative;
   `;
@@ -53,11 +54,9 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   const SearchInput = styled.input`
     font-size: ${typography?.size?.input};
   `;
-
   const SearchResultsWrapper = styled(SearchInputWrapper)`
     top: 18vh;
   `;
-
   return (
     <SearchInputContainer
       direction="column"
