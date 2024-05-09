@@ -7,7 +7,8 @@
  * Copyright (c) 2018-2021, Костя Третяк. (MIT Licensed)
  * https://github.com/ts-stack/markdown
  */
-
+/* eslint-disable */
+// @ts-nocheck 
 import { ExtendRegexp } from './extend-regexp';
 import {
   Link,

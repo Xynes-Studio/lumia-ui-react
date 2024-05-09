@@ -32,14 +32,15 @@ export class Renderer {
       }
     }
 
-    const escapedCode = (escaped ? code : this.options.escape(code, true));
-    console.log(escapedCode);
+    let escapedCode = code //(escaped ? code : this.options.escape(code, true));
+    escapedCode = btoa(escapedCode);
+    //console.log(escapedCode);
     if (!lang) {
-      return `\n<Code code="${escapedCode}" language="auto" />\n`;
+      return `\n<Code code="${escapedCode}" babel="true" language="auto" />\n`;
     }
 
     const className = this.options.langPrefix + this.options.escape(lang, true);
-    return `\n<Code codeClassName="${className}" code="${escapedCode}" language="auto" />\n`;
+    return `\n<Code codeClassName="${className}" code="${escapedCode}" babel="true" language="${lang}" />\n`;
     //return `\n<pre><code className="${className}">${escapedCode}</code><pre>\n`;
   }
 
@@ -58,41 +59,51 @@ export class Renderer {
   }
 
   hr(): string {
-    return this.options.xhtml ? '<hr/>\n' : '<hr>\n';
+    return this.options.xhtml ? '<hr/>\n' : '<hr/>\n';
   }
 
   list(body: string, ordered?: boolean): string {
     const type = ordered ? 'ol' : 'ul';
 
-    return `\n<${type}>\n${body}</${type}>\n`;
+    return `\n<Flex direction = "column"> ${body} </Flex>\n`;
   }
 
   listitem(text: string): string {
-    return '<li>' + text + '</li>\n';
+    return '<Row><Text>&bull; ' + text + '</Text></Row>\n';
   }
 
   paragraph(text: string): string {
-    return '<p>' + text + '</p>\n';
+    return '<Text>' + text + '</Text>\n';
   }
 
   table(header: string, body: string): string {
+    console.log(header);
     return `
-<table>
-<thead>
-${header}</thead>
-<tbody>
-${body}</tbody>
-</table>
+      <Flex direction = "column">
+        <Flex direction = "column">${header}</Flex>
+        <Flex direction = "column">${body}</Flex>
+        
+      </Flex>
 `;
   }
 
-  tablerow(content: string): string {
-    return '<tr>\n' + content + '</tr>\n';
+  tablerow(content: string, len: number): string {
+    let arr=[];
+    for(let i=0;i<len;i++){
+      arr.push(1/len);
+    }
+    let w=JSON.stringify(arr);
+    console.log(len,w);
+    return '<Row styleType="alternative-fill" weight={'+w+'}>\n' + content + '</Row>\n';
   }
 
   tablecell(content: string, flags: { header?: boolean; align?: Align }): string {
-    const type = flags.header ? 'th' : 'td';
-    const tag = flags.align ? '<' + type + ' style="text-align:' + flags.align + '">' : '<' + type + '>';
+    if (content==""){
+      content="_"
+    }
+    const type = flags.header ? 'Text' : 'Text';
+    //let tag = flags.align ? '<' + type + ' style={{textAlign:"' + flags.align + '"}}>' : '<' + type + '>';
+    let tag= flags.header ? `<${type} style={{fontWeight:'bold'}}>`:'<' + type + '>';
     return tag + content + '</' + type + '>\n';
   }
 
@@ -107,11 +118,11 @@ ${body}</tbody>
   }
 
   codespan(text: string): string {
-    return '<Code code="'+text+'" language="auto"/>' ;
+    return '<Code code="' + text + '" language="auto" span="true"/>';
   }
 
   br(): string {
-    return this.options.xhtml ? '<br/>' : '<br>';
+    return this.options.xhtml ? '<br/>' : '<br/>';
   }
 
   del(text: string): string {
@@ -135,19 +146,19 @@ ${body}</tbody>
       }
     }
 
-    let out = '<a href="' + href + '"';
+    let out = '<Link href="' + href + '"';
 
     if (title) {
       out += ' title="' + title + '"';
     }
 
-    out += '>' + text + '</a>';
+    out += '>' + text + '</Link>';
 
     return out;
   }
 
   image(href: string, title: string, text: string): string {
-    let out = '<Image source="' + href + '" alt="' + text + '" fit="scale-down"';
+    let out = '<Image style={{width: "fit-content", height: "fit-content"}} source="' + href + '" alt="' + text + '" fit="scale-down"';
 
     if (title) {
       out += ' title="' + title + '" overlay="true"';

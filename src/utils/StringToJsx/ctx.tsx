@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {TransformOptions} from '@babel/core';
 import type {TBabel, TReact, IStringToReactApi} from './types.d';
 import {FC, PropsWithChildren} from 'react';
