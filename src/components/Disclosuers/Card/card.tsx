@@ -4,11 +4,7 @@ import { CardProps } from "./card.type";
 import styled from "styled-components";
 import { Flex } from "@app/View";
 import { Text } from "@texts/index";
-import { Button } from "@components/Button/button";
 import { Switch } from "@components/Switch/switch";
-import { Image } from "@app/View";
-import { LMAsset } from "@utils/LumiaAssetManager";
-import { LmCkCheckCircle } from "@icons/lmCkCheckCircle";
 import { cx } from "@utils/cx";
 import { spacing, strokes, color } from "@shared/styles";
 
@@ -22,55 +18,39 @@ const CardComponent: React.ForwardRefRenderFunction<
     title,
     description,
     displaySwitch,
+    toggleValue = false,
     onToggle,
     actionElement,
     width = "22vw",
-    height = "45vh",
     ...props
   },
   ref
 ) => {
   const CardContainer = styled(Flex)`
     width: ${width};
-    /* height: ${height}; */
-    /* background-color: red; */
-    border: 1px solid black;
-    border-radius: 1vw;
-    padding: 1.2vw;
+    padding: ${spacing?.padding?.p4};
+    border-radius: ${spacing?.borderRadius?.r3};
+    background-color: ${type !== "outlined" && type !== "default"
+      ? color?.foregroundInverse300
+      : "none"};
+    border: ${type !== "fill" && type !== "default"
+      ? `${strokes?.s0} solid ${color?.border100}`
+      : "null"};
   `;
 
   const ImageContainer = styled(Flex)`
-    width: 100%;
-    height: 50%;
-    background-color: green;
-    border-radius: 0.8vw 0.8vw 0 0;
-    overflow: hidden;
-    position: relative;
+    border-radius: ${spacing?.padding?.p2} ${spacing?.padding?.p2} 0 0;
   `;
 
-  const InfoContainer = styled(Flex)`
-    width: 100%;
-    height: 50%;
-    /* background-color: blue; */
-    justify-content: flex-start;
-    position: relative;
-  `;
+  const CardImage = styled.img``;
 
-  const SwitchWrapper = styled(Flex)`
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-  `;
+  const InfoContainer = styled(Flex)``;
 
-  const CardTitle = styled(Text)`
-    flex: 1;
-    font-weight: 600;
-    margin: 0;
-  `;
+  const SwitchWrapper = styled(Flex)``;
+
+  const CardTitle = styled(Text)``;
 
   const CardDesc = styled(Text)`
-    width: 70%;
-    margin: 0;
     margin-top: 1.5vh;
   `;
 
@@ -81,16 +61,14 @@ const CardComponent: React.ForwardRefRenderFunction<
       ref={ref}
       {...props}
     >
-      <ImageContainer className={cx("lmImageContainer")}>
-        <Image
-          style={{ width: "100%", height: "100%" }}
-          className={cx("lmCardImage")}
-          source="https://images.pexels.com/photos/1002638/pexels-photo-1002638.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        />
-        {/* <Button icon={LmCkCheckCircle} className={cx("lmCardAction")} /> */}
+      <ImageContainer className={cx("lmCardImageContainer")}>
+        {image !== undefined ? (
+          <CardImage className={cx("lmCardImage")} src={image} />
+        ) : null}
+        {actionElement !== undefined ? actionElement : null}
       </ImageContainer>
       <InfoContainer direction="column" className={cx("lmInfoContainer")}>
-        <SwitchWrapper>
+        <SwitchWrapper className={cx("lmCardSwitchWrapper")}>
           <CardTitle
             textCase="capitalize"
             numberOfLines={2}
@@ -98,9 +76,15 @@ const CardComponent: React.ForwardRefRenderFunction<
           >
             {title}
           </CardTitle>
-          <Switch style={{ margin: 0 }} value={true} />
+          {displaySwitch ? (
+            <Switch
+              style={{ margin: 0 }}
+              value={toggleValue}
+              onToggle={onToggle}
+            />
+          ) : null}
         </SwitchWrapper>
-        <CardDesc type="caption" className={cx("lmCardDesc")}>
+        <CardDesc numberOfLines={4} type="caption" className={cx("lmCardDesc")}>
           {description}
         </CardDesc>
       </InfoContainer>

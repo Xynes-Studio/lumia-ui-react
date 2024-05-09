@@ -2,16 +2,49 @@
 }
 
 .lmCardTitle {
+  width: 100%;
+  flex: 1;
+  font-weight: 600;
+  margin: 0;
+}
+
+.lmCardDesc {
+  width: 100%;
+  margin: 0;
+}
+
+.lmCardImageContainer {
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+  position: relative;
 }
 
 .lmCardImage {
   width: 100%;
   height: 100%;
+  object-fit: fill;
   margin: 0px;
   padding: 0px;
   border-radius: 0px;
+  filter: brightness(80%);
 }
 
-/* .lmCardAction {
+.lmCardAction {
   position: absolute;
-} */
+  top: 0.5vw;
+  right: 0.5vw;
+}
+
+.lmInfoContainer {
+  width: 100%;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.lmCardSwitchWrapper {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2vh;
+}

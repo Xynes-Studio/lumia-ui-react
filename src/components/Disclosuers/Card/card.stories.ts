@@ -17,26 +17,33 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     type: "default",
-    image: "",
+    image:
+      "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Title Goes here Title Goes here Title Goes here",
     description: "Borem ipsum dolor sit amet, consectetur adipiscing elit.",
+    displaySwitch: true,
   },
 };
 
 export const Fill: Story = {
   args: {
     type: "fill",
-    image: "",
+    image:
+      "https://images.pexels.com/photos/1595243/pexels-photo-1595243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Title Goes here",
     description: "Borem ipsum dolor sit amet, consectetur adipiscing elit.",
+    displaySwitch: true,
   },
 };
 
 export const Outlined: Story = {
   args: {
     type: "outlined",
-    image: "",
+    image:
+      "https://images.pexels.com/photos/1595243/pexels-photo-1595243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Title Goes here",
     description: "Borem ipsum dolor sit amet, consectetur adipiscing elit.",
+    displaySwitch: false,
+    actionElement: undefined,
   },
 };
