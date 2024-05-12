@@ -10,7 +10,7 @@ export const SearchInputWrapper = styled(Flex)<{type:string}>`
     ? color?.foregroundInverse400
     : "none"};
   border: ${props=>props.type === "outline"
-    ? `${strokes?.s0} solid ${color?.border1}`
+    ? `${strokes?.s0} solid ${color?.border100}`
     : "null"};
   padding: ${spacing?.padding?.p0} ${spacing?.padding?.p2};
   border-radius: ${spacing?.borderRadius?.r0};

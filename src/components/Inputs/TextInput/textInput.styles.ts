@@ -9,7 +9,7 @@ export const InputWrapper = styled(Flex)<{type:string}>`
       ? color?.foregroundInverse400
       : "none"};
     border: ${props=>props.type !== "fill"
-      ? `${strokes?.s0} solid ${color?.border1}`
+      ? `${strokes?.s0} solid ${color?.border100}`
       : "null"};
     align-items: center;
   `;
