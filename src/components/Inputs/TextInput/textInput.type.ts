@@ -7,6 +7,7 @@ export interface TextInputProps
   label?: string;
   errorMessage?: string;
   placeholder?: string;
-  onValueChange: (value: string) => void;
-  value: string;
+  onValueChange?: (value: string) => void;
+  value?: string;
+  validations?:((...args: unknown[])=>void)[]
 }
