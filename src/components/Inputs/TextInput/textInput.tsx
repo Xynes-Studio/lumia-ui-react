@@ -23,7 +23,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
     errorMessage,
     placeholder = "Enter your text",
     value,
-    onValueChange,
+    onChange,
     validations,
     ...props
   },
@@ -68,7 +68,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
           className={cx(props.className)}
           ref={ref}
           value={value || ""}
-          onChange={(e) => onValueChange && onValueChange(e.target.value)}
+          onChange={onChange}
           {...props}
         />
         {inputType === "password" ? (

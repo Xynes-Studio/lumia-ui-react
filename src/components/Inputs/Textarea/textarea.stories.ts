@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Textarea } from "./textarea";
+import { maxLength } from "@utils/Validations";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: "Inputs/Textarea",
@@ -19,6 +20,7 @@ export const Fill: Story = {
     label: "Label",
     errorMessage: "Error Message",
     placeholder: "Placeholder",
+    validations:[maxLength(50)]
   },
 };
 

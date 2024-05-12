@@ -7,7 +7,7 @@ export interface TextInputProps
   label?: string;
   errorMessage?: string;
   placeholder?: string;
-  onValueChange?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   validations?:((...args: unknown[])=>void)[]
 }
