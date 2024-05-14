@@ -14,4 +14,5 @@ export interface SearchInputProps<T = any>
   dataset?: T[];
   renderItem?: (item: T, index: number) => React.JSX.Element;
   placeholder?: string;
+  onValueChange?: (value: string) => void;
 }

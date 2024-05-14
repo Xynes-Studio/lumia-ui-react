@@ -1,12 +1,12 @@
 "use client";
-import React, { forwardRef } from "react";
-import { TextAreaProps } from "./textarea.type";
-import styled from "styled-components";
-import { cx } from "@utils/cx";
-import { Text } from "@texts/Text/Text";
-import { color, spacing, strokes, typography } from "@shared/styles";
-import "./textarea.styles.css";
 import { Flex } from "@app/View";
+import { Text } from "@texts/Text/Text";
+import { cx } from "@utils/cx";
+import React, { forwardRef, useEffect, useState } from "react";
+import { InputWrapper, TextareaContainer } from "./textarea.styles";
+import "./textarea.styles.css";
+import { TextAreaProps } from "./textarea.type";
+import { MyError } from "@utils/Validations";
 
 const TextareaComponent: React.ForwardRefRenderFunction<
   HTMLTextAreaElement,
@@ -19,26 +19,34 @@ const TextareaComponent: React.ForwardRefRenderFunction<
     placeholder = "Enter your text",
     onChange,
     value,
+    validations,
     ...props
   },
   ref
 ) => {
-  const InputWrapper = styled(Flex)`
-    padding: ${spacing?.padding?.p0} ${spacing?.padding?.p0};
-    border-radius: ${spacing?.borderRadius?.r0};
-    background-color: ${type !== "outline-only"
-      ? color?.foregroundInverse400
-      : "none"};
-    border: ${type !== "fill"
-      ? `${strokes?.s0} solid ${color?.border100}`
-      : "null"};
-    align-items: center;
-  `;
-  const TextareaContainer = styled.textarea`
-    font-size: ${typography?.size?.input};
-    width: 100%;
-  `;
 
+  useEffect(() => {
+    setErrMsg(null);
+    if (validations && validations.length > 0) {
+      for (let i = 0; i < validations.length; i++) {
+        const fn = validations[i].bind(this, value);
+        try {
+          fn();
+        } catch (ex: unknown) {
+          let err:MyError;
+          if(ex instanceof MyError){
+            err = ex as MyError;
+            setErrMsg(err.message);
+          }else{
+            err = ex as Error;
+            setErrMsg(label + " " + err.message);
+          }
+          break;
+        }
+      }
+    }
+  }, [value, validations, label]);
+  
   return (
     <Flex direction="column">
       {label !== undefined ? (
@@ -46,7 +54,7 @@ const TextareaComponent: React.ForwardRefRenderFunction<
           {label}
         </Text>
       ) : null}
-      <InputWrapper direction="row">
+      <InputWrapper type={type} direction="row">
         <TextareaContainer
           aria-labelledby={label}
           aria-describedby={errorMessage}
@@ -60,9 +68,9 @@ const TextareaComponent: React.ForwardRefRenderFunction<
           {...props}
         />
       </InputWrapper>
-      {errorMessage !== undefined ? (
-        <Text type="error">{errorMessage}</Text>
-      ) : null}
+      {errorMessage && <Text type="error">{errorMessage}</Text>}
+
+      {(!errorMessage || errorMessage?.trim()=='')  && errMsg && <Text type="error">{errMsg}</Text>}
     </Flex>
   );
 };

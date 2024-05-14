@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useRef, useEffect, forwardRef } from "react";
-import styled from "styled-components";
-import { PinInputProps } from "./pinInput.types";
 import { Flex } from "@app/View";
-import PinInputFields from "./components/pinInputField"; // Importing the new component
 import { Text } from "@texts/Text/Text";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
+import PinInputFields from "./components/pinInputField"; // Importing the new component
+import { PinInputContainer } from "./pinInput.style";
+import { PinInputProps } from "./pinInput.types";
+import { MyError } from "@utils/Validations";
 
 const PinInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -17,15 +18,35 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     value,
     fillType = "fill",
     labelPosition = "start",
+    validations
   },
   ref
 ) => {
   const [pinValue, setPinValue] = useState(value);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
+  const [errMsg, setErrMsg] = useState<string | null>(null);
   useEffect(() => {
     onValueChange(pinValue);
-  }, [onValueChange, pinValue]);
+    setErrMsg(null);
+    if (validations && validations.length > 0) {
+      for (let i = 0; i < validations.length; i++) {
+        const fn = validations[i].bind(this, value);
+        try {
+          fn();
+        } catch (ex: unknown) {
+          let err:MyError;
+          if(ex instanceof MyError){
+            err = ex as MyError;
+            setErrMsg(err.message);
+          }else{
+            err = ex as Error;
+            setErrMsg(label + " " + err.message);
+          }
+          break;
+        }
+      }
+    }
+  }, [label, onValueChange, pinValue, validations, value]);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -67,7 +88,6 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     }
   };
 
-  const PinInputContainer = styled(Flex)``;
 
   return (
     <>
@@ -100,6 +120,7 @@ const PinInputComponent: React.ForwardRefRenderFunction<
             />
           ))}
         </PinInputContainer>
+        {errMsg && <Text type="error">{errMsg}</Text>}
       </Flex>
     </>
   );

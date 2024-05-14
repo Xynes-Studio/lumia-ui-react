@@ -8,4 +8,5 @@ export interface TextAreaProps
   placeholder?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   value?: string;
+  validations?:((...args: unknown[])=>void)[]
 }

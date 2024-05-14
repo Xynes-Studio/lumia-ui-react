@@ -1,43 +1,42 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Textarea } from "./textarea";
-import { maxLength } from "@utils/Validations";
+import { Slider } from "./slider";
+
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Inputs/Textarea",
-  component: Textarea,
+  title: "Inputs/Slider",
+  component: Slider,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-} satisfies Meta<typeof Textarea>;
+} satisfies Meta<typeof Slider>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Fill: Story = {
+export const Slide: Story = {
   args: {
-    type: "fill",
+    type: "slide",
     label: "Label",
-    errorMessage: "Error Message",
-    placeholder: "Placeholder",
-    validations:[maxLength(50)]
+    value: 50,
+    showPercentage: false,
   },
 };
 
-export const Outlined: Story = {
+export const Progress: Story = {
   args: {
-    type: "outlined",
+    type: "progress",
     label: "Label",
-    errorMessage: "Error Message",
-    placeholder: "Placeholder",
+    value: 50,
+    showPercentage: false,
   },
 };
 
-export const OutlineOnly: Story = {
+export const ProgressPercentage: Story = {
   args: {
-    type: "outline-only",
+    type: "progress",
     label: "Label",
-    // errorMessage: "Error Message",
-    placeholder: "Placeholder",
+    value: 50,
+    showPercentage: true,
   },
 };

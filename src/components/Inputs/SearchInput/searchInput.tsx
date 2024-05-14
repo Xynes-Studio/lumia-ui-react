@@ -1,17 +1,15 @@
 "use client";
-import React, { forwardRef, useEffect } from "react";
-import { SearchInputProps } from "./searchInput.type";
-import styled from "styled-components";
-import { cx } from "@utils/cx";
-import { Text } from "@texts/index";
-import { Flex } from "@app/View";
-import { color, spacing, strokes, typography, shadow } from "@shared/styles";
-import { LmCkSearch } from "@icons/lmCkSearch";
-import { LmCkChevronDown } from "@icons/lmCkChevronDown";
-import useDebounce from "./hooks/useDebounce";
 import { Button } from "@components/Button/button";
-import "./searchInput.styles.css";
+import { LmCkChevronDown } from "@icons/lmCkChevronDown";
+import { LmCkSearch } from "@icons/lmCkSearch";
+import { Text } from "@texts/index";
+import { cx } from "@utils/cx";
+import React, { forwardRef, useEffect } from "react";
 import SearchResultsComponent from "./components/searchResults/searchResults";
+import useDebounce from "./hooks/useDebounce";
+import { SearchInputContainer, SearchInputStyle, SearchInputWrapper, SearchResultsWrapper } from "./searchInput.style";
+import "./searchInput.styles.css";
+import { SearchInputProps } from "./searchInput.type";
 
 const SearchInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -24,6 +22,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     autoSearch = false,
     handleSearch,
     searchString = "",
+    onValueChange,
     placeholder = "",
     suggestions = true,
     ...props
@@ -37,26 +36,8 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   }, [debouncedText, handleSearch, autoSearch]);
 
 
-  const SearchInputContainer = styled(Flex)`
-    position: relative;
-  `;
-  const SearchInputWrapper = styled(Flex)`
-    background-color: ${type === "default"
-      ? color?.foregroundInverse400
-      : "none"};
-    border: ${type === "outline"
-      ? `${strokes?.s0} solid ${color?.border100}`
-      : "null"};
-    padding: ${spacing?.padding?.p0} ${spacing?.padding?.p2};
-    border-radius: ${spacing?.borderRadius?.r0};
-    box-shadow: ${type === "shadow" ? shadow : "none"};
-  `;
-  const SearchInput = styled.input`
-    font-size: ${typography?.size?.input};
-  `;
-  const SearchResultsWrapper = styled(SearchInputWrapper)`
-    top: 18vh;
-  `;
+  
+
   return (
     <SearchInputContainer
       direction="column"
@@ -64,14 +45,17 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     >
       {label !== undefined ? <Text>{label}</Text> : null}
       <SearchInputWrapper
+        type={type}
         direction="row"
         className={cx("lmSearchInputWrapper")}
       >
-        <SearchInput
-          type="text"
+        <SearchInputStyle
           placeholder={placeholder}
+          type="text"
+          value={searchString}
           className={cx("lmSearchInput")}
           ref={ref}
+          onChange={(e) => onValueChange && onValueChange(e.target.value)}
           {...props}
         />
         {inputType === "search" ? (
@@ -90,6 +74,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
       </SearchInputWrapper>
       {props.dataset && suggestions && (
         <SearchResultsWrapper
+        type={type}
           className={cx("lmSearchResultContainer", props.className)}
         >
           <SearchResultsComponent {...props} />

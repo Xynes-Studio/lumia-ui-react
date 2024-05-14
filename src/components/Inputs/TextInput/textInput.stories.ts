@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { date, required } from "@utils/Validations";
 import { TextInput } from "./textInput";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -7,6 +8,9 @@ const meta = {
   component: TextInput,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
+  args:{
+    validations:[required,date.isBetween(new Date("2024-05-01"),new Date("2024-05-31"))]
+  }
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
 } satisfies Meta<typeof TextInput>;
 
@@ -19,7 +23,6 @@ export const Fill: Story = {
     type: "fill",
     inputType: "text",
     label: "Label",
-    errorMessage: "Error Message",
     placeholder: "Placeholder",
   },
 };

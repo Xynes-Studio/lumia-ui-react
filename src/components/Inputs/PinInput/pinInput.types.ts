@@ -4,5 +4,6 @@ export interface PinInputProps {
   onValueChange: (pinValue: string) => void;
   value: string;
   label?: string;
-  labelPosition?: 'center' | 'start' | 'end'
+  labelPosition?: 'center' | 'start' | 'end';
+  validations?:((...args: unknown[])=>void)[]
 }
