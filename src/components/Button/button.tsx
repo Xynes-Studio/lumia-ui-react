@@ -23,6 +23,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     backgroundColor,
     borderColor = globalColor?.border100,
     borderRadius = spacing?.borderRadius?.r0,
+    textCase = 'uppercase',
     iconSize = 0.8,
     ...props
   },
@@ -49,7 +50,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
           />
         ) : null}
         {label != undefined && (
-          <Text color={color} type="caption" textCase="uppercase">
+          <Text color={color} type="caption" textCase={textCase}>
             {label}
           </Text>
         )}

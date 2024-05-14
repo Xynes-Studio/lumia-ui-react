@@ -8,7 +8,7 @@ const StyledRow = styled(Flex)<RowProps>`
   ${({ styleType }) => {
     switch (styleType) {
       case "outline":
-        return ({ index }) => index && index !== 0 && `border-top: ${strokes.s1} solid ${color.border};`;
+        return ({ index }) => index && index !== 0 && `border-top: ${strokes.s0} solid ${color.border};`;
       case "alternative-fill":
         return `background-color: ${({ index }: { index: number }) =>
           index && index % 2 === 0
