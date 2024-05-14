@@ -141,7 +141,6 @@ export class Parser {
 
         // header
         cell = '';
-        const len=this.token.header.length;
         for (let i = 0; i < this.token.header.length; i++) {
           const flags = { header: true, align: this.token.align[i] };
           const out = this.inlineLexer.output(this.token.header[i]);
@@ -149,22 +148,19 @@ export class Parser {
           cell += this.renderer.tablecell(out, flags);
         }
 
-        header += this.renderer.tablerow(cell,len);
+        header += this.renderer.tablerow(cell);
 
+        let dataset=[];
         for (const row of this.token.cells) {
           cell = '';
-          const len=row.length;
+          let dataRow={};
           for (let j = 0; j < row.length; j++) {
-            cell += this.renderer.tablecell(this.inlineLexer.output(row[j]), {
-              header: false,
-              align: this.token.align[j]
-            });
+            dataRow[j]=this.options.unescape(this.inlineLexer.output(row[j]));
           }
 
-          body += this.renderer.tablerow(cell,len);
+          dataset.push(dataRow);
         }
-
-        return this.renderer.table(header, body);
+        return this.renderer.table(header,JSON.stringify(dataset));
       }
       case TokenType.blockquoteStart: {
         let body = '';
