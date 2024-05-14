@@ -1,8 +1,7 @@
 import { Row } from "@app/View";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Text } from "@texts/index";
 import { SearchInput } from "./searchInput";
-
+import { Text } from "@texts/index";
 interface ListItem {
   id: number;
   content: string;
