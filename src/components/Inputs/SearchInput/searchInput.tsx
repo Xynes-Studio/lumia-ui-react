@@ -33,7 +33,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   const debouncedText = useDebounce(searchString, 500);
 
   useEffect(() => {
-    if (autoSearch && handleSearch) handleSearch({ value: debouncedText });
+    if (autoSearch && handleSearch) handleSearch(debouncedText);
   }, [debouncedText, handleSearch, autoSearch]);
 
   const SearchInputContainer = styled(Flex)`
@@ -80,8 +80,8 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
             type="label"
             icon={LmCkSearch}
             onClick={() => {
-              if (!autoSearch && handleSearch) {
-                handleSearch({ value: searchString });
+              if (handleSearch) {
+                handleSearch(searchString);
               }
             }}
           />

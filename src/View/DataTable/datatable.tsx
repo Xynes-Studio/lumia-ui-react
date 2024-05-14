@@ -71,7 +71,8 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
       setFilteredDataset(filterDataset(dataset, searchString));
     }, [dataset, searchString]);
 
-    const handleSearch = ({ value }: { value: string }) => {
+    const handleSearch = (value: string ) => {
+      console.log(value, "this");   
       setSearchString(value);
     };
 
@@ -84,6 +85,7 @@ const DataTable = forwardRef<HTMLDivElement, DataTableProps<DataTableItemType>>(
             autoSearch={true}
             suggestions={false}
             handleSearch={handleSearch}
+            searchString={searchString}
             placeholder="Search"
           />
         </SearchContainer>
