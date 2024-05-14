@@ -24,7 +24,7 @@ const TextareaComponent: React.ForwardRefRenderFunction<
   },
   ref
 ) => {
-
+  const [errMsg, setErrMsg] = useState<string | null>();
   useEffect(() => {
     setErrMsg(null);
     if (validations && validations.length > 0) {
@@ -33,11 +33,11 @@ const TextareaComponent: React.ForwardRefRenderFunction<
         try {
           fn();
         } catch (ex: unknown) {
-          let err:MyError;
-          if(ex instanceof MyError){
+          let err: MyError;
+          if (ex instanceof MyError) {
             err = ex as MyError;
             setErrMsg(err.message);
-          }else{
+          } else {
             err = ex as Error;
             setErrMsg(label + " " + err.message);
           }
@@ -46,7 +46,7 @@ const TextareaComponent: React.ForwardRefRenderFunction<
       }
     }
   }, [value, validations, label]);
-  
+
   return (
     <Flex direction="column">
       {label !== undefined ? (
@@ -70,7 +70,9 @@ const TextareaComponent: React.ForwardRefRenderFunction<
       </InputWrapper>
       {errorMessage && <Text type="error">{errorMessage}</Text>}
 
-      {(!errorMessage || errorMessage?.trim()=='')  && errMsg && <Text type="error">{errMsg}</Text>}
+      {(!errorMessage || errorMessage?.trim() == "") && errMsg && (
+        <Text type="error">{errMsg}</Text>
+      )}
     </Flex>
   );
 };
