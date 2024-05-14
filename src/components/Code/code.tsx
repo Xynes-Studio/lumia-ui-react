@@ -19,37 +19,46 @@ import { typography } from "@shared/styles";
 const CodeComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   CodeProps
-> = ({ code, editable = false, ...props }, ref) => {
+> = ({ span = false, babel = false, code, editable = false, ...props }, ref) => {
   const [formattedCode, setFormattedCode] = useState<JSX.Element | string | null>(null);
 
   useEffect(() => {
     switch (props.language) {
       case "html":
-        setFormattedCode(formatHTML(code));
+        setFormattedCode(formatHTML(code, babel));
         break;
       case "css":
-        setFormattedCode(formatCSS(code));
+        setFormattedCode(formatCSS(code, babel));
         break;
       case "rust":
-        setFormattedCode(formatRust(code));
+        setFormattedCode(formatRust(code, babel));
         break;
       case "sql":
-        setFormattedCode(formatSQL(code));
+        setFormattedCode(formatSQL(code, babel));
         break;
       case "php":
-        setFormattedCode(formatPHP(code));
+        setFormattedCode(formatPHP(code, babel));
         break;
       case "python":
-        setFormattedCode(formatPython(code));
+        setFormattedCode(formatPython(code, babel));
         break;
       case "JS":
-        setFormattedCode(formatCodeJS(code));
+        setFormattedCode(formatCodeJS(code, babel));
+        break;
+      case "jsx":
+        setFormattedCode(formatCodeJS(code, babel));
+        break;
+      case "javascript":
+        setFormattedCode(formatCodeJS(code, babel));
+        break;
+      case "js":
+        setFormattedCode(formatCodeJS(code, babel));
         break;
       default:
-        setFormattedCode(formatCode(code));
+        setFormattedCode(formatCode(code, babel));
         break;
     }
-  }, [code, props.language]);
+  }, [code, props.language, babel]);
 
   const StyledCode = styled.code`
     font-family: ${typography.type.code};
@@ -65,22 +74,31 @@ const CodeComponent: React.ForwardRefRenderFunction<
     console.log("Value:", value);
   };
   return (
-    <div
-      ref={ref}
-      contentEditable={editable}
-      onKeyDown={handleKeyDown}
-      className={cx(props.className)}
-      {...props}
-    >
-      <pre>
+    !span ?
+      <div
+        ref={ref}
+        contentEditable={editable}
+        onKeyDown={handleKeyDown}
+        className={cx(props.className)}
+        {...props}
+      >
+        <pre>
+          <StyledCode className={cx(`language-${props.language}`)}>
+            {formattedCode}
+          </StyledCode>
+        </pre>
+
+      </div> :
+      <span ref={ref}
+        contentEditable={editable}
+        onKeyDown={handleKeyDown}
+        className={cx(props.className)}
+        {...props}
+      >
         <StyledCode className={cx(`language-${props.language}`)}>
-          <pre>
-         {formattedCode}
-         </pre>
+          {formattedCode}
         </StyledCode>
-      </pre>
-      
-    </div>
+      </span>
   );
 };
 

@@ -1,18 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { date, required } from "@utils/Validations";
-import { TextInput } from "./textInput";
-
+import { Textarea } from "./textarea";
+import { maxLength } from "@utils/Validations";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Inputs/TextInput",
-  component: TextInput,
+  title: "Inputs/Textarea",
+  component: Textarea,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
-  args:{
-    validations:[required,date.isBetween(new Date("2024-05-01"),new Date("2024-05-31"))]
-  }
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-} satisfies Meta<typeof TextInput>;
+} satisfies Meta<typeof Textarea>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -21,16 +17,16 @@ type Story = StoryObj<typeof meta>;
 export const Fill: Story = {
   args: {
     type: "fill",
-    inputType: "text",
     label: "Label",
+    errorMessage: "Error Message",
     placeholder: "Placeholder",
+    validations:[maxLength(50)]
   },
 };
 
 export const Outlined: Story = {
   args: {
     type: "outlined",
-    inputType: "email",
     label: "Label",
     errorMessage: "Error Message",
     placeholder: "Placeholder",
@@ -40,7 +36,6 @@ export const Outlined: Story = {
 export const OutlineOnly: Story = {
   args: {
     type: "outline-only",
-    inputType: "password",
     label: "Label",
     // errorMessage: "Error Message",
     placeholder: "Placeholder",
