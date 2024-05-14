@@ -1,35 +1,30 @@
 "use client";
 import { Flex } from "@app/View";
-import { Button } from "@components/Button/button";
-import { LmHide } from "@icons/lmHide";
-import { LmShow } from "@icons/lmShow";
-import { color } from "@shared/styles";
 import { Text } from "@texts/Text/Text";
 import { cx } from "@utils/cx";
 import React, { forwardRef, useEffect, useState } from "react";
-import { InputWrapper, TextInputContainer } from "./textInput.styles";
-import { TextInputProps } from "./textInput.type";
+import { InputWrapper, TextareaContainer } from "./textarea.styles";
+import "./textarea.styles.css";
+import { TextAreaProps } from "./textarea.type";
 import { MyError } from "@utils/Validations";
 
-
-const TextInputComponent: React.ForwardRefRenderFunction<
-  HTMLInputElement,
-  TextInputProps
+const TextareaComponent: React.ForwardRefRenderFunction<
+  HTMLTextAreaElement,
+  TextAreaProps
 > = (
   {
     type = "fill",
-    inputType = "text",
     label,
     errorMessage,
     placeholder = "Enter your text",
-    value,
     onChange,
+    value,
     validations,
     ...props
   },
   ref
 ) => {
-  const [visible, setVisible] = useState(false);
+  
   const [errMsg, setErrMsg] = useState<string | null>(null);
   useEffect(() => {
     setErrMsg(null);
@@ -52,8 +47,6 @@ const TextInputComponent: React.ForwardRefRenderFunction<
       }
     }
   }, [value, validations, label]);
-  
-
   return (
     <Flex direction="column">
       {label !== undefined ? (
@@ -61,25 +54,19 @@ const TextInputComponent: React.ForwardRefRenderFunction<
           {label}
         </Text>
       ) : null}
-      <InputWrapper type={type} weight={[15, 1]} direction="row">
-        <TextInputContainer
-          type={!visible ? inputType : "text"}
+      <InputWrapper type={type} direction="row">
+        <TextareaContainer
+          aria-labelledby={label}
+          aria-describedby={errorMessage}
           placeholder={placeholder}
           className={cx(props.className)}
-          ref={ref}
-          value={value || ""}
           onChange={onChange}
+          value={value}
+          ref={ref}
+          rows={4}
+          cols={40}
           {...props}
         />
-        {inputType === "password" ? (
-          <Button
-            type="label"
-            icon={visible ? LmHide : LmShow}
-            color={color.foreground}
-            onClick={() => setVisible(!visible)}
-            style={{ padding: 0 }}
-          />
-        ) : null}
       </InputWrapper>
       {errorMessage && <Text type="error">{errorMessage}</Text>}
 
@@ -88,4 +75,4 @@ const TextInputComponent: React.ForwardRefRenderFunction<
   );
 };
 
-export const TextInput = forwardRef(TextInputComponent);
+export const Textarea = forwardRef(TextareaComponent);
