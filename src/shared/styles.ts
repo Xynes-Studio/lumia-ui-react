@@ -39,19 +39,19 @@ export const color: colorTypes = {
 export const spacing: spacingTypes = {
   padding: {
     p0: "0.375rem", // 6px, minimal padding for very tight spaces
-    p1: "0.5rem",   // 8px, small padding for close elements
-    p2: "0.75rem",  // 12px, standard padding, ideal for grouped items
-    p3: "1rem",     // 16px, medium padding, commonly used in containers
-    p4: "1.25rem",  // 20px, moderate padding, good for larger sections
-    p5: "1.5rem",   // 24px, spacious padding, used in major sections or large containers
+    p1: "0.5rem", // 8px, small padding for close elements
+    p2: "0.75rem", // 12px, standard padding, ideal for grouped items
+    p3: "1rem", // 16px, medium padding, commonly used in containers
+    p4: "1.25rem", // 20px, moderate padding, good for larger sections
+    p5: "1.5rem", // 24px, spacious padding, used in major sections or large containers
   },
   borderRadius: {
     r0: "0.25rem", // 4px
-    r1: "0.5rem",  // 8px
+    r1: "0.5rem", // 8px
     r2: "0.75rem", // 12px
-    r3: "1rem",    // 16px
-    r4: "1.5rem",  // 24px
-    r5: "2rem",    // 32px
+    r3: "1rem", // 16px
+    r4: "1.5rem", // 24px
+    r5: "2rem", // 32px
   },
 };
 
@@ -69,24 +69,24 @@ export const typography = {
     black: "900",
   },
   size: {
-    h1: '2.25rem', // 36px
-    h2: '2rem',    // 32px
-    h3: '1.75rem', // 28px
-    h4: '1.5rem',  // 24px
-    h5: '1.25rem', // 20px
-    h6: '1rem',    // 16px
-    text: '1rem',  // 16px, ideal for body text
-    input: '0.875rem', // 14px, typical for form input text
-    caption: '0.75rem', // 12px, for smaller text
-    code: '0.875rem',  // 14px, suitable for code snippets
+    h1: "2.25rem", // 36px
+    h2: "2rem", // 32px
+    h3: "1.75rem", // 28px
+    h4: "1.5rem", // 24px
+    h5: "1.25rem", // 20px
+    h6: "1rem", // 16px
+    text: "1rem", // 16px, ideal for body text
+    input: "0.875rem", // 14px, typical for form input text
+    caption: "0.75rem", // 12px, for smaller text
+    code: "0.875rem", // 14px, suitable for code snippets
   },
 };
 
 export const strokes = {
-  s0: "0.1rem",  // 1.6px, very fine details and subtle divisions
-  s1: "0.2rem",  // 3.2px, fine lines for subtle differentiation
-  s2: "0.4rem",  // 6.4px, medium weight strokes for more visible separation
-  s3: "0.8rem",  // 12.8px, thick strokes for bold statements or accent features
+  s0: "0.1rem", // 1.6px, very fine details and subtle divisions
+  s1: "0.2rem", // 3.2px, fine lines for subtle differentiation
+  s2: "0.4rem", // 6.4px, medium weight strokes for more visible separation
+  s3: "0.8rem", // 12.8px, thick strokes for bold statements or accent features
 };
 
 export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
