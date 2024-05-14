@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { BulletNumberedList } from "./BulletNumberedList";
+import BulletNumberedList from "./BulletNumberedList";
 
 // Define meta information for the ListView component
 const meta: Meta<typeof BulletNumberedList> = {
@@ -15,6 +15,6 @@ type Story = StoryObj<typeof meta>;
 
 export const BulletNumbered: Story = {
   args: {
-    listType: "bulleted-list",
+    listType: "bullet-points",
   },
 };

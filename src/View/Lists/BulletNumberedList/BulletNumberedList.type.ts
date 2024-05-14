@@ -1,14 +1,7 @@
 import React from "react";
 
-interface NumberedListProps extends React.HtmlHTMLAttributes<HTMLOListElement> {
-  listType?: "numbered-list";
-  children?: React.ReactNode;
-  numberedListRef?:  React.MutableRefObject<HTMLOListElement | null>;
-}
-
-interface BulletedListProps extends React.HtmlHTMLAttributes<HTMLUListElement> {
-  listType?: "bullet-points";
+export interface BulletNumberedListProps extends React.HtmlHTMLAttributes<HTMLOListElement | HTMLUListElement> {
+  listType?: "numbered-list" | "bullet-points";
   children?: React.ReactNode;
 }
 
-export type BulletNumberedListProps = NumberedListProps | BulletedListProps;

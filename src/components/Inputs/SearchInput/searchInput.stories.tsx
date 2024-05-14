@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SearchInput } from "./searchInput";
-import React from "react";
 import { Text } from "@texts/index";
 import { Row } from "@app/View";
 
