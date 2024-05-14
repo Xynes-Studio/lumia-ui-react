@@ -10,7 +10,7 @@ export * from "./Inputs/SearchInput/searchInput";
 export * from "./Inputs/Slider/slider";
 export * from "./Inputs/Textarea/textarea";
 export * from "./Button/button";
-export * from "./Disclosuers/Tabs/tabs";
+export * from "./Disclosuers/Tabs/tabs"
 export * from "./Disclosuers/Accordion/accordion";
 export * from "./Disclosuers/Card/card";
 export * from "./Radio/radio";
