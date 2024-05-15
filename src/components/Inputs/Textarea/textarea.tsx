@@ -4,7 +4,6 @@ import { Text } from "@texts/Text/Text";
 import { cx } from "@utils/cx";
 import React, { forwardRef, useEffect, useState } from "react";
 import { InputWrapper, TextareaContainer } from "./textarea.styles";
-import "./textarea.styles.css";
 import { TextAreaProps } from "./textarea.type";
 import { MyError } from "@utils/Validations";
 

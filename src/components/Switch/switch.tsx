@@ -1,11 +1,10 @@
 "use client";
 import { forwardRef, useState } from "react";
 import { SwitchProps } from "./switch.type";
-import styled from "styled-components";
 import { Text } from "@texts/Text/Text";
 import { cx } from "@utils/cx";
-import "./switch.styles.css";
-import { color, neumorphismShadow, spacing } from "@shared/styles";
+import { color } from "@shared/styles";
+import { Indicator, SwitchContainer, StyledSwitch } from "./switch.styles";
 
 const SwitchComponent: React.ForwardRefRenderFunction<
   HTMLButtonElement,
@@ -21,24 +20,12 @@ const SwitchComponent: React.ForwardRefRenderFunction<
   ref
 ) => {
   const [switchVal, setSwitchVal] = useState(value);
-  const SwitchContainer = styled.button`
-    margin: ${spacing.padding.p1};
-  `;
-  const Switch = styled.button`
-    box-shadow: ${neumorphismShadow};
-    background-color: ${switchVal ? activeColor : inactiveColor};
-  `;
-  const Indicator = styled.div`
-    background-color: ${color.foregroundInverse};
-  `;
-
   return (
     <SwitchContainer
       onClick={() => {
         props.onToggle && props.onToggle(!switchVal);
         setSwitchVal(!switchVal);
       }}
-      className={cx("lmSwitchContainer")}
       ref={ref}
       {...props}
     >
@@ -51,11 +38,16 @@ const SwitchComponent: React.ForwardRefRenderFunction<
           {label}
         </Text>
       )}
-      <Switch className={cx("lmSwitch")}>
+      <StyledSwitch
+        activeColor={activeColor}
+        inactiveColor={inactiveColor}
+        switchVal={switchVal}
+      >
         <Indicator
+          active={switchVal}
           className={cx("lmSwitchIndicator", switchVal && "lmActive")}
         ></Indicator>
-      </Switch>
+      </StyledSwitch>
     </SwitchContainer>
   );
 };

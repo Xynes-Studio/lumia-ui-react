@@ -7,8 +7,8 @@ export interface ModalProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     actionBtnAlign?: 'left' | 'center' | 'right';
     primaryBtnOnPress?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     secondaryBtnOnPress?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    primaryBtnlabel?: string;
-    secondaryBtnlabel?: string;
+    primaryBtnLabel?: string;
+    secondaryBtnLabel?: string;
     primaryIcon?: React.FC<AssetProps>;
     secondaryIcon?: React.FC<AssetProps>;
     title?: string;

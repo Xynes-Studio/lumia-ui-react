@@ -1,11 +1,10 @@
 import React, { forwardRef } from "react";
 import "./slider.styles.css";
-import styled from "styled-components";
-import { Flex } from "@app/View";
 import { Text } from "@texts/index";
 import { cx } from "@utils/cx";
-import { spacing, color, neumorphismShadow, shadow } from "@shared/styles";
 import { SliderProps } from "./slider.type";
+import { PercentageViewer, SliderContainer, SliderInput, SliderWrapper } from "./slider.styles";
+import { color } from "@shared/styles";
 
 const SliderComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -23,78 +22,6 @@ const SliderComponent: React.ForwardRefRenderFunction<
   },
   ref
 ) => {
-  const SliderContainer = styled(Flex)``;
-  const SliderInput = styled.input`
-    width: 100%;
-    border-radius: ${spacing?.borderRadius?.r4};
-    overflow: hidden;
-    /* box-shadow: ${neumorphismShadow}; */
-    -webkit-appearance: none;
-    background: ${backgroundColor};
-    outline: none;
-
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      visibility: ${type === "progress" ? "hidden" : "visible"};
-      appearance: none;
-      box-shadow: ${shadow};
-      width: 20px;
-      height: 20px;
-      border-radius: ${spacing?.borderRadius?.r4};
-      background: ${color.foregroundInverse};
-      cursor: pointer;
-    }
-
-    &::-moz-range-thumb {
-      visibility: ${type === "progress" ? "hidden" : "visible"};
-      appearance: none;
-      box-shadow: ${shadow};
-      width: 20px;
-      height: 20px;
-      border-radius: ${spacing?.borderRadius?.r4};
-      background: ${color.foregroundInverse};
-      cursor: pointer;
-    }
-
-    &::-webkit-slider-runnable-track {
-      box-shadow: ${neumorphismShadow};
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-      background: linear-gradient(
-        to right,
-        ${progressColor} 0%,
-        ${progressColor} ${value}%,
-        transparent ${value}%,
-        transparent 100%
-      );
-    }
-
-    &::-moz-range-track {
-      box-shadow: ${neumorphismShadow};
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-      background: linear-gradient(
-        to right,
-        ${progressColor} 0%,
-        ${progressColor} ${value}%,
-        transparent ${value}%,
-        transparent 100%
-      );
-    }
-  `;
-
-  const SliderWrapper = styled(Flex)`
-    position: relative;
-  `;
-  const PercentageViewer = styled(Flex)`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  `;
 
   return (
     <SliderContainer
@@ -109,6 +36,9 @@ const SliderComponent: React.ForwardRefRenderFunction<
       <SliderWrapper direction="row" className={cx("lmSliderWrapper")}>
         <SliderInput
           type="range"
+          fillType={type}
+          backgroundColor={backgroundColor}
+          progressColor={progressColor}
           value={value}
           onChange={onChange}
           ref={ref}

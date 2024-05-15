@@ -2,7 +2,6 @@
 import { forwardRef, useEffect, useState } from "react";
 import { CodeProps } from "./code.types";
 import { cx } from "@utils/cx";
-import "./code-highlighting.css";
 import {
   formatCodeJS,
   formatHTML,
@@ -11,16 +10,20 @@ import {
   formatSQL,
   formatPHP,
   formatPython,
-  formatCode
+  formatCode,
 } from "./codeSyntax";
-import styled from "styled-components";
-import { typography } from "@shared/styles";
+import { StyledCode } from "./code.styles";
 
 const CodeComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   CodeProps
-> = ({ span = false, babel = false, code, editable = false, ...props }, ref) => {
-  const [formattedCode, setFormattedCode] = useState<JSX.Element | string | null>(null);
+> = (
+  { span = false, babel = false, code, editable = false, ...props },
+  ref
+) => {
+  const [formattedCode, setFormattedCode] = useState<
+    JSX.Element | string | null
+  >(null);
 
   useEffect(() => {
     switch (props.language) {
@@ -60,11 +63,6 @@ const CodeComponent: React.ForwardRefRenderFunction<
     }
   }, [code, props.language, babel]);
 
-  const StyledCode = styled.code`
-    font-family: ${typography.type.code};
-    font-size: ${typography.size.code};
-  `
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
     // Prevent line breaks on Enter key
     if (event.key === "Enter") {
@@ -73,32 +71,32 @@ const CodeComponent: React.ForwardRefRenderFunction<
     const value = (event.target as HTMLHeadingElement).textContent;
     console.log("Value:", value);
   };
-  return (
-    !span ?
-      <div
-        ref={ref}
-        contentEditable={editable}
-        onKeyDown={handleKeyDown}
-        className={cx(props.className)}
-        {...props}
-      >
-        <pre>
-          <StyledCode className={cx(`language-${props.language}`)}>
-            {formattedCode}
-          </StyledCode>
-        </pre>
-
-      </div> :
-      <span ref={ref}
-        contentEditable={editable}
-        onKeyDown={handleKeyDown}
-        className={cx(props.className)}
-        {...props}
-      >
+  return !span ? (
+    <div
+      ref={ref}
+      contentEditable={editable}
+      onKeyDown={handleKeyDown}
+      className={cx(props.className)}
+      {...props}
+    >
+      <pre>
         <StyledCode className={cx(`language-${props.language}`)}>
           {formattedCode}
         </StyledCode>
-      </span>
+      </pre>
+    </div>
+  ) : (
+    <span
+      ref={ref}
+      contentEditable={editable}
+      onKeyDown={handleKeyDown}
+      className={cx(props.className)}
+      {...props}
+    >
+      <StyledCode className={cx(`language-${props.language}`)}>
+        {formattedCode}
+      </StyledCode>
+    </span>
   );
 };
 

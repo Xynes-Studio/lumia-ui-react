@@ -1,13 +1,10 @@
 import React, { forwardRef } from "react";
 import { TabsProps } from "./tabs.type";
 import { Text } from "@texts/Text/Text";
-import styled from "styled-components";
 import { cx } from "@utils/cx";
 import { LMAsset } from "@utils/LumiaAssetManager";
-import { color as globalColor } from "@shared/styles";
-import { spacing, strokes } from "@shared/styles";
-import "./tabs.styles.css";
-import { Flex } from "@app/View";
+import { spacing } from "@shared/styles";
+import { TabsContainer, TabsWrapper } from "./tabs.styles.ts";
 
 const TabsComponent: React.ForwardRefRenderFunction<
   HTMLAnchorElement,
@@ -18,41 +15,13 @@ const TabsComponent: React.ForwardRefRenderFunction<
     selectType = "select-100",
     label,
     icon,
-    selected = true,
+    selected = false,
     color,
-    iconSize = 1,
+    iconSize = 0.7,
     ...props
   },
   ref
 ) => {
-  const TabsContainer = styled.a``;
-
-  const TabsWrapper = styled(Flex)`
-    padding: ${direction === "horizontal"
-      ? `calc(${spacing?.padding?.p0} / 2) ${spacing?.padding?.p1}`
-      : `${spacing?.padding?.p1} ${spacing?.padding?.p0} 0 ${spacing?.padding?.p0}`};
-    background-color: ${(selectType === "select-200" ||
-      (selectType === "select-300" && direction !== "horizontal")) &&
-    selected
-      ? globalColor?.accent100
-      : "transparent"};
-    border-radius: ${selectType === "select-200" ||
-    (selectType === "select-300" && selected && direction !== "horizontal")
-      ? spacing?.borderRadius?.r0
-      : "none"};
-    border-bottom: ${selectType === "select-100" && selected
-      ? `${strokes?.s2} solid ${globalColor?.accent100}`
-      : "null"};
-    border-left: ${selectType === "select-300" &&
-    direction === "horizontal" &&
-    selected
-      ? `${strokes?.s2} solid ${globalColor?.accent100}`
-      : "null"};
-    &:hover {
-      opacity: ${!selected ? 0.7 : 1};
-    }
-  `;
-
   return (
     <TabsContainer
       title={label}
@@ -61,7 +30,10 @@ const TabsComponent: React.ForwardRefRenderFunction<
       ref={ref}
     >
       <TabsWrapper
-        direction={direction === "horizontal" ? "row" : "column"}
+        selected={selected}
+        selectType={selectType}
+        directionInside={direction}
+        direction={direction === 'horizontal' ? 'row' : 'column'}
         className={cx("lmTabsWrapper")}
       >
         {icon !== undefined ? (

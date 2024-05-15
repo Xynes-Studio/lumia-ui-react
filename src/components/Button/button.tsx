@@ -1,14 +1,12 @@
 "use client";
 import React, { forwardRef } from "react";
 import { ButtonProps } from "./button.type";
-import styled from "styled-components";
 import { cx } from "@utils/cx";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { Text } from "@texts/Text/Text";
 import { color as globalColor } from "@shared/styles";
-import { spacing, strokes } from "@shared/styles";
-import "./button.styles.css";
-import { Flex } from "@app/View";
+
+import { ButtonContainer, ButtonElementContainer } from "./button.styles";
 
 const ButtonComponent: React.ForwardRefRenderFunction<
   HTMLButtonElement,
@@ -22,25 +20,24 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     iconAtEnd = false,
     backgroundColor,
     borderColor = globalColor?.border100,
-    borderRadius = spacing?.borderRadius?.r0,
-    textCase = 'uppercase',
+    borderRadius = 2,
+    textCase = "uppercase",
     iconSize = 0.8,
     ...props
   },
   ref
 ) => {
-  const ButtonContainer = styled.button`
-    background-color: ${type !== "label" ? backgroundColor : "none"};
-    border: ${type !== "outlined"
-      ? "none"
-      : `${strokes?.s0} solid  ${borderColor}`};
-    padding: ${spacing?.padding?.p0} ${spacing?.padding?.p2};
-    border-radius: ${borderRadius};
-  `;
-
   return (
-    <ButtonContainer className={cx("lmButtonContainer", props.className)} ref={ref} {...props}>
-      <Flex className={cx("lmButtonElementContainer")} direction={iconAtEnd ? "row-reverse" : "row"}>
+    <ButtonContainer
+      borderRadius={borderRadius}
+      borderColor={borderColor}
+      backgroundColor={backgroundColor}
+      type={type}
+      className={cx(props.className)}
+      ref={ref}
+      {...props}
+    >
+      <ButtonElementContainer direction={iconAtEnd ? "row-reverse" : "row"}>
         {icon !== undefined ? (
           <LMAsset
             visible={icon !== undefined}
@@ -54,7 +51,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
             {label}
           </Text>
         )}
-      </Flex>
+      </ButtonElementContainer>
     </ButtonContainer>
   );
 };

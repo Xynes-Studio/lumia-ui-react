@@ -17,6 +17,6 @@ export interface ButtonProps
   color?: string;
   backgroundColor?: string;
   borderColor?: string;
-  borderRadius?: string;
+  borderRadius?: number;
   iconSize?: number;
 }
