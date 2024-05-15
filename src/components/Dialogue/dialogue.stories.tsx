@@ -24,7 +24,6 @@ export const DefaultDialogue: DialogueStory = {
 
 
 export const DialogueWithChildren: DialogueStory={
-    
   args: {
     visible: true,
     title:"An Image",

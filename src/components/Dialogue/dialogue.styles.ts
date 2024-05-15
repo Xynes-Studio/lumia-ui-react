@@ -1,12 +1,11 @@
-// Link.styles.ts
 import { Flex } from "@app/View";
 import { color, shadow, spacing } from "@shared/styles";
 import { hexToRGBA } from "@utils/hexToRgba";
-// import { color } from '@shared/styles';
 import styled from "styled-components";
 
 export const StyledDialogue = styled(Flex)<{ visible: boolean }>`
-  display: ${(props) => (props.visible ? "flex !important" : "none !important")};
+  display: ${(props) =>
+    props.visible ? "flex !important" : "none !important"};
   position: fixed;
   top: 0;
   left: 0;
@@ -50,6 +49,6 @@ export const ScrollDiv = styled.div`
 `;
 export const StyledDialogueChildrenContainer = styled(Flex)``;
 
-export const AlignDiv = styled.div<{contentAlign:string}>`
-      text-align: ${props=>props.contentAlign};
-    `;
+export const AlignDiv = styled.div<{ contentAlign: string }>`
+  text-align: ${(props) => props.contentAlign};
+`;
