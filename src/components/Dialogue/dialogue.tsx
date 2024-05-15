@@ -10,20 +10,20 @@ import {
   AlignDiv,
   ScrollDiv,
   StyledCloseBtn,
-  StyledDialouge,
-  StyledDialougeChildrenContainer,
-  StyledDialougeContent,
-  StyledDialougeFooter,
+  StyledDialogue,
+  StyledDialogueChildrenContainer,
+  StyledDialogueContent,
+  StyledDialogueFooter,
   StyledHeader
-} from "./dialouge.styles";
-import { DialougeProps } from "./dialouge.type";
-export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
+} from "./dialogue.styles";
+import { DialogueProps } from "./dialogue.type";
+export const Dialogue = forwardRef<HTMLDivElement, DialogueProps>(
   (
     {
       children,
       title,
       description,
-      primaryBtnlabel,
+      primaryBtnLabel,
       primaryBtnOnPress,
       actionBtnType = "none",
       contentAlign = "left",
@@ -31,7 +31,7 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
       onClose,
       secondaryBtnOnPress,
       secondaryIcon,
-      secondaryBtnlabel,
+      secondaryBtnLabel,
       visible = false,
       closeIcon = false,
       ...rest
@@ -40,8 +40,8 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
   ) => {
     
     return (
-      <StyledDialouge visible={visible} ref={ref} {...rest}>
-        <StyledDialougeContent direction="column">
+      <StyledDialogue visible={visible} ref={ref} {...rest}>
+        <StyledDialogueContent direction="column">
           <StyledHeader
             weight={[20, 1]}
             direction={contentAlign == "right" ? "row-reverse" : "row"}
@@ -65,18 +65,18 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
           </StyledHeader>
 
           <ScrollDiv>
-            <StyledDialougeChildrenContainer direction="column">
+            <StyledDialogueChildrenContainer direction="column">
               <AlignDiv contentAlign={contentAlign}>{description && <Text>{description}</Text>}</AlignDiv>
               <AlignDiv contentAlign={contentAlign}>{children}</AlignDiv>
-            </StyledDialougeChildrenContainer>
+            </StyledDialogueChildrenContainer>
           </ScrollDiv>
 
           {actionBtnType != "none" && (
-            <StyledDialougeFooter direction="column">
+            <StyledDialogueFooter direction="column">
               {(actionBtnType == "both" || actionBtnType == "primary") && (
                 <Button
                   type="fill"
-                  label={primaryBtnlabel || "Submit"}
+                  label={primaryBtnLabel || "Submit"}
                   icon={primaryIcon || LmCkCheckCircle}
                   onClick={(
                     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -92,7 +92,7 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
               {(actionBtnType == "both" || actionBtnType == "secondary") && (
                 <Button
                   type="outlined"
-                  label={secondaryBtnlabel || "Cancel"}
+                  label={secondaryBtnLabel || "Cancel"}
                   icon={secondaryIcon || LmCkClose}
                   onClick={(
                     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -104,10 +104,10 @@ export const Dialouge = forwardRef<HTMLDivElement, DialougeProps>(
                   backgroundColor={color.medium100}
                 />
               )}
-            </StyledDialougeFooter>
+            </StyledDialogueFooter>
           )}
-        </StyledDialougeContent>
-      </StyledDialouge>
+        </StyledDialogueContent>
+      </StyledDialogue>
     );
   }
 );

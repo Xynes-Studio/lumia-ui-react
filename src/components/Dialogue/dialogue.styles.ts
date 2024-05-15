@@ -5,7 +5,7 @@ import { hexToRGBA } from "@utils/hexToRgba";
 // import { color } from '@shared/styles';
 import styled from "styled-components";
 
-export const StyledDialouge = styled(Flex)<{ visible: boolean }>`
+export const StyledDialogue = styled(Flex)<{ visible: boolean }>`
   display: ${(props) => (props.visible ? "flex !important" : "none !important")};
   position: fixed;
   top: 0;
@@ -19,7 +19,7 @@ export const StyledDialouge = styled(Flex)<{ visible: boolean }>`
   z-index: 99;
 `;
 
-export const StyledDialougeContent = styled(Flex)`
+export const StyledDialogueContent = styled(Flex)`
   position: relative;
   background-color: ${color.foregroundInverse};
   padding: ${spacing.padding.p1};
@@ -39,7 +39,7 @@ export const StyledHeader = styled(Flex)`
   width: 100%;
   justify-content: space-between;
 `;
-export const StyledDialougeFooter = styled(Flex)`
+export const StyledDialogueFooter = styled(Flex)`
   gap: ${spacing.padding.p0};
   margin: ${spacing.padding.p0};
   justify-content: "center";
@@ -48,7 +48,7 @@ export const ScrollDiv = styled.div`
   max-height: 70dvh;
   overflow-y: auto;
 `;
-export const StyledDialougeChildrenContainer = styled(Flex)``;
+export const StyledDialogueChildrenContainer = styled(Flex)``;
 
 export const AlignDiv = styled.div<{contentAlign:string}>`
       text-align: ${props=>props.contentAlign};

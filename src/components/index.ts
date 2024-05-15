@@ -20,5 +20,5 @@ export * from "./Profile/profile";
 export * from "./Disclosuers/Accordion/accordion";
 export * from "./Modal/modal";
 export * from "./MDXParse/mdxp";
-export * from "./Dialouge/dialouge";
+export * from "./Dialogue/dialogue";
 export * from "./pagination/pagination";

@@ -1,20 +1,20 @@
 import { Flex, Image } from '@app/View';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Dialouge } from './dialouge';
+import { Dialogue } from './dialogue';
 
 // Define meta information for the Link component
 const meta: Meta = {
-  title: 'Component/Dialouge',
-  component: Dialouge,
+  title: 'Component/Dialogue',
+  component: Dialogue,
   tags: ["autodocs"],
-} satisfies Meta<typeof Dialouge>;
+} satisfies Meta<typeof Dialogue>;
 export default meta;
 
 // Define the story type
-type DialougeStory = StoryObj<typeof meta>;
+type DialogueStory = StoryObj<typeof meta>;
 
 // Stories with args
-export const DefaultDialouge: DialougeStory = {
+export const DefaultDialogue: DialogueStory = {
   args: {
     visible: true,
     title:'Title',
@@ -23,7 +23,7 @@ export const DefaultDialouge: DialougeStory = {
 };
 
 
-export const DialougeWithChildren: DialougeStory={
+export const DialogueWithChildren: DialogueStory={
     
   args: {
     visible: true,

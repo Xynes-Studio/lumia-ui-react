@@ -22,7 +22,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       children,
       title,
       description,
-      primaryBtnlabel,
+      primaryBtnLabel,
       primaryBtnOnPress,
       actionBtnType = "none",
       actionBtnAlign = "left",
@@ -30,7 +30,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       onClose,
       secondaryBtnOnPress,
       secondaryIcon,
-      secondaryBtnlabel,
+      secondaryBtnLabel,
       visible = false,
       closeIcon = false,
       ...rest
@@ -72,7 +72,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
               {(actionBtnType == "both" || actionBtnType == "primary") && (
                 <Button
                   type="fill"
-                  label={primaryBtnlabel || "Submit"}
+                  label={primaryBtnLabel || "Submit"}
                   icon={primaryIcon || LmCkCheckCircle}
                   onClick={(
                     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -88,7 +88,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
               {(actionBtnType == "both" || actionBtnType == "secondary") && (
                 <Button
                   type="outlined"
-                  label={secondaryBtnlabel || "Cancel"}
+                  label={secondaryBtnLabel || "Cancel"}
                   icon={secondaryIcon || LmCkClose}
                   onClick={(
                     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
