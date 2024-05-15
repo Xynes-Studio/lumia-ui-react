@@ -5,7 +5,6 @@ import { Text } from "@texts/index";
 import { cx } from "@utils/cx";
 import { LmCkChevronRight } from "@icons/lmCkChevronRight";
 import { color } from "@shared/styles";
-import "./accordion.styles.ts";
 import {
   AccordionBody,
   AccordionButton,
@@ -23,7 +22,7 @@ const AccordionComponent: React.ForwardRefRenderFunction<
   return (
     <AccordionContainer
       direction="column"
-      className={cx("accordionContainer", props.className)}
+      className={cx(props.className)}
       ref={ref}
       {...props}
     >
@@ -47,7 +46,7 @@ const AccordionComponent: React.ForwardRefRenderFunction<
       </AccordionButton>
 
       {show && (
-        <AccordionBody direction="column" className={cx("lmAccordionBody")}>
+        <AccordionBody direction="column">
           {children}
         </AccordionBody>
       )}

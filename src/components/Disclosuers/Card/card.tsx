@@ -1,19 +1,24 @@
 import React, { forwardRef } from "react";
-import "./card.styles.css";
+import "./card.styles.ts";
 import { CardProps } from "./card.type";
-import styled from "styled-components";
-import { Flex } from "@app/View";
-import { Text } from "@texts/index";
 import { Switch } from "@components/Switch/switch";
 import { cx } from "@utils/cx";
-import { spacing, strokes, color } from "@shared/styles";
+import {
+  CardContainer,
+  CardDesc,
+  CardImage,
+  CardTitle,
+  ImageContainer,
+  InfoContainer,
+  SwitchWrapper,
+} from "./card.styles.ts";
 
 const CardComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   CardProps
 > = (
   {
-    type,
+    type = "default",
     image,
     title,
     description,
@@ -21,59 +26,29 @@ const CardComponent: React.ForwardRefRenderFunction<
     toggleValue = false,
     onToggle,
     actionElement,
-    width = "22vw",
+    width = "22rem",
     ...props
   },
   ref
 ) => {
-  const CardContainer = styled(Flex)`
-    width: ${width};
-    padding: ${spacing?.padding?.p4};
-    border-radius: ${spacing?.borderRadius?.r3};
-    background-color: ${type !== "outlined" && type !== "default"
-      ? color?.foregroundInverse300
-      : "none"};
-    border: ${type !== "fill" && type !== "default"
-      ? `${strokes?.s0} solid ${color?.border100}`
-      : "null"};
-  `;
-
-  const ImageContainer = styled(Flex)`
-    border-radius: ${spacing?.padding?.p2} ${spacing?.padding?.p2} 0 0;
-  `;
-
-  const CardImage = styled.img``;
-
-  const InfoContainer = styled(Flex)``;
-
-  const SwitchWrapper = styled(Flex)``;
-
-  const CardTitle = styled(Text)``;
-
-  const CardDesc = styled(Text)`
-    margin-top: 1.5vh;
-  `;
-
   return (
     <CardContainer
+      type={type}
+      width={width}
       direction="column"
-      className={cx("lmCardContainer", props.className)}
+      className={cx(props.className)}
       ref={ref}
       {...props}
     >
-      <ImageContainer className={cx("lmCardImageContainer")}>
+      <ImageContainer>
         {image !== undefined ? (
           <CardImage className={cx("lmCardImage")} src={image} />
         ) : null}
         {actionElement !== undefined ? actionElement : null}
       </ImageContainer>
-      <InfoContainer direction="column" className={cx("lmInfoContainer")}>
-        <SwitchWrapper className={cx("lmCardSwitchWrapper")}>
-          <CardTitle
-            textCase="capitalize"
-            numberOfLines={2}
-            className={cx("lmCardTitle")}
-          >
+      <InfoContainer direction="column">
+        <SwitchWrapper>
+          <CardTitle numberOfLines={2}>
             {title}
           </CardTitle>
           {displaySwitch ? (
