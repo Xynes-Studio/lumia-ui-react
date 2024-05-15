@@ -3,7 +3,6 @@ import { BadgeProps } from "./badge.type";
 import { Text } from "@texts/index";
 import { cx } from "@utils/cx";
 import { color as globalColor } from "@shared/styles";
-import "./badge.styles.css";
 import { BadgeContainer } from "./badge.styles";
 
 const BadgeComponent: React.ForwardRefRenderFunction<
@@ -21,7 +20,7 @@ const BadgeComponent: React.ForwardRefRenderFunction<
 ) => {
   return (
     <BadgeContainer
-      className={cx("lmBadgeContainer", props.className)}
+      className={cx(props.className)}
       backgroundColor={backgroundColor}
       type={type}
       ref={ref}
