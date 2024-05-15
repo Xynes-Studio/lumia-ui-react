@@ -1,29 +1,19 @@
 import React, { forwardRef } from "react";
-import "./profile.styles.css";
-import styled from "styled-components";
-import { Flex } from "@app/View";
-import { Image } from "@app/View";
 import { Text } from "@texts/index";
 import { cx } from "@utils/cx";
-import { spacing, color } from "@shared/styles";
+import { color } from "@shared/styles";
 import { ProfileProps } from "./profile.type";
 import { LMAsset } from "@utils/LumiaAssetManager";
+import {
+  ProfileAvatar,
+  ProfileContainer,
+  ProfileInfoContainer,
+} from "./profile.styles";
 
 const ProfileComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   ProfileProps
 > = ({ title, subtitle, actionIcon, avatar, ...props }, ref) => {
-  const ProfileContainer = styled(Flex)`
-    padding: ${spacing?.padding?.p0};
-  `;
-
-  const ProfileAvatar = styled(Image)`
-    height: ${spacing?.padding?.p3};
-    width: ${spacing?.padding?.p3};
-  `;
-
-  const ProfileInfoContainer = styled(Flex)``;
-
   return (
     <ProfileContainer
       className={cx("lmProfileContainer", props.className)}
