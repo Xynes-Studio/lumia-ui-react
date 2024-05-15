@@ -1,7 +1,6 @@
 import { cx } from "@utils/cx";
 import React, { ForwardRefRenderFunction } from "react";
-import { PinInputStyledField } from "../pinInput.style";
-import "./pinInput.styles.css";
+import { PinInputStyledField } from "./pinInput.styles";
 
 interface PinInputFieldsProps {
   index: number;
