@@ -18,11 +18,21 @@ export const CheckBox: Story = {
   args: {
     label: "breakfast",
     value: false,
+    onUpdate: (e) => {
+      console.log("The val------", e);
+    },
   },
 };
 export const CheckBoxChecked: Story = {
   args: {
     label: "breakfast",
     value: true,
+  },
+};
+export const CheckBoxIndeterminate: Story = {
+  args: {
+    label: "breakfast",
+    value: true,
+    showIndeterminate: true,
   },
 };
