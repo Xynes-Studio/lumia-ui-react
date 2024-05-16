@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, useState } from "react";
+import { forwardRef, useState, useEffect } from "react";
 import { SwitchProps } from "./switch.type";
 import { Text } from "@texts/Text/Text";
 import { cx } from "@utils/cx";
@@ -20,6 +20,11 @@ const SwitchComponent: React.ForwardRefRenderFunction<
   ref
 ) => {
   const [switchVal, setSwitchVal] = useState(value);
+
+  useEffect(() => {
+    setSwitchVal(value);
+  }, [value]);
+
   return (
     <SwitchContainer
       onClick={() => {
@@ -35,7 +40,7 @@ const SwitchComponent: React.ForwardRefRenderFunction<
             marginRight: 0,
           }}
         >
-          {label}
+          {label}:
         </Text>
       )}
       <StyledSwitch
