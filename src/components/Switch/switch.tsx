@@ -40,7 +40,7 @@ const SwitchComponent: React.ForwardRefRenderFunction<
             marginRight: 0,
           }}
         >
-          {label}:
+          {label}
         </Text>
       )}
       <StyledSwitch
