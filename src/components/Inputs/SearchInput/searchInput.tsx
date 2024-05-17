@@ -7,7 +7,12 @@ import { cx } from "@utils/cx";
 import React, { forwardRef, useEffect } from "react";
 import SearchResultsComponent from "./components/searchResults/searchResults";
 import useDebounce from "./hooks/useDebounce";
-import { SearchInputContainer, SearchInputStyle, SearchInputWrapper, SearchResultsWrapper } from "./searchInput.style";
+import {
+  SearchInputContainer,
+  SearchInputStyle,
+  SearchInputWrapper,
+  SearchResultsWrapper,
+} from "./searchInput.style";
 import "./searchInput.styles.css";
 import { SearchInputProps } from "./searchInput.type";
 
@@ -35,19 +40,16 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     if (autoSearch && handleSearch) handleSearch(debouncedText);
   }, [debouncedText, handleSearch, autoSearch]);
 
-
-  
-
   return (
     <SearchInputContainer
       direction="column"
-      className={cx("lmSearchInputContainer", props.className)}
+      className={cx("lmSearchInputContainer")}
     >
       {label !== undefined ? <Text>{label}</Text> : null}
       <SearchInputWrapper
         type={type}
         direction="row"
-        className={cx("lmSearchInputWrapper")}
+        className={cx("lmSearchInputWrapper", props.className)}
       >
         <SearchInputStyle
           placeholder={placeholder}
@@ -74,7 +76,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
       </SearchInputWrapper>
       {props.dataset && suggestions && (
         <SearchResultsWrapper
-        type={type}
+          type={type}
           className={cx("lmSearchResultContainer", props.className)}
         >
           <SearchResultsComponent {...props} />
