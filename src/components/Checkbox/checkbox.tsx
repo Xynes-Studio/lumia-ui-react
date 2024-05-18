@@ -15,7 +15,7 @@ import {
 const CheckboxComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
   CheckboxProps
-> = ({ label, onChange, value = false, ...props }, ref) => {
+> = ({ label, onChange, value = false, disabled = false, ...props }, ref) => {
   return (
     <CheckboxContainer className={cx(props.className)}>
       <StyledCheckbox checked={value}>
@@ -27,6 +27,7 @@ const CheckboxComponent: React.ForwardRefRenderFunction<
           ref={ref}
           checked={value}
           onChange={onChange}
+          disabled={disabled}
           {...props}
         />
       </StyledCheckbox>
