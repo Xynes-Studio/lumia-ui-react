@@ -18,7 +18,8 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     value,
     fillType = "fill",
     labelPosition = "start",
-    validations
+    validations,
+    secret=false,
   },
   ref
 ) => {
@@ -117,6 +118,7 @@ const PinInputComponent: React.ForwardRefRenderFunction<
               onChange={(e) => handleInputChange(e, index)}
               onKeyDown={(e) => handleKeyPress(e, index)}
               fillType={fillType}
+              type={secret?"password":"text"}
             />
           ))}
         </PinInputContainer>
