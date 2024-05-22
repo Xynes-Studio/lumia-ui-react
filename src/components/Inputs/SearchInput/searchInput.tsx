@@ -4,7 +4,7 @@ import { LmCkChevronDown } from "@icons/lmCkChevronDown";
 import { LmCkSearch } from "@icons/lmCkSearch";
 import { Text } from "@texts/index";
 import { cx } from "@utils/cx";
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import SearchResultsComponent from "./components/searchResults/searchResults";
 import useDebounce from "./hooks/useDebounce";
 import {
@@ -26,7 +26,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     label,
     autoSearch = false,
     handleSearch,
-    searchString = "",
+    searchString,
     onValueChange,
     placeholder = "",
     suggestions = true,
@@ -34,7 +34,8 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   },
   ref
 ) => {
-  const debouncedText = useDebounce(searchString, 500);
+  const [searchValue, setSearchValue] = useState(searchString || "");
+  const debouncedText = useDebounce(searchValue, 500);
 
   useEffect(() => {
     if (autoSearch && handleSearch) handleSearch(debouncedText);
@@ -54,10 +55,14 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
         <SearchInputStyle
           placeholder={placeholder}
           type="text"
-          value={searchString}
+          value={searchValue}
           className={cx("lmSearchInput")}
           ref={ref}
-          onChange={(e) => onValueChange && onValueChange(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setSearchValue(value);
+            onValueChange && onValueChange(value);
+          }}
           {...props}
         />
         {inputType === "search" ? (
@@ -66,7 +71,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
             icon={LmCkSearch}
             onClick={() => {
               if (handleSearch) {
-                handleSearch(searchString);
+                handleSearch(searchValue);
               }
             }}
           />
