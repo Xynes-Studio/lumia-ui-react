@@ -9,6 +9,8 @@ export interface PrismLayoutTab {
   selected?: boolean;
   component?: ReactNode;
   disabled?: boolean;
+  actionButtonEnabled?: boolean;
+  actionModalComponent?: ReactNode;
 }
 
 export interface PrismLayoutProps
