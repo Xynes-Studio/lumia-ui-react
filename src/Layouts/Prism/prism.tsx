@@ -42,7 +42,7 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
       );
       const index = array.findIndex((i: PrismLayoutTab) => i.id === id);
 
-      if (index !== -1) {
+      if (index !== -1) { 
         array[index].selected = true;
         array[indexOfPreviousSelectedItem].selected = false;
         setTabsDataLocal(array);
