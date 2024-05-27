@@ -61,6 +61,9 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
       "left"
     );
   };
+  const handleSettingClick = () => {
+    if (props.settingComponent) showModal(props.settingComponent, "left");
+  };
 
   return (
     <PrismContainer ref={ref}>
@@ -71,15 +74,15 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
         <PrismNavigationHeader>
           {props.logo && <PrismHeaderLogo src={props.logo} alt="Layout Logo" />}
           <PrismNavigationHeaderActions>
-            {/* {props.settingComponent && ( */}
-            <PrismNavigationHeaderActionButtons
-              icon={LmCkSettings}
-              type="fill"
-              title="Setting"
-              borderRadius={100}
-              onClick={() => {}}
-            />
-            {/* )} */}
+            {props.settingComponent && (
+              <PrismNavigationHeaderActionButtons
+                icon={LmCkSettings}
+                type="fill"
+                title="Setting"
+                borderRadius={100}
+                onClick={handleSettingClick}
+              />
+            )}
             {props.notificationComponent && (
               <PrismNavigationHeaderActionButtons
                 icon={LmCkBell}
