@@ -5,6 +5,7 @@ export interface CheckboxProps
   label?: string;
   showIndeterminate?: boolean;
   isChecked?: boolean;
-  onUpdate?: (value: boolean) => void;
+  onChange?:  (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: boolean;
+  disabled?:boolean;
 }
