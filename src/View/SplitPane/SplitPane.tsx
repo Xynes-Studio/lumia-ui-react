@@ -13,62 +13,56 @@ const SplitPane: React.FC<SplitPaneProps> = ({
   children,
   ...rest
 }) => {
-  const [sizes, setSizes] = useState<[number, number]>(initialSizes);
+  const [sizes, setSizes] = useState<number[]>(initialSizes);
   const containerRef = useRef<HTMLDivElement>(null);
   const isResizing = useRef(false);
   const startPosition = useRef(0);
-  const startSizes = useRef<[number, number]>([0, 0]);
+  const startSizes = useRef<number[]>([]);
+  const activePaneIndex = useRef<number | null>(null);
 
-  const handleMouseDown = (event: React.MouseEvent) => {
+  const handleMouseMove = useCallback((event: MouseEvent) => {
+    if (!isResizing.current || activePaneIndex.current === null) return;
+
+    const index = activePaneIndex.current;
+    const currentPosition =
+      orientation === "horizontal" ? event.clientX : event.clientY;
+    const delta = currentPosition - startPosition.current;
+    const totalSize = containerRef.current
+      ? orientation === "horizontal"
+        ? containerRef.current.clientWidth
+        : containerRef.current.clientHeight
+      : 0;
+
+    const newSizes = [...startSizes.current];
+    newSizes[index] = Math.min(
+      Math.max(startSizes.current[index] + (delta / totalSize) * 100, minSizes[index]),
+      maxSizes[index]
+    );
+    newSizes[index + 1] = Math.min(
+      Math.max(startSizes.current[index + 1] - (delta / totalSize) * 100, minSizes[index + 1]),
+      maxSizes[index + 1]
+    );
+
+    setSizes(newSizes);
+    if (onPaneResize) onPaneResize(newSizes);
+  }, [maxSizes, minSizes, onPaneResize, orientation]);
+
+  const handleMouseUp = useCallback(() => {
+    isResizing.current = false;
+    activePaneIndex.current = null;
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
+  }, [handleMouseMove]);
+
+  const handleMouseDown = (index: number) => (event: React.MouseEvent) => {
     isResizing.current = true;
     startPosition.current =
       orientation === "horizontal" ? event.clientX : event.clientY;
     startSizes.current = sizes;
+    activePaneIndex.current = index;
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
   };
-
-  const handleMouseMove = useCallback(
-    (event: MouseEvent) => {
-      if (!isResizing.current) return;
-
-      const currentPosition =
-        orientation === "horizontal" ? event.clientX : event.clientY;
-      const delta = currentPosition - startPosition.current;
-      const totalSize = containerRef.current
-        ? orientation === "horizontal"
-          ? containerRef.current.clientWidth
-          : containerRef.current.clientHeight
-        : 0;
-
-      const newSizes: [number, number] = [
-        Math.min(
-          Math.max(
-            startSizes.current[0] + (delta / totalSize) * 100,
-            minSizes[0]
-          ),
-          maxSizes[0]
-        ),
-        Math.min(
-          Math.max(
-            startSizes.current[1] - (delta / totalSize) * 100,
-            minSizes[1]
-          ),
-          maxSizes[1]
-        ),
-      ];
-
-      setSizes(newSizes);
-      if (onPaneResize) onPaneResize(newSizes);
-    },
-    [maxSizes, minSizes, onPaneResize, orientation]
-  );
-
-  const handleMouseUp = useCallback(() => {
-    isResizing.current = false;
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseup", handleMouseUp);
-  }, [handleMouseMove]);
 
   useEffect(() => {
     return () => {
@@ -85,13 +79,16 @@ const SplitPane: React.FC<SplitPaneProps> = ({
       style={style}
       {...rest}
     >
-      <Pane size={sizes[0]} orientation={orientation}>
-        {children && (Array.isArray(children) ? children[0] : children)}
-      </Pane>
-      <ResizeHandle orientation={orientation} onMouseDown={handleMouseDown} />
-      <Pane size={sizes[1]} orientation={orientation}>
-        {children && (Array.isArray(children) ? children[1] : children)}
-      </Pane>
+      {React.Children.map(children, (child, index) => (
+        <>
+          <Pane size={sizes[index]} orientation={orientation}>
+            {child}
+          </Pane>
+          {index < React.Children.count(children) - 1 && (
+            <ResizeHandle orientation={orientation} onMouseDown={handleMouseDown(index)} />
+          )}
+        </>
+      ))}
     </SplitPaneContainer>
   );
 };

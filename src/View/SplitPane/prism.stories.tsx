@@ -16,15 +16,16 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     orientation: 'horizontal',
-    initialSizes: [50, 50],
-    minSizes: [10, 10],
-    maxSizes: [90, 90],
+    initialSizes: [33, 33, 34],
+    minSizes: [10, 10, 10],
+    maxSizes: [90, 90, 90],
   },
   render: (args) => (
     <div style={{ width: '100%', height: '400px' }}>
       <SplitPane {...args}>
         <div style={{ backgroundColor: '#f0f0f0', height: '100%' }}>Pane A</div>
         <div style={{ backgroundColor: '#d0d0d0', height: '100%' }}>Pane B</div>
+        <div style={{ backgroundColor: '#b0b0b0', height: '100%' }}>Pane C</div>
       </SplitPane>
     </div>
   ),
