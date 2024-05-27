@@ -2,6 +2,7 @@ import React from 'react';
 import { NotificationProvider } from './notifications/NotificationProvider';
 import { StandardModalProvider } from './Modals/StandardModalProvider';
 import { HorizontalModalProvider } from './Modals/HorizontalModalProvider';
+import { HorizontalModal, StandardModal } from './Modals';
 
 const LumiaProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -11,6 +12,8 @@ const LumiaProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           {children}
         </HorizontalModalProvider>
       </StandardModalProvider>
+      <StandardModal />
+      <HorizontalModal />
     </NotificationProvider>
   );
 };

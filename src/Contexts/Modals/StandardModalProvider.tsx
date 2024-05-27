@@ -5,12 +5,20 @@ const StandardModalContext = createContext<ModalContentProps | undefined>(undefi
 
 const StandardModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [Component, setComponent] = useState<React.FC | null>(null);
 
-  const showModal = () => setIsVisible(true);
-  const hideModal = () => setIsVisible(false);
+  const showModal = (component: React.FC) => {
+    setComponent(() => component);
+    setIsVisible(true);
+  };
+
+  const hideModal = () => {
+    setIsVisible(false);
+    setComponent(null);
+  };
 
   return (
-    <StandardModalContext.Provider value={{ showModal, hideModal, isVisible }}>
+    <StandardModalContext.Provider value={{ showModal, hideModal, isVisible, Component }}>
       {children}
     </StandardModalContext.Provider>
   );

@@ -3,8 +3,8 @@ import { useStandardModal } from './StandardModalProvider';
 import { useHorizontalModal } from './HorizontalModalProvider';
 import { Modal, ModalHorizontalIn } from '@components/index';
 
-export const StandardModal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isVisible, hideModal } = useStandardModal();
+export const StandardModal: React.FC = () => {
+  const { isVisible, hideModal, Component } = useStandardModal();
 
   return (
     <Modal
@@ -13,13 +13,13 @@ export const StandardModal: React.FC<{ children: React.ReactNode }> = ({ childre
       title="Standard Modal"
       description="This is a standard modal."
     >
-      {children}
+      {Component && <Component />}
     </Modal>
   );
 };
 
-export const HorizontalModal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isVisible, hideModal } = useHorizontalModal();
+export const HorizontalModal: React.FC = () => {
+  const { isVisible, hideModal, Component } = useHorizontalModal();
 
   return (
     <ModalHorizontalIn
@@ -27,7 +27,7 @@ export const HorizontalModal: React.FC<{ children: React.ReactNode }> = ({ child
       onClose={hideModal}
       direction="left"
     >
-      {children}
+      {Component && <Component />}
     </ModalHorizontalIn>
   );
 };

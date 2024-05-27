@@ -5,12 +5,20 @@ const HorizontalModalContext = createContext<ModalContentProps | undefined>(unde
 
 const HorizontalModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [Component, setComponent] = useState<React.FC | null>(null);
 
-  const showModal = () => setIsVisible(true);
-  const hideModal = () => setIsVisible(false);
+  const showModal = (component: React.FC) => {
+    setComponent(() => component);
+    setIsVisible(true);
+  };
+
+  const hideModal = () => {
+    setIsVisible(false);
+    setComponent(null);
+  };
 
   return (
-    <HorizontalModalContext.Provider value={{ showModal, hideModal, isVisible }}>
+    <HorizontalModalContext.Provider value={{ showModal, hideModal, isVisible, Component }}>
       {children}
     </HorizontalModalContext.Provider>
   );
