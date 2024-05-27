@@ -1,6 +1,7 @@
 import { Flex } from "@app/View";
 import { Button, SearchInput } from "@components/index";
 import { background, color, spacing } from "@shared/styles";
+import { hexToRGBA } from "@utils/hexToRgba";
 import styled from "styled-components";
 
 export const PrismContainer = styled(Flex)`
@@ -22,7 +23,20 @@ export const PrismNavigationHeader = styled(Flex)`
   width: 90%;
   height: 10%;
   margin: ${spacing.padding.p3} auto;
-  background-color: green;
+  justify-content: space-between;
+`;
+export const PrismHeaderLogo = styled.img`
+  height: 50%;
+  object-fit: contain;
+  margin-right: ${spacing.padding.p1};
+`;
+
+export const PrismNavigationHeaderActions = styled(Flex)`
+`;
+export const PrismNavigationHeaderActionButtons = styled(Button)`
+  height: 40%;
+  background-color: ${hexToRGBA(color.foreground, 0.2)} !important;
+  margin-left: ${spacing.padding.p1};
 `;
 
 export const PrismNavigationItemsContainer = styled.div`
@@ -31,7 +45,8 @@ export const PrismNavigationItemsContainer = styled.div`
   flex: 1;
 `;
 
-export const PrismNavigationItems = styled(Flex)``;
+export const PrismNavigationItems = styled(Flex)`
+`;
 
 export const PrismNavigationFooter = styled(Flex)`
   position: relative;
@@ -52,6 +67,7 @@ export const PrismChildrenContainer = styled(Flex)`
 export const PrismChildrenHeader = styled(Flex)`
   position: relative;
   width: 100%;
+  padding: 0px 1.25rem;
   height: 10%;
   background-color: ${color.foregroundInverse300};
   align-items: center;
@@ -61,10 +77,8 @@ export const PrismChildrenHeader = styled(Flex)`
 
 export const PrismSearch = styled(SearchInput)`
   width: 20rem;
-  margin-left: ${spacing.padding.p5};
 `;
 export const PrismChildrenActionButton = styled(Button)`
-  right: ${spacing.padding.p5};
 `;
 
 export const PrismChildrenSection = styled.div`

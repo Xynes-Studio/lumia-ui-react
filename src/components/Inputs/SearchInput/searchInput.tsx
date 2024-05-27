@@ -9,9 +9,9 @@ import SearchResultsComponent from "./components/searchResults/searchResults";
 import useDebounce from "./hooks/useDebounce";
 import {
   SearchInputContainer,
-  SearchInputStyle,
   SearchInputWrapper,
   SearchResultsWrapper,
+  StyledSearchInput,
 } from "./searchInput.style";
 import "./searchInput.styles.css";
 import { SearchInputProps } from "./searchInput.type";
@@ -26,7 +26,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
     label,
     autoSearch = false,
     handleSearch,
-    searchString,
+    searchString = "",
     onValueChange,
     placeholder = "",
     suggestions = true,
@@ -34,7 +34,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   },
   ref
 ) => {
-  const [searchValue, setSearchValue] = useState(searchString || "");
+  const [searchValue, setSearchValue] = useState(searchString);
   const debouncedText = useDebounce(searchValue, 500);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
   return (
     <SearchInputContainer
       direction="column"
-      className={cx("lmSearchInputContainer")}
+      className={cx("lmSearchInputContainer", props.className)}
     >
       {label !== undefined ? <Text>{label}</Text> : null}
       <SearchInputWrapper
@@ -52,16 +52,17 @@ const SearchInputComponent: React.ForwardRefRenderFunction<
         direction="row"
         className={cx("lmSearchInputWrapper", props.className)}
       >
-        <SearchInputStyle
+        <StyledSearchInput
           placeholder={placeholder}
-          type="text"
           value={searchValue}
           className={cx("lmSearchInput")}
           ref={ref}
           onChange={(e) => {
             const value = e.target.value;
             setSearchValue(value);
-            onValueChange && onValueChange(value);
+            if (onValueChange) {
+              onValueChange(value);
+            }
           }}
           {...props}
         />
