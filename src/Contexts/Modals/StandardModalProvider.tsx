@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import { ModalContentProps, ModalProviderProps } from './modalContent.types';
+import React, { createContext, useContext, useState } from "react";
+import { ModalContentProps, ModalProviderProps } from "./modalContent.types";
 
 const StandardModalContext = createContext<ModalContentProps | undefined>(undefined);
 
@@ -18,7 +18,9 @@ const StandardModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   };
 
   return (
-    <StandardModalContext.Provider value={{ showModal, hideModal, isVisible, Component }}>
+    <StandardModalContext.Provider
+      value={{ showModal, hideModal, isVisible, Component }}
+    >
       {children}
     </StandardModalContext.Provider>
   );
@@ -27,7 +29,7 @@ const StandardModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
 const useStandardModal = () => {
   const context = useContext(StandardModalContext);
   if (context === undefined) {
-    throw new Error('useStandardModal must be used within a StandardModalProvider');
+    throw new Error("useStandardModal must be used within a StandardModalProvider");
   }
   return context;
 };

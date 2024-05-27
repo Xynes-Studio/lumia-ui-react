@@ -18,8 +18,8 @@ export interface PrismLayoutProps
   showNotifications?: boolean;
   showSettingIcon?: boolean;
   logo?: string;
-  settingComponent?: React.ReactNode;
-  notificationComponent?: React.ReactNode;
+  settingComponent?: React.FC;
+  notificationComponent?: React.FC;
   notificationCount?: number;
   tabsData?: PrismLayoutTab[];
   onTabClick?: (tab: PrismLayoutTab) => void;

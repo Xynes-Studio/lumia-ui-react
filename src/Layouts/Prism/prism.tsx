@@ -20,6 +20,9 @@ import { PrismLayoutProps, PrismLayoutTab } from "./prism.types";
 import PrismTab from "./component/prismTab";
 import { LmCkSettings } from "@icons/lmCkSettings";
 import { LmCkBell } from "@icons/lmCkBell";
+import { useHorizontalModal } from "@app/Contexts/Modals/HorizontalModalProvider";
+import PrismNotification from "./component/PrismNotification/prismNotification";
+import { useNotification } from "@app/Contexts/notifications";
 
 const PrismLayoutComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -30,6 +33,8 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
     tabsData && tabsData[0].component
   );
   const [searchValue, setSearchValue] = useState("");
+  const { showModal } = useHorizontalModal();
+  const { notifications } = useNotification();
 
   const handleTabClick = (id: number) => {
     if (tabsDataLocal) {
@@ -45,6 +50,17 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
       }
     }
   };
+
+  const PrismNotificationComponent:React.FC = () =>{
+    return (
+      <PrismNotification  {...notifications}/>
+    )
+  }
+
+  const handleNotificationClick = () => {
+    showModal(props.notificationComponent || PrismNotificationComponent, 'left');
+  };
+
   return (
     <PrismContainer ref={ref}>
       {/**Navigation Container */}
@@ -60,16 +76,18 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
               type="fill"
               title="Setting"
               borderRadius={100}
+              onClick={()=>{}}
             />
-            {/* )}
-            {props.notificationComponent && ( */}
+            {/* )} */}
+            {props.notificationComponent && (
             <PrismNavigationHeaderActionButtons
               icon={LmCkBell}
               type="fill"
               title="Notifications"
               borderRadius={100}
+              onClick={handleNotificationClick}
             />
-            {/* )} */}
+            )}
           </PrismNavigationHeaderActions>
         </PrismNavigationHeader>
         {/**Header */}

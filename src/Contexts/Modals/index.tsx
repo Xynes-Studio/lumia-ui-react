@@ -19,13 +19,13 @@ export const StandardModal: React.FC = () => {
 };
 
 export const HorizontalModal: React.FC = () => {
-  const { isVisible, hideModal, Component } = useHorizontalModal();
+  const { isVisible, hideModal, Component, direction } = useHorizontalModal();
 
   return (
     <ModalHorizontalIn
       visible={isVisible}
       onClose={hideModal}
-      direction="left"
+      direction={direction}
     >
       {Component && <Component />}
     </ModalHorizontalIn>
