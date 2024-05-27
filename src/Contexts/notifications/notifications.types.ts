@@ -1,12 +1,17 @@
 // notifications.types.ts
 
+import { AssetProps } from "@icons/types/asset.types";
+import React from "react";
+
 export interface Notification {
   id: string;
-  type: "default" | "flat" | "outlined"; // Adjusted to match AlertProps type
+  type?: "default" | "flat" | "outlined"; // Adjusted to match AlertProps type
   title: string;
   description?: string;
   date: Date;
   read: boolean;
+  icon?: React.FC<AssetProps>;
+  image?: string;
 }
 
 export interface NotificationState {

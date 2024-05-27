@@ -29,6 +29,7 @@ const NotificationStack: React.FC = () => {
         type={visibleNotification.type}
         title={visibleNotification.title}
         description={visibleNotification.description}
+        icon={visibleNotification.icon}
         onClose={() => {
           markAsRead(dispatch, visibleNotification.id);
           setVisibleNotification(null);

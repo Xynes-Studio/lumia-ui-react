@@ -22,7 +22,6 @@ import { LmCkSettings } from "@icons/lmCkSettings";
 import { LmCkBell } from "@icons/lmCkBell";
 import { useHorizontalModal } from "@app/Contexts/Modals/HorizontalModalProvider";
 import PrismNotification from "./component/PrismNotification/prismNotification";
-import { useNotification } from "@app/Contexts/notifications";
 
 const PrismLayoutComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -33,15 +32,16 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
     tabsData && tabsData[0].component
   );
   const [searchValue, setSearchValue] = useState("");
-  const { showModal } = useHorizontalModal();
-  const { notifications } = useNotification();
+  const { showModal, hideModal } = useHorizontalModal();
 
   const handleTabClick = (id: number) => {
     if (tabsDataLocal) {
       const array = [...tabsDataLocal];
-      const indexOfPreviousSelectedItem = array.findIndex((i: PrismLayoutTab) => i.selected === true);
+      const indexOfPreviousSelectedItem = array.findIndex(
+        (i: PrismLayoutTab) => i.selected === true
+      );
       const index = array.findIndex((i: PrismLayoutTab) => i.id === id);
-      
+
       if (index !== -1) {
         array[index].selected = true;
         array[indexOfPreviousSelectedItem].selected = false;
@@ -51,14 +51,15 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
     }
   };
 
-  const PrismNotificationComponent:React.FC = () =>{
-    return (
-      <PrismNotification  {...notifications}/>
-    )
-  }
+  const PrismNotificationComponent: React.FC = () => {
+    return <PrismNotification onClose={hideModal} />;
+  };
 
   const handleNotificationClick = () => {
-    showModal(props.notificationComponent || PrismNotificationComponent, 'left');
+    showModal(
+      props.notificationComponent || PrismNotificationComponent,
+      "left"
+    );
   };
 
   return (
@@ -76,17 +77,17 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
               type="fill"
               title="Setting"
               borderRadius={100}
-              onClick={()=>{}}
+              onClick={() => {}}
             />
             {/* )} */}
             {props.notificationComponent && (
-            <PrismNavigationHeaderActionButtons
-              icon={LmCkBell}
-              type="fill"
-              title="Notifications"
-              borderRadius={100}
-              onClick={handleNotificationClick}
-            />
+              <PrismNavigationHeaderActionButtons
+                icon={LmCkBell}
+                type="fill"
+                title="Notifications"
+                borderRadius={100}
+                onClick={handleNotificationClick}
+              />
             )}
           </PrismNavigationHeaderActions>
         </PrismNavigationHeader>
