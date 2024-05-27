@@ -20,7 +20,7 @@ import { PrismLayoutProps, PrismLayoutTab } from "./prism.types";
 import PrismTab from "./component/prismTab";
 import { LmCkSettings } from "@icons/lmCkSettings";
 import { LmCkBell } from "@icons/lmCkBell";
-import { useHorizontalModal } from "@app/Contexts/Modals/HorizontalModalProvider";
+import { useHorizontalModal } from "@app/contexts/Modals/HorizontalModalProvider";
 import PrismNotification from "./component/PrismNotification/prismNotification";
 
 const PrismLayoutComponent: React.ForwardRefRenderFunction<
@@ -83,15 +83,13 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
                 onClick={handleSettingClick}
               />
             )}
-            {props.notificationComponent && (
-              <PrismNavigationHeaderActionButtons
-                icon={LmCkBell}
-                type="fill"
-                title="Notifications"
-                borderRadius={100}
-                onClick={handleNotificationClick}
-              />
-            )}
+            <PrismNavigationHeaderActionButtons
+              icon={LmCkBell}
+              type="fill"
+              title="Notifications"
+              borderRadius={100}
+              onClick={handleNotificationClick}
+            />
           </PrismNavigationHeaderActions>
         </PrismNavigationHeader>
         {/**Header */}
@@ -107,7 +105,11 @@ const PrismLayoutComponent: React.ForwardRefRenderFunction<
           </PrismNavigationItems>
         </PrismNavigationItemsContainer>
         {/**Footer */}
-        <PrismNavigationFooter></PrismNavigationFooter>
+        <PrismNavigationFooter>
+          {props.navigationFooterComponent && (
+            <props.navigationFooterComponent />
+          )}
+        </PrismNavigationFooter>
         {/**Footer */}
       </PrismNavigationContainer>
       {/**Navigation Container */}

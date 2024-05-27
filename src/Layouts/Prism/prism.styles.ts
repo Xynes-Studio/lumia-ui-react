@@ -34,7 +34,7 @@ export const PrismHeaderLogo = styled.img`
 export const PrismNavigationHeaderActions = styled(Flex)`
 `;
 export const PrismNavigationHeaderActionButtons = styled(Button)`
-  height: 40%;
+  height: 2rem;
   background-color: ${hexToRGBA(color.foreground, 0.2)} !important;
   margin-left: ${spacing.padding.p1};
 `;
@@ -53,7 +53,6 @@ export const PrismNavigationFooter = styled(Flex)`
   width: 90%;
   height: 10%;
   margin: ${spacing.padding.p3} auto;
-  background-color: red;
 `;
 
 export const PrismChildrenContainer = styled(Flex)`

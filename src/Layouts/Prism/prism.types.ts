@@ -21,6 +21,7 @@ export interface PrismLayoutProps
   settingComponent?: React.FC;
   notificationComponent?: React.FC;
   notificationCount?: number;
+  navigationFooterComponent?: React.FC;
   tabsData?: PrismLayoutTab[];
   onTabClick?: (tab: PrismLayoutTab) => void;
   handleSearch?:(value: string) => void;
