@@ -20,7 +20,7 @@ import { PrismLayoutProps, PrismLayoutTab } from "./prism.types";
 import PrismTab from "./component/prismTab";
 import { LmCkSettings } from "@icons/lmCkSettings";
 import { LmCkBell } from "@icons/lmCkBell";
-import { useHorizontalModal } from "@app/contexts/Modals/HorizontalModalProvider";
+import { useHorizontalModal } from "@app/Contexts/Modals/HorizontalModalProvider";
 import PrismNotification from "./component/PrismNotification/prismNotification";
 
 const PrismLayoutComponent: React.ForwardRefRenderFunction<

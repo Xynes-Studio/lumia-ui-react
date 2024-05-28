@@ -5,7 +5,7 @@ import {
   PrismNotificationElement,
   PrismNotificationElements,
 } from "./prismNotification.styles";
-import { useNotification } from "@app/contexts/notifications";
+import { useNotification } from "@app/Contexts/notifications";
 import { Button } from "@components/index";
 import { LmCkChevronLeft } from "@icons/lmCkChevronLeft";
 import { PrismNotificationProps } from "./prismNotification.types";
