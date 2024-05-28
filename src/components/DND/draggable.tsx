@@ -1,7 +1,11 @@
 import { FlexProps } from "@app/View/flex/flex.types";
 import { RowProps } from "@app/View/row/row.types";
 import { AlertProps } from "@components/Alert/alert.type";
-import { BadgeProps } from "@components/Badge/badge.type";
+import {
+  BadgeProps,
+  RoundBadgeProps,
+  SquareBadgeProps,
+} from "@components/Badge/badge.type";
 import { ButtonProps } from "@components/Button/button.type";
 import { CheckboxProps } from "@components/Checkbox/checkbox.type";
 import { CodeProps } from "@components/Code/code.types";
@@ -39,7 +43,16 @@ export interface DraggablePropsButton extends BasicDraggableProps, ButtonProps {
     ButtonProps & React.RefAttributes<HTMLButtonElement>
   >;
 }
-export interface DraggablePropsBadge extends BasicDraggableProps, BadgeProps {
+export interface DraggablePropsBadgeRound
+  extends BasicDraggableProps,
+    RoundBadgeProps {
+  Element: React.ForwardRefExoticComponent<
+    BadgeProps & React.RefAttributes<HTMLDivElement>
+  >;
+}
+export interface DraggablePropsBadgeSquare
+  extends BasicDraggableProps,
+    SquareBadgeProps {
   Element: React.ForwardRefExoticComponent<
     BadgeProps & React.RefAttributes<HTMLDivElement>
   >;
@@ -65,34 +78,32 @@ export interface DraggablePropsAccordion
   >;
 }
 
-export interface DraggablePropsCard
-  extends BasicDraggableProps,
-    CardProps {
+export interface DraggablePropsCard extends BasicDraggableProps, CardProps {
   Element: React.ForwardRefExoticComponent<
-  CardProps & React.RefAttributes<HTMLDivElement>
+    CardProps & React.RefAttributes<HTMLDivElement>
   >;
 }
 
-export interface DraggablePropsTab
-  extends BasicDraggableProps,
-    TabsProps {
+export interface DraggablePropsTab extends BasicDraggableProps, TabsProps {
   Element: React.ForwardRefExoticComponent<
-  TabsProps & React.RefAttributes<HTMLAnchorElement>
+    TabsProps & React.RefAttributes<HTMLAnchorElement>
   >;
 }
-export type DraggableProps = 
+export type DraggableProps =
   | DraggablePropsFlex
   | DraggablePropsButton
   | DraggablePropsAlert
   | DraggablePropsRow
-  | DraggablePropsBadge
+  | DraggablePropsBadgeRound
+  | DraggablePropsBadgeSquare
   | DraggablePropsCheckbox
   | DraggablePropsCode
   | DraggablePropsAccordion
   | DraggablePropsCard
-  | DraggablePropsTab
-;
-export const isButton = (_props: DraggableProps): _props is DraggablePropsButton => {
+  | DraggablePropsTab;
+export const isButton = (
+  _props: DraggableProps
+): _props is DraggablePropsButton => {
   return true;
 };
 const isFlex = (_props: DraggableProps): _props is DraggablePropsFlex => {
@@ -105,7 +116,14 @@ const isRow = (_props: DraggableProps): _props is DraggablePropsRow => {
 const isAlert = (_props: DraggableProps): _props is DraggablePropsAlert => {
   return true;
 };
-const isBadge = (_props: DraggableProps): _props is DraggablePropsBadge => {
+const isBadgeRound = (
+  _props: DraggableProps
+): _props is DraggablePropsBadgeRound => {
+  return true;
+};
+const isBadgeSquare = (
+  _props: DraggableProps
+): _props is DraggablePropsBadgeSquare => {
   return true;
 };
 const isCheckbox = (
@@ -133,7 +151,7 @@ export function DraggableLumiaComponent(allProps: DraggableProps) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({
       id: drag_id,
-      data:{...allProps}
+      data: { ...allProps },
     });
   const dragabbleStyle = {
     transform: CSS.Translate.toString(transform),
@@ -190,7 +208,18 @@ export function DraggableLumiaComponent(allProps: DraggableProps) {
         {children}
       </Element>
     );
-  } else if (isBadge(props)) {
+  } else if (isBadgeRound(props)) {
+    const { Element, ...rest } = props;
+    return (
+      <Element
+        ref={setNodeRef}
+        style={dragabbleStyle}
+        {...listeners}
+        {...attributes}
+        {...rest}
+      />
+    );
+  } else if (isBadgeSquare(props)) {
     const { Element, ...rest } = props;
     return (
       <Element
@@ -212,8 +241,7 @@ export function DraggableLumiaComponent(allProps: DraggableProps) {
         {...rest}
       />
     );
-  } 
-  else if (isCard(props)) {
+  } else if (isCard(props)) {
     const { Element, ...rest } = props;
     return (
       <Element
@@ -224,8 +252,7 @@ export function DraggableLumiaComponent(allProps: DraggableProps) {
         {...rest}
       />
     );
-  }
-  else if (isTab(props)) {
+  } else if (isTab(props)) {
     const { Element, ...rest } = props;
     return (
       <Element
@@ -236,8 +263,7 @@ export function DraggableLumiaComponent(allProps: DraggableProps) {
         {...rest}
       />
     );
-  }
-  else if (isAccordion(props)) {
+  } else if (isAccordion(props)) {
     const { Element, children, ...rest } = props;
     return (
       <Element
