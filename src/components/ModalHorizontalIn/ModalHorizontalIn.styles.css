@@ -1,0 +1,8 @@
+.lmSlideInVisible {
+  opacity: 1;
+  z-index: 99;
+}
+
+.lmSlideInContentsVisible {
+  transform: translateX(0px);
+}

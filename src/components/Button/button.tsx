@@ -18,9 +18,9 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     label,
     color = globalColor.foreground,
     iconAtEnd = false,
-    backgroundColor,
+    backgroundColor = globalColor.accent100,
     borderColor = globalColor?.border100,
-    borderRadius = 2,
+    borderRadius = 0.3,
     textCase = "uppercase",
     iconSize = 0.8,
     ...props

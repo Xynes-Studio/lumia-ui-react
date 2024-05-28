@@ -90,6 +90,7 @@ export const strokes = {
 };
 
 export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+export const shadowDeep = "0 10px 20px rgba(0, 0, 0, 0.1)";
 export const neumorphismShadow =
   "inset 5px 5px 15px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(200, 200, 200, 0.5)";
 
