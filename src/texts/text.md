@@ -50,3 +50,4 @@ const TypographyExample = () => (
 );
 
 export default TypographyExample;
+```

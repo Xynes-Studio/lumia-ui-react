@@ -24,3 +24,4 @@ export const required = (...args: unknown[]) => {
     }
   }
 };
+```

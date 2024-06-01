@@ -33,3 +33,4 @@ A basic search input with a search button.
   placeholder="Search..."
   handleSearch={(value) => console.log("Search for:", value)}
 />
+```

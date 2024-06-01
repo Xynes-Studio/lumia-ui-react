@@ -29,3 +29,4 @@ A basic pagination component for navigating through 10 pages.
   onPressPrevious={() => console.log("Previous page")}
   onPressPageNumber={(page) => console.log(`Page ${page}`)}
 />
+```

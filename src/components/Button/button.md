@@ -34,3 +34,4 @@ A primary button that triggers a form submission.
   color="#fff"
   backgroundColor="#007bff"
 />
+```

@@ -27,3 +27,4 @@ A basic switch with a label.
   value={true}
   onToggle={(newValue) => console.log("Switch toggled:", newValue)}
 />
+```

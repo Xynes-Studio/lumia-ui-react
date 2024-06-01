@@ -29,3 +29,4 @@ A basic PIN input with 4 fields.
   value="1234"
   onValueChange={(pin) => console.log(pin)}
 />
+```

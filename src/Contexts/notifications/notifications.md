@@ -44,3 +44,4 @@ ReactDOM.render(
   </NotificationProvider>,
   document.getElementById('root')
 );
+```

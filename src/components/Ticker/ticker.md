@@ -26,3 +26,4 @@ A basic ticker displaying continuous text.
 <Ticker>
   Breaking News: This is an example of a basic ticker.
 </Ticker>
+```

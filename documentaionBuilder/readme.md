@@ -67,6 +67,7 @@ The `Badge` component is ideal for displaying:
 **Round Badge:**
 ```jsx
 <Badge type="round" label={5} />
+```
 
 
 # Button
@@ -107,6 +108,7 @@ A primary button that triggers a form submission.
   color="#fff"
   backgroundColor="#007bff"
 />
+```
 
 
 # Checkbox
@@ -140,6 +142,7 @@ A simple checkbox to accept terms and conditions.
   label="I agree to the terms and conditions"
   onUpdate={(value) => console.log(value)}
 />
+```
 
 
 # Code
@@ -173,6 +176,7 @@ A non-editable code snippet displaying HTML code.
   code="<div>Hello, World!</div>"
   language="html"
 />
+```
 
 
 # Dialogue
@@ -222,7 +226,7 @@ A confirmation dialogue with primary and secondary buttons.
   onClose={() => console.log('Dialogue closed')}
   closeIcon={true}
 />
-
+```
 
 # HorizontalModal
 
@@ -256,7 +260,7 @@ A modal that slides in from the left side of the screen.
 >
   <p>This is a left slide-in modal.</p>
 </ModalHorizontalIn>
-
+```
 
 # Link
 
@@ -286,7 +290,7 @@ A basic link to an external website.
 <Link href="https://www.example.com">
   Visit Example
 </Link>
-
+```
 
 # listComponent
 
@@ -347,7 +351,7 @@ const items = [
 ];
 
 <ListComponent items={items} type="unordered-List" />
-
+```
 
 # Modal
 
@@ -397,7 +401,7 @@ A confirmation modal with primary and secondary buttons.
   onClose={() => console.log('Modal closed')}
   closeIcon={true}
 />
-
+```
 
 # Pagination
 
@@ -432,7 +436,7 @@ A basic pagination component for navigating through 10 pages.
   onPressPrevious={() => console.log("Previous page")}
   onPressPageNumber={(page) => console.log(`Page ${page}`)}
 />
-
+```
 
 # Profile
 
@@ -464,7 +468,7 @@ A basic profile displaying an avatar, title, and subtitle.
   subtitle="Software Engineer"
   avatar="https://example.com/avatar.jpg"
 />
-
+```
 
 # Radio
 
@@ -495,7 +499,7 @@ A basic radio button with a label.
   checked={true}
   onChange={(e) => console.log(e.target.checked)}
 />
-
+```
 
 # Switch
 
@@ -528,7 +532,7 @@ A basic switch with a label.
   value={true}
   onToggle={(newValue) => console.log("Switch toggled:", newValue)}
 />
-
+```
 
 # Ticker
 
@@ -560,7 +564,7 @@ A basic ticker displaying continuous text.
 <Ticker>
   Breaking News: This is an example of a basic ticker.
 </Ticker>
-
+```
 
 ## Disclosure
 
@@ -593,7 +597,7 @@ A simple accordion to display additional information.
 >
   <p>This is the hidden content that is revealed when the accordion is expanded.</p>
 </Accordion>
-
+```
 
 # Card
 
@@ -668,7 +672,7 @@ A set of horizontal tabs for navigating between different sections.
   icon={SettingsIcon}
   onClick={() => console.log('Settings clicked')}
 />
-
+```
 
 ## Input
 
@@ -705,7 +709,7 @@ A basic PIN input with 4 fields.
   value="1234"
   onValueChange={(pin) => console.log(pin)}
 />
-
+```
 
 # SearchInput
 
@@ -744,7 +748,7 @@ A basic search input with a search button.
   placeholder="Search..."
   handleSearch={(value) => console.log("Search for:", value)}
 />
-
+```
 
 # Slider
 
@@ -778,7 +782,7 @@ A basic slider to adjust a value.
   value={50}
   onChange={(e) => console.log(e.target.value)}
 />
-
+```
 
 # TextArea
 
@@ -813,7 +817,7 @@ A basic textarea for user input.
   onChange={(e) => console.log(e.target.value)}
   value=""
 />
-
+```
 
 # TextInput
 
@@ -849,7 +853,7 @@ A basic text input for user input.
   onChange={(e) => console.log(e.target.value)}
   value=""
 />
-
+```
 
 ## Providers
 
@@ -886,7 +890,7 @@ ReactDOM.render(
   </LumiaProvider>,
   document.getElementById("root")
 );
-
+```
 
 # NotificationProvider
 
@@ -936,7 +940,7 @@ ReactDOM.render(
   </NotificationProvider>,
   document.getElementById('root')
 );
-
+```
 
 # StandardModalProvider || HorizontalModalProvider
 
@@ -987,7 +991,7 @@ const MyComponent: React.FC = () => {
 };
 
 const MyModalContent: React.FC = () => <div>Modal Content</div>;
-
+```
 
 ## layout
 
@@ -1057,7 +1061,7 @@ const App = () => (
 );
 
 export default App;
-
+```
 
 ## Typography
 
@@ -1115,7 +1119,7 @@ const TypographyExample = () => (
 );
 
 export default TypographyExample;
-
+```
 
 ## Utils
 
@@ -1183,6 +1187,7 @@ export const required = (...args: unknown[]) => {
     }
   }
 };
+```
 
 
 ## View
@@ -1244,6 +1249,7 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
 
 
 # Flex
@@ -1283,6 +1289,7 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
 
 
 # Image
@@ -1337,6 +1344,7 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
 
 
 # ListView
@@ -1395,6 +1403,7 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
 
 
 # Row
@@ -1441,6 +1450,7 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
 
 
 # SplitPane
@@ -1483,5 +1493,6 @@ const App: React.FC = () => {
 };
 
 export default App;
+```
 
 

@@ -25,3 +25,4 @@ A simple accordion to display additional information.
 >
   <p>This is the hidden content that is revealed when the accordion is expanded.</p>
 </Accordion>
+```

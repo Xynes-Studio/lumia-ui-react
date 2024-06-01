@@ -27,3 +27,4 @@ A non-editable code snippet displaying HTML code.
   code="<div>Hello, World!</div>"
   language="html"
 />
+```

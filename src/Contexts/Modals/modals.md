@@ -45,3 +45,4 @@ const MyComponent: React.FC = () => {
 };
 
 const MyModalContent: React.FC = () => <div>Modal Content</div>;
+```

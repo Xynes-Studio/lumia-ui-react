@@ -28,3 +28,4 @@ A basic slider to adjust a value.
   value={50}
   onChange={(e) => console.log(e.target.value)}
 />
+```

@@ -39,3 +39,4 @@ The `Badge` component is ideal for displaying:
 **Round Badge:**
 ```jsx
 <Badge type="round" label={5} />
+```

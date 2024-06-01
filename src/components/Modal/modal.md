@@ -44,3 +44,4 @@ A confirmation modal with primary and secondary buttons.
   onClose={() => console.log('Modal closed')}
   closeIcon={true}
 />
+```

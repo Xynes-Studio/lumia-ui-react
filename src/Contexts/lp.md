@@ -29,3 +29,4 @@ ReactDOM.render(
   </LumiaProvider>,
   document.getElementById("root")
 );
+```

@@ -28,3 +28,4 @@ A modal that slides in from the left side of the screen.
 >
   <p>This is a left slide-in modal.</p>
 </ModalHorizontalIn>
+```

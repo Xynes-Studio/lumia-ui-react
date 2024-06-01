@@ -26,3 +26,4 @@ A basic profile displaying an avatar, title, and subtitle.
   subtitle="Software Engineer"
   avatar="https://example.com/avatar.jpg"
 />
+```

@@ -43,3 +43,4 @@ A confirmation dialogue with primary and secondary buttons.
   onClose={() => console.log('Dialogue closed')}
   closeIcon={true}
 />
+```

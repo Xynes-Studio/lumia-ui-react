@@ -42,3 +42,4 @@ A set of horizontal tabs for navigating between different sections.
   icon={SettingsIcon}
   onClick={() => console.log('Settings clicked')}
 />
+```

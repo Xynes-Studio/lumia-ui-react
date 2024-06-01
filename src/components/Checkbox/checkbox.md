@@ -27,3 +27,4 @@ A simple checkbox to accept terms and conditions.
   label="I agree to the terms and conditions"
   onUpdate={(value) => console.log(value)}
 />
+```

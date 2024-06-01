@@ -30,3 +30,4 @@ A basic text input for user input.
   onChange={(e) => console.log(e.target.value)}
   value=""
 />
+```
