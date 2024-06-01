@@ -11,7 +11,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "husky": {
+  "husky": { 
     "hooks": {
       "pre-commit": "lint-staged"
     }
