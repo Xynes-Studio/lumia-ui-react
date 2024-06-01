@@ -41,13 +41,13 @@ export interface RulesBlockTables extends RulesBlockGfm {
   table: RegExp;
 }
 
-export interface Link {
+export interface MDXLink {
   href: string;
   title: string;
 }
 
 export interface Links {
-  [key: string]: Link;
+  [key: string]: MDXLink;
 }
 
 export enum TokenType {
