@@ -42,7 +42,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       <StyledModal visible={visible} ref={ref} {...rest}>
         <StyledModalContent direction="column">
           <StyledHeader>
-            {title ? <H4>{title}</H4>:<div></div>}
+            {title ? <H4 numberOfLines={2}>{title}</H4>:<div></div>}
             {closeIcon && (
               <StyledCloseBtn>
                 <LMAsset
