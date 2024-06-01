@@ -2,6 +2,7 @@ import MillionLint from '@million/lint';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 const plugins = [react()];
@@ -17,6 +18,14 @@ export default defineConfig({
       '@texts': path.resolve(__dirname, 'src/texts'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@app': path.resolve(__dirname, 'src')
+    }
+    
+  },
+  build: {
+    lib: {
+      entry: resolve(__dirname, 'src/index.ts'),
+      fileName: 'my-lib',
+      formats: ['cjs', 'es'],
     }
   }
 });
