@@ -22,10 +22,8 @@ interface ComponentData {
 const extractMetaJson = (filePath: string): Meta | null => {
   const fileContent = fs.readFileSync(filePath, "utf-8");
 
-  const metaRegex = /export const meta = (\{)/;
+  const metaRegex = /const meta = (\{)/;
   const match = metaRegex.exec(fileContent);
-  console.log(match, "this?");
-  
 
   if (match) {
     const startIndex = match.index + match[0].length - 1;
@@ -43,21 +41,37 @@ const extractMetaJson = (filePath: string): Meta | null => {
 
     let metaContent = fileContent.slice(startIndex, endIndex);
 
-    // Ensure the ending format is correct
-    metaContent = metaContent.replace(/\\n',\s*},\s*},\s*};/g, "\\n```\"\n    }\n  }\n}");
+    // Encode `md` content to base64 and replace it in metaContent
+    const mdRegex = /md:\s*(['"])((?:\\.|[^\\])*)\1/;
+    const mdMatch = metaContent.match(mdRegex);
 
-    // Clean up other potential issues
-    metaContent = metaContent.replace(/,\s*}\s*},/g, "\n    }\n  }\n}");
+    if (mdMatch) {
+      const mdContent = mdMatch[2];
 
-    // Attempt to parse the extracted content as JSON
+      const encodedMdContent = Buffer.from(mdContent).toString("base64");
+      metaContent = metaContent.replace(mdRegex, `md: '${encodedMdContent}'`);
+    } else {
+      console.log("`md` field not found.");
+    }
+
+    // Convert the object-like string to a JSON string
+    metaContent = metaContent
+      .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":')
+      .replace(/'/g, '"')
+      .replace(/,\s*([}\]])/g, '$1')
+      .replace(/;?\s*$/, ''); // Remove any trailing semicolons or whitespace at the end
+
     try {
-      const metaJson = JSON.parse(
-        metaContent
-          .replace(/(\w+):/g, '"$1":') // Quote object keys
-          .replace(/'/g, '"') // Replace single quotes with double quotes
-          .replace(/\\\\"/g, '\\"') // Fix escaped quotes
-          .replace(/\\n\\`{3}/g, '\\n```') // Correct code block endings
-      );
+      const metaJson: Meta = JSON.parse(metaContent);
+
+      // Decode base64 md content
+      if (metaJson.parameters.docs.md) {
+        metaJson.parameters.docs.md = Buffer.from(
+          metaJson.parameters.docs.md,
+          "base64"
+        ).toString("utf-8");
+      }
+
       return metaJson;
     } catch (e) {
       console.error("Failed to parse JSON:", e);
