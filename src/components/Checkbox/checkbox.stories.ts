@@ -19,7 +19,6 @@ export const CheckBox: Story = {
     label: "breakfast",
     value: false,
     onUpdate: (e) => {
-      console.log("The val------", e);
     },
   },
 };
