@@ -46,7 +46,7 @@ export const Dialogue = forwardRef<HTMLDivElement, DialogueProps>(
             weight={[20, 1]}
             direction={contentAlign == "right" ? "row-reverse" : "row"}
           >
-            <AlignDiv contentAlign={contentAlign}>{title ? <H4>{title}</H4> : <div></div>}</AlignDiv>
+            <AlignDiv contentAlign={contentAlign}>{title ? <H4 numberOfLines={2}>{title}</H4> : <div></div>}</AlignDiv>
             {closeIcon && (
               <StyledCloseBtn>
                 <LMAsset
