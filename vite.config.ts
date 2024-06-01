@@ -1,13 +1,12 @@
+import dts from "vite-plugin-dts";
+import path from "path";
 import MillionLint from '@million/lint';
-import { PluginOption, defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import path from 'path';
-import { resolve } from 'path'
-
-// https://vitejs.dev/config/
-const plugins = [react()];
+import react from "@vitejs/plugin-react";
+import { defineConfig, PluginOption, UserConfig } from "vite";
+const plugins = [dts({ rollupTypes: true }),react()];
 plugins.unshift(MillionLint.vite() as PluginOption[])
 export default defineConfig({
+  base: "./",
   plugins: plugins,
   resolve: {
     alias: {
@@ -22,10 +21,22 @@ export default defineConfig({
     
   },
   build: {
+    sourcemap: true,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      fileName: 'my-lib',
-      formats: ['cjs', 'es'],
-    }
-  }
-});
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "lumia-ui",
+      formats: ["es", "cjs", "umd", "iife"],
+      fileName: (format) => `index.${format}.js`,
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+        extend:true
+      },
+    },
+  },
+} satisfies UserConfig);

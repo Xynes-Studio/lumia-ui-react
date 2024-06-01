@@ -1,7 +1,7 @@
 {
   "name": "lumia-ui",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "husky": { 
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
@@ -50,6 +50,7 @@
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
+    "@vitejs/plugin-react": "^4.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "esbuild": "^0.21.4",
     "eslint": "^8.56.0",
@@ -61,7 +62,8 @@
     "lint-staged": "^15.2.2",
     "storybook": "^7.6.17",
     "typescript": "^5.2.2",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "vite-plugin-dts": "^3.9.1"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.9.5"
