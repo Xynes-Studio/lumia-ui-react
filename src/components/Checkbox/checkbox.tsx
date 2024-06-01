@@ -1,9 +1,10 @@
 "use client";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import { CheckboxProps } from "./checkbox.type";
 import { cx } from "@utils/cx";
 import { Text } from "@texts/Text/Text";
 import { LmCkCheck } from "@icons/lmCkCheck";
+import { LmCkMinus } from "@icons/lmCkMinus";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { spacing } from "@shared/styles";
 import {
@@ -15,21 +16,40 @@ import {
 const CheckboxComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
   CheckboxProps
-> = ({ label, onChange, value = false, disabled = false, ...props }, ref) => {
+> = ({ label, showIndeterminate = false, value = false, ...props }, ref) => {
+  const [checked, setChecked] = useState(value);
+
+  useEffect(() => {
+    setChecked(value);
+  }, [value]);
+
   return (
     <CheckboxContainer className={cx(props.className)}>
-      <StyledCheckbox checked={value}>
-        {value ? (
-          <LMAsset visible={value} Asset={LmCkCheck} color="black" size={1.2} />
-        ) : null}
-        <CheckboxElement
-          type="checkbox"
-          ref={ref}
-          checked={value}
-          onChange={onChange}
-          disabled={disabled}
-          {...props}
-        />
+      <StyledCheckbox checked={showIndeterminate ? true : checked}>
+        {showIndeterminate ? (
+          <LMAsset visible={true} Asset={LmCkMinus} color="black" size={1} />
+        ) : (
+          <>
+            {checked ? (
+              <LMAsset
+                visible={checked}
+                Asset={LmCkCheck}
+                color="black"
+                size={1.2}
+              />
+            ) : null}
+            <CheckboxElement
+              type="checkbox"
+              ref={ref}
+              checked={checked}
+              onChange={() => {
+                props?.onUpdate && props?.onUpdate(!checked);
+                setChecked(!checked);
+              }}
+              {...props}
+            />
+          </>
+        )}
       </StyledCheckbox>
 
       {label != undefined && (
