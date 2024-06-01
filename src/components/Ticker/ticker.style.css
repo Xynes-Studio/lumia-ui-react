@@ -1,0 +1,23 @@
+@-webkit-keyframes slide {
+  0% {
+      transform: translateX(100vw);
+  }
+
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+@keyframes slide {
+  0% {
+      transform: translateX(100vw);
+  }
+
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.newsTicker:hover .stopOnHover {
+  animation-play-state: paused;
+}

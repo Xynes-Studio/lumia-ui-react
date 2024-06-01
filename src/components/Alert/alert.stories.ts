@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'Another description, overriding the comments'
+        component: "Another description, overriding the comments",
       },
     },
   },
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    type: 'default',
+    type: "default",
     showIcon: true,
     title: "This is an alert",
     description: "Description for the alert",
@@ -43,6 +43,7 @@ export const Outlined: Story = {
     showIcon: false,
     title: "This is a Outlined alert",
     description: "Description for the outlined alert",
+    actionBtn: true,
+    actionBtnLabel: "Action",
   },
 };
-
