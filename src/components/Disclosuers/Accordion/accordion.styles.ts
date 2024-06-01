@@ -20,6 +20,7 @@ export const AccordionBody = styled(Flex)`
 `;
 
 export const AccordionShowIcon = styled(LMAsset)<{ rotated: boolean }>`
+  min-width: 1.5rem;
   transform: ${({ rotated }) => (rotated ? "rotate(90deg)" : "rotate(0deg)")};
   transition: transform 1s ease;
   transform-origin: center;

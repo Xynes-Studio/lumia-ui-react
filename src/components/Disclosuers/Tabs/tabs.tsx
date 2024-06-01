@@ -18,6 +18,8 @@ const TabsComponent: React.ForwardRefRenderFunction<
     selected = false,
     color,
     iconSize = 0.7,
+    disabled = false,
+    onClick,
     ...props
   },
   ref
@@ -26,6 +28,10 @@ const TabsComponent: React.ForwardRefRenderFunction<
     <TabsContainer
       title={label}
       className={cx("lmTabsContainer", props.className)}
+      disabled={disabled}
+      onClick={() => {
+        onClick && !disabled && onClick();
+      }}
       {...props}
       ref={ref}
     >
@@ -33,7 +39,7 @@ const TabsComponent: React.ForwardRefRenderFunction<
         selected={selected}
         selectType={selectType}
         directionInside={direction}
-        direction={direction === 'horizontal' ? 'row' : 'column'}
+        direction={direction === "horizontal" ? "row" : "column"}
         className={cx("lmTabsWrapper")}
       >
         {icon !== undefined ? (

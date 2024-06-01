@@ -48,7 +48,7 @@ const CardComponent: React.ForwardRefRenderFunction<
       </ImageContainer>
       <InfoContainer direction="column">
         <SwitchWrapper>
-          <CardTitle numberOfLines={2}>
+          <CardTitle title={title} numberOfLines={2}>
             {title}
           </CardTitle>
           {displaySwitch ? (
@@ -59,7 +59,12 @@ const CardComponent: React.ForwardRefRenderFunction<
             />
           ) : null}
         </SwitchWrapper>
-        <CardDesc numberOfLines={4} type="caption" className={cx("lmCardDesc")}>
+        <CardDesc
+          title={description}
+          numberOfLines={4}
+          type="caption"
+          className={cx("lmCardDesc")}
+        >
           {description}
         </CardDesc>
       </InfoContainer>

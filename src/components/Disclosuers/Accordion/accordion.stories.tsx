@@ -4,7 +4,7 @@ import { Accordion } from "./accordion"; // Adjust the import paths as necessary
 
 // Define meta information for the Accordion component
 const meta: Meta = {
-  title: "Component/Accordion",
+  title: "Disclosures/Accordion",
   component: Accordion,
   tags: ["autodocs"],
 } satisfies Meta<typeof Accordion>;

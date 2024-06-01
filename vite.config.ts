@@ -1,10 +1,13 @@
+import MillionLint from '@million/lint';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
 // https://vitejs.dev/config/
+const plugins = [react()];
+plugins.unshift(MillionLint.vite())
 export default defineConfig({
-  plugins: [react()],
+  plugins: plugins,
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
@@ -13,7 +16,7 @@ export default defineConfig({
       '@icons': path.resolve(__dirname, 'src/icons'),
       '@texts': path.resolve(__dirname, 'src/texts'),
       '@utils': path.resolve(__dirname, 'src/utils'),
-      '@app': path.resolve(__dirname, 'src'),
-    },
-  },
-})
+      '@app': path.resolve(__dirname, 'src')
+    }
+  }
+});
