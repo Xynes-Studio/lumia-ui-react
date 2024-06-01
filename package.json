@@ -1,6 +1,6 @@
 {
   "name": "lumia-ui",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,8 +25,8 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/index.es.d.ts",
+      "default": "./dist/index.es.js"
     }
   },
   "peerDependencies": {
