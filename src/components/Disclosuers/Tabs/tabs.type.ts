@@ -9,4 +9,6 @@ export interface TabsProps extends React.HtmlHTMLAttributes<HTMLAnchorElement> {
   selected?: boolean;
   color?: string;
   iconSize?: number;
+  disabled?: boolean;
+  onClick?:  () => void;
 }

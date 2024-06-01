@@ -2,10 +2,9 @@ import { Flex } from "@app/View";
 import { color, spacing, strokes } from "@shared/styles";
 import styled from "styled-components";
 
-export const TabsContainer = styled.a`
-  cursor: pointer;
+export const TabsContainer = styled.a<{disabled: boolean}>`
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
-
 export const TabsWrapper = styled(Flex)<{
   selected: boolean;
   selectType: "select-100" | "select-200" | "select-300";
