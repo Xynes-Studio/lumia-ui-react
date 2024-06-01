@@ -18,8 +18,7 @@ export const CheckBox: Story = {
   args: {
     label: "breakfast",
     value: false,
-    onUpdate: (e) => {
-    },
+    
   },
 };
 export const CheckBoxChecked: Story = {
