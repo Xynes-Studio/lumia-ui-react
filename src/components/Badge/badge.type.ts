@@ -7,23 +7,18 @@ interface CommonBadgeProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
 }
 
 // Define separate types for each badge type
-interface RoundBadgeProps extends CommonBadgeProps {
+export interface RoundBadgeProps extends CommonBadgeProps {
   type: "round";
   label: number;
 }
 
-interface SquareFillBadgeProps extends CommonBadgeProps {
-  type: "square-fill";
-  label: number | string;
-}
-
-interface SquareOutlinedBadgeProps extends CommonBadgeProps {
-  type: "square-outlined";
+export interface SquareBadgeProps extends CommonBadgeProps {
+  type: "square-fill" | "square-outlined";
   label: number | string;
 }
 
 // Combine the types using a union type
-export type BadgeProps = RoundBadgeProps | SquareFillBadgeProps | SquareOutlinedBadgeProps;
+export type BadgeProps = RoundBadgeProps | SquareBadgeProps;
 
-
-
+export const isRound = (_props: BadgeProps): _props is RoundBadgeProps => true;
+export const isSquare = (_props: BadgeProps): _props is SquareBadgeProps => true;
