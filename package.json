@@ -28,11 +28,12 @@
     "@emotion/react": "^11.11.3",
     "@storybook/addon-a11y": "^7.6.17",
     "i": "^0.3.7",
-    "npm": "^10.5.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "styled-components": "^6.1.8",
     "uuid": "^9.0.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",
