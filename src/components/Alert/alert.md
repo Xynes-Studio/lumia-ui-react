@@ -1,7 +1,3 @@
-## Component
-
-### Alert
-
 #### Description
 The `Alert` component is used to display important messages to the user. It can be configured to show different types of alerts, such as success, warning, or error. It also supports icons, titles, descriptions, and actions, making it highly customizable for various use cases.
 
@@ -19,5 +15,3 @@ This component is suitable for displaying notifications, warnings, errors, or an
 | `showCloseIcon`  | `boolean`                     | Whether to show a close icon in the alert.                           | `undefined`               | No       |
 | `onClose`        | `() => void`                  | Callback function to be called when the close icon is clicked.       | `undefined`               | No       |
 | `title`  
-
-

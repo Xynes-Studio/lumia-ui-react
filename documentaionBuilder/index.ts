@@ -2,91 +2,40 @@ import * as fs from "fs";
 import * as path from "path";
 import * as glob from "glob";
 
-interface Meta {
-  title: string;
-  parameters: {
-    docs: {
-      description: string;
-      md: string;
-    };
-  };
-}
-
 interface ComponentData {
   title: string;
-  description: string;
   md: string;
 }
 
-// Function to read file content and extract the meta object
-const extractMetaJson = (filePath: string): Meta | null => {
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-
-  const metaRegex = /const meta = (\{)/;
-  const match = metaRegex.exec(fileContent);
+// Function to read file content and extract the title
+const extractTitle = (fileContent: string): string | null => {
+  const titleRegex = /title:\s*"([^"]+)"/;
+  const match = titleRegex.exec(fileContent);
 
   if (match) {
-    const startIndex = match.index + match[0].length - 1;
-    let braceCount = 1;
-    let endIndex = startIndex + 1;
-
-    while (braceCount > 0 && endIndex < fileContent.length) {
-      if (fileContent[endIndex] === "{") {
-        braceCount++;
-      } else if (fileContent[endIndex] === "}") {
-        braceCount--;
-      }
-      endIndex++;
-    }
-
-    let metaContent = fileContent.slice(startIndex, endIndex);
-
-    // Encode `md` content to base64 and replace it in metaContent
-    const mdRegex = /md:\s*(['"])((?:\\.|[^\\])*)\1/;
-    const mdMatch = metaContent.match(mdRegex);
-
-    if (mdMatch) {
-      const mdContent = mdMatch[2];
-
-      const encodedMdContent = Buffer.from(mdContent).toString("base64");
-      metaContent = metaContent.replace(mdRegex, `md: '${encodedMdContent}'`);
-    } else {
-      console.log("`md` field not found.");
-    }
-
-    // Convert the object-like string to a JSON string
-    metaContent = metaContent
-      .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":')
-      .replace(/'/g, '"')
-      .replace(/,\s*([}\]])/g, '$1')
-      .replace(/;?\s*$/, ''); // Remove any trailing semicolons or whitespace at the end
-
-    try {
-      const metaJson: Meta = JSON.parse(metaContent);
-
-      // Decode base64 md content
-      if (metaJson.parameters.docs.md) {
-        metaJson.parameters.docs.md = Buffer.from(
-          metaJson.parameters.docs.md,
-          "base64"
-        ).toString("utf-8");
-      }
-
-      return metaJson;
-    } catch (e) {
-      console.error("Failed to parse JSON:", e);
-      console.error("Meta content:", metaContent);
-      return null;
-    }
+    return match[1]; // Return the captured title
   } else {
-    console.log("No match found");
+    console.log("Title not found.");
+    return null;
+  }
+};
+
+// Function to read file content and extract the docs import
+const extractDocsImport = (fileContent: string): string | null => {
+  const docsImportRegex = /import\s+document\s+from\s+['"]([^'"]+)['"]/;
+  const docsImportMatch = docsImportRegex.exec(fileContent);
+
+  if (docsImportMatch) {
+    return docsImportMatch[1];
+  } else {
+    console.log("`docs` import not found.");
     return null;
   }
 };
 
 // Function to update the README.md file
 const updateReadme = (data: Record<string, ComponentData[]>) => {
-  const readmePath = path.join(process.cwd(), "readme.md");
+  const readmePath = path.join(process.cwd(), "README.md");
   let content = "";
 
   for (const category in data) {
@@ -96,7 +45,6 @@ const updateReadme = (data: Record<string, ComponentData[]>) => {
 
     for (const component of data[category]) {
       content += `### ${component.title}\n\n`;
-      content += `${component.description}\n\n`;
       content += `${component.md}\n\n`;
     }
   }
@@ -111,23 +59,37 @@ const main = () => {
   const data: Record<string, ComponentData[]> = {};
 
   files.forEach((file) => {
-    const metaData = extractMetaJson(file);
+    try {
+      const fileContent = fs.readFileSync(file, "utf-8");
+      const title = extractTitle(fileContent);
 
-    if (metaData != null) {
-      const [category, component] = metaData.title.split("/");
-      if (!data[category]) {
-        data[category] = [];
+      if (title != null) {
+        const [category, component] = title.split("/");
+        if (!data[category]) {
+          data[category] = [];
+        }
+
+        const docsImport = extractDocsImport(fileContent);
+        if (docsImport != null) {
+          const mdAbsolutePath = path.resolve(path.dirname(file), docsImport);
+          const mdContent = fs.readFileSync(mdAbsolutePath, "utf-8");
+
+          data[category].push({
+            title: component,
+            md: mdContent,
+          });
+        }
       }
-
-      data[category].push({
-        title: component,
-        description: metaData.parameters.docs.description,
-        md: metaData.parameters.docs.md,
-      });
+    } catch (error) {
+      console.error(`Failed to process file ${file}:`, error);
     }
   });
 
-  updateReadme(data);
+  try {
+    updateReadme(data);
+  } catch (error) {
+    console.error("Failed to update README.md:", error);
+  }
 };
 
 // Execute the main function
