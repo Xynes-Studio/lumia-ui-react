@@ -22,7 +22,7 @@ export const ButtonContainer = styled.button<{
       : "none"};
   padding: ${spacing?.padding?.p0} ${spacing?.padding?.p2};
   border-radius: ${({ borderRadius }) =>
-    borderRadius || spacing?.borderRadius?.r0}px;
+    borderRadius || spacing?.borderRadius?.r0}rem;
   position: relative;
   align-items: center;
   cursor: pointer;

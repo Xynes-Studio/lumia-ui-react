@@ -29,6 +29,7 @@
       "@icons/*": ["icons/*"],
       "@texts/*": ["texts/*"],
       "@utils/*": ["utils/*"],
+      "@contexts/*": ["contexts/*"],
       "@app/*": ["*"],
     },
   },

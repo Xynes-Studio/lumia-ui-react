@@ -17,4 +17,5 @@
 .lmSearchInput {
   flex: 1;
   height: fit-content;
+  margin: 0px !important;
 }
