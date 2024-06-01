@@ -23,6 +23,12 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "peerDependencies": {
     "@babel/standalone": "^7.24.4",
     "@dnd-kit/core": "^6.1.0",
