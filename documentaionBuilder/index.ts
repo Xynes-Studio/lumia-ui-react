@@ -22,8 +22,10 @@ interface ComponentData {
 const extractMetaJson = (filePath: string): Meta | null => {
   const fileContent = fs.readFileSync(filePath, "utf-8");
 
-  const metaRegex = /const meta = (\{)/;
+  const metaRegex = /export const meta = (\{)/;
   const match = metaRegex.exec(fileContent);
+  console.log(match, "this?");
+  
 
   if (match) {
     const startIndex = match.index + match[0].length - 1;

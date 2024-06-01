@@ -1,4 +1,4 @@
-const meta = {
+export const meta = {
   title: "Component/Alert",
   parameters: {
     docs: {
