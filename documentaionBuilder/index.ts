@@ -44,7 +44,7 @@ const updateReadme = (data: Record<string, ComponentData[]>) => {
     data[category].sort((a, b) => a.title.localeCompare(b.title));
 
     for (const component of data[category]) {
-      content += `### ${component.title}\n\n`;
+      content += `# ${component.title}\n\n`;
       content += `${component.md}\n\n`;
     }
   }
