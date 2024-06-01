@@ -22,3 +22,4 @@ export * from "./Modal/modal";
 export * from "./MDXParse/mdxp";
 export * from "./Dialogue/dialogue";
 export * from "./pagination/pagination";
+export * from "./ModalHorizontalIn/ModalHorizontalIn";

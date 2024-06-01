@@ -22,7 +22,11 @@ const AlertComponent: React.ForwardRefRenderFunction<
     icon = LmCkAdd,
     title = "Alert Message Title",
     description,
+    showCloseIcon,
     onClose,
+    actionBtn,
+    actionBtnLabel,
+    actionBtnOnPress,
     ...props
   },
   ref
@@ -66,14 +70,26 @@ const AlertComponent: React.ForwardRefRenderFunction<
         {description !== undefined && <p>{description}</p>}
         {children}
       </Flex>
-      <Flex direction="column">
-        <Button
-          type="label"
-          style={{ paddingRight: "0px" }}
-          onClick={handleClose}
-          icon={LmCkClose}
-        />
-      </Flex>
+      {actionBtn ? (
+        <Flex direction="column" style={{ justifyContent: "center" }}>
+          <Button
+            label={actionBtnLabel}
+            type="label"
+            style={{ paddingRight: "0px" }}
+            onClick={actionBtnOnPress}
+          />
+        </Flex>
+      ) : null}
+      {showCloseIcon ? (
+        <Flex direction="column">
+          <Button
+            type="label"
+            style={{ paddingRight: "0px" }}
+            onClick={handleClose}
+            icon={LmCkClose}
+          />
+        </Flex>
+      ) : null}
     </AlertContainer>
   );
 };

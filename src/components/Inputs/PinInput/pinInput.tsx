@@ -6,6 +6,10 @@ import PinInputFields from "./components/pinInputField"; // Importing the new co
 import { PinInputContainer } from "./pinInput.style";
 import { PinInputProps } from "./pinInput.types";
 import { MyError } from "@utils/Validations";
+import { Button } from "@components/index";
+import { color } from "@shared/styles";
+import { LmHide } from "@icons/lmHide";
+import { LmShow } from "@icons/lmShow";
 
 const PinInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -18,13 +22,15 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     value,
     fillType = "fill",
     labelPosition = "start",
-    validations
+    validations,
+    secret=false,
   },
   ref
 ) => {
   const [pinValue, setPinValue] = useState(value);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [errMsg, setErrMsg] = useState<string | null>(null);
+  const [visible,setVisible]=useState(false);
   useEffect(() => {
     onValueChange(pinValue);
     setErrMsg(null);
@@ -117,8 +123,18 @@ const PinInputComponent: React.ForwardRefRenderFunction<
               onChange={(e) => handleInputChange(e, index)}
               onKeyDown={(e) => handleKeyPress(e, index)}
               fillType={fillType}
+              type={secret?(visible ? "text":"password"):"text"}
             />
           ))}
+          {secret ? (
+          <Button
+            type="label"
+            icon={visible ? LmHide : LmShow}
+            color={color.foreground}
+            onClick={() => setVisible(!visible)}
+            style={{ padding: 0 }}
+          />
+        ) : null}
         </PinInputContainer>
         {errMsg && <Text type="error">{errMsg}</Text>}
       </Flex>

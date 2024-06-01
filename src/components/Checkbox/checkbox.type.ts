@@ -6,4 +6,5 @@ export interface CheckboxProps
   showIndeterminate?: boolean;
   onUpdate?: (value: boolean) => void;
   value?: boolean;
+  disabled?:boolean;
 }

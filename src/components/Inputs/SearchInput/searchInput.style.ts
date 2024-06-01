@@ -16,8 +16,9 @@ export const SearchInputWrapper = styled(Flex)<{type:string}>`
   border-radius: ${spacing?.borderRadius?.r0};
   box-shadow: ${props=>props.type === "shadow" ? shadow : "none"};
 `;
-export const SearchInputStyle = styled.input`
+export const StyledSearchInput = styled.input`
   font-size: ${typography?.size?.input};
+  margin-left: ${spacing.padding.p0} !important;
 `;
 
 export const SearchResultsWrapper = styled(SearchInputWrapper)`
