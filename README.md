@@ -1,4 +1,4 @@
-## Component
+# Component
 
 # Alert
 
@@ -1348,8 +1348,6 @@ export default App;
 
 
 # ListView
-
-# ListView Component Documentation
 
 ## Description
 The `ListView` component is a flexible container for rendering lists of items. It supports horizontal and vertical orientations, and allows for custom headers and footers. The component utilizes a render prop pattern for rendering each item in the list, providing maximum flexibility.
