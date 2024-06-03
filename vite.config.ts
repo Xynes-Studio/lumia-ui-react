@@ -18,5 +18,22 @@ export default defineConfig({
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@app': path.resolve(__dirname, 'src')
     }
+  },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: 'LumiaUi',
+      fileName: (format) => `lumia-ui.${format}.js`
+    },
+    rollupOptions: {
+      // Ensure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['react'],
+      output: {
+        globals: {
+          react: 'React'
+        }
+      }
+    }
   }
 });

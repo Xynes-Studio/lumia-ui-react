@@ -1,0 +1,19 @@
+# Exclude specific directories
+src/assets
+src/components/DND
+src/components/MDXParse
+src/utils/MDXUtils
+src/utils/StringToJsx
+
+
+# Exclude other unnecessary files
+node_modules
+.storybook
+.vscode
+documentationBuilder
+public
+index.html
+mod.ts
+src/**/*.stories.ts
+src/**/*.stories.tsx
+
