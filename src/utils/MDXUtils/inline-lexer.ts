@@ -11,7 +11,7 @@
 // @ts-nocheck 
 import { ExtendRegexp } from './extend-regexp';
 import {
-  Link,
+  MDXLink,
   Links,
   MarkedOptions,
   RulesInlineBase,
@@ -316,7 +316,7 @@ export class InlineLexer {
   /**
    * Compile Link.
    */
-  protected outputLink(execArr: RegExpExecArray, link: Link) {
+  protected outputLink(execArr: RegExpExecArray, link: MDXLink) {
     const href = this.options.escape(link.href);
     const title = link.title ? this.options.escape(link.title) : null;
 
