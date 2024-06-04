@@ -29,13 +29,15 @@
     "@emotion/react": "^11.11.3",
     "@million/lint": "^1.0.0-rc.13",
     "@storybook/addon-a11y": "^7.6.17",
+    "@vitejs/plugin-react": "^4.3.0",
     "i": "^0.3.7",
     "million": "^3.1.6",
     "npm": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vite-plugin-dts": "^3.9.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",
@@ -68,14 +70,12 @@
     "@rollup/rollup-linux-x64-gnu": "4.9.5"
   },
   "files": [
-    "dist",
-    "src/components",
-    "src/shared",
-    "src/elements",
-    "src/icons",
-    "src/texts",
-    "src/utils/MDXUtils",
-    "src/utils/StringToJsx",
-    "index.ts"
-  ]
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.es.d.ts",
+      "default": "./dist/index.es.js"
+    }
+  }
 }

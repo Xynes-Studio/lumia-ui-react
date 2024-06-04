@@ -1,39 +1,60 @@
-import MillionLint from '@million/lint';
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import path from 'path';
-
-// https://vitejs.dev/config/
-const plugins = [react()];
-plugins.unshift(MillionLint.vite())
+import dts from "vite-plugin-dts";
+import path from "path";
+import MillionLint from "@million/lint";
+import react from "@vitejs/plugin-react";
+import { defineConfig, PluginOption, UserConfig } from "vite";
+const plugins = [dts({ rollupTypes: true }), react()];
+plugins.unshift(MillionLint.vite() as PluginOption[]);
 export default defineConfig({
+  base: "./",
   plugins: plugins,
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@shared': path.resolve(__dirname, 'src/shared'),
-      '@elements': path.resolve(__dirname, 'src/elements'),
-      '@icons': path.resolve(__dirname, 'src/icons'),
-      '@texts': path.resolve(__dirname, 'src/texts'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
-      '@app': path.resolve(__dirname, 'src')
-    }
+      "@components": path.resolve(__dirname, "src/components"),
+      "@shared": path.resolve(__dirname, "src/shared"),
+      "@elements": path.resolve(__dirname, "src/elements"),
+      "@icons": path.resolve(__dirname, "src/icons"),
+      "@texts": path.resolve(__dirname, "src/texts"),
+      "@utils": path.resolve(__dirname, "src/utils"),
+      "@app": path.resolve(__dirname, "src"),
+    },
+  },
+  optimizeDeps: {
+    exclude: [
+      "node_modules",
+      "src/assets",
+      "src/components/DND",
+      "src/components/MDXParse",
+      "src/utils/MDXUtils",
+      "src/utils/StringToJsx",
+      "node_modules",
+      ".storybook",
+      ".vscode",
+      "documentationBuilder",
+      "website",
+      "public",
+      "mod.ts",
+      "src/**/*.stories.ts",
+      "src/**/*.stories.tsx",
+    ],
   },
   build: {
+    sourcemap: false,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'LumiaUi',
-      fileName: (format) => `lumia-ui.${format}.js`
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "lumia-ui",
+      formats: ["es"],
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      // Ensure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['react'],
+      external: ["react", "react-dom"],
       output: {
         globals: {
-          react: 'React'
-        }
-      }
-    }
-  }
-});
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+        extend: true,
+      },
+    },
+  },
+} satisfies UserConfig);

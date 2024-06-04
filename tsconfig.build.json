@@ -7,5 +7,22 @@
     "emitDeclarationOnly": true,
     "noEmit": false
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "src/assets",
+    "src/components/DND",
+    "src/components/MDXParse",
+    "src/utils/MDXUtils",
+    "src/utils/StringToJsx",
+    "node_modules",
+    ".storybook",
+    ".vscode",
+    "documentationBuilder",
+    "website",
+    "public",
+    "mod.ts",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx"
+  ]
 }
