@@ -1,13 +1,13 @@
 {
   "name": "lumia-ui",
   "private": false,
-  "version": "1.0.007",
+  "version": "1.0.009",
   "type": "module",
   "license":"MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-react": "tsc -p tsconfig.build.json && vite build",
+    "build-react": "REACT_BUILD=true tsc -p tsconfig.build.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -33,7 +33,6 @@
     "@storybook/addon-a11y": "^8.1.5",
     "@vitejs/plugin-react": "^4.3.0",
     "i": "^0.3.7",
-    "million": "^3.1.6",
     "npm": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -67,7 +66,8 @@
     "lint-staged": "^15.2.2",
     "storybook": "^8.1.5",
     "typescript": "^5.2.2",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "million": "^3.1.6"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.9.5"
