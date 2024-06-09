@@ -1,10 +1,10 @@
 import { Flex } from "@app/View";
-import { color, spacing, strokes } from "@shared/styles";
 import styled from "styled-components";
 
 export const TabsContainer = styled.a<{disabled: boolean}>`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
+
 export const TabsWrapper = styled(Flex)<{
   selected: boolean;
   selectType: "select-100" | "select-200" | "select-300";
@@ -12,22 +12,22 @@ export const TabsWrapper = styled(Flex)<{
 }>`
   width: fit-content;
   height: fit-content;
-  padding: ${spacing.padding.p1} ${spacing.padding.p4};
+  padding: ${({ theme }) => theme.spacing.padding.p1} ${({ theme }) => theme.spacing.padding.p4};
   align-items: center;
-  background-color: ${({ selectType, selected }) =>
-    selected && selectType === "select-200" ? color?.accent100 : "transparent"};
-  border-radius: ${({ selectType }) =>
-    selectType === "select-200" && spacing.borderRadius.r1};
-  border-bottom: ${({ selectType, selected }) => {
+  background-color: ${({ theme, selectType, selected }) =>
+    selected && selectType === "select-200" ? theme.color.accent100 : "transparent"};
+  border-radius: ${({ theme, selectType }) =>
+    selectType === "select-200" ? theme.spacing.borderRadius.r1 : "0"};
+  border-bottom: ${({ theme, selectType, selected }) => {
     if (selectType === "select-100" && selected) {
-      return `${strokes?.s2} solid ${color?.accent100}`;
+      return `${theme.strokes.s2} solid ${theme.color.accent100}`;
     } else {
       return "none";
     }
   }};
-  border-left: ${({ selectType, selected }) => {
+  border-left: ${({ theme, selectType, selected }) => {
     if (selectType === "select-300" && selected) {
-      return `${strokes?.s3} solid ${color?.accent100}`;
+      return `${theme.strokes.s3} solid ${theme.color.accent100}`;
     } else {
       return "none";
     }

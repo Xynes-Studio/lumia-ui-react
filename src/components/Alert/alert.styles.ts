@@ -1,5 +1,4 @@
 import { Flex } from "@app/View";
-import { color, shadow, spacing, strokes } from "@shared/styles";
 import styled, { keyframes } from "styled-components";
 
 // Keyframes for the transitions
@@ -25,22 +24,22 @@ const fadeOut = keyframes`
   }
 `;
 
-// AlertContainer with transition
+// AlertContainer with transition and theme integration
 export const AlertContainer = styled(Flex)<{
   type: "flat" | "outlined" | "default";
   bgColor: string;
   visible: boolean;
 }>`
   background-color: ${({ bgColor }) => bgColor};
-  box-shadow: ${({ type }) => (type === "default" ? shadow : "none")};
+  box-shadow: ${({ type, theme }) => (type === "default" ? theme.shadow : "none")};
   max-width: 50%;
   position: relative;
-  padding: ${spacing.padding.p0} ${spacing.padding.p2};
-  border-radius: ${spacing.borderRadius.r1};
+  padding: ${({ theme }) => theme.spacing.padding.p0} ${({ theme }) => theme.spacing.padding.p2};
+  border-radius: ${({ theme }) => theme.spacing.borderRadius.r1};
   overflow: hidden;
-  border-width: ${({ type }) => (type === "outlined" ? strokes.s0 : 0)} !important;
+  border-width: ${({ type, theme }) => (type === "outlined" ? theme.strokes.s0 : 0)} !important;
   border-style: solid;
-  border-color: ${color.border100} !important;
+  border-color: ${({ theme }) => theme.color.border100} !important;
 
   animation: ${({ visible }) => (visible ? fadeIn : fadeOut)} 0.3s ease-out;
   display: ${({ visible }) => (visible ? "flex" : "none")};
