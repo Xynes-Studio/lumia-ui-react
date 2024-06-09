@@ -6,6 +6,7 @@ import { HorizontalModal, StandardModal } from "./Modals";
 import { Theme } from "./Themes/themeProvider.types";
 import { defaultTheme } from "./Themes/themeProvider.caonstat";
 import { ThemeProvider } from "styled-components";
+import { ThemeProvider as LumiaUiThemeProvider } from "./Themes/themeProvider";
 
 const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
   theme,
@@ -13,15 +14,17 @@ const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
 }) => {
   return (
     <ThemeProvider theme={theme || defaultTheme}>
-      <NotificationProvider>
-        <StandardModalProvider>
-          <HorizontalModalProvider>
-            {children}
-            <StandardModal />
-            <HorizontalModal />
-          </HorizontalModalProvider>
-        </StandardModalProvider>
-      </NotificationProvider>
+      <LumiaUiThemeProvider theme={theme || defaultTheme}>
+        <NotificationProvider>
+          <StandardModalProvider>
+            <HorizontalModalProvider>
+              {children}
+              <StandardModal />
+              <HorizontalModal />
+            </HorizontalModalProvider>
+          </StandardModalProvider>
+        </NotificationProvider>
+      </LumiaUiThemeProvider>
     </ThemeProvider>
   );
 };
