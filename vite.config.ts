@@ -3,6 +3,7 @@ import path from "path";
 import MillionLint from "@million/lint";
 import react from "@vitejs/plugin-react";
 import { defineConfig, PluginOption, UserConfig } from "vite";
+import 'dotenv/config';
 
 const baseConfig: UserConfig = {
   base: "./",
@@ -67,7 +68,7 @@ const npmBuildConfig: UserConfig = {
 };
 
 export default defineConfig(() => {
-  if (false) {
+  if (process.env.REACT_BUILD) {
     return npmBuildConfig;
   }
   return baseConfig;
