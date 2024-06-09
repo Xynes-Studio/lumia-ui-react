@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
-import { FlexProps } from "./flex.types";
-import styled from "styled-components";
-import "./flex.styles.css";
 import { cx } from "../../utils";
+import { FlexContainer } from "./flex.styles";
+import "./flex.styles.css";
+import { FlexProps } from "./flex.types";
 const FlexComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   FlexProps
@@ -22,30 +22,8 @@ const FlexComponent: React.ForwardRefRenderFunction<
     }
   }
 
-  const FlexContainer = styled.div`
-    display: flex;
-    flex-direction: ${direction};
-    flex-wrap: ${wrap ? "wrap" : "nowrap"};
-
-    /* If weight is undefined, set flex-grow to 1 for all children */
-    ${() =>
-      weight === undefined
-        ? ``
-        : Array.isArray(children)
-        ? children
-            .map(
-              (_child, index) => `
-            & > *:nth-child(${index + 1}) {
-              flex-grow: ${weight[index] || 1};
-            }
-          `
-            )
-            .join("")
-        : ""}
-  `;
-
   return (
-    <FlexContainer ref={ref} className={cx("lmFlexBox", className)} {...props}>
+    <FlexContainer direction={direction} wrap={wrap} weight={weight} ref={ref} className={cx("lmFlexBox", className)} {...props}>
       {children}
     </FlexContainer>
   );
