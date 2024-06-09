@@ -1,6 +1,6 @@
 import React from "react";
 import { Global } from "@emotion/react";
-import LumiaProvider from "../src/Contexts/LumiaProvider";
+import {LumiaProvider} from "../src/Contexts/LumiaProvider";
 import { GlobalStyle } from "../src/shared/global";
 
 export function loadUserConfig() {
