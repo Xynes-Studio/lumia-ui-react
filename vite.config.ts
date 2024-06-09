@@ -68,7 +68,11 @@ const npmBuildConfig: UserConfig = {
 };
 
 export default defineConfig(() => {
-  if (process.env.REACT_BUILD) {
+  console.log("process.env.REACT_BUILD", process.env.REACT_BUILD);
+  
+  if (process.env.REACT_BUILD === "true") {
+    console.log("comes here");
+    
     return npmBuildConfig;
   }
   return baseConfig;

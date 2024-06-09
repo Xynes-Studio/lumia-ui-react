@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-react": "DOTENV_CONFIG_REACT_BUILD=true tsc -p tsconfig.build.json && vite build",
+    "build-react": "export REACT_BUILD='true' || set REACT_BUILD='true' tsc -p tsconfig.build.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
