@@ -1,24 +1,22 @@
-import { color, spacing, typography } from "@shared/styles";
 import styled from "styled-components";
 
 export const PinInputStyledField = styled.input<{
   index: number;
   fillType: "fill" | "transparent" | "outlined" | "bottom";
 }>`
-  margin-left: ${({ index }) =>
-    index != 0 && spacing.padding.p0}; /* Adjust margin as needed */
-  background-color: ${color.input100};
-  font-size: ${typography.size.input};
+  margin-left: ${({ index, theme }) => index != 0 && theme.spacing.padding.p0};
+  background-color: ${({ theme }) => theme.color.input100};
+  font-size: ${({ theme }) => theme.typography.size.input};
   width: 2rem; /* Adjust width as needed */
   height: 2rem; /* Adjust height as needed */
   text-align: center;
   vertical-align: middle;
-  border-radius: ${({ fillType }) =>
-    fillType !== "bottom" && spacing.borderRadius.r0};
-  ${({ fillType }) =>
+  border-radius: ${({ fillType, theme }) =>
+    fillType !== "bottom" && theme.spacing.borderRadius.r0};
+  ${({ fillType, theme }) =>
     fillType === "fill" &&
     `
-      background-color: ${color.input100};
+      background-color: ${theme.color.input100};
     `}
 
   ${({ fillType }) =>
@@ -27,17 +25,17 @@ export const PinInputStyledField = styled.input<{
       background-color: transparent;
     `}
 
-    ${({ fillType }) =>
+  ${({ fillType, theme }) =>
     fillType === "outlined" &&
     `
       background-color: transparent;
-      border: 1px solid ${color.border};
+      border: 1px solid ${theme.color.border};
     `}
 
-    ${({ fillType }) =>
+  ${({ fillType, theme }) =>
     fillType === "bottom" &&
     `
       background-color: transparent;
-      border-bottom: 2px solid ${color.border};
+      border-bottom: 2px solid ${theme.color.border};
     `}
 `;

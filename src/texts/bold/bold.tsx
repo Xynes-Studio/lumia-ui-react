@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 interface BoldProps extends HTMLAttributes<HTMLSpanElement> {}
 
+const StyleSpan = styled.span`
+  font-weight: bold;
+`;
+
 const BoldComponent: React.ForwardRefRenderFunction<
   HTMLSpanElement,
   BoldProps
 > = ({ className, children, ...props }, ref) => {
-  const StyleSpan = styled.span`
-    font-weight: bold;
-  `;
-
   return (
     <StyleSpan ref={ref} className={cx(className)} {...props}>
       {children}

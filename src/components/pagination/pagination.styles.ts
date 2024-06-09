@@ -1,19 +1,18 @@
 import { Flex } from "@app/View";
-import { color, spacing } from "@shared/styles";
 import styled from "styled-components";
 
 export const PaginationWrapper = styled(Flex)`
   align-items: center;
   justify-content: center;
-  padding: ${spacing.padding.p1};
-  gap: ${spacing.padding.p0};
+  padding: ${({ theme }) => theme.spacing.padding.p1};
+  gap: ${({ theme }) => theme.spacing.padding.p0};
 `;
 
 export const PaginationButton = styled.button<{ isActive?: boolean }>`
-  background-color: ${({ isActive }) => (isActive ? color.accent100 : color.foregroundInverse300)};
-  color: ${({ isActive }) => (isActive ? color.foreground : color.foreground)};
-  border-radius: ${spacing.borderRadius.r0};
-  padding: ${spacing.padding.p0} ${spacing.padding.p1};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.color.accent100 : theme.color.foregroundInverse300)};
+  color: ${({ isActive, theme }) => (isActive ? theme.color.foreground : theme.color.foreground)};
+  border-radius: ${({ theme }) => theme.spacing.borderRadius.r0};
+  padding: ${({ theme }) => theme.spacing.padding.p0} ${({ theme }) => theme.spacing.padding.p1};
   cursor: pointer;
   &:disabled {
     cursor: not-allowed;
@@ -22,5 +21,5 @@ export const PaginationButton = styled.button<{ isActive?: boolean }>`
 `;
 
 export const PaginationEllipsis = styled.span`
-  padding: ${spacing.padding.p1};
+  padding: ${({ theme }) => theme.spacing.padding.p1};
 `;

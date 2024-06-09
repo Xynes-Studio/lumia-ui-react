@@ -1,6 +1,6 @@
-import { typography } from "@shared/styles";
 import styled from "styled-components";
+
 export const StyledCode = styled.code`
-  font-family: ${typography.type.code};
-  font-size: ${typography.size.code};
+  font-family: ${({ theme }) => theme.typography.type.code};
+  font-size: ${({ theme }) => theme.typography.size.code};
 `;

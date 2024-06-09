@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 interface ItalicProps extends HTMLAttributes<HTMLSpanElement> {}
 
+const StyleSpan = styled.span`
+  font-style: italic;
+`;
+
 const ItalicComponent: React.ForwardRefRenderFunction<
   HTMLSpanElement,
   ItalicProps
 > = ({ className, children, ...props }, ref) => {
-  const StyleSpan = styled.span`
-    font-style: italic;
-  `;
-
   return (
     <StyleSpan ref={ref} className={cx(className)} {...props}>
       {children}

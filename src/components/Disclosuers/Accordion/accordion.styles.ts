@@ -1,20 +1,19 @@
 import { Flex } from "@app/View";
-import { color, spacing, strokes } from "@shared/styles";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import styled from "styled-components";
 
 export const AccordionContainer = styled(Flex)``;
 
 export const AccordionHeader = styled(Flex)`
-  padding: ${spacing?.padding?.p1} ${spacing?.padding?.p2};
-  border-bottom: ${strokes?.s0} solid ${color?.foreground};
+  padding: ${({ theme }) => theme.spacing.padding.p1} ${({ theme }) => theme.spacing.padding.p2};
+  border-bottom: ${({ theme }) => theme.strokes.s0} solid ${({ theme }) => theme.color.foreground};
   height: fit-content;
   align-items: center;
   justify-content: space-between;
 `;
 
 export const AccordionBody = styled(Flex)`
-  margin-top: ${spacing?.padding?.p2};
+  margin-top: ${({ theme }) => theme.spacing.padding.p2};
   overflow: hidden;
   transition: min-height 0.3s ease;
 `;
@@ -30,4 +29,4 @@ export const AccordionShowIcon = styled(LMAsset)<{ rotated: boolean }>`
 export const AccordionButton = styled.button`
   all: unset;
   cursor: pointer;
-`
+`;

@@ -1,5 +1,4 @@
 import { Flex } from "@app/View";
-import { spacing, strokes, color } from "@shared/styles"; // corrected comment
 import styled from "styled-components";
 
 export const ButtonElementContainer = styled(Flex)`
@@ -16,13 +15,13 @@ export const ButtonContainer = styled.button<{
   all: unset;
   background-color: ${({ type, backgroundColor }) =>
     type !== "label" ? backgroundColor || "transparent" : "none"};
-  border: ${({ type, borderColor }) =>
+  border: ${({ type, borderColor, theme }) =>
     type === "outlined"
-      ? `${strokes?.s0} solid ${borderColor || color?.foreground}`
+      ? `${theme.strokes.s0} solid ${borderColor || theme.color.foreground}`
       : "none"};
-  padding: ${spacing?.padding?.p0} ${spacing?.padding?.p2};
-  border-radius: ${({ borderRadius }) =>
-    borderRadius || spacing?.borderRadius?.r0}rem;
+  padding: ${({ theme }) => theme.spacing.padding.p0} ${({ theme }) => theme.spacing.padding.p2};
+  border-radius: ${({ borderRadius, theme }) =>
+    borderRadius || theme.spacing.borderRadius.r0}rem;
   position: relative;
   align-items: center;
   cursor: pointer;

@@ -8,20 +8,16 @@ import { BadgeContainer } from "./badge.styles";
 const BadgeComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   BadgeProps
-> = (
-  allProps,
-  ref
-) => {
-  if(isRound(allProps)){
+> = (allProps, ref) => {
+  if (isRound(allProps)) {
     const {
       type = "round",
       label,
       color = globalColor?.foreground,
       backgroundColor = globalColor?.accent100,
       ...props
-    }=allProps;
+    } = allProps;
     return (
-    
       <BadgeContainer
         className={cx(props.className)}
         backgroundColor={backgroundColor}
@@ -29,21 +25,20 @@ const BadgeComponent: React.ForwardRefRenderFunction<
         ref={ref}
         {...props}
       >
-        <Text textCase="uppercase" color={color}>
+        <Text style={{fontSize: '0.5rem'}} textCase="uppercase" color={color}>
           {typeof label === "number" ? (label > 9 ? "9+" : label) : label}
         </Text>
       </BadgeContainer>
     );
-  }else{
+  } else {
     const {
-      type="square-fill",
+      type = "square-fill",
       label,
       color = globalColor?.foreground,
       backgroundColor = globalColor?.accent100,
       ...props
-    }=allProps;
+    } = allProps;
     return (
-    
       <BadgeContainer
         className={cx(props.className)}
         backgroundColor={backgroundColor}
@@ -57,7 +52,6 @@ const BadgeComponent: React.ForwardRefRenderFunction<
       </BadgeContainer>
     );
   }
-  
 };
 
 export const Badge = forwardRef(BadgeComponent);

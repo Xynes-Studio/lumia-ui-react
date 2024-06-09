@@ -1,5 +1,4 @@
 import { Flex } from "@app/View";
-import { spacing, strokes, color } from "@shared/styles"; // added globalColor import
 import styled from "styled-components";
 
 export const BadgeContainer = styled(Flex)<{
@@ -7,17 +6,13 @@ export const BadgeContainer = styled(Flex)<{
   backgroundColor?: string;
 }>`
   background-color: ${({ type, backgroundColor }) =>
-    type !== "square-outlined"
-      ? backgroundColor || "transparent"
-      : "transparent"};
-  border-radius: ${({ type }) =>
-    type === "round" ? "100%" : spacing.borderRadius.r0};
-  border: ${({ type }) =>
-    type === "square-outlined"
-      ? `${strokes.s0} solid ${color.foreground}`
-      : "none"};
-  width: ${({ type }) => (type === "round" ? "4vw" : "fit-content")};
-  height: ${({ type }) => (type === "round" ? "4vw" : "fit-content")};
+    type !== "square-outlined" ? backgroundColor || "transparent" : "transparent"};
+  border-radius: ${({ type, theme }) =>
+    type === "round" ? "100%" : theme.spacing.borderRadius.r0};
+  border: ${({ type, theme }) =>
+    type === "square-outlined" ? `${theme.strokes.s0} solid ${theme.color.foreground}` : "none"};
+  width: ${({ type }) => (type === "round" ? "1.2rem" : "fit-content")};
+  height: ${({ type }) => (type === "round" ? "1.2rem" : "fit-content")};
   align-items: center;
   justify-content: center;
 `;

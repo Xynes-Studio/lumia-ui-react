@@ -1,4 +1,131 @@
-# Component
+## Utils
+
+# Utils
+
+## Description
+This set of utility functions provides helpful methods for handling class names and converting color formats. These functions streamline common operations, making it easier to manage class names and color formats in your application.
+
+## Use Case
+These utility functions are ideal for:
+- Concatenating class names conditionally.
+- Converting hexadecimal color codes to RGBA format.
+- Rendering assets conditionally based on visibility.
+
+## Utility Functions
+
+### LMAsset
+
+Renders an asset conditionally based on the visibility prop.
+
+#### LMAssetProps
+| Prop Name | Type | Description | Default Value | Required |
+|-----------|------|-------------|---------------|----------|
+| `Asset` | `React.FC<AssetProps>` | The asset to be rendered. | N/A | Yes |
+| `size` | `number` | The size of the asset. | N/A | No |
+| `color` | `string` | The color of the asset. | N/A | No |
+| `visible` | `boolean` | Whether the asset is visible. | `true` | No |
+
+
+### cx
+
+A method to extract `classNames` on a React Component.
+
+### hexToRgba
+
+take two arguments `hex: string`, `opacity: number` and returns a rgba value with opacity.
+
+## Form
+
+# Validations
+
+## Description
+This set of validation utilities provides a variety of functions to validate different types of input data. It includes general validations like required fields and email format, number validations, length validations, phone number validations, URL and IP address validations, password strength checks, and date validations. These utilities throw errors when the validations fail, making them easy to integrate into form handling or other input validation processes.
+
+## Use Case
+These validation utilities are ideal for:
+- Validating form inputs in web applications.
+- Ensuring data consistency and correctness before processing.
+- Providing user feedback for incorrect inputs.
+
+## Validation Functions
+
+### General Validations
+
+#### required
+Ensures that the input value is not empty.
+```typescript
+export const required = (...args: unknown[]) => {
+  const value = args[0] as string;
+  if (!value) {
+    throw new Error("cannot be empty");
+  } else {
+    if (value.trim() == "") {
+      throw new Error("cannot be empty");
+    }
+  }
+};
+```
+
+
+## Typography
+
+# Typography
+
+## Description
+The typography components provide a set of styled text elements for your application, including various heading levels (`H1` to `H6`), `Text`, `bold`, `underline`, and `italic` elements. These components support customization options such as type, number of lines, text case, and editable content.
+
+## Use Case
+These components are ideal for:
+- Structuring content with appropriate heading levels.
+- Styling text with different formats like bold, underline, and italic.
+- Displaying body text, captions, and error messages.
+- Providing editable text elements for user-generated content.
+
+## Props Table
+
+### HeaderProps
+
+| Prop Name        | Type                                      | Description                                                         | Default Value  | Required |
+|------------------|-------------------------------------------|---------------------------------------------------------------------|----------------|----------|
+| `type`           | `"sans" \| "serif"`                       | The font type for the heading.                                      | `"sans"`       | No       |
+| `numberOfLines`  | `number`                                   | The maximum number of lines to display.                             | `undefined`    | No       |
+| `editable`       | `boolean`                                  | Whether the heading is editable.                                    | `false`        | No       |
+| `onUpdate`       | `(value: string) => void`                 | Callback function when the heading content is updated.              | `undefined`    | No       |
+
+### TextProps
+
+| Prop Name        | Type                                      | Description                                                         | Default Value  | Required |
+|------------------|-------------------------------------------|---------------------------------------------------------------------|----------------|----------|
+| `type`           | `"error" \| "body" \| "caption"`          | The type of text to display.                                        | `"body"`       | No       |
+| `textCase`       | `"none" \| "capitalize" \| "uppercase" \| "lowercase" \| "initial" \| "inherit"` | The case transformation for the text. | `"none"`       | No       |
+| `editable`       | `boolean`                                  | Whether the text is editable.                                       | `false`        | No       |
+| `codeClassName`  | `string`                                   | Additional class name for code blocks within the text.               | `undefined`    | No       |
+| `numberOfLines`  | `number`                                   | The maximum number of lines to display.                             | `undefined`    | No       |
+| `onUpdate`       | `(value: string) => void`                 | Callback function when the text content is updated.                 | `undefined`    | No       |
+
+## Example Use Case
+
+### Example 1: Using Headings
+Using different heading levels and types.
+```jsx
+import React from 'react';
+import { H1, H2, H3, H4, H5, H6 } from './typography';
+
+const TypographyExample = () => (
+  <div>
+    <H1 type="serif">Heading 1</H1>
+    <H2 type="sans">Heading 2</H2>
+    <H3>Heading 3</H3>
+    <H4>Heading 4</H4>
+    <H5>Heading 5</H5>
+    <H6>Heading 6</H6>
+  </div>
+);
+
+export default TypographyExample;
+```
+
+## Component
 
 # Alert
 
@@ -566,114 +693,6 @@ A basic ticker displaying continuous text.
 </Ticker>
 ```
 
-## Disclosure
-
-# Accordion
-
-## Description
-The `Accordion` component is a collapsible UI element used to hide and show content. It supports customizable headers and can be used to organize information in a compact and user-friendly way. This component can be integrated into various parts of an application where content needs to be expandable and collapsible.
-
-## Use Case
-The `Accordion` component is ideal for:
-- Displaying FAQs where each question can be expanded to reveal the answer.
-- Organizing content in a compact manner where sections can be expanded and collapsed.
-- Providing a navigable list of items or options where details are hidden until needed.
-
-## Props Table
-
-| Prop Name   | Type                         | Description                                                         | Default Value | Required |
-|-------------|------------------------------|---------------------------------------------------------------------|---------------|----------|
-| `headerText`| `string`                     | The text to be displayed in the header of the accordion.            | `""`          | Yes      |
-| `children`  | `React.ReactNode`            | The content to be displayed inside the accordion body.              | `undefined`   | No       |
-| `hidden`    | `boolean`                    | Whether the accordion content is initially hidden.                  | `false`       | No       |
-
-## Example Use Case
-
-### Example 1: Simple Accordion
-A simple accordion to display additional information.
-```jsx
-<Accordion
-  headerText="More Information"
->
-  <p>This is the hidden content that is revealed when the accordion is expanded.</p>
-</Accordion>
-```
-
-# Card
-
-## Description
-The `Card` component is a versatile and customizable UI element used to display information in a concise and visually appealing manner. It supports different styles, optional images, titles, descriptions, and additional interactive elements such as switches and action buttons. This component can be used to present various types of content in a structured format.
-
-## Use Case
-The `Card` component is ideal for:
-- Displaying product information with images, titles, and descriptions.
-- Showing user profiles or contact information.
-- Presenting articles or blog post summaries.
-- Providing an interactive element like a switch for toggling states.
-
-## Props Table
-
-| Prop Name       | Type                                         | Description                                                        | Default Value | Required |
-|-----------------|----------------------------------------------|--------------------------------------------------------------------|---------------|----------|
-| `type`          | `"default" \| "fill" \| "outlined"`          | Defines the style of the card.                                      | `"default"`   | No       |
-| `image`         | `string`                                     | The URL of the image to be displayed in the card.                   | `undefined`   | No       |
-| `title`         | `string`                                     | The title of the card.                                              | `undefined`   | Yes      |
-| `description`   | `string`                                     | The description or detailed message of the card.                    | `undefined`   | Yes      |
-| `displaySwitch` | `boolean`                                    | Whether to display a switch in the card.                            | `undefined`   | No       |
-| `toggleValue`   | `boolean`                                    | The initial value of the switch.                                    | `false`       | No       |
-| `onToggle`      | `(value: boolean) => void`                   | Callback function to be called when the switch value changes.       | `undefined`   | No       |
-| `actionElement` | `React.ReactNode`                            | Additional interactive element to be displayed in the card.         | `undefined`   | No       |
-| `width`         | `string`                                     | The width of the card.                                              | `"22rem"`     | No    
-
-
-# Tabs
-
-## Description
-The `Tabs` component is a versatile UI element used for navigation or switching between different views or content sections. It supports horizontal and vertical orientations, custom icons, labels, and different selection styles. This component can be used to enhance the user experience by organizing content in a structured and easily accessible manner.
-
-## Use Case
-The `Tabs` component is ideal for:
-- Navigating between different sections of a single-page application.
-- Switching between various views or data sets within a page.
-- Creating a tabbed interface for content that needs to be categorized or segmented.
-
-## Props Table
-
-| Prop Name    | Type                                         | Description                                                        | Default Value     | Required |
-|--------------|----------------------------------------------|--------------------------------------------------------------------|-------------------|----------|
-| `direction`  | `"horizontal" \| "vertical"`                 | Defines the direction of the tabs.                                  | `"horizontal"`    | No       |
-| `selectType` | `"select-100" \| "select-200" \| "select-300"`| Defines the selection style of the tabs.                            | `"select-100"`    | No       |
-| `label`      | `string`                                     | The text label to be displayed inside the tab.                      | `undefined`       | No       |
-| `icon`       | `React.FC<AssetProps>`                       | The icon to be displayed inside the tab.                            | `undefined`       | No       |
-| `selected`   | `boolean`                                    | Whether the tab is currently selected.                              | `false`           | No       |
-| `color`      | `string`                                     | The color of the text and icon inside the tab.                      | `undefined`       | No       |
-| `iconSize`   | `number`                                     | The size of the icon inside the tab.                                | `0.7`             | No       |
-| `disabled`   | `boolean`                                    | Whether the tab is disabled.                                        | `false`           | No       |
-| `onClick`    | `() => void`                                  | Callback function to be called when the tab is clicked.             | `undefined`       | No       |
-
-## Example Use Case
-
-### Example 1: Horizontal Tabs
-A set of horizontal tabs for navigating between different sections.
-```jsx
-<Tabs
-  label="Home"
-  icon={HomeIcon}
-  selected={true}
-  onClick={() => console.log('Home clicked')}
-/>
-<Tabs
-  label="Profile"
-  icon={ProfileIcon}
-  onClick={() => console.log('Profile clicked')}
-/>
-<Tabs
-  label="Settings"
-  icon={SettingsIcon}
-  onClick={() => console.log('Settings clicked')}
-/>
-```
-
 ## Input
 
 # PinInput
@@ -855,340 +874,113 @@ A basic text input for user input.
 />
 ```
 
-## Providers
+## Disclosure
 
-# LumiaProvider
+# Accordion
 
 ## Description
-The `LumiaProvider` component is a higher-order component that wraps around your application to provide global context and functionality for notifications and modals. It uses various providers to manage notifications, standard modals, and horizontal modals, ensuring that these features are available throughout the application.
+The `Accordion` component is a collapsible UI element used to hide and show content. It supports customizable headers and can be used to organize information in a compact and user-friendly way. This component can be integrated into various parts of an application where content needs to be expandable and collapsible.
 
 ## Use Case
-The `LumiaProvider` component is ideal for:
-- Setting up global state and context for notifications and modal dialogs.
-- Providing a consistent and centralized way to manage modals and notifications in your application.
-- Ensuring that modals and notifications can be accessed and used from any part of the application.
+The `Accordion` component is ideal for:
+- Displaying FAQs where each question can be expanded to reveal the answer.
+- Organizing content in a compact manner where sections can be expanded and collapsed.
+- Providing a navigable list of items or options where details are hidden until needed.
 
 ## Props Table
 
-| Prop Name  | Type               | Description                               | Default Value | Required |
-|------------|--------------------|-------------------------------------------|---------------|----------|
-| `children` | `React.ReactNode`  | The child components to be wrapped by the provider. | `undefined`   | Yes      |
+| Prop Name   | Type                         | Description                                                         | Default Value | Required |
+|-------------|------------------------------|---------------------------------------------------------------------|---------------|----------|
+| `headerText`| `string`                     | The text to be displayed in the header of the accordion.            | `""`          | Yes      |
+| `children`  | `React.ReactNode`            | The content to be displayed inside the accordion body.              | `undefined`   | No       |
+| `hidden`    | `boolean`                    | Whether the accordion content is initially hidden.                  | `false`       | No       |
 
 ## Example Use Case
 
-### Example 1: Wrapping an Application with LumiaProvider
-Wrap your application with the `LumiaProvider` to enable notifications and modals.
+### Example 1: Simple Accordion
+A simple accordion to display additional information.
 ```jsx
-import React from "react";
-import ReactDOM from "react-dom";
-import LumiaProvider from "./LumiaProvider";
-import App from "./App";
-
-ReactDOM.render(
-  <LumiaProvider>
-    <App />
-  </LumiaProvider>,
-  document.getElementById("root")
-);
+<Accordion
+  headerText="More Information"
+>
+  <p>This is the hidden content that is revealed when the accordion is expanded.</p>
+</Accordion>
 ```
 
-# NotificationProvider
-
-# NotificationProvider Component Documentation
+# Card
 
 ## Description
-The `NotificationProvider` component is a context provider that manages the state and functionality for notifications in your application. It uses a reducer to handle actions such as adding a new notification and marking notifications as read. This provider makes it easy to manage and display notifications across your application.
+The `Card` component is a versatile and customizable UI element used to display information in a concise and visually appealing manner. It supports different styles, optional images, titles, descriptions, and additional interactive elements such as switches and action buttons. This component can be used to present various types of content in a structured format.
 
 ## Use Case
-The `NotificationProvider` component is ideal for:
-- Managing application-wide notifications.
-- Keeping track of unread notifications and displaying them in a user interface.
-- Providing a centralized way to add, update, and read notifications.
+The `Card` component is ideal for:
+- Displaying product information with images, titles, and descriptions.
+- Showing user profiles or contact information.
+- Presenting articles or blog post summaries.
+- Providing an interactive element like a switch for toggling states.
 
 ## Props Table
 
-### NotificationProvider
-| Prop Name  | Type               | Description                               | Default Value | Required |
-|------------|--------------------|-------------------------------------------|---------------|----------|
-| `children` | `React.ReactNode`  | The child components to be wrapped by the provider. | `undefined`   | Yes      |
+| Prop Name       | Type                                         | Description                                                        | Default Value | Required |
+|-----------------|----------------------------------------------|--------------------------------------------------------------------|---------------|----------|
+| `type`          | `"default" \| "fill" \| "outlined"`          | Defines the style of the card.                                      | `"default"`   | No       |
+| `image`         | `string`                                     | The URL of the image to be displayed in the card.                   | `undefined`   | No       |
+| `title`         | `string`                                     | The title of the card.                                              | `undefined`   | Yes      |
+| `description`   | `string`                                     | The description or detailed message of the card.                    | `undefined`   | Yes      |
+| `displaySwitch` | `boolean`                                    | Whether to display a switch in the card.                            | `undefined`   | No       |
+| `toggleValue`   | `boolean`                                    | The initial value of the switch.                                    | `false`       | No       |
+| `onToggle`      | `(value: boolean) => void`                   | Callback function to be called when the switch value changes.       | `undefined`   | No       |
+| `actionElement` | `React.ReactNode`                            | Additional interactive element to be displayed in the card.         | `undefined`   | No       |
+| `width`         | `string`                                     | The width of the card.                                              | `"22rem"`     | No    
 
-### Notification
-| Prop Name   | Type                           | Description                                                         | Default Value | Required |
-|-------------|--------------------------------|---------------------------------------------------------------------|---------------|----------|
-| `id`        | `string`                       | Unique identifier for the notification.                             | `undefined`   | Yes      |
-| `type`      | `"default" \| "flat" \| "outlined"`| Type of notification style.                                       | `"default"`   | No       |
-| `title`     | `string`                       | Title of the notification.                                          | `undefined`   | Yes      |
-| `description`| `string`                      | Description of the notification.                                    | `undefined`   | No       |
-| `date`      | `Date`                         | Date when the notification was created.                             | `undefined`   | Yes      |
-| `read`      | `boolean`                      | Whether the notification has been read.                             | `false`       | Yes      |
-| `icon`      | `React.FC<AssetProps>`         | Icon to be displayed with the notification.                         | `undefined`   | No       |
-| `image`     | `string`                       | Image to be displayed with the notification.                        | `undefined`   | No       |
 
-## Example Use Case
-
-### Example 1: Using NotificationProvider
-Wrap your application with the `NotificationProvider` to enable notifications.
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { NotificationProvider } from './NotificationProvider';
-import App from './App';
-
-ReactDOM.render(
-  <NotificationProvider>
-    <App />
-  </NotificationProvider>,
-  document.getElementById('root')
-);
-```
-
-# StandardModalProvider || HorizontalModalProvider
+# Tabs
 
 ## Description
-The `StandardModal` and `HorizontalModal` components are specialized modal dialogs used to display various content types within your application. These modals are integrated with providers (`StandardModalProvider` and `HorizontalModalProvider`) to manage their state and visibility. The `StandardModal` is a centered modal, while the `HorizontalModal` slides in from the left or right.
+The `Tabs` component is a versatile UI element used for navigation or switching between different views or content sections. It supports horizontal and vertical orientations, custom icons, labels, and different selection styles. This component can be used to enhance the user experience by organizing content in a structured and easily accessible manner.
 
 ## Use Case
-The `StandardModal` and `HorizontalModal` components are ideal for:
-- Displaying content in modal dialogs.
-- Providing additional information or forms without navigating away from the current page.
-- Implementing modal-based interactions with different display styles.
+The `Tabs` component is ideal for:
+- Navigating between different sections of a single-page application.
+- Switching between various views or data sets within a page.
+- Creating a tabbed interface for content that needs to be categorized or segmented.
 
 ## Props Table
 
-### StandardModal
-| Prop Name    | Type               | Description                                                         | Default Value     | Required |
-|--------------|--------------------|---------------------------------------------------------------------|-------------------|----------|
-| `isVisible`  | `boolean`          | Whether the modal is visible.                                       | `false`           | Yes      |
-| `hideModal`  | `() => void`       | Function to hide the modal.                                         | `undefined`       | Yes      |
-| `Component`  | `React.FC \| null` | The component to be displayed inside the modal.                     | `null`            | No       |
-
-### HorizontalModal
-| Prop Name    | Type               | Description                                                         | Default Value     | Required |
-|--------------|--------------------|---------------------------------------------------------------------|-------------------|----------|
-| `isVisible`  | `boolean`          | Whether the modal is visible.                                       | `false`           | Yes      |
-| `hideModal`  | `() => void`       | Function to hide the modal.                                         | `undefined`       | Yes      |
-| `Component`  | `React.FC \| null` | The component to be displayed inside the modal.                     | `null`            | No       |
-| `direction`  | `"left" \| "right"`| The direction from which the modal slides in.                       | `"left"`          | No       |
+| Prop Name    | Type                                         | Description                                                        | Default Value     | Required |
+|--------------|----------------------------------------------|--------------------------------------------------------------------|-------------------|----------|
+| `direction`  | `"horizontal" \| "vertical"`                 | Defines the direction of the tabs.                                  | `"horizontal"`    | No       |
+| `selectType` | `"select-100" \| "select-200" \| "select-300"`| Defines the selection style of the tabs.                            | `"select-100"`    | No       |
+| `label`      | `string`                                     | The text label to be displayed inside the tab.                      | `undefined`       | No       |
+| `icon`       | `React.FC<AssetProps>`                       | The icon to be displayed inside the tab.                            | `undefined`       | No       |
+| `selected`   | `boolean`                                    | Whether the tab is currently selected.                              | `false`           | No       |
+| `color`      | `string`                                     | The color of the text and icon inside the tab.                      | `undefined`       | No       |
+| `iconSize`   | `number`                                     | The size of the icon inside the tab.                                | `0.7`             | No       |
+| `disabled`   | `boolean`                                    | Whether the tab is disabled.                                        | `false`           | No       |
+| `onClick`    | `() => void`                                  | Callback function to be called when the tab is clicked.             | `undefined`       | No       |
 
 ## Example Use Case
 
-### Example 1: Using StandardModal
-A component that displays a standard modal.
+### Example 1: Horizontal Tabs
+A set of horizontal tabs for navigating between different sections.
 ```jsx
-import React from 'react';
-import { useStandardModal } from './StandardModalProvider';
-import { StandardModal } from './Modals';
-
-const MyComponent: React.FC = () => {
-  const { showModal } = useStandardModal();
-
-  return (
-    <div>
-      <button onClick={() => showModal(MyModalContent)}>Show Modal</button>
-      <StandardModal />
-    </div>
-  );
-};
-
-const MyModalContent: React.FC = () => <div>Modal Content</div>;
+<Tabs
+  label="Home"
+  icon={HomeIcon}
+  selected={true}
+  onClick={() => console.log('Home clicked')}
+/>
+<Tabs
+  label="Profile"
+  icon={ProfileIcon}
+  onClick={() => console.log('Profile clicked')}
+/>
+<Tabs
+  label="Settings"
+  icon={SettingsIcon}
+  onClick={() => console.log('Settings clicked')}
+/>
 ```
-
-## layout
-
-# Prism
-
-## Description
-The `PrismLayout` component is a comprehensive layout component designed to manage the navigation, settings, notifications, and content sections of an application. It includes customizable tabs, search functionality, and integrates with horizontal modals for displaying notifications and settings.
-
-## Use Case
-The `PrismLayout` component is ideal for:
-- Creating a structured layout for applications with multiple sections.
-- Managing navigation between different tabs or sections.
-- Integrating notifications and settings modals within the layout.
-
-## Props Table
-
-### PrismLayoutProps
-
-| Prop Name                     | Type                                      | Description                                                        | Default Value            | Required |
-|-------------------------------|-------------------------------------------|--------------------------------------------------------------------|--------------------------|----------|
-| `showNotifications`           | `boolean`                                 | Whether to show the notifications icon.                            | `false`                  | No       |
-| `showSettingIcon`             | `boolean`                                 | Whether to show the settings icon.                                 | `false`                  | No       |
-| `logo`                        | `string`                                  | URL of the logo to be displayed in the header.                     | `undefined`              | No       |
-| `settingComponent`            | `React.FC`                                | Component to be displayed in the settings modal.                   | `undefined`              | No       |
-| `notificationComponent`       | `React.FC`                                | Component to be displayed in the notifications modal.              | `undefined`              | No       |
-| `notificationCount`           | `number`                                  | Number of unread notifications.                                    | `0`                      | No       |
-| `navigationFooterComponent`   | `React.FC`                                | Component to be displayed in the navigation footer.                | `undefined`              | No       |
-| `tabsData`                    | `PrismLayoutTab[]`                        | Array of tab data objects.                                         | `undefined`              | No       |
-| `onTabClick`                  | `(tab: PrismLayoutTab) => void`           | Callback function when a tab is clicked.                           | `undefined`              | No       |
-| `handleSearch`                | `(value: string) => void`                 | Callback function when the search value changes.                   | `undefined`              | No       |
-| `SearchResultsComponent`      | `React.FC<SearchResultProps>`             | Component to be displayed for search results.                      | `undefined`              | No       |
-| `searchPlaceholder`           | `string`                                  | Placeholder text for the search input.                             | `"Search Here..."`       | No       |
-
-### PrismLayoutTab
-
-| Prop Name            | Type                           | Description                                                        | Default Value   | Required |
-|----------------------|--------------------------------|--------------------------------------------------------------------|-----------------|----------|
-| `id`                 | `number`                       | Unique identifier for the tab.                                     | `undefined`     | Yes      |
-| `icon`               | `React.FC<AssetProps>`         | Icon to be displayed in the tab.                                   | `undefined`     | Yes      |
-| `title`              | `string`                       | Title of the tab.                                                  | `undefined`     | Yes      |
-| `selected`           | `boolean`                      | Whether the tab is currently selected.                             | `false`         | No       |
-| `component`          | `ReactNode`                    | Component to be displayed when the tab is selected.                | `undefined`     | No       |
-| `disabled`           | `boolean`                      | Whether the tab is disabled.                                       | `false`         | No       |
-| `actionButtonEnabled`| `boolean`                      | Whether the action button is enabled for the tab.                  | `false`         | No       |
-| `actionModalComponent`| `ReactNode`                   | Component to be displayed in the action modal for the tab.         | `undefined`     | No       |
-
-## Example Use Case
-
-### Example 1: Basic PrismLayout
-A basic layout with tabs and notifications enabled.
-```jsx
-import React from 'react';
-import { PrismLayout } from './PrismLayout';
-
-const tabsData = [
-  { id: 1, icon: IconComponent1, title: "Home", component: <HomeComponent /> },
-  { id: 2, icon: IconComponent2, title: "Profile", component: <ProfileComponent /> }
-];
-
-const App = () => (
-  <PrismLayout
-    logo="https://example.com/logo.png"
-    showNotifications={true}
-    showSettingIcon={true}
-    tabsData={tabsData}
-  />
-);
-
-export default App;
-```
-
-## Typography
-
-# Typography
-
-## Description
-The typography components provide a set of styled text elements for your application, including various heading levels (`H1` to `H6`), `Text`, `bold`, `underline`, and `italic` elements. These components support customization options such as type, number of lines, text case, and editable content.
-
-## Use Case
-These components are ideal for:
-- Structuring content with appropriate heading levels.
-- Styling text with different formats like bold, underline, and italic.
-- Displaying body text, captions, and error messages.
-- Providing editable text elements for user-generated content.
-
-## Props Table
-
-### HeaderProps
-
-| Prop Name        | Type                                      | Description                                                         | Default Value  | Required |
-|------------------|-------------------------------------------|---------------------------------------------------------------------|----------------|----------|
-| `type`           | `"sans" \| "serif"`                       | The font type for the heading.                                      | `"sans"`       | No       |
-| `numberOfLines`  | `number`                                   | The maximum number of lines to display.                             | `undefined`    | No       |
-| `editable`       | `boolean`                                  | Whether the heading is editable.                                    | `false`        | No       |
-| `onUpdate`       | `(value: string) => void`                 | Callback function when the heading content is updated.              | `undefined`    | No       |
-
-### TextProps
-
-| Prop Name        | Type                                      | Description                                                         | Default Value  | Required |
-|------------------|-------------------------------------------|---------------------------------------------------------------------|----------------|----------|
-| `type`           | `"error" \| "body" \| "caption"`          | The type of text to display.                                        | `"body"`       | No       |
-| `textCase`       | `"none" \| "capitalize" \| "uppercase" \| "lowercase" \| "initial" \| "inherit"` | The case transformation for the text. | `"none"`       | No       |
-| `editable`       | `boolean`                                  | Whether the text is editable.                                       | `false`        | No       |
-| `codeClassName`  | `string`                                   | Additional class name for code blocks within the text.               | `undefined`    | No       |
-| `numberOfLines`  | `number`                                   | The maximum number of lines to display.                             | `undefined`    | No       |
-| `onUpdate`       | `(value: string) => void`                 | Callback function when the text content is updated.                 | `undefined`    | No       |
-
-## Example Use Case
-
-### Example 1: Using Headings
-Using different heading levels and types.
-```jsx
-import React from 'react';
-import { H1, H2, H3, H4, H5, H6 } from './typography';
-
-const TypographyExample = () => (
-  <div>
-    <H1 type="serif">Heading 1</H1>
-    <H2 type="sans">Heading 2</H2>
-    <H3>Heading 3</H3>
-    <H4>Heading 4</H4>
-    <H5>Heading 5</H5>
-    <H6>Heading 6</H6>
-  </div>
-);
-
-export default TypographyExample;
-```
-
-## Utils
-
-# Utils
-
-## Description
-This set of utility functions provides helpful methods for handling class names and converting color formats. These functions streamline common operations, making it easier to manage class names and color formats in your application.
-
-## Use Case
-These utility functions are ideal for:
-- Concatenating class names conditionally.
-- Converting hexadecimal color codes to RGBA format.
-- Rendering assets conditionally based on visibility.
-
-## Utility Functions
-
-### LMAsset
-
-Renders an asset conditionally based on the visibility prop.
-
-#### LMAssetProps
-| Prop Name | Type | Description | Default Value | Required |
-|-----------|------|-------------|---------------|----------|
-| `Asset` | `React.FC<AssetProps>` | The asset to be rendered. | N/A | Yes |
-| `size` | `number` | The size of the asset. | N/A | No |
-| `color` | `string` | The color of the asset. | N/A | No |
-| `visible` | `boolean` | Whether the asset is visible. | `true` | No |
-
-
-### cx
-
-A method to extract `classNames` on a React Component.
-
-### hexToRgba
-
-take two arguments `hex: string`, `opacity: number` and returns a rgba value with opacity.
-
-## Form
-
-# Validations
-
-## Description
-This set of validation utilities provides a variety of functions to validate different types of input data. It includes general validations like required fields and email format, number validations, length validations, phone number validations, URL and IP address validations, password strength checks, and date validations. These utilities throw errors when the validations fail, making them easy to integrate into form handling or other input validation processes.
-
-## Use Case
-These validation utilities are ideal for:
-- Validating form inputs in web applications.
-- Ensuring data consistency and correctness before processing.
-- Providing user feedback for incorrect inputs.
-
-## Validation Functions
-
-### General Validations
-
-#### required
-Ensures that the input value is not empty.
-```typescript
-export const required = (...args: unknown[]) => {
-  const value = args[0] as string;
-  if (!value) {
-    throw new Error("cannot be empty");
-  } else {
-    if (value.trim() == "") {
-      throw new Error("cannot be empty");
-    }
-  }
-};
-```
-
 
 ## View
 
@@ -1492,5 +1284,257 @@ const App: React.FC = () => {
 
 export default App;
 ```
+
+
+## layout
+
+# Prism
+
+## Description
+The `PrismLayout` component is a comprehensive layout component designed to manage the navigation, settings, notifications, and content sections of an application. It includes customizable tabs, search functionality, and integrates with horizontal modals for displaying notifications and settings.
+
+## Use Case
+The `PrismLayout` component is ideal for:
+- Creating a structured layout for applications with multiple sections.
+- Managing navigation between different tabs or sections.
+- Integrating notifications and settings modals within the layout.
+
+## Props Table
+
+### PrismLayoutProps
+
+| Prop Name                     | Type                                      | Description                                                        | Default Value            | Required |
+|-------------------------------|-------------------------------------------|--------------------------------------------------------------------|--------------------------|----------|
+| `showNotifications`           | `boolean`                                 | Whether to show the notifications icon.                            | `false`                  | No       |
+| `showSettingIcon`             | `boolean`                                 | Whether to show the settings icon.                                 | `false`                  | No       |
+| `logo`                        | `string`                                  | URL of the logo to be displayed in the header.                     | `undefined`              | No       |
+| `settingComponent`            | `React.FC`                                | Component to be displayed in the settings modal.                   | `undefined`              | No       |
+| `notificationComponent`       | `React.FC`                                | Component to be displayed in the notifications modal.              | `undefined`              | No       |
+| `notificationCount`           | `number`                                  | Number of unread notifications.                                    | `0`                      | No       |
+| `navigationFooterComponent`   | `React.FC`                                | Component to be displayed in the navigation footer.                | `undefined`              | No       |
+| `tabsData`                    | `PrismLayoutTab[]`                        | Array of tab data objects.                                         | `undefined`              | No       |
+| `onTabClick`                  | `(tab: PrismLayoutTab) => void`           | Callback function when a tab is clicked.                           | `undefined`              | No       |
+| `handleSearch`                | `(value: string) => void`                 | Callback function when the search value changes.                   | `undefined`              | No       |
+| `SearchResultsComponent`      | `React.FC<SearchResultProps>`             | Component to be displayed for search results.                      | `undefined`              | No       |
+| `searchPlaceholder`           | `string`                                  | Placeholder text for the search input.                             | `"Search Here..."`       | No       |
+
+### PrismLayoutTab
+
+| Prop Name            | Type                           | Description                                                        | Default Value   | Required |
+|----------------------|--------------------------------|--------------------------------------------------------------------|-----------------|----------|
+| `id`                 | `number`                       | Unique identifier for the tab.                                     | `undefined`     | Yes      |
+| `icon`               | `React.FC<AssetProps>`         | Icon to be displayed in the tab.                                   | `undefined`     | Yes      |
+| `title`              | `string`                       | Title of the tab.                                                  | `undefined`     | Yes      |
+| `selected`           | `boolean`                      | Whether the tab is currently selected.                             | `false`         | No       |
+| `component`          | `ReactNode`                    | Component to be displayed when the tab is selected.                | `undefined`     | No       |
+| `disabled`           | `boolean`                      | Whether the tab is disabled.                                       | `false`         | No       |
+| `actionButtonEnabled`| `boolean`                      | Whether the action button is enabled for the tab.                  | `false`         | No       |
+| `actionModalComponent`| `ReactNode`                   | Component to be displayed in the action modal for the tab.         | `undefined`     | No       |
+
+## Example Use Case
+
+### Example 1: Basic PrismLayout
+A basic layout with tabs and notifications enabled.
+```jsx
+import React from 'react';
+import { PrismLayout } from './PrismLayout';
+
+const tabsData = [
+  { id: 1, icon: IconComponent1, title: "Home", component: <HomeComponent /> },
+  { id: 2, icon: IconComponent2, title: "Profile", component: <ProfileComponent /> }
+];
+
+const App = () => (
+  <PrismLayout
+    logo="https://example.com/logo.png"
+    showNotifications={true}
+    showSettingIcon={true}
+    tabsData={tabsData}
+  />
+);
+
+export default App;
+```
+
+## Providers
+
+# LumiaProvider
+
+## Description
+The `LumiaProvider` component is a higher-order component that wraps around your application to provide global context and functionality for notifications and modals. It uses various providers to manage notifications, standard modals, and horizontal modals, ensuring that these features are available throughout the application.
+
+## Use Case
+The `LumiaProvider` component is ideal for:
+- Setting up global state and context for notifications and modal dialogs.
+- Providing a consistent and centralized way to manage modals and notifications in your application.
+- Ensuring that modals and notifications can be accessed and used from any part of the application.
+
+## Props Table
+
+| Prop Name  | Type               | Description                               | Default Value | Required |
+|------------|--------------------|-------------------------------------------|---------------|----------|
+| `children` | `React.ReactNode`  | The child components to be wrapped by the provider. | `undefined`   | Yes      |
+
+## Example Use Case
+
+### Example 1: Wrapping an Application with LumiaProvider
+Wrap your application with the `LumiaProvider` to enable notifications and modals.
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import LumiaProvider from "./LumiaProvider";
+import App from "./App";
+
+ReactDOM.render(
+  <LumiaProvider>
+    <App />
+  </LumiaProvider>,
+  document.getElementById("root")
+);
+```
+
+# NotificationProvider
+
+# NotificationProvider Component Documentation
+
+## Description
+The `NotificationProvider` component is a context provider that manages the state and functionality for notifications in your application. It uses a reducer to handle actions such as adding a new notification and marking notifications as read. This provider makes it easy to manage and display notifications across your application.
+
+## Use Case
+The `NotificationProvider` component is ideal for:
+- Managing application-wide notifications.
+- Keeping track of unread notifications and displaying them in a user interface.
+- Providing a centralized way to add, update, and read notifications.
+
+## Props Table
+
+### NotificationProvider
+| Prop Name  | Type               | Description                               | Default Value | Required |
+|------------|--------------------|-------------------------------------------|---------------|----------|
+| `children` | `React.ReactNode`  | The child components to be wrapped by the provider. | `undefined`   | Yes      |
+
+### Notification
+| Prop Name   | Type                           | Description                                                         | Default Value | Required |
+|-------------|--------------------------------|---------------------------------------------------------------------|---------------|----------|
+| `id`        | `string`                       | Unique identifier for the notification.                             | `undefined`   | Yes      |
+| `type`      | `"default" \| "flat" \| "outlined"`| Type of notification style.                                       | `"default"`   | No       |
+| `title`     | `string`                       | Title of the notification.                                          | `undefined`   | Yes      |
+| `description`| `string`                      | Description of the notification.                                    | `undefined`   | No       |
+| `date`      | `Date`                         | Date when the notification was created.                             | `undefined`   | Yes      |
+| `read`      | `boolean`                      | Whether the notification has been read.                             | `false`       | Yes      |
+| `icon`      | `React.FC<AssetProps>`         | Icon to be displayed with the notification.                         | `undefined`   | No       |
+| `image`     | `string`                       | Image to be displayed with the notification.                        | `undefined`   | No       |
+
+## Example Use Case
+
+### Example 1: Using NotificationProvider
+Wrap your application with the `NotificationProvider` to enable notifications.
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { NotificationProvider } from './NotificationProvider';
+import App from './App';
+
+ReactDOM.render(
+  <NotificationProvider>
+    <App />
+  </NotificationProvider>,
+  document.getElementById('root')
+);
+```
+
+# StandardModalProvider || HorizontalModalProvider
+
+## Description
+The `StandardModal` and `HorizontalModal` components are specialized modal dialogs used to display various content types within your application. These modals are integrated with providers (`StandardModalProvider` and `HorizontalModalProvider`) to manage their state and visibility. The `StandardModal` is a centered modal, while the `HorizontalModal` slides in from the left or right.
+
+## Use Case
+The `StandardModal` and `HorizontalModal` components are ideal for:
+- Displaying content in modal dialogs.
+- Providing additional information or forms without navigating away from the current page.
+- Implementing modal-based interactions with different display styles.
+
+## Props Table
+
+### StandardModal
+| Prop Name    | Type               | Description                                                         | Default Value     | Required |
+|--------------|--------------------|---------------------------------------------------------------------|-------------------|----------|
+| `isVisible`  | `boolean`          | Whether the modal is visible.                                       | `false`           | Yes      |
+| `hideModal`  | `() => void`       | Function to hide the modal.                                         | `undefined`       | Yes      |
+| `Component`  | `React.FC \| null` | The component to be displayed inside the modal.                     | `null`            | No       |
+
+### HorizontalModal
+| Prop Name    | Type               | Description                                                         | Default Value     | Required |
+|--------------|--------------------|---------------------------------------------------------------------|-------------------|----------|
+| `isVisible`  | `boolean`          | Whether the modal is visible.                                       | `false`           | Yes      |
+| `hideModal`  | `() => void`       | Function to hide the modal.                                         | `undefined`       | Yes      |
+| `Component`  | `React.FC \| null` | The component to be displayed inside the modal.                     | `null`            | No       |
+| `direction`  | `"left" \| "right"`| The direction from which the modal slides in.                       | `"left"`          | No       |
+
+## Example Use Case
+
+### Example 1: Using StandardModal
+A component that displays a standard modal.
+```jsx
+import React from 'react';
+import { useStandardModal } from './StandardModalProvider';
+import { StandardModal } from './Modals';
+
+const MyComponent: React.FC = () => {
+  const { showModal } = useStandardModal();
+
+  return (
+    <div>
+      <button onClick={() => showModal(MyModalContent)}>Show Modal</button>
+      <StandardModal />
+    </div>
+  );
+};
+
+const MyModalContent: React.FC = () => <div>Modal Content</div>;
+```
+
+# ThemeProvider
+
+## ThemeProvider Documentation
+
+### Description
+
+The `ThemeProvider` component is designed to manage theme-related properties in your application, allowing you to toggle between light and dark themes. It leverages `styled-components` for theming and provides a context for accessing and modifying the current theme throughout your application.
+
+### Use Case
+
+Use the `ThemeProvider` to wrap your application's root component. This enables you to define and switch between different themes (e.g., light and dark) easily. The `useTheme` hook can be utilized in any component within the `ThemeProvider` to access the current theme and toggle between themes.
+
+### Props Table
+
+| Prop Name | Type               | Description                               | Default Value | Required |
+|-----------|--------------------|-------------------------------------------|---------------|----------|
+| theme     | `Theme`            | The theme object to be used for styling   | `defaultTheme`| Yes      |
+| children  | `ReactNode`        | The child components to be wrapped by the provider | N/A           | Yes      |
+
+### Example Use Case
+
+Here's an example of how you can use the `ThemeProvider` and `useTheme` hook in your application:
+
+```typescript
+import React from "react";
+import { ThemeProvider, useTheme } from "./themeProvider";
+import { defaultTheme } from "./themeProvider.constants";
+
+const App = () => {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <ThemeProvider theme={theme}>
+      <div style={{ background: theme.background.app, color: theme.color.foreground }}>
+        <h1>Hello, World!</h1>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+      </div>
+    </ThemeProvider>
+  );
+};
+
+export default App;```
 
 
