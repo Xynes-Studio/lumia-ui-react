@@ -3,20 +3,26 @@ import { NotificationProvider } from "./notifications/NotificationProvider";
 import { StandardModalProvider } from "./Modals/StandardModalProvider";
 import { HorizontalModalProvider } from "./Modals/HorizontalModalProvider";
 import { HorizontalModal, StandardModal } from "./Modals";
+import { Theme } from "./Themes/themeProvider.types";
+import { defaultTheme } from "./Themes/themeProvider.caonstat";
+import { ThemeProvider } from "styled-components";
 
-const LumiaProvider: React.FC<{ children: React.ReactNode }> = ({
+const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
+  theme,
   children,
 }) => {
   return (
-    <NotificationProvider>
-      <StandardModalProvider>
-        <HorizontalModalProvider>
-          {children}
-          <StandardModal />
-          <HorizontalModal />
-        </HorizontalModalProvider>
-      </StandardModalProvider>
-    </NotificationProvider>
+    <ThemeProvider theme={theme || defaultTheme}>
+      <NotificationProvider>
+        <StandardModalProvider>
+          <HorizontalModalProvider>
+            {children}
+            <StandardModal />
+            <HorizontalModal />
+          </HorizontalModalProvider>
+        </StandardModalProvider>
+      </NotificationProvider>
+    </ThemeProvider>
   );
 };
 

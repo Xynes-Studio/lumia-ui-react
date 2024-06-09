@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
-import { backgroundType, colorTypes, spacingTypes } from "./types/styles.types";
+import { backgroundType, colorTypes, spacingTypes, Strokes, Typography } from "./types/styles.types";
 
 // Global style variables
 
-export const background: backgroundType = {
+export const background: BackgroundType = {
   app: "#F6F9FC",
   appInverse: "#333333",
   positive: "#E1FFD4",
@@ -55,7 +55,7 @@ export const spacing: spacingTypes = {
   },
 };
 
-export const typography = {
+export const typography: Typography = {
   type: {
     primary: '"Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif',
     title: '"DM Serif Display", serif',
@@ -82,19 +82,19 @@ export const typography = {
   },
 };
 
-export const strokes = {
+export const strokes: Strokes = {
   s0: "0.1rem", // 1.6px, very fine details and subtle divisions
   s1: "0.2rem", // 3.2px, fine lines for subtle differentiation
   s2: "0.4rem", // 6.4px, medium weight strokes for more visible separation
   s3: "0.8rem", // 12.8px, thick strokes for bold statements or accent features
 };
 
-export const shadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
-export const shadowDeep = "0 10px 20px rgba(0, 0, 0, 0.1)";
-export const neumorphismShadow =
+export const shadow: string = "0 2px 4px rgba(0, 0, 0, 0.1)";
+export const shadowDeep: string = "0 10px 20px rgba(0, 0, 0, 0.1)";
+export const neumorphismShadow: string =
   "inset 5px 5px 15px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(200, 200, 200, 0.5)";
 
-export const breakpoint = 600;
+export const breakpoint:number = 600;
 export const pageMargin: number = 5.55555;
 
 export const pageMargins = css`
