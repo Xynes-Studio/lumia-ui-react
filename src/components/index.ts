@@ -7,7 +7,7 @@ export * from "./Checkbox/checkbox";
 export * from "./Code/code";
 export * from "./Inputs/TextInput/textInput";
 export * from "./Inputs/SearchInput/searchInput";
-export * from "./Inputs/Slider/slider";
+export * from "./Inputs/Slider/slider"; 
 export * from "./Inputs/Textarea/textarea";
 export * from "./Button/button";
 export * from "./Disclosuers/Tabs/tabs"

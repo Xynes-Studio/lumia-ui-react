@@ -18,5 +18,5 @@ type ValidateWeightLength<T> = T extends { weight: number[] }
   : never;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-type ChildrenAndWeightsLengthMustMatch<T> =
+export type ChildrenAndWeightsLengthMustMatch<T> =
   ValidateChildrenLength<T> extends ValidateWeightLength<T> ? true : false;

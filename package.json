@@ -1,15 +1,17 @@
 {
   "name": "lumia-ui",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.9",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "build-react": "export REACT_BUILD='true' || set REACT_BUILD='true' tsc -p tsconfig.build.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "yarn build-react"
   },
   "husky": {
     "hooks": {
@@ -21,35 +23,38 @@
       "eslint --ext .ts,.tsx"
     ]
   },
-  "dependencies": {
+  "peerDependencies": {
     "@babel/standalone": "^7.24.4",
     "@dnd-kit/core": "^6.1.0",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
     "@million/lint": "^1.0.0-rc.13",
-    "@storybook/addon-a11y": "^7.6.17",
+    "@storybook/addon-a11y": "^8.1.5",
+    "@vitejs/plugin-react": "^4.3.0",
     "i": "^0.3.7",
-    "million": "^3.1.6",
     "npm": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vite-plugin-dts": "^3.9.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.17",
-    "@storybook/addon-interactions": "^7.6.17",
-    "@storybook/addon-links": "^7.6.17",
-    "@storybook/addon-onboarding": "^1.0.11",
-    "@storybook/blocks": "^7.6.17",
-    "@storybook/react": "^7.6.17",
-    "@storybook/react-vite": "^7.6.17",
-    "@storybook/test": "^7.6.17",
+    "@chromatic-com/storybook": "^1",
+    "@storybook/addon-essentials": "^8.1.5",
+    "@storybook/addon-interactions": "^8.1.5",
+    "@storybook/addon-links": "^8.1.5",
+    "@storybook/addon-onboarding": "^8.1.5",
+    "@storybook/blocks": "^8.1.5",
+    "@storybook/react": "^8.1.5",
+    "@storybook/react-vite": "^8.1.5",
+    "@storybook/test": "^8.1.5",
     "@types/babel__standalone": "^7.1.7",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
+    "@vitejs/plugin-react": "^4.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "esbuild": "^0.21.4",
     "eslint": "^8.56.0",
@@ -59,11 +64,23 @@
     "highlight.js": "^11.9.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "storybook": "^7.6.17",
+    "million": "^3.1.6",
+    "storybook": "^8.1.5",
     "typescript": "^5.2.2",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "vite-plugin-dts": "^3.9.1",
+    "dotenv": "^16.4.5"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.9.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.es.d.ts",
+      "default": "./dist/index.es.js"
+    }
   }
 }
