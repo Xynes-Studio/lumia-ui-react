@@ -1,11 +1,10 @@
-import { color, neumorphismShadow, spacing } from "@shared/styles";
 import styled from "styled-components";
 
 export const SwitchContainer = styled.button`
   all: unset;
   display: flex;
   align-items: center;
-  margin: ${spacing.padding.p1};
+  margin: ${({ theme }) => theme.spacing.padding.p1};
 `;
 
 export const StyledSwitch = styled.button<{
@@ -19,7 +18,7 @@ export const StyledSwitch = styled.button<{
   align-items: center;
   transition: all 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: ${neumorphismShadow};
+  box-shadow: ${({ theme }) => theme.neumorphismShadow};
   background-color: ${({ switchVal, activeColor, inactiveColor }) =>
     switchVal ? activeColor : inactiveColor};
 `;
@@ -30,6 +29,6 @@ export const Indicator = styled.div<{ active: boolean }>`
   border-radius: 1.25rem;
   transition: all 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: ${color.foregroundInverse};
+  background-color: ${({ theme }) => theme.color.foregroundInverse};
   transform: ${({ active }) => (active ? `translateX(1.5rem)` : `translateX(0.25rem)`)};
 `;

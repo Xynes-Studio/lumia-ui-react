@@ -1,30 +1,16 @@
 import React, { forwardRef } from "react";
 import { cx } from "../../utils";
-import { typography } from "../../shared/styles";
-import styled from "styled-components";
 import "../texts.styles.css";
 import { HeaderProps } from "@texts/text.types";
+import { StyleH1 } from "./h1.styles";
 
 const H1Component: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
-  HeaderProps
+  HeaderProps & { type?: "serif" | "sans-serif"; numberOfLines?: number }
 > = (
   { children, type = "serif", numberOfLines = 0, editable = false, ...props },
   ref
 ) => {
-  const StyleH1 = styled.h1`
-    font-family: ${type === "serif"
-      ? typography.type.title
-      : typography.type.primary};
-    font-weight: ${typography.weight.bold};
-    font-size: ${typography.size.h1};
-    color: ${props?.color};
-    ${numberOfLines !== 0 &&
-    `
-      -webkit-line-clamp: ${numberOfLines};
-      line-clamp: ${numberOfLines};
-    `}
-  `;
   const handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
     // Prevent line breaks on Enter key
     if (event.key === "Enter") {
@@ -33,11 +19,14 @@ const H1Component: React.ForwardRefRenderFunction<
     const value = (event.target as HTMLHeadingElement).textContent;
     value && props.onUpdate && props.onUpdate(value);
   };
+
   return (
     <StyleH1
       ref={ref}
       className={cx("lmTextComponent", props.className)}
       contentEditable={editable}
+      type={type}
+      numberOfLines={numberOfLines}
       onKeyDown={handleKeyDown}
       {...props}
     >

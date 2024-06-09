@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { backgroundType, colorTypes, spacingTypes, Strokes, Typography } from "./types/styles.types";
+import { BackgroundType, colorTypes, spacingTypes, Strokes, Typography } from "./types/styles.types";
 
 // Global style variables
 

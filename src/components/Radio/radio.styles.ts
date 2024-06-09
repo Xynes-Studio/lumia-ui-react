@@ -1,5 +1,4 @@
 import { Flex } from "@app/View";
-import { color, strokes } from "@shared/styles";
 import styled from "styled-components";
 
 export const RadioContainer = styled(Flex)`
@@ -7,6 +6,7 @@ export const RadioContainer = styled(Flex)`
   height: fit-content;
   align-items: center;
 `;
+
 export const RadioElement = styled.input`
   position: absolute;
   cursor: pointer;
@@ -21,12 +21,12 @@ export const StyledRadio = styled(Flex)<{
   position: relative;
   width: 1.25rem;
   height: 1.25rem;
-  border: ${({ checked }) =>
+  border: ${({ theme, checked }) =>
     checked
-      ? `${strokes.s2} solid ${color.accent100}`
-      : `${strokes.s0} solid ${color.foreground200}`};
-  background-color: ${({ disabled }) =>
-    disabled ? color.foregroundInverse400 : "transparent"};
+      ? `${theme.strokes.s2} solid ${theme.color.accent100}`
+      : `${theme.strokes.s0} solid ${theme.color.foreground200}`};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.color.foregroundInverse400 : "transparent"};
   border-radius: 1.25rem;
   transition: background-color 0.3s;
   overflow: hidden;

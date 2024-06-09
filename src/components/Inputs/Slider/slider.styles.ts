@@ -1,5 +1,4 @@
 import { Flex } from "@app/View";
-import { color, neumorphismShadow, shadow, spacing } from "@shared/styles";
 import styled from "styled-components";
 
 export const SliderContainer = styled(Flex)``;
@@ -25,7 +24,7 @@ export const SliderInput = styled.input<{
 }>`
   width: 100%;
   height: 1.25rem;
-  border-radius: ${spacing?.borderRadius?.r4};
+  border-radius: ${({ theme }) => theme.spacing.borderRadius.r4};
   overflow: hidden;
   -webkit-appearance: none;
   background: ${({ backgroundColor }) => backgroundColor};
@@ -35,27 +34,27 @@ export const SliderInput = styled.input<{
     -webkit-appearance: none;
     appearance: none;
     visibility: ${({ fillType }) => (fillType === "progress" ? "hidden" : "visible")};
-    box-shadow: ${shadow};
+    box-shadow: ${({ theme }) => theme.shadow};
     width: 1.25rem;
     height: 1.25rem;
-    border-radius: ${spacing?.borderRadius?.r4};
-    background: ${color.foregroundInverse};
+    border-radius: ${({ theme }) => theme.spacing.borderRadius.r4};
+    background: ${({ theme }) => theme.color.foregroundInverse};
     cursor: pointer;
   }
 
   &::-moz-range-thumb {
     visibility: ${({ fillType }) => (fillType === "progress" ? "hidden" : "visible")};
     appearance: none;
-    box-shadow: ${shadow};
+    box-shadow: ${({ theme }) => theme.shadow};
     width: 1.25rem;
     height: 1.25rem;
-    border-radius: ${spacing?.borderRadius?.r4};
-    background: ${color.foregroundInverse};
+    border-radius: ${({ theme }) => theme.spacing.borderRadius.r4};
+    background: ${({ theme }) => theme.color.foregroundInverse};
     cursor: pointer;
   }
 
   &::-webkit-slider-runnable-track {
-    box-shadow: ${neumorphismShadow};
+    box-shadow: ${({ theme }) => theme.neumorphismShadow};
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -69,7 +68,7 @@ export const SliderInput = styled.input<{
   }
 
   &::-moz-range-track {
-    box-shadow: ${neumorphismShadow};
+    box-shadow: ${({ theme }) => theme.neumorphismShadow};
     width: 100%;
     height: 100%;
     cursor: pointer;
