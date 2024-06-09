@@ -1,5 +1,5 @@
 import { Theme, ThemeProviderProps } from "@emotion/react";
-import React, { createContext, useContext } from "react";
+import { createContext, useContext } from "react";
 import { defaultTheme } from "./themeProvider.caonstat";
 
 const ThemeContext = createContext<Theme>(defaultTheme);
