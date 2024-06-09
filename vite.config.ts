@@ -41,7 +41,7 @@ const npmBuildConfig: UserConfig = {
           react: "React",
           "react-dom": "ReactDOM",
         },
-        extend: true,
+        extend:true
       },
     },
   },
@@ -68,6 +68,7 @@ const npmBuildConfig: UserConfig = {
 
 export default defineConfig(() => {
   if (process.env.REACT_BUILD) {
+    console.log("REACT_BUILD, detected");
     return npmBuildConfig;
   }
   return baseConfig;
