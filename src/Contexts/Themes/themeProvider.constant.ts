@@ -11,6 +11,7 @@ import {
   pageMargin,
 } from "@shared/styles";
 import { Theme } from "./themeProvider.types";
+import { darkThemeDefault } from "@shared/dark.styles";
 
 export const defaultTheme: Theme = {
   background,
@@ -23,4 +24,9 @@ export const defaultTheme: Theme = {
   neumorphismShadow,
   breakpoint,
   pageMargin,
+};
+
+export const darkTheme: Theme = {
+  ...darkThemeDefault,
+  ...defaultTheme,
 };
