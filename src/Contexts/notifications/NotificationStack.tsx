@@ -1,6 +1,6 @@
 // NotificationStack.tsx
 import React, { useEffect, useState } from "react";
-import useNotification from "@hooks/useNotification";
+import { useNotification } from "@hooks/useNotification";
 import { markAsRead } from "./utils";
 import { Alert } from "@components/index";
 import { Notification } from "./notifications.types";

@@ -1,7 +1,6 @@
-import React from 'react';
-import useStandardModal from '@hooks/useStandardModal';
-import useHorizontalModal from '@hooks/useHorizontalModal';
-import { Modal, ModalHorizontalIn } from '@components/index';
+import React from "react";
+import { useStandardModal, useHorizontalModal } from "@hooks/index";
+import { Modal, ModalHorizontalIn } from "@components/index";
 
 export const StandardModal: React.FC = () => {
   const { isVisible, hideModal, Component } = useStandardModal();

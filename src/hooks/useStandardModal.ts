@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { StandardModalContext } from "../Contexts/Modals/StandardModalProvider";
 
-const useStandardModal = () => {
+export const useStandardModal = () => {
   const context = useContext(StandardModalContext);
   if (context === undefined) {
     throw new Error(
@@ -12,4 +12,3 @@ const useStandardModal = () => {
   return context;
 };
 
-export default useStandardModal;

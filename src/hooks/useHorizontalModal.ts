@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { HorizontalModalContext } from "../Contexts/Modals/HorizontalModalProvider";
 
-const useHorizontalModal = () => {
+export const useHorizontalModal = () => {
   const context = useContext(HorizontalModalContext);
   if (context === undefined) {
     throw new Error("useHorizontalModal must be used within a HorizontalModalProvider");
@@ -9,4 +9,3 @@ const useHorizontalModal = () => {
   return context;
 };
 
-export default useHorizontalModal;

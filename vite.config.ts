@@ -16,6 +16,8 @@ const baseConfig: UserConfig = {
       "@texts": path.resolve(__dirname, "src/texts"),
       "@utils": path.resolve(__dirname, "src/utils"),
       "@app": path.resolve(__dirname, "src"),
+      "@contexts": path.resolve(__dirname, "src/contexts"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
     },
   },
 };
