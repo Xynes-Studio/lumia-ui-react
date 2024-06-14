@@ -7,7 +7,7 @@ import { Theme } from "./Themes/themeProvider.types";
 import { defaultTheme } from "./Themes/themeProvider.constant";
 import { ThemeProvider } from "./Themes/themeProvider";
 
-const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
+export const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
   theme,
   children,
 }) => {
@@ -26,4 +26,3 @@ const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
   );
 };
 
-export default LumiaProvider;
