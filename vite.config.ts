@@ -71,7 +71,7 @@ export default defineConfig(() => {
   console.log("process.env.REACT_BUILD", process.env.REACT_BUILD);
   
   if (process.env.REACT_BUILD === "true") {
-    console.log("comes here");
+    console.log("React Build Starts.");
     
     return npmBuildConfig;
   }
