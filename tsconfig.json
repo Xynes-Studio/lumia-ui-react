@@ -30,6 +30,7 @@
       "@texts/*": ["texts/*"],
       "@utils/*": ["utils/*"],
       "@contexts/*": ["contexts/*"],
+      "@hooks/*": ["hooks/*"],
       "@app/*": ["*"],
     },
   },

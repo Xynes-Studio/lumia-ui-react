@@ -1,8 +1,7 @@
-// themeProvider.tsx
+// context/themeContext.tsx
 import { Theme, ThemeProviderProps } from "@emotion/react";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode } from "react";
 import { defaultTheme, darkTheme } from "./themeProvider.constant";
-
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
 interface CustomThemeProviderProps extends ThemeProviderProps {
@@ -35,10 +34,4 @@ export const ThemeProvider = ({
   );
 };
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
+export { ThemeContext };
