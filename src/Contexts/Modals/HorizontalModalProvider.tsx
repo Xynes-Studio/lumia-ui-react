@@ -1,7 +1,11 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { ModalContentProps, ModalProviderProps } from "./modalContent.types";
 
-const HorizontalModalContext = createContext<ModalContentProps | undefined>(undefined);
+interface HorizontalModalContextProps extends ModalContentProps {
+  direction: 'left' | 'right';
+}
+
+const HorizontalModalContext = createContext<HorizontalModalContextProps | undefined>(undefined);
 
 const HorizontalModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,12 +30,4 @@ const HorizontalModalProvider: React.FC<ModalProviderProps> = ({ children }) => 
   );
 };
 
-const useHorizontalModal = () => {
-  const context = useContext(HorizontalModalContext);
-  if (context === undefined) {
-    throw new Error("useHorizontalModal must be used within a HorizontalModalProvider");
-  }
-  return context;
-};
-
-export { HorizontalModalProvider, useHorizontalModal };
+export { HorizontalModalProvider, HorizontalModalContext };

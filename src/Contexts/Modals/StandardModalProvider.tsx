@@ -1,7 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { ModalContentProps, ModalProviderProps } from "./modalContent.types";
 
-const StandardModalContext = createContext<ModalContentProps | undefined>(undefined);
+const StandardModalContext = createContext<ModalContentProps | undefined>(
+  undefined
+);
 
 const StandardModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,12 +28,4 @@ const StandardModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   );
 };
 
-const useStandardModal = () => {
-  const context = useContext(StandardModalContext);
-  if (context === undefined) {
-    throw new Error("useStandardModal must be used within a StandardModalProvider");
-  }
-  return context;
-};
-
-export { StandardModalProvider, useStandardModal };
+export { StandardModalProvider, StandardModalContext };
