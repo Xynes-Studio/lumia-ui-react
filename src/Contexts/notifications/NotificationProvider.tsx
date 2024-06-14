@@ -1,8 +1,6 @@
-// NotificationProvider.tsx
-import React, { createContext, useContext, useReducer } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// context/notificationContext.tsx
+import React, { createContext, useReducer } from 'react';
 import {
-  Notification,
   NotificationState,
   Action,
   NotificationContextProps,
@@ -46,29 +44,4 @@ const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 };
 
-const useNotification = () => {
-  const context = useContext(NotificationContext);
-  if (context === undefined) {
-    throw new Error('useNotification must be used within a NotificationProvider');
-  }
-  return context;
-};
-
-const addNotification = (
-  dispatch: React.Dispatch<Action>,
-  notification: Omit<Notification, 'id' | 'date' | 'read'>
-) => {
-  dispatch({
-    type: 'ADD_NOTIFICATION',
-    payload: { ...notification, id: uuidv4(), date: new Date(), read: false },
-  });
-};
-
-const markAsRead = (dispatch: React.Dispatch<Action>, id: string) => {
-  dispatch({
-    type: 'MARK_AS_READ',
-    payload: id,
-  });
-};
-
-export { NotificationProvider, useNotification, addNotification, markAsRead };
+export { NotificationProvider, NotificationContext };
