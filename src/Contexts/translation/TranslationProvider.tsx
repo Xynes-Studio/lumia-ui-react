@@ -13,9 +13,16 @@ const TranslationContext = createContext<TranslationContextType | undefined>(
   undefined
 );
 
-export const TranslationProvider = ({ children }: { children: ReactNode }) => {
+export const TranslationProvider = ({
+  children,
+  enableTranslation = false,
+}: {
+  children: ReactNode;
+  enableTranslation: boolean;
+}) => {
   const [translationLang, setTranslationLang] = useState("es");
-  const [isTranslationEnabled, setIsTranslationEnabled] = useState(false);
+  const [isTranslationEnabled, setIsTranslationEnabled] =
+    useState(enableTranslation);
   const config = useRef<{ apiTranslateRoute: string } | null>(null);
 
   const loadConfig = useCallback(async () => {
@@ -23,8 +30,7 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
       const response = await fetch("/lumia.config.json");
       config.current = await response.json();
     } catch (error) {
-      console.error("Configuration file not found:", error);
-      config.current = { apiTranslateRoute: "/api/translate" }; // Default value or handle error as needed
+      console.warn("Configuration file not found:", error);
     }
   }, []);
 
