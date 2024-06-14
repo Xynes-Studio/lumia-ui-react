@@ -1,6 +1,6 @@
 import React from 'react';
-import { useStandardModal } from './StandardModalProvider';
-import { useHorizontalModal } from './HorizontalModalProvider';
+import useStandardModal from '@hooks/useStandardModal';
+import useHorizontalModal from '@hooks/useHorizontalModal';
 import { Modal, ModalHorizontalIn } from '@components/index';
 
 export const StandardModal: React.FC = () => {
