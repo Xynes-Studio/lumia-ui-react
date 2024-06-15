@@ -9,8 +9,6 @@ export const StandardModal: React.FC = () => {
     <Modal
       visible={isVisible}
       onClose={hideModal}
-      title="Standard Modal"
-      description="This is a standard modal."
     >
       {Component && <Component />}
     </Modal>
