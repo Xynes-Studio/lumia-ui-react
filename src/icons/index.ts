@@ -62,3 +62,4 @@ export * from "./lmLogOut";
 export * from "./lmHide";
 export * from "./lmShow";
 export * from "./lmCkCamera";
+export * from './types/asset.types';
