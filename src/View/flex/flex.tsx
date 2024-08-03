@@ -7,7 +7,7 @@ const FlexComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
   FlexProps
 > = (
-  { direction = "row", weight, children, className, wrap = false, ...props },
+  { direction = "row", weight, children, className, wrap = false,responsive=false, ...props },
   ref
 ) => {
   if (weight != undefined) {
@@ -23,7 +23,7 @@ const FlexComponent: React.ForwardRefRenderFunction<
   }
 
   return (
-    <FlexContainer direction={direction} wrap={wrap} weight={weight} ref={ref} className={cx("lmFlexBox", className)} {...props}>
+    <FlexContainer responsive={responsive} direction={direction} wrap={wrap} weight={weight} ref={ref} className={cx("lmFlexBox", className)} {...props}>
       {children}
     </FlexContainer>
   );

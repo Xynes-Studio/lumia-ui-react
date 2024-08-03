@@ -5,6 +5,7 @@ export interface FlexProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   weight?: number[];
   maxRow?: number;
   wrap?: boolean;
+  responsive?:boolean;
 }
 
 type ValidateChildrenLength<T> = T extends { children: React.ReactNode[] }
