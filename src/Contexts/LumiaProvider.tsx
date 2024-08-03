@@ -7,6 +7,8 @@ import { Theme } from "./Themes/themeProvider.types";
 import { defaultTheme } from "./Themes/themeProvider.constant";
 import { ThemeProvider } from "./Themes/themeProvider";
 
+export * from './notifications';
+
 export const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode }> = ({
   theme,
   children,
