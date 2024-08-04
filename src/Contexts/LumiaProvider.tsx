@@ -6,6 +6,7 @@ import { HorizontalModal, StandardModal } from "./Modals";
 import { Theme } from "./Themes/themeProvider.types";
 import { defaultTheme } from "./Themes/themeProvider.constant";
 import { ThemeProvider } from "./Themes/themeProvider";
+import NotificationStack from "./notifications/NotificationStack";
 
 export * from './notifications';
 
@@ -23,6 +24,7 @@ export const LumiaProvider: React.FC<{ theme?: Theme; children: React.ReactNode 
               <HorizontalModal />
             </HorizontalModalProvider>
           </StandardModalProvider>
+          <NotificationStack/>
         </NotificationProvider>
     </ThemeProvider>
   );
