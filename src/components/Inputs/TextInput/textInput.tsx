@@ -61,7 +61,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
           {label}
         </Text>
       ) : null}
-      <InputWrapper type={type} weight={[15, 1]} direction="row">
+      <InputWrapper className={cx(props.className)} type={type} weight={[15, 1]} direction="row">
         <TextInputContainer
           type={!visible ? inputType : "text"}
           placeholder={placeholder}

@@ -17,4 +17,5 @@ export interface ImageProps extends React.HtmlHTMLAttributes<HTMLImageElement> {
   accepted?: string;
   fit?: "contain" | "cover" | "fill" | "scale-down" | "none";
   borderRadius?: number;
+  alt?: string;
 }
