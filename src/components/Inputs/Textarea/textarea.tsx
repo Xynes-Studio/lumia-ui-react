@@ -55,7 +55,7 @@ const TextareaComponent: React.ForwardRefRenderFunction<
           {label}
         </Text>
       ) : null}
-      <InputWrapper type={type} direction="row">
+      <InputWrapper className={cx(props.className)} type={type} direction="row">
         <TextareaContainer
           aria-labelledby={label}
           aria-describedby={errorMessage}

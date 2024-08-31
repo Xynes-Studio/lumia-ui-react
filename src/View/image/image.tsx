@@ -9,7 +9,7 @@ import ImageOverlayComponent from "./components/imageOverlay";
 const ImageComponent: React.ForwardRefRenderFunction<
   HTMLImageElement,
   ImageProps
-> = ({ ...props }, ref) => {
+> = ({alt, ...props }, ref) => {
   const { borderRadius = spacing.borderRadius.r2 } = props;
   const ImageContainer = styled.div`
     margin: ${spacing.padding.p1};
@@ -27,6 +27,7 @@ const ImageComponent: React.ForwardRefRenderFunction<
         className={cx("lmImageComponent")}
         src={props.source}
         ref={ref}
+        alt={alt}
         {...props}
       />
       <ImageOverlayComponent {...props} />
