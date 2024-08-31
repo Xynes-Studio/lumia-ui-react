@@ -27,7 +27,8 @@ const SwitchComponent: React.ForwardRefRenderFunction<
 
   return (
     <SwitchContainer
-      onClick={() => {
+      onClick={(event:React.BaseSyntheticEvent<MouseEvent, EventTarget & HTMLButtonElement, EventTarget>) => {
+        event.stopPropagation();
         props.onToggle && props.onToggle(!switchVal);
         setSwitchVal(!switchVal);
       }}
