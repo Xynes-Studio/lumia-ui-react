@@ -25,3 +25,4 @@ dist-ssr
 .vercel
 src/utils/Validations/countryCodes.txt
 package.lock.json
+storybook-static

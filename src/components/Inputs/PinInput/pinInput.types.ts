@@ -6,5 +6,6 @@ export interface PinInputProps {
   label?: string;
   labelPosition?: 'center' | 'start' | 'end';
   validations?:((...args: unknown[])=>void)[];
+  onValidationFail?:()=>void;
   secret?:boolean;
 }

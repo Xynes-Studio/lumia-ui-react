@@ -25,6 +25,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
     value,
     onChange,
     validations,
+    onValidationFail,
     ...props
   },
   ref
@@ -39,6 +40,7 @@ const TextInputComponent: React.ForwardRefRenderFunction<
         try {
           fn();
         } catch (ex: unknown) {
+          onValidationFail && onValidationFail();
           let err:MyError;
           if(ex instanceof MyError){
             err = ex as MyError;
