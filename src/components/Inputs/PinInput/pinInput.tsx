@@ -23,6 +23,7 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     fillType = "fill",
     labelPosition = "start",
     validations,
+    onValidationFail,
     secret=false,
   },
   ref
@@ -40,6 +41,7 @@ const PinInputComponent: React.ForwardRefRenderFunction<
         try {
           fn();
         } catch (ex: unknown) {
+          onValidationFail && onValidationFail();
           let err:MyError;
           if(ex instanceof MyError){
             err = ex as MyError;
