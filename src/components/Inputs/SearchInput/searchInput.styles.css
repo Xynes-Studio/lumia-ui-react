@@ -1,0 +1,21 @@
+.lmSearchInputWrapper {
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.lmSearchResultContainer {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+  position: absolute;
+  z-index:  10;
+  left: 0;
+}
+
+.lmSearchInput {
+  flex: 1;
+  height: fit-content;
+  margin: 0px !important;
+}

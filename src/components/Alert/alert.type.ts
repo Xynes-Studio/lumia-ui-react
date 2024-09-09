@@ -10,4 +10,7 @@ export interface AlertProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   title?: string;
   description?: string;
+  actionBtn?: boolean;
+  actionBtnLabel?: string;
+  actionBtnOnPress?: () => void;
 }

@@ -1,10 +1,8 @@
-export interface HeaderProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  > {
+import { HTMLAttributes } from "react";
+
+export interface HeaderProps extends HTMLAttributes<HTMLHeadingElement> {
   type?: "sans" | "serif";
   numberOfLines?: number;
   editable?: boolean;
-  onTextChange?: () => void;
+  onUpdate?: (value: string) => void;
 }

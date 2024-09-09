@@ -1,13 +1,12 @@
 "use client";
 import React, { forwardRef } from "react";
 import { ButtonProps } from "./button.type";
-import styled from "styled-components";
 import { cx } from "@utils/cx";
 import { LMAsset } from "@utils/LumiaAssetManager";
 import { Text } from "@texts/Text/Text";
 import { color as globalColor } from "@shared/styles";
-import { spacing } from "@shared/styles";
-import "./button.styles.css";
+
+import { ButtonContainer, ButtonElementContainer } from "./button.styles";
 
 const ButtonComponent: React.ForwardRefRenderFunction<
   HTMLButtonElement,
@@ -16,36 +15,43 @@ const ButtonComponent: React.ForwardRefRenderFunction<
   {
     type = "fill",
     icon,
-    label = "BUTTON",
+    label,
     color = globalColor.foreground,
     iconAtEnd = false,
-    backgroundColor,
-    borderColor = globalColor?.border,
-    borderRadius = spacing?.borderRadius?.small,
+    backgroundColor = globalColor.accent100,
+    borderColor = globalColor?.border100,
+    borderRadius = 0.3,
+    textCase = "uppercase",
+    iconSize = 0.8,
     ...props
   },
   ref
 ) => {
-  const ButtonContainer = styled.button`
-    background-color: ${type !== "label" ? backgroundColor : "none"};
-    border: ${type !== "outlined" ? "none" : `0.3vw solid ${borderColor} `};
-    padding: calc(${spacing?.padding?.small} / 4) ${spacing?.padding?.small};
-    border-radius: ${borderRadius};
-    flex-direction: ${iconAtEnd ? "row-reverse" : "row"};
-  `;
-
   return (
-    <ButtonContainer className={cx("lmButtonContainer")} ref={ref} {...props}>
-      <LMAsset
-        style={iconAtEnd ? { marginLeft: "0.5vw" } : { marginRight: "0.5vw" }}
-        visible={icon !== undefined}
-        Asset={icon}
-        color={color}
-        size={1.5}
-      />
-      <Text color={color} textCase="uppercase">
-        {label}
-      </Text>
+    <ButtonContainer
+      borderRadius={borderRadius}
+      borderColor={borderColor}
+      backgroundColor={backgroundColor}
+      type={type}
+      className={cx(props.className)}
+      ref={ref}
+      {...props}
+    >
+      <ButtonElementContainer direction={iconAtEnd ? "row-reverse" : "row"}>
+        {icon !== undefined ? (
+          <LMAsset
+            visible={icon !== undefined}
+            Asset={icon}
+            color={color}
+            size={iconSize > 8 ? 8 : iconSize}
+          />
+        ) : null}
+        {label != undefined && (
+          <Text color={color} type="caption" textCase={textCase}>
+            {label}
+          </Text>
+        )}
+      </ButtonElementContainer>
     </ButtonContainer>
   );
 };

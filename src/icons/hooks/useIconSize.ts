@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useIconSize = (
-  widthOld: number,
-  heightOld: number,
-  size: number
-) => {
+const useIconSize = (widthOld: number, heightOld: number, size: number) => {
   const [width, setWidth] = useState<number>(widthOld * size);
   const [height, setHeight] = useState<number>(heightOld * size);
 
@@ -15,7 +11,7 @@ const useIconSize = (
     heightNow *= size;
     setWidth(widthNow);
     setHeight(heightNow);
-  }, [size]);
+  }, [size, widthOld, heightOld]);
 
   return [width, height];
 };

@@ -1,13 +1,15 @@
 "use client";
-import { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { AlertProps } from "./alert.type";
-import { LmAdd } from "@icons/lmAdd";
-import styled from "styled-components";
-import { LMAsset, cx } from "../../utils";
+import { LmCkAdd } from "@icons/lmCkAdd";
+import { LMAsset } from "../../utils";
 import useBackgroundColorAlert from "./hooks/useBackgroundColorAlert";
-import { color, strokes, shadow } from "@app/shared/styles";
+import { color, spacing } from "@app/shared/styles";
 import { Flex } from "@app/View";
 import { H4 } from "@texts/index";
+import { AlertContainer } from "./alert.styles";
+import { Button } from "..";
+import { LmCkClose } from "@icons/lmCkClose";
 
 const AlertComponent: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -17,41 +19,77 @@ const AlertComponent: React.ForwardRefRenderFunction<
     children,
     type = "default",
     showIcon = false,
-    icon = LmAdd,
+    icon = LmCkAdd,
     title = "Alert Message Title",
     description,
+    showCloseIcon,
+    onClose,
+    actionBtn,
+    actionBtnLabel,
+    actionBtnOnPress,
     ...props
   },
   ref
 ) => {
   const [bgColor, setType, setStatus] = useBackgroundColorAlert();
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     setType(type);
-    if (props.status != undefined) {
+    if (props.status !== undefined) {
       setStatus(props.status);
     }
   }, [type, props.status, setType, setStatus]);
 
-  const AlertContainer = styled(Flex)`
-    background-color: ${bgColor};
-    border-width: ${type == "outlined" ? strokes.s1 : 0};
-    box-shadow: ${type == "default" ? shadow : "none"};
-  `;
+  const handleClose = () => {
+    setVisible(false);
+    setTimeout(() => {
+      onClose && onClose();
+    }, 300); // Match the animation duration
+  };
 
   return (
-    <AlertContainer className={cx("lmAlertContainer")} ref={ref} {...props}>
+    <AlertContainer
+      type={type}
+      bgColor={bgColor}
+      visible={visible}
+      ref={ref}
+      {...props}
+    >
       <LMAsset
         visible={showIcon}
         Asset={icon}
         color={color.foreground}
         size={1}
+        style={{
+          marginTop: spacing.padding.p0,
+        }}
       />
-      <Flex direction="column">
+      <Flex style={{ flex: 1 }} direction="column">
         <H4>{title}</H4>
-        {description != undefined && <p>{description}</p>}
+        {description !== undefined && <p>{description}</p>}
         {children}
       </Flex>
+      {actionBtn ? (
+        <Flex direction="column" style={{ justifyContent: "center" }}>
+          <Button
+            label={actionBtnLabel}
+            type="label"
+            style={{ paddingRight: "0px" }}
+            onClick={actionBtnOnPress}
+          />
+        </Flex>
+      ) : null}
+      {showCloseIcon ? (
+        <Flex direction="column">
+          <Button
+            type="label"
+            style={{ paddingRight: "0px" }}
+            onClick={handleClose}
+            icon={LmCkClose}
+          />
+        </Flex>
+      ) : null}
     </AlertContainer>
   );
 };

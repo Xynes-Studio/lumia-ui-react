@@ -5,6 +5,13 @@ import { Alert } from "..";
 const meta = {
   title: "Component/Alert",
   component: Alert,
+  parameters: {
+    docs: {
+      description: {
+        component: "Another description, overriding the comments",
+      },
+    },
+  },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
@@ -16,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    type: 'default',
+    type: "default",
     showIcon: true,
     title: "This is an alert",
     description: "Description for the alert",
@@ -36,6 +43,7 @@ export const Outlined: Story = {
     showIcon: false,
     title: "This is a Outlined alert",
     description: "Description for the outlined alert",
+    actionBtn: true,
+    actionBtnLabel: "Action",
   },
 };
-

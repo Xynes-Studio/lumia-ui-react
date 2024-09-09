@@ -1,0 +1,42 @@
+# Exclude specific directories
+src/assets
+src/components/DND
+src/components/MDXParse
+src/utils/MDXUtils
+src/utils/StringToJsx
+
+
+# Exclude other unnecessary files
+.storybook
+documentationBuilder
+public
+index.html
+mod.ts
+src/**/*.stories.ts
+src/**/*.stories.tsx
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vercel
+src/utils/Validations/countryCodes.txt

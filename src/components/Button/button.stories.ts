@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./button";
-import { LmArrowBack } from "@icons/lmArrowBack";
+import { LmCkBell } from "@icons/lmCkBell";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -20,10 +20,9 @@ export const Fill: Story = {
     type: "fill",
     label: "Button",
     backgroundColor: "#00FFB2",
-    icon: LmArrowBack,
+    icon: LmCkBell,
     iconAtEnd: false,
-    color: "#ffffff",
-    borderRadius: "1vw",
+    borderRadius: 0.5,
   },
 };
 
@@ -32,11 +31,11 @@ export const Outlined: Story = {
     type: "outlined",
     label: "Button",
     backgroundColor: "#00FFB2",
-    icon: LmArrowBack,
+    icon: LmCkBell,
     iconAtEnd: false,
     color: "#000000",
     borderColor: "#000000",
-    borderRadius: "1vw",
+    borderRadius: 0.5,
   },
 };
 

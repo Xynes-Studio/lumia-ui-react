@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+src/utils/Validations/countryCodes.txt
+package.lock.json
+storybook-static

@@ -1,9 +1,13 @@
 import React, { forwardRef } from "react";
 import { cx } from "../../utils";
-import { typography } from "../../shared/styles";
 import styled from "styled-components";
 import "../texts.styles.css";
 import { HeaderProps } from "@texts/text.types";
+import { StyleH1 } from "@texts/H1/h1.styles";
+
+const StyleH4 = styled(StyleH1)<{ type: "sans" | "serif" }>`
+  font-size: ${({ theme }) => theme.typography.size.h4};
+`;
 
 const H4Component: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
@@ -12,32 +16,20 @@ const H4Component: React.ForwardRefRenderFunction<
   { children, type = "serif", numberOfLines = 0, editable = false, ...props },
   ref
 ) => {
-  const StyleH4 = styled.h4`
-    font-family: ${type === "serif"
-      ? typography.type.title
-      : typography.type.primary};
-    font-weight: ${typography.weight.bold};
-    font-size: ${typography.size.m2};
-    color: ${props?.color};
-    ${numberOfLines !== 0 &&
-    `
-      -webkit-line-clamp: ${numberOfLines};
-      line-clamp: ${numberOfLines};
-    `}
-  `;
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
     // Prevent line breaks on Enter key
     if (event.key === "Enter") {
       event.preventDefault();
     }
     const value = (event.target as HTMLHeadingElement).textContent;
-    console.log("Value:", value);
+    value && props.onUpdate && props.onUpdate(value);
   };
 
   return (
     <StyleH4
-      ref={ref as React.Ref<HTMLHeadingElement>}
+      ref={ref}
+      type={type}
+      numberOfLines={numberOfLines}
       className={cx("lmTextComponent", props.className)}
       contentEditable={editable}
       onKeyDown={handleKeyDown}

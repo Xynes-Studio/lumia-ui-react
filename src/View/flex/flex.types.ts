@@ -5,6 +5,7 @@ export interface FlexProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   weight?: number[];
   maxRow?: number;
   wrap?: boolean;
+  responsive?:boolean;
 }
 
 type ValidateChildrenLength<T> = T extends { children: React.ReactNode[] }
@@ -18,5 +19,5 @@ type ValidateWeightLength<T> = T extends { weight: number[] }
   : never;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-type ChildrenAndWeightsLengthMustMatch<T> =
+export type ChildrenAndWeightsLengthMustMatch<T> =
   ValidateChildrenLength<T> extends ValidateWeightLength<T> ? true : false;

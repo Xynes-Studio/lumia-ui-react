@@ -9,11 +9,11 @@ import ImageOverlayComponent from "./components/imageOverlay";
 const ImageComponent: React.ForwardRefRenderFunction<
   HTMLImageElement,
   ImageProps
-> = ({ ...props }, ref) => {
-  const { borderRadius = spacing.borderRadius.small } = props;
+> = ({alt, ...props }, ref) => {
+  const { borderRadius = spacing.borderRadius.r2 } = props;
   const ImageContainer = styled.div`
-    margin: ${spacing.padding.medium};
-    border-radius: ${borderRadius};
+    margin: ${spacing.padding.p1};
+    border-radius: ${borderRadius}vh;
   `;
   const Image = styled.img`
     object-fit: ${props?.fit};
@@ -27,6 +27,7 @@ const ImageComponent: React.ForwardRefRenderFunction<
         className={cx("lmImageComponent")}
         src={props.source}
         ref={ref}
+        alt={alt}
         {...props}
       />
       <ImageOverlayComponent {...props} />

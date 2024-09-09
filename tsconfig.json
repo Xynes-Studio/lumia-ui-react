@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
+ 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -29,9 +29,11 @@
       "@icons/*": ["icons/*"],
       "@texts/*": ["texts/*"],
       "@utils/*": ["utils/*"],
+      "@contexts/*": ["contexts/*"],
       "@app/*": ["*"],
     },
   },
   "include": ["src"],
+  "exclude": ["src/**/*.stories.ts*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
