@@ -1,13 +1,8 @@
 import React, { forwardRef } from "react";
 import { cx } from "../../utils";
-import styled from "styled-components";
 import "../texts.styles.css";
 import { HeaderProps } from "@texts/text.types";
-import { StyleH1 } from "@texts/H1/h1.styles";
-
-const StyleH2 = styled(StyleH1)<{ type: "sans" | "serif" }>`
-  font-size: ${({ theme }) => theme.typography.size.h2};
-`;
+import { StyleH2 } from "./h2.styles";
 
 const H2Component: React.ForwardRefRenderFunction<HTMLHeadingElement, HeaderProps> = (
   { children, type = "serif", numberOfLines = 0, editable = false, ...props },
