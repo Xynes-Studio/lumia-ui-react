@@ -6,6 +6,8 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { InputWrapper, TextareaContainer } from "./textarea.styles";
 import { TextAreaProps } from "./textarea.type";
 import { MyError } from "@utils/Validations";
+import { v4 as uuid } from "uuid";
+import { useForms } from "@app/Contexts/formProvider/formProvider";
 
 const TextareaComponent: React.ForwardRefRenderFunction<
   HTMLTextAreaElement,
@@ -20,11 +22,19 @@ const TextareaComponent: React.ForwardRefRenderFunction<
     value,
     validations,
     onValidationFail,
+    formProvider = false,
     ...props
   },
   ref
 ) => {
+  const key = uuid();
   const [errMsg, setErrMsg] = useState<string | null>();
+  const { addError, removeError } = useForms(formProvider) ?? {};
+
+  useEffect(() => {
+    removeError && removeError(key);
+  }, [value]);
+
   useEffect(() => {
     setErrMsg(null);
     if (validations && validations.length > 0) {
@@ -34,6 +44,9 @@ const TextareaComponent: React.ForwardRefRenderFunction<
           fn();
         } catch (ex: unknown) {
           onValidationFail && onValidationFail();
+          if (onValidationFail && addError) {
+            addError(key);
+          }
           let err: MyError;
           if (ex instanceof MyError) {
             err = ex as MyError;

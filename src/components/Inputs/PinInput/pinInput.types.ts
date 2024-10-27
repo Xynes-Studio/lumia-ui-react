@@ -4,8 +4,9 @@ export interface PinInputProps {
   onValueChange: (pinValue: string) => void;
   value: string;
   label?: string;
-  labelPosition?: 'center' | 'start' | 'end';
-  validations?:((...args: unknown[])=>void)[];
-  onValidationFail?:()=>void;
-  secret?:boolean;
+  labelPosition?: "center" | "start" | "end";
+  validations?: ((...args: unknown[]) => void)[];
+  onValidationFail?: () => void;
+  secret?: boolean;
+  formProvider?: boolean;
 }

@@ -10,6 +10,8 @@ import { Button } from "@components/index";
 import { color } from "@shared/styles";
 import { LmHide } from "@icons/lmHide";
 import { LmShow } from "@icons/lmShow";
+import { useForms } from "@app/Contexts/formProvider/formProvider";
+import { v4 as uuid } from "uuid";
 
 const PinInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -24,14 +26,17 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     labelPosition = "start",
     validations,
     onValidationFail,
-    secret=false,
+    secret = false,
+    formProvider = false,
   },
   ref
 ) => {
+  const key = uuid();
   const [pinValue, setPinValue] = useState(value);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [errMsg, setErrMsg] = useState<string | null>(null);
-  const [visible,setVisible]=useState(false);
+  const [visible, setVisible] = useState(false);
+  const { addError, removeError } = useForms(formProvider) ?? {};
   useEffect(() => {
     onValueChange(pinValue);
     setErrMsg(null);
@@ -42,11 +47,14 @@ const PinInputComponent: React.ForwardRefRenderFunction<
           fn();
         } catch (ex: unknown) {
           onValidationFail && onValidationFail();
-          let err:MyError;
-          if(ex instanceof MyError){
+          if (onValidationFail && addError) {
+            addError(key);
+          }
+          let err: MyError;
+          if (ex instanceof MyError) {
             err = ex as MyError;
             setErrMsg(err.message);
-          }else{
+          } else {
             err = ex as Error;
             setErrMsg(label + " " + err.message);
           }
@@ -65,6 +73,7 @@ const PinInputComponent: React.ForwardRefRenderFunction<
       pinValue.slice(0, index) + updatedValue + pinValue.slice(index + 1);
     setPinValue(newPinValue);
     onValueChange(newPinValue);
+    removeError && removeError(key);
   };
 
   const handleKeyPress = (
@@ -96,7 +105,6 @@ const PinInputComponent: React.ForwardRefRenderFunction<
     }
   };
 
-
   return (
     <>
       <Flex
@@ -105,7 +113,11 @@ const PinInputComponent: React.ForwardRefRenderFunction<
           alignItems: labelPosition,
         }}
       >
-        {label != "" && <Text textCase="capitalize" type="caption" >{label}</Text>}
+        {label != "" && (
+          <Text textCase="capitalize" type="caption">
+            {label}
+          </Text>
+        )}
         <PinInputContainer>
           {Array.from({ length: numberOfFields }, (_, index) => (
             <PinInputFields
@@ -125,18 +137,18 @@ const PinInputComponent: React.ForwardRefRenderFunction<
               onChange={(e) => handleInputChange(e, index)}
               onKeyDown={(e) => handleKeyPress(e, index)}
               fillType={fillType}
-              type={secret?(visible ? "text":"password"):"text"}
+              type={secret ? (visible ? "text" : "password") : "text"}
             />
           ))}
           {secret ? (
-          <Button
-            type="label"
-            icon={visible ? LmHide : LmShow}
-            color={color.foreground}
-            onClick={() => setVisible(!visible)}
-            style={{ padding: 0 }}
-          />
-        ) : null}
+            <Button
+              type="label"
+              icon={visible ? LmHide : LmShow}
+              color={color.foreground}
+              onClick={() => setVisible(!visible)}
+              style={{ padding: 0 }}
+            />
+          ) : null}
         </PinInputContainer>
         {errMsg && <Text type="error">{errMsg}</Text>}
       </Flex>

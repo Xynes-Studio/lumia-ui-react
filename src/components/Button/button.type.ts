@@ -19,4 +19,5 @@ export interface ButtonProps
   borderColor?: string;
   borderRadius?: number;
   iconSize?: number;
+  disabled?: boolean;
 }

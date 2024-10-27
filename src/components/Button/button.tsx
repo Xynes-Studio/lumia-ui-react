@@ -23,6 +23,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     borderRadius = 0.3,
     textCase = "uppercase",
     iconSize = 0.8,
+    disabled = false,
     ...props
   },
   ref
@@ -35,6 +36,7 @@ const ButtonComponent: React.ForwardRefRenderFunction<
       type={type}
       className={cx(props.className)}
       ref={ref}
+      disabled={disabled}
       {...props}
     >
       <ButtonElementContainer direction={iconAtEnd ? "row-reverse" : "row"}>

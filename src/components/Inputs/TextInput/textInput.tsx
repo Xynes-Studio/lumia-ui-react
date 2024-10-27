@@ -10,7 +10,8 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { InputWrapper, TextInputContainer } from "./textInput.styles";
 import { TextInputProps } from "./textInput.type";
 import { MyError } from "@utils/Validations";
-
+import { v4 as uuid } from "uuid";
+import { useForms } from "@app/Contexts/formProvider/formProvider";
 
 const TextInputComponent: React.ForwardRefRenderFunction<
   HTMLInputElement,
@@ -26,12 +27,20 @@ const TextInputComponent: React.ForwardRefRenderFunction<
     onChange,
     validations,
     onValidationFail,
+    formProvider = false,
     ...props
   },
   ref
 ) => {
+  const key = uuid();
   const [visible, setVisible] = useState(false);
+  const { addError, removeError } = useForms(formProvider) ?? {};
   const [errMsg, setErrMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    removeError && removeError(key);
+  }, [value]);
+
   useEffect(() => {
     setErrMsg(null);
     if (validations && validations.length > 0) {
@@ -41,11 +50,14 @@ const TextInputComponent: React.ForwardRefRenderFunction<
           fn();
         } catch (ex: unknown) {
           onValidationFail && onValidationFail();
-          let err:MyError;
-          if(ex instanceof MyError){
+          if (onValidationFail && addError) {
+            addError(key);
+          }
+          let err: MyError;
+          if (ex instanceof MyError) {
             err = ex as MyError;
             setErrMsg(err.message);
-          }else{
+          } else {
             err = ex as Error;
             setErrMsg(label + " " + err.message);
           }
@@ -54,7 +66,6 @@ const TextInputComponent: React.ForwardRefRenderFunction<
       }
     }
   }, [value, validations, label]);
-  
 
   return (
     <Flex direction="column">
@@ -63,7 +74,12 @@ const TextInputComponent: React.ForwardRefRenderFunction<
           {label}
         </Text>
       ) : null}
-      <InputWrapper className={cx(props.className)} type={type} weight={[15, 1]} direction="row">
+      <InputWrapper
+        className={cx(props.className)}
+        type={type}
+        weight={[15, 1]}
+        direction="row"
+      >
         <TextInputContainer
           type={!visible ? inputType : "text"}
           placeholder={placeholder}
@@ -85,7 +101,9 @@ const TextInputComponent: React.ForwardRefRenderFunction<
       </InputWrapper>
       {errorMessage && <Text type="error">{errorMessage}</Text>}
 
-      {(!errorMessage || errorMessage?.trim()=='')  && errMsg && <Text type="error">{errMsg}</Text>}
+      {(!errorMessage || errorMessage?.trim() == "") && errMsg && (
+        <Text type="error">{errMsg}</Text>
+      )}
     </Flex>
   );
 };
