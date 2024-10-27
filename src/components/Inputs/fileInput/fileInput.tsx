@@ -1,5 +1,4 @@
 import React, { forwardRef, useCallback, useState } from "react";
-import "./fileInput.styles.css";
 import { Text } from "@texts/index";
 import { cx } from "@utils/cx";
 import { FileInputProps } from "./fileInput.types";
