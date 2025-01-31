@@ -50,7 +50,7 @@ const FileInputComponent: React.ForwardRefRenderFunction<
 
         if (failedValidation) {
           onValidationFail?.();
-          if (onValidationFail && addError) {
+          if (addError) {
             addError(key);
           }
         } else {
@@ -59,7 +59,7 @@ const FileInputComponent: React.ForwardRefRenderFunction<
         }
       }
     },
-    [onValueChange, validations, onValidationFail]
+    [onValueChange, validations, addError]
   );
 
   return (

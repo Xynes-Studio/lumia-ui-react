@@ -2,7 +2,7 @@
 import { Flex } from "@app/View";
 import { Text } from "@texts/Text/Text";
 import { cx } from "@utils/cx";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useMemo, useState } from "react";
 import { InputWrapper, TextareaContainer } from "./textarea.styles";
 import { TextAreaProps } from "./textarea.type";
 import { MyError } from "@utils/Validations";
@@ -20,54 +20,52 @@ const TextareaComponent: React.ForwardRefRenderFunction<
     placeholder = "Enter your text",
     onChange,
     value,
-    validations,
+    validations = [],
     onValidationFail,
     formProvider = false,
     ...props
   },
   ref
 ) => {
-  const key = uuid();
-  const [errMsg, setErrMsg] = useState<string | null>();
+  const key = useMemo(() => uuid(), []); // Memoize the key to avoid re-creation
+  const [errMsg, setErrMsg] = useState<string | null>(null);
   const { addError, removeError } = useForms(formProvider) ?? {};
 
+  // Effect to remove error when the value changes
   useEffect(() => {
-    removeError && removeError(key);
-  }, [value]);
+    if (removeError) removeError(key);
+  }, [value, removeError, key]);
 
+  // Effect to validate input on value change
   useEffect(() => {
-    setErrMsg(null);
-    if (validations && validations.length > 0) {
-      for (let i = 0; i < validations.length; i++) {
-        const fn = validations[i].bind(this, value);
-        try {
-          fn();
-        } catch (ex: unknown) {
-          onValidationFail && onValidationFail();
-          if (onValidationFail && addError) {
-            addError(key);
-          }
-          let err: MyError;
-          if (ex instanceof MyError) {
-            err = ex as MyError;
-            setErrMsg(err.message);
-          } else {
-            err = ex as Error;
-            setErrMsg(label + " " + err.message);
-          }
-          break;
+    let validationError: string | null = null;
+
+    for (const validate of validations) {
+      try {
+        validate(value);
+      } catch (ex) {
+        onValidationFail && onValidationFail();
+        addError && addError(key);
+
+        if (ex instanceof MyError) {
+          validationError = ex.message;
+        } else {
+          validationError = `${label} ${(ex as Error).message}`;
         }
+        break;
       }
     }
-  }, [value, validations, label]);
+
+    setErrMsg(validationError);
+  }, [value, validations, key, label, addError]);
 
   return (
     <Flex direction="column">
-      {label !== undefined ? (
+      {label && (
         <Text textCase="capitalize" type="caption">
           {label}
         </Text>
-      ) : null}
+      )}
       <InputWrapper className={cx(props.className)} type={type} direction="row">
         <TextareaContainer
           aria-labelledby={label}
@@ -75,7 +73,7 @@ const TextareaComponent: React.ForwardRefRenderFunction<
           placeholder={placeholder}
           className={cx(props.className)}
           onChange={onChange}
-          value={value}
+          value={value || ""}
           ref={ref}
           rows={4}
           cols={40}
@@ -83,10 +81,7 @@ const TextareaComponent: React.ForwardRefRenderFunction<
         />
       </InputWrapper>
       {errorMessage && <Text type="error">{errorMessage}</Text>}
-
-      {(!errorMessage || errorMessage?.trim() == "") && errMsg && (
-        <Text type="error">{errMsg}</Text>
-      )}
+      {!errorMessage?.trim() && errMsg && <Text type="error">{errMsg}</Text>}
     </Flex>
   );
 };

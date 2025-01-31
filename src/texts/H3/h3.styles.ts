@@ -10,7 +10,7 @@ export const StyleH3 = styled.h3<{
       ? theme.typography.type.title
       : theme.typography.type.primary};
   font-weight: ${({ theme }) => theme.typography.weight.bold};
-  font-size: ${({ theme }) => theme.typography.size.h1};
+  font-size: ${({ theme }) => theme.typography.size.h3};
   color: ${({ color }) => color || "inherit"};
   ${({ numberOfLines }) =>
     numberOfLines &&
@@ -23,5 +23,5 @@ export const StyleH3 = styled.h3<{
       text-overflow: ellipsis;
       line-clamp: ${numberOfLines};
     `}
-   font-size: ${({ theme }) => theme.typography.size.h3}; 
+  font-size: ${({ theme }) => theme.typography.size.h3};
 `;

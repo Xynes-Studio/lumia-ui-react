@@ -10,7 +10,7 @@ export const StyleH6 = styled.h6<{
       ? theme.typography.type.title
       : theme.typography.type.primary};
   font-weight: ${({ theme }) => theme.typography.weight.bold};
-  font-size: ${({ theme }) => theme.typography.size.h1};
+  font-size: ${({ theme }) => theme.typography.size.h6};
   color: ${({ color }) => color || "inherit"};
   ${({ numberOfLines }) =>
     numberOfLines &&
@@ -23,5 +23,5 @@ export const StyleH6 = styled.h6<{
       text-overflow: ellipsis;
       line-clamp: ${numberOfLines};
     `}
-   font-size: ${({ theme }) => theme.typography.size.h6}; 
+  font-size: ${({ theme }) => theme.typography.size.h6};
 `;
